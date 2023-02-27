@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sayaaratukum/theme/color.dart';
+import 'package:sayaaratukum/theme/dart.dart';
+import 'package:sayaaratukum/theme/light.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
-import 'dart.dart';
-import 'light.dart';
-
 class ThemeApp {
-
-
   static final dark = DarkThemeApp.dark;
   static final light = LightThemeApp.light;
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'color.dart';
 
@@ -11,15 +12,19 @@ class LightThemeApp{
       width: double.infinity,
       backgroundColor: Colors.black,
     ),
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
       elevation: .0,
-      iconTheme: IconThemeData(
+      iconTheme: const IconThemeData(
         color: ColorSystem.primaryColor,
       ),
-      titleTextStyle: TextStyle(
+      titleTextStyle: const TextStyle(
         color: ColorSystem.primaryColor,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: _background,
+      systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: _background,
+        statusBarIconBrightness: Brightness.dark,
+      ),
     ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     primaryColor: ColorSystem.primaryColor,
