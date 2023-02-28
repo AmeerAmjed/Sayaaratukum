@@ -10,7 +10,7 @@ class ThemeApp {
 
   static const TextStyle titleTextStyle = TextStyle(
     color: TextColor.text1,
-    fontSize: Constant.fontSizeTitleExtra,
+    fontSize: Constants.fontSizeTitleExtra,
     fontWeight: FontWeight.bold,
   );
 
@@ -26,40 +26,40 @@ class ThemeApp {
   );
 
   static const TextStyle cardTitleTextStyle = TextStyle(
-    fontSize: Constant.fontSizePrimary,
+    fontSize: Constants.fontSizePrimary,
     fontWeight: FontWeight.w500,
   );
   static const TextStyle captionTextStyle = TextStyle(
-    fontSize: Constant.fontSizeCaption,
+    fontSize: Constants.fontSizeCaption,
     fontWeight: FontWeight.w400,
   );
   static const TextStyle captionBoldTextStyle = TextStyle(
-    fontSize: Constant.fontSizeCaption,
+    fontSize: Constants.fontSizeCaption,
     fontWeight: FontWeight.bold,
   );
 
   static const TextStyle secondaryTextStyle = TextStyle(
-    fontSize: Constant.fontSizeSecondary,
+    fontSize: Constants.fontSizeSecondary,
     fontWeight: FontWeight.w500,
   );
 
   static const TextStyle secondaryBoldTextStyle = TextStyle(
-    fontSize: Constant.fontSizeSecondary,
+    fontSize: Constants.fontSizeSecondary,
     fontWeight: FontWeight.w600,
   );
 
   static const TextStyle secondaryXTextStyle = TextStyle(
-    fontSize: Constant.fontSizeSecondaryX,
+    fontSize: Constants.fontSizeSecondaryX,
     fontWeight: FontWeight.w600,
   );
 
   static const TextStyle primaryTextStyle = TextStyle(
-    fontSize: Constant.fontSizePrimary,
+    fontSize: Constants.fontSizePrimary,
     fontWeight: FontWeight.w600,
   );
 
   static const TextStyle primaryXTextStyle = TextStyle(
-    fontSize: Constant.fontSizePrimaryX,
+    fontSize: Constants.fontSizePrimaryX,
     color: TextColor.text1,
     fontWeight: FontWeight.w600,
   );

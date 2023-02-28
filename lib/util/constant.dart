@@ -1,7 +1,8 @@
-class Constant {
+class Constants {
   static const String websiteLink = "https://mooappx.com/product";
   static const double zero = .0;
 
+  static const double spacing = 2.0;
   static const double spacingSmall = 4.0;
   static const double spacingXSmall = 8.0;
   static const double spacingXXSmall = 12.0;
@@ -35,39 +36,13 @@ class Constant {
 
   static const String iconApp = 'assets/images/image.png';
 
-  static const String iconShop = 'assets/icons/shop.png';
 
-  static const String iconEmptyCart = 'assets/icons/empty_cart.png';
-  static const String iconNoOrder = 'assets/icons/no_order.png';
-  static const String iconLocation = 'assets/icons/location.png';
-  static const String iconTryAuth = 'assets/icons/try_auth.png';
-  static const String iconNoInterNet = 'assets/icons/no_internet.png';
-  static const String iconDiscount = 'assets/icons/discount.png';
+
+
 
   static const String loadingImage = 'assets/images/loading.gif';
   static const String looPLoadingImage = 'assets/images/loop_loading.gif';
   static const String allImage = "https://api.mooappx.com/storage/h7sNnp2119BSZe8URUe6sFlB92yNewoiqigJSfZL.png";
 
-  static const String langCodeKey = 'langCode';
-  static const String userKey = 'user';
-  static const String tokenKey = 'token';
-  static const String skipAuthKey = 'skipAuth';
-  static const String genderKey = 'gender';
-  static const String deliverInfoKey = 'deliver';
-  static const String notificationKey = 'notification';
 
-  static const String idCategoryKey = 'idCategory';
-  static const String idCategoryQuantityProductKey =
-      'idCategoryQuantityProduct';
-  static const String isShowAllProductBySectionKey = 'showProductBySection';
-  static const String idSubCategoryKey = 'idCategoryProduct';
-  static const String titleCategoryProductKey = 'titleCategoryProduct';
-  static const String idProductKey = 'idProduct';
-  static const String titleCategoryKey = 'titleCategory';
-  static const String idTopKey = 'idTop';
-  static const String idAttrsSelectedKey = 'idAttrsSelected';
-  static const String idItemCartKey = 'idItemCart';
-  static const List<String> routeToLogin = ['/chooseAuth', '/register'];
-
-  static const String verifyPasswordNumberPhoneP = 'verifyPasswordNumberPhoneP';
 }
