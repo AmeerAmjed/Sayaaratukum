@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sayaaratukum/models/brand.dart';
-import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
 
 class BrandItem extends StatelessWidget {
@@ -23,7 +22,6 @@ class BrandItem extends StatelessWidget {
             height: width,
             child: Card(
               child: ImageLoading(
-                placeholder: Constants.looPLoadingImage,
                 imageUrl: item.imageUrl,
               ),
             ),
