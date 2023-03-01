@@ -19,9 +19,4 @@ class BrandModel extends BaseModel {
     );
   }
 
-  static List<BrandModel> listFromJson(list) => List<BrandModel>.from(
-        list.map(
-          (x) => BrandModel.fromJson(x),
-        ),
-      ).toList();
 }
