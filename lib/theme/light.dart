@@ -5,7 +5,7 @@ import 'color.dart';
 
 class LightThemeApp{
   static final light = ThemeData(
-    // fontFamily: "MulishRegular",
+    fontFamily: "poppins",
     backgroundColor: _background,
     scaffoldBackgroundColor: _background,
     drawerTheme: const DrawerThemeData(
@@ -30,6 +30,11 @@ class LightThemeApp{
     primaryColor: ColorSystem.primaryColor,
     primarySwatch: ColorSystem.primaryColor,
 
+    textTheme: TextTheme(
+      titleMedium: TextStyle(
+
+      )
+    )
   );
 
   static const Color _background = Color(0xffF2F2F2) ;

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sayaaratukum/util/constant.dart';
 
 import 'color.dart';
 
 class DarkThemeApp {
   static final dark = ThemeData(
-    fontFamily: "MulishRegular",
+    fontFamily: "poppins",
     backgroundColor: _background,
     scaffoldBackgroundColor: _background,
     drawerTheme: const DrawerThemeData(
