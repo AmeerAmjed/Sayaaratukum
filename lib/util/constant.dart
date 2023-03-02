@@ -15,10 +15,10 @@ class Constants {
   static const double radiusSmall = 4.0;
   static const double radiusFull = 25.0;
 
-  static const double fontSizePrimary = 16.0;
-  static const double fontSizePrimaryX = 18.0;
+  static const double fontSizePrimary = 14.0;
+  static const double fontSizeSecondary = 16.0;
   static const double fontSizeCaption = 12.0;
-  static const double fontSizeSecondary = 22.0;
+
   static const double fontSizeSecondaryX = 24.0;
   static const double fontSizeTitle = 28.0;
   static const double fontSizeTitleExtra = 48.0;
