@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sayaaratukum/models/brand.dart';
+import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
+import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class BrandItem extends StatelessWidget {
   const BrandItem({
@@ -15,6 +18,7 @@ class BrandItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: width,
       child: Column(
         children: [
           SizedBox(
@@ -26,7 +30,21 @@ class BrandItem extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(child: Text(item.title))
+          const VerticalSpace4(),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: Constants.spacing,
+              ),
+              child: Text(
+                item.title.capitalize ?? "",
+                style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                maxLines: 1,
+              ),
+            ),
+          )
         ],
       ),
     );
