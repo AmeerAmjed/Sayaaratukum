@@ -15,6 +15,8 @@ class Constants {
   static const double radiusSmall = 4.0;
   static const double radiusFull = 25.0;
 
+  static const String fontFamily = "poppins";
+
   static const double fontSizePrimary = 14.0;
   static const double fontSizeSecondary = 16.0;
   static const double fontSizeCaption = 12.0;

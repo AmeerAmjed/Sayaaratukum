@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
     var brand = [
       BrandModel(
           id: 0,
-          title: "catcatcatcatcatcat",
+          title: "Mercedes",
           imageUrl:
               'https://www.freepnglogos.com/uploads/food-png/food-grass-fed-beef-foodservice-products-grass-run-farms-4.png')
     ];

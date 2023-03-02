@@ -38,7 +38,7 @@ class BrandItem extends StatelessWidget {
               ),
               child: Text(
                 item.title.capitalize ?? "",
-                style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                style: Theme.of(context).textTheme.overline?.copyWith(
                       overflow: TextOverflow.ellipsis,
                     ),
                 maxLines: 1,

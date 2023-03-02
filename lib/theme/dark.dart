@@ -6,7 +6,7 @@ import 'color.dart';
 
 class DarkThemeApp {
   static final dark = ThemeData(
-    fontFamily: "poppins",
+    fontFamily: Constants.fontFamily,
     backgroundColor: _background,
     scaffoldBackgroundColor: _background,
     drawerTheme: const DrawerThemeData(

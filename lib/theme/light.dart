@@ -6,7 +6,7 @@ import 'color.dart';
 
 class LightThemeApp{
   static final light = ThemeData(
-    fontFamily: "poppins",
+    fontFamily: Constants.fontFamily,
     backgroundColor: _background,
     scaffoldBackgroundColor: _background,
     drawerTheme: const DrawerThemeData(
@@ -42,11 +42,11 @@ class LightThemeApp{
         fontWeight: FontWeight.normal,
       ),
 
-      caption: TextStyle(
-        color: Colors.grey.shade400,
-        fontSize: Constants.fontSizeCaption,
-        fontWeight: FontWeight.normal,
-      ),
+      // overline: TextStyle(
+      //   color: Colors.grey.shade400,
+      //   fontSize: Constants.fontSizeCaption,
+      //   fontWeight: FontWeight.normal,
+      // ),
     ),
   );
 
