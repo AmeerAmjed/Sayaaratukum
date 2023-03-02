@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sayaaratukum/util/constant.dart';
 
 import 'color.dart';
 
@@ -31,6 +32,23 @@ class DarkThemeApp {
       elevation: .0,
       // margin: EdgeInsets.all(10),
       // shape: ShapeBorder()
+    ),
+    textTheme: TextTheme(
+      labelLarge: const TextStyle(
+        color: Colors.black,
+        fontSize: Constants.fontSizeSecondary,
+        fontWeight: FontWeight.w700,
+      ),
+      labelMedium: const TextStyle(
+        color: Colors.black,
+        fontSize: Constants.fontSizePrimary,
+        fontWeight: FontWeight.normal,
+      ),
+      // caption: TextStyle(
+      //   color: Colors.grey.shade400,
+      //   fontSize: Constants.fontSizeCaption,
+      //   fontWeight: FontWeight.normal,
+      // ),
     ),
     visualDensity: VisualDensity.adaptivePlatformDensity,
     primaryColor: ColorSystem.primaryColor,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sayaaratukum/theme/color.dart';
-import 'package:sayaaratukum/theme/dart.dart';
+import 'package:sayaaratukum/theme/dark.dart';
 import 'package:sayaaratukum/theme/light.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
@@ -14,7 +14,7 @@ class ThemeApp {
     fontWeight: FontWeight.bold,
   );
 
-  // static const TextStyle titleTextStyle = TextStyle(
+  // static const TextStyle subTitle1TextStyle = TextStyle(
   //   color: Colors.white,
   //   fontSize: Constant.fontSizeTitle,
   //   fontWeight: FontWeight.w700,
@@ -57,12 +57,12 @@ class ThemeApp {
     fontSize: Constants.fontSizePrimary,
     fontWeight: FontWeight.w600,
   );
-
-  static const TextStyle primaryXTextStyle = TextStyle(
-    fontSize: Constants.fontSizePrimaryX,
-    color: TextColor.text1,
-    fontWeight: FontWeight.w600,
-  );
+  //
+  // static const TextStyle primaryXTextStyle = TextStyle(
+  //   fontSize: Constants.fontSizePrimaryX,
+  //   color: TextColor.text1,
+  //   fontWeight: FontWeight.w600,
+  // );
 
   static const TextStyle readMoreTextStyle = TextStyle(
     fontSize: 14.0,
