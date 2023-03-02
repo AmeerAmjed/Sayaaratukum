@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/utils.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
 class TitleWithViewAll extends StatelessWidget {
@@ -17,7 +19,7 @@ class TitleWithViewAll extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(
-        horizontal: Constants.spacingXMedium,
+        horizontal: Constants.spacingMedium,
       ).add(
         const EdgeInsets.only(
           top: Constants.spacingMedium,
@@ -29,9 +31,7 @@ class TitleWithViewAll extends StatelessWidget {
         children: [
           Text(
             title,
-            // style: ThemeApp.secondaryTextStyle.copyWith(
-            //   color: color,
-            // ),
+            style: Theme.of(context).textTheme.labelLarge,
           ),
           if (onPressed != null)
             TextButton(
@@ -39,16 +39,9 @@ class TitleWithViewAll extends StatelessWidget {
               style: TextButton.styleFrom(
                 foregroundColor: color,
               ), //ripple color
-              child: Row(
-                children: [
-                  Text(
-                    "sdf",
-                    // style: ThemeApp.primaryTextStyle.copyWith(
-                    //   color: color,
-                    // ),
-                  ),
-                  const Icon(Icons.arrow_forward_rounded)
-                ],
+              child: Text(
+                L10n.viewAll.tr,
+                style: Theme.of(context).textTheme.caption,
               ),
             ),
         ],
