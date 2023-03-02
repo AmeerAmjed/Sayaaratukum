@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/brand.dart';
+import 'package:sayaaratukum/screens/home/components/title_with_view_all.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
@@ -22,29 +25,29 @@ class HomeScreen extends StatelessWidget {
     var brand = [
       BrandModel(
           id: 0,
-          title: "cat",
-          imageUrl: 'https://www.freepnglogos.com/uploads/food-png/food-grass-fed-beef-foodservice-products-grass-run-farms-4.png'
-      )
+          title: "catcatcatcatcatcat",
+          imageUrl:
+              'https://www.freepnglogos.com/uploads/food-png/food-grass-fed-beef-foodservice-products-grass-run-farms-4.png')
     ];
     return Scaffold(
       body: ListView(
         children: [
+          TitleWithViewAll(
+            title: L10n.brands.tr,
+            onPressed: () {},
+          ),
           SizedBox(
-            height: 92,
-            width: MediaQuery
-                .of(context)
-                .size
-                .width,
+            height: 100,
+            width: MediaQuery.of(context).size.width,
             child: ListView.separated(
               // controller: myads.scroll,
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(
-                horizontal: Constants.spacingXMedium,
+                horizontal: Constants.spacingMedium,
               ),
               shrinkWrap: true,
               itemCount: 23,
-              separatorBuilder: (context, index) =>
-              const Space(
+              separatorBuilder: (context, index) => const Space(
                 width: Constants.spacing,
               ),
               itemBuilder: (context, index) {
