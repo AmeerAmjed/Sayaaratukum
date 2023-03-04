@@ -32,23 +32,26 @@ class LightThemeApp{
     primarySwatch: ColorSystem.primaryColor,
     textTheme: TextTheme(
       labelLarge: const TextStyle(
-        color: Colors.black,
-        fontSize: Constants.fontSizeSecondary,
-        fontWeight: FontWeight.w700,
-      ),
-      labelMedium: const TextStyle(
-        color: Colors.black,
-        fontSize: Constants.fontSizePrimary,
-        fontWeight: FontWeight.normal,
-      ),
+          color: Colors.black,
+          fontSize: Constants.fontSizeSecondary,
+          fontWeight: FontWeight.w700,
+        ),
+        labelMedium: const TextStyle(
+          color: Colors.black,
+          fontSize: Constants.fontSizePrimary,
+          fontWeight: FontWeight.normal,
+        ),
 
-      // overline: TextStyle(
-      //   color: Colors.grey.shade400,
-      //   fontSize: Constants.fontSizeCaption,
-      //   fontWeight: FontWeight.normal,
-      // ),
-    ),
-  );
+        // overline: TextStyle(
+        //   color: Colors.grey.shade400,
+        //   fontSize: Constants.fontSizeCaption,
+        //   fontWeight: FontWeight.normal,
+        // ),
+      ),
+      cardTheme: CardTheme(
+        color: Colors.white,
+        elevation: .0,
+      ));
 
   static const Color _background = Color(0xffF2F2F2);
 }
