@@ -4,7 +4,7 @@ import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/services/api.dart';
 import 'package:sayaaratukum/services/local/storage.dart';
 
-abstract class Service extends GetConnect with LocalStorage {
+abstract class BaseService extends GetConnect with LocalStorage {
   String? token = Application.instance.token.value;
 
   @override
