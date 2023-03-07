@@ -15,4 +15,13 @@ class RoleModel extends BaseModel {
       title: data['name'],
     );
   }
+
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+    };
+  }
+
 }

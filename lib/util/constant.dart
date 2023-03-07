@@ -40,6 +40,12 @@ class Constants {
 
 
 
+  static const String userKey = 'user';
+  static const String tokenKey = 'token';
+  static const String skipAuthKey = 'skipAuth';
+  static const String langCodeKey = 'langCode';
+  static const String notificationKey = 'notification';
+
 
 
   static const String loadingImage = 'assets/images/loading.gif';

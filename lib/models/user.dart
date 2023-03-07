@@ -1,6 +1,6 @@
+import 'package:sayaaratukum/models/model.dart';
 import 'package:sayaaratukum/models/role.dart';
 
-import 'model.dart';
 
 class UserModel extends BaseModel {
   UserModel({
@@ -44,5 +44,39 @@ class UserModel extends BaseModel {
       isActive: isActiveUser(data['is_actived']),
       role: RoleModel.fromJson(data['role']),
     );
+  }
+
+  factory UserModel.local(Map<String, dynamic> data) {
+    bool isActiveUser(int active) => active == 1;
+    return UserModel(
+      id: data['id'],
+      fullName: data['fullname'],
+      firstName: data['firstName'],
+      lastName: data['lastName'],
+      email: data['email'],
+      isEmailVerified: data['isEmailVerified'],
+      phoneNumber: data['phoneNumber'],
+      isPhoneNumberVerified: data['isPhoneNumberVerified'],
+      avatar: data['avatar'],
+      isActive: isActiveUser(data['isActive']),
+      role: RoleModel.fromJson(data['role']),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    int isActiveUser(bool active) => active ? 1 : 0;
+    return {
+      'id': id,
+      'fullName': fullName,
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'isEmailVerified': isEmailVerified,
+      'phoneNumber': phoneNumber,
+      'isPhoneNumberVerified': isPhoneNumberVerified,
+      'avatar': avatar,
+      'isActive': isActiveUser(isActive).toString(),
+      'role': role.toJson()
+    };
   }
 }
