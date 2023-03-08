@@ -1,3 +1,5 @@
+import 'package:sayaaratukum/models/models_brand.dart';
+
 import 'model.dart';
 
 class BrandModel extends BaseModel {
@@ -5,18 +7,23 @@ class BrandModel extends BaseModel {
     required this.id,
     required this.title,
     required this.imageUrl,
+    required this.models,
   });
 
   final int id;
   final String title;
   final String imageUrl;
+  final List<ModelsBrandModel> models;
 
-  factory BrandModel.fromJson(Map<String, dynamic> data) {
+  factory BrandModel.fromJson(Map<String, dynamic> json) {
     return BrandModel(
-      id: data['id'],
-      title: data['name'],
-      imageUrl: data['image'],
+      id: json['id'],
+      title: json['name'],
+      imageUrl: json['image'],
+      models: BaseModel.listFromJson(
+        json['models'],
+        ModelsBrandModel.fromJson,
+      ),
     );
   }
-
 }
