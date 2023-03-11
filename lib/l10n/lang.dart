@@ -13,4 +13,9 @@ class AppTranslations extends Translations {
 class L10n {
   static const String viewAll = "viewAll";
   static const String brands = "Brands";
+
+  static const home = 'Home';
+  static const spareParts = 'spareParts';
+  static const stores = 'store';
+  static const favorite = '/favorite';
 }
