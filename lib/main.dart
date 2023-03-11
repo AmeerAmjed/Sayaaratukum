@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:sayaaratukum/binding/public/main_tab.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/screens/home/home.dart';
+import 'package:sayaaratukum/screens/main.dart';
 import 'package:sayaaratukum/theme/theme.dart';
 
 Future<void> main() async {
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', ''),
       translations: AppTranslations(),
-      home: const HomeScreen(),
+      initialBinding: MainTabBinding(),
+      home: const MainTab(),
     );
   }
 }

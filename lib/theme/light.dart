@@ -20,18 +20,22 @@ class LightThemeApp{
       ),
       titleTextStyle: const TextStyle(
         color: ColorSystem.primaryColor,
+        ),
+        backgroundColor: _background,
+        systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+          statusBarColor: _background,
+          statusBarIconBrightness: Brightness.dark,
+        ),
       ),
-      backgroundColor: _background,
-      systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: _background,
-        statusBarIconBrightness: Brightness.dark,
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+      primaryColor: ColorSystem.primaryColor,
+      primarySwatch: ColorSystem.primaryColor,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: _background,
+        unselectedItemColor: const Color(0x86747474),
       ),
-    ),
-    visualDensity: VisualDensity.adaptivePlatformDensity,
-    primaryColor: ColorSystem.primaryColor,
-    primarySwatch: ColorSystem.primaryColor,
-    textTheme: TextTheme(
-      labelLarge: const TextStyle(
+      textTheme: TextTheme(
+        labelLarge: const TextStyle(
           color: Colors.black,
           fontSize: Constants.fontSizeSecondary,
           fontWeight: FontWeight.w700,

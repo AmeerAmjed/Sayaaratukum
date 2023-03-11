@@ -23,29 +23,24 @@ class MainTab extends GetView<MainTabController> {
           currentIndex: controller.currentIndex.value,
           items: [
             BottomNavigationBarItem(
-              icon: const Icon(
-                Iconsax.home,
-              ),
+              icon: const Icon(Iconsax.home),
               label: L10n.home.tr,
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.grid_view_outlined),
+              icon: const Icon(Iconsax.brush),
               label: L10n.spareParts.tr,
             ),
             BottomNavigationBarItem(
-              icon: const Icon(
-                Iconsax.pen_tool,
-              ),
+              icon: const Icon(Iconsax.shop),
               label: L10n.stores.tr,
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Iconsax.favorite_chart),
-              label: L10n.stores.tr,
+              icon: const Icon(Iconsax.heart),
+              label: L10n.favorite.tr,
             ),
           ],
           type: BottomNavigationBarType.fixed,
-          iconSize: 28.0,
-          unselectedItemColor: const Color(0xff747474),
+          showUnselectedLabels: false,
         ),
       ),
       // appBar:
