@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
               size: 38,
               child: Icon(
                 Iconsax.notification,
-                size: 20,
+                size: 18,
               ),
             ),
           )
