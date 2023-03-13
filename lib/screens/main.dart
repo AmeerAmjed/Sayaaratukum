@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -18,24 +19,29 @@ class MainTab extends GetView<MainTabController> {
       ),
 
       bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
+            () => BottomNavigationBar(
           onTap: controller.changePage,
           currentIndex: controller.currentIndex.value,
           items: [
+            // cupertino_icons
             BottomNavigationBarItem(
               icon: const Icon(Iconsax.home),
+              activeIcon: const Icon(Iconsax.home_15),
               label: L10n.home.tr,
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Iconsax.brush),
+              icon: const Icon(CupertinoIcons.hammer),
+              activeIcon: const Icon(CupertinoIcons.hammer_fill),
               label: L10n.spareParts.tr,
             ),
             BottomNavigationBarItem(
               icon: const Icon(Iconsax.shop),
+              activeIcon: const Icon(Iconsax.shop5),
               label: L10n.stores.tr,
             ),
             BottomNavigationBarItem(
               icon: const Icon(Iconsax.heart),
+              activeIcon: const Icon(Iconsax.heart5),
               label: L10n.favorite.tr,
             ),
           ],
@@ -43,7 +49,6 @@ class MainTab extends GetView<MainTabController> {
           showUnselectedLabels: false,
         ),
       ),
-      // appBar:
     );
   }
 }
