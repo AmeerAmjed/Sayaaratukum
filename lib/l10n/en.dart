@@ -6,7 +6,7 @@ class EnTranslations {
         L10n.brands: 'Brands',
 
         L10n.home: 'Home',
-        L10n.spareParts: 'Spare parts',
+        L10n.spareParts: 'Tools',
         L10n.stores: 'Stores',
         L10n.favorite: 'Favorite',
 
