@@ -10,5 +10,12 @@ class EnTranslations {
         L10n.stores: 'Stores',
         L10n.favorite: 'Favorite',
 
+
+        L10n.myProfile: 'My Profile',
+        L10n.setting: 'Setting',
+        L10n.privacy: 'Privacy',
+        L10n.socialMedia: 'Social Media',
+        L10n.logout: 'Logout',
+
       };
 }

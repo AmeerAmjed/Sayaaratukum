@@ -7,19 +7,19 @@ import 'color.dart';
 class LightThemeApp{
   static final light = ThemeData(
     fontFamily: Constants.fontFamily,
-    backgroundColor: _background,
-    scaffoldBackgroundColor: _background,
-    drawerTheme: const DrawerThemeData(
-      width: double.infinity,
-      backgroundColor: Colors.black,
-    ),
-    appBarTheme: AppBarTheme(
-      elevation: .0,
-      iconTheme: const IconThemeData(
-        color: ColorSystem.primaryColor,
+      backgroundColor: _background,
+      scaffoldBackgroundColor: _background,
+      drawerTheme: const DrawerThemeData(
+        backgroundColor: _background,
       ),
-      titleTextStyle: const TextStyle(
-        color: ColorSystem.primaryColor,
+      errorColor: const Color(0xffEB5757),
+      appBarTheme: AppBarTheme(
+        elevation: .0,
+        iconTheme: const IconThemeData(
+          color: ColorSystem.primaryColor,
+        ),
+        titleTextStyle: const TextStyle(
+          color: ColorSystem.primaryColor,
         ),
         backgroundColor: _background,
         systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(

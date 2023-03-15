@@ -4,22 +4,54 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/main_tab.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/screens/components/drawer.dart';
 import 'package:sayaaratukum/util/main_tab_page.dart';
+import 'package:sayaaratukum/widgets/box.dart';
+import 'package:sayaaratukum/widgets/image_loading.dart';
+
+import '../widgets/appbars.dart';
 
 class MainTab extends GetView<MainTabController> {
   const MainTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
+      key: controller.scaffoldKey,
+      // appBar: AppBar(),
+      appBar: AppBars(
+        widget: InkWell(
+          onTap: () {
+            controller.scaffoldKey.currentState?.openDrawer();
+          },
+          child: const Box(
+            size: 48.0,
+            child: ImageLoading(
+              imageUrl: "https://avatars.githubusercontent.com/u/45900975?v=4",
+            ),
+          ),
+        ),
+        actions: const [
+          FittedBox(
+            child: Box(
+              size: 38,
+              child: Icon(
+                Iconsax.notification,
+                size: 18,
+              ),
+            ),
+          )
+        ],
+      ),
+      drawer: DrawerApp(width: size.width ),
       body: Navigator(
         key: Get.nestedKey(1),
         initialRoute: MainTabPage.home,
         onGenerateRoute: controller.onGenerateRoute,
       ),
-
       bottomNavigationBar: Obx(
-            () => BottomNavigationBar(
+        () => BottomNavigationBar(
           onTap: controller.changePage,
           currentIndex: controller.currentIndex.value,
           items: [

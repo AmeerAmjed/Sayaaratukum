@@ -14,6 +14,8 @@ import 'package:sayaaratukum/util/main_tab_page.dart';
 class MainTabController extends BaseController {
   static MainTabController get instance => Get.find();
 
+  late GlobalKey<ScaffoldState> scaffoldKey;
+
   var currentIndex = 0.obs;
   int lastPosition = 0;
 
@@ -23,6 +25,12 @@ class MainTabController extends BaseController {
     MainTabPage.stores,
     MainTabPage.favorite,
   ];
+
+  @override
+  void onInit() {
+    super.onInit();
+    scaffoldKey = GlobalKey<ScaffoldState>();
+  }
 
   void changePage(int index) {
     currentIndex.value = index;

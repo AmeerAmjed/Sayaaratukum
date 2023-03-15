@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
@@ -24,6 +23,7 @@ class Box extends StatelessWidget {
         ),
       ),
       child: Card(
+        clipBehavior: Clip.antiAliasWithSaveLayer,
         child: child,
       ),
     );

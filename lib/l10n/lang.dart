@@ -17,5 +17,11 @@ class L10n {
   static const home = 'Home';
   static const spareParts = 'spareParts';
   static const stores = 'store';
-  static const favorite = '/favorite';
+  static const favorite = 'favorite';
+
+  static const myProfile = 'myProfile';
+  static const setting = 'setting';
+  static const privacy = 'privacy';
+  static const socialMedia = 'socialMedia';
+  static const logout = 'logout';
 }

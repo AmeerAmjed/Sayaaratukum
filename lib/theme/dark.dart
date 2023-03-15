@@ -10,9 +10,9 @@ class DarkThemeApp {
     backgroundColor: _background,
     scaffoldBackgroundColor: _background,
     drawerTheme: const DrawerThemeData(
-      width: double.infinity,
-      backgroundColor: Colors.black,
+      backgroundColor: _background,
     ),
+    errorColor: const Color(0xffEB5757),
     appBarTheme: AppBarTheme(
       elevation: .0,
       iconTheme: const IconThemeData(

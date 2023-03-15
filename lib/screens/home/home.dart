@@ -23,25 +23,7 @@ class HomeScreen extends StatelessWidget {
     //           'https://www.freepnglogos.com/uploads/food-png/food-grass-fed-beef-foodservice-products-grass-run-farms-4.png')
     // ];
     return Scaffold(
-      appBar: const AppBars(
-        widget: Box(
-          size: 48.0,
-          child: ImageLoading(
-            imageUrl: "https://avatars.githubusercontent.com/u/45900975?v=4",
-          ),
-        ),
-        actions: [
-          FittedBox(
-            child: Box(
-              size: 38,
-              child: Icon(
-                Iconsax.notification,
-                size: 18,
-              ),
-            ),
-          )
-        ],
-      ),
+
       body: ListView(
         children: [
           TitleWithViewAll(
