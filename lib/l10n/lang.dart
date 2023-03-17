@@ -24,4 +24,8 @@ class L10n {
   static const privacy = 'privacy';
   static const socialMedia = 'socialMedia';
   static const logout = 'logout';
+
+  static const welcomeTitle = 'welcomeTitle';
+  static const welcomeDoc = 'welcomeDoc';
+  static const letStart = 'letStart';
 }

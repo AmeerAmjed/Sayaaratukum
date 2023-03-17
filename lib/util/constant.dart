@@ -6,7 +6,7 @@ class Constants {
   static const double spacingSmall = 4.0;
   static const double spacingXSmall = 8.0;
   static const double spacingXXSmall = 12.0;
-  static const double spacingMedium = 16.0;
+  static const double spacing16 = 16.0;
   static const double spacingXMedium = 20.0;
   static const double spacingLarge = 24.0;
   static const double spacingXLarge = 42.0;
@@ -23,7 +23,9 @@ class Constants {
 
   static const double fontSizeSecondaryX = 24.0;
   static const double fontSizeTitle = 28.0;
-  static const double fontSizeTitleExtra = 48.0;
+  static const double fontSizeTitleExtra = 38.0;
+  static const double fontSize10 = 10.0;
+  static const double fontSize14 = 14.0;
 
   static const double elevationCard = 2.0;
 
@@ -35,6 +37,7 @@ class Constants {
   static const int limitRepositories = 10;
 
   static const String image = 'assets/images/image.png';
+  static const String welcomeImage = 'assets/images/welcome.png';
 
   static const String iconApp = 'assets/images/image.png';
 

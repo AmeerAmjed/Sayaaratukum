@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sayaaratukum/theme/theme.dart';
 
 class Buttons extends StatelessWidget {
   const Buttons({
@@ -39,7 +38,10 @@ class Buttons extends StatelessWidget {
           elevation: MaterialStateProperty.all(0.0),
           backgroundColor: MaterialStateProperty.all(
             fullBackground
-                ? (background ?? Theme.of(context).primaryColor)
+                ? (background ??
+                    ((disable || onPressed == null)
+                        ? Theme.of(context).primaryColor.withOpacity(0.8)
+                        : Theme.of(context).primaryColor))
                 : Colors.transparent,
           ),
           shape: MaterialStateProperty.all(
@@ -48,7 +50,7 @@ class Buttons extends StatelessWidget {
                 Radius.circular(4.0),
               ),
               side: fullBackground
-                  ? const BorderSide()
+                  ? const BorderSide(color: Colors.transparent)
                   : BorderSide(
                       color: Theme.of(context).primaryColor,
                       width: 1,
@@ -68,10 +70,8 @@ class Buttons extends StatelessWidget {
                     ),
                   )
                 : Text(
-                    label!,
-                    style: ThemeApp.primaryTextStyle.copyWith(
-                        // color: fullBackground ? Colors.white : ThemeApp.primaryColor,
-                        ),
+          label!,
+                    style: Theme.of(context).textTheme.displayMedium,
                   )
             : Icon(
                 icon,

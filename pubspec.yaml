@@ -68,6 +68,7 @@ flutter:
 
     - assets/images/loadding.gif
     - assets/images/loop_loading.gif
+    - assets/images/welcome.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

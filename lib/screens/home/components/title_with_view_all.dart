@@ -19,10 +19,10 @@ class TitleWithViewAll extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(
-        horizontal: Constants.spacingMedium,
+        horizontal: Constants.spacing16,
       ).add(
         const EdgeInsets.only(
-          top: Constants.spacingMedium,
+          top: Constants.spacing16,
         ),
       ),
       child: Row(

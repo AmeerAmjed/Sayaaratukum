@@ -30,32 +30,55 @@ class LightThemeApp{
       visualDensity: VisualDensity.adaptivePlatformDensity,
       primaryColor: ColorSystem.primaryColor,
       primarySwatch: ColorSystem.primaryColor,
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: _background,
-        unselectedItemColor: const Color(0x86747474),
+        unselectedItemColor: Color(0x86747474),
       ),
-      textTheme: TextTheme(
-        labelLarge: const TextStyle(
-          color: Colors.black,
-          fontSize: Constants.fontSizeSecondary,
-          fontWeight: FontWeight.w700,
-        ),
-        labelMedium: const TextStyle(
-          color: Colors.black,
-          fontSize: Constants.fontSizePrimary,
-          fontWeight: FontWeight.normal,
-        ),
+      textTheme: const TextTheme(
+          titleLarge: TextStyle(
+            color: textPrimay87,
+            fontSize: Constants.fontSizeTitleExtra,
+            fontWeight: FontWeight.w700,
+          ),
+          labelLarge: TextStyle(
+            color: Colors.black,
+            fontSize: Constants.fontSizeSecondary,
+            fontWeight: FontWeight.w700,
+          ),
+          labelMedium: TextStyle(
+            fontFamily: Constants.fontFamily,
+            color: Colors.black,
+            fontSize: Constants.fontSizePrimary,
+            fontWeight: FontWeight.normal,
+          ),
+          labelSmall: TextStyle(
+            color: textPrimay10,
+            fontFamily: Constants.fontFamily,
+            fontSize: Constants.fontSize10,
+            fontWeight: FontWeight.w500,
+          ),
+          // onPrimary
+          displayMedium: TextStyle(
+            color: onPrimary,
+            fontFamily: Constants.fontFamily,
+            fontSize: Constants.fontSize14,
+            fontWeight: FontWeight.w500,
+          )
+          // overline: TextStyle(
+          //   color: Colors.grey.shade400,
+          //   fontSize: Constants.fontSizeCaption,
+          //   fontWeight: FontWeight.normal,
+          // ),
 
-        // overline: TextStyle(
-        //   color: Colors.grey.shade400,
-        //   fontSize: Constants.fontSizeCaption,
-        //   fontWeight: FontWeight.normal,
-        // ),
-      ),
+          ),
       cardTheme: CardTheme(
         color: Colors.white,
         elevation: .0,
       ));
 
   static const Color _background = Color(0xffF2F2F2);
+  static const Color textPrimay87 = Color(0xde0D0D0D);
+  static const Color textPrimay10 = Color(0xde0D0D0D);
+
+  static const Color onPrimary = Color(0xdeffffff);
 }

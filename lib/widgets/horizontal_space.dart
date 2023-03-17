@@ -29,7 +29,7 @@ class HorizontalSpace12 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      width: Constants.spacingMedium,
+      width: Constants.spacing16,
     );
   }
 }

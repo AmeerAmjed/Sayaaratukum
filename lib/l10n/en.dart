@@ -17,5 +17,10 @@ class EnTranslations {
         L10n.socialMedia: 'Social Media',
         L10n.logout: 'Logout',
 
+
+        L10n.welcomeTitle: 'Let\'s Start A New \nExperience',
+        L10n.welcomeDoc: 'Choose your favourite car,\nbuy it and enjoy new experience!',
+        L10n.letStart : 'let\'s Start',
+
       };
 }

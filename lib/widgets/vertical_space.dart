@@ -40,7 +40,7 @@ class VerticalSpace16 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      height: Constants.spacingMedium,
+      height: Constants.spacing16,
     );
   }
 }

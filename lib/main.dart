@@ -4,7 +4,8 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/screens/main.dart';
+import 'package:sayaaratukum/route/routes.dart';
+import 'package:sayaaratukum/screens/auth/welcom/welcome.dart';
 import 'package:sayaaratukum/theme/theme.dart';
 
 Future<void> main() async {
@@ -15,8 +16,6 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -28,7 +27,8 @@ class MyApp extends StatelessWidget {
       fallbackLocale: const Locale('en', ''),
       translations: AppTranslations(),
       initialBinding: MainTabBinding(),
-      home: const MainTab(),
+      getPages: routes(),
+      home: const WelcomeScreen(),
     );
   }
 }

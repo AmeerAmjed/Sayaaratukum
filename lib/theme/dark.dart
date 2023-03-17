@@ -28,8 +28,8 @@ class DarkThemeApp {
       ),
     ),
     cardTheme: const CardTheme(
-      color: _backgroundCard,
-      elevation: .0,
+      color: _backgroundBottomNavigationBar,
+      // elevation: .0,
       // margin: EdgeInsets.all(10),
       // shape: ShapeBorder()
     ),
