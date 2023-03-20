@@ -20,10 +20,15 @@ class BrandModel extends BaseModel {
       id: json['id'],
       title: json['name'],
       imageUrl: json['image'],
-      models: BaseModel.listFromJson(
+      models: ModelsBrandModel.listFromJson(
         json['models'],
-        ModelsBrandModel.fromJson,
       ),
     );
   }
+
+  static List<BrandModel> listFromJson(list) => List<BrandModel>.from(
+        list.map(
+          (x) => BrandModel.fromJson(x),
+        ),
+      ).toList();
 }

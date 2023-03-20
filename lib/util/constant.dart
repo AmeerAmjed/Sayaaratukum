@@ -49,6 +49,8 @@ class Constants {
   static const String langCodeKey = 'langCode';
   static const String notificationKey = 'notification';
 
+  static const String bodyData = 'data';
+
 
 
   static const String loadingImage = 'assets/images/loading.gif';

@@ -24,4 +24,12 @@ abstract class BaseService extends GetConnect with LocalStorage {
 
     super.onInit();
   }
+
+  String pagination(
+    String route, {
+    required int page,
+    required int limit,
+  }) {
+    return "$route?page=$page&limit=$limit";
+  }
 }

@@ -15,7 +15,7 @@ class RouteScreen {
   // static const String favorite = '/favorite';
   // static const String setUp = '/setUp';
   //
-  // static const String mainTab = '/mainTab';
+  static const String mainTab = '/mainTab';
   //
   // static const String notification = '/notification';
   // static const String search = '/search';

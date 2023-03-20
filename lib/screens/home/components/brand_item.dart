@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
+import 'package:sayaaratukum/widgets/loading.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class BrandItem extends StatelessWidget {
@@ -45,6 +46,32 @@ class BrandItem extends StatelessWidget {
               ),
             ),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class BrandItemLoading extends StatelessWidget {
+  const BrandItemLoading({
+    Key? key,
+    required this.width,
+  }) : super(key: key);
+
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: width,
+      child: Column(
+        children: [
+          SizedBox(
+            width: width,
+            height: width,
+            child: const Loading(),
+          ),
+          const Spacer()
         ],
       ),
     );
