@@ -7,29 +7,29 @@ import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/models/user.dart';
 import 'package:sayaaratukum/services/local/storage.dart';
 import 'package:sayaaratukum/services/remote/auth/login.dart';
+
 import 'auth.dart';
 
 class LoginController extends AuthController with LocalStorage {
-  late TextEditingController phoneNumberOrEmail;
+  late TextEditingController emailOrNumberPhone;
   late TextEditingController password;
-  late GlobalKey<FormState> loginFormKey ;
+  late GlobalKey<FormState> loginFormKey;
+
   RxBool visibilityPassword = true.obs;
   RxBool disableSubmit = false.obs;
-
 
   @override
   void onInit() {
     super.onInit();
-    phoneNumberOrEmail = TextEditingController();
+    emailOrNumberPhone = TextEditingController();
     password = TextEditingController();
     loginFormKey = GlobalKey<FormState>();
   }
 
-  @override
   Future<void> login() async {
     loading(true);
     var userInfo = {
-      "phone": phoneNumberOrEmail.text,
+      "username": emailOrNumberPhone.text,
       "password": password.text,
     };
     try {
@@ -44,7 +44,7 @@ class LoginController extends AuthController with LocalStorage {
       });
     } on Response catch (response) {
       loading(false);
-      // onError(response.body['error']);
+      onError("error", response.body['message']);
     }
   }
 
@@ -60,7 +60,7 @@ class LoginController extends AuthController with LocalStorage {
 
   @override
   void dispose() {
-    phoneNumberOrEmail.dispose();
+    emailOrNumberPhone.dispose();
     password.dispose();
     super.dispose();
   }

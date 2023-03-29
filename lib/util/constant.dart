@@ -7,6 +7,7 @@ class Constants {
   static const double spacingXSmall = 8.0;
   static const double spacingXXSmall = 12.0;
   static const double spacing16 = 16.0;
+  static const double spacing32 = 32.0;
   static const double spacingXMedium = 20.0;
   static const double spacingLarge = 24.0;
   static const double spacingXLarge = 42.0;
@@ -26,6 +27,8 @@ class Constants {
   static const double fontSizeTitleExtra = 38.0;
   static const double fontSize10 = 10.0;
   static const double fontSize14 = 14.0;
+  static const double fontSize16 = 16.0;
+  static const double fontSize38 = 38.0;
 
   static const double elevationCard = 2.0;
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:sayaaratukum/binding/public/login.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
@@ -29,8 +30,8 @@ class MyApp extends StatelessWidget {
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', ''),
       translations: AppTranslations(),
-      initialBinding: MainTabBinding(),
-      initialRoute: RouteScreen.mainTab,
+      initialBinding: LoginBinding(),
+      initialRoute: RouteScreen.login,
       getPages: routes(),
       // home: const WelcomeScreen(),
     );

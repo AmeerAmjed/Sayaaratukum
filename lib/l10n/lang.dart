@@ -28,4 +28,25 @@ class L10n {
   static const welcomeTitle = 'welcomeTitle';
   static const welcomeDoc = 'welcomeDoc';
   static const letStart = 'letStart';
+
+  static const skip = 'skip';
+  static const login = 'login';
+  static const createAccount = 'createAccount';
+  static const alreadyHaveAccount = 'alreadyHaveAccount';
+  static const forgotPassword = 'forgotPassword';
+  static const password = 'password';
+  static const emailOrNumberPhone = 'emailOrNumberPhone';
+  static const isRequired = 'isRequired';
+
+  static const passwordShort = 'passwordShort';
+  static const passwordLong = 'passwordLong';
+  static const passwordNotMatch = 'passwordNotMatch';
+
+  static const numberPhoneIsRequired = 'numberPhoneIsRequired';
+  static const numberPhoneInvalidLength = 'numberPhoneInvalidLength';
+  static const numberPhoneInvalid = 'numberPhoneInvalid';
+
+  static const welcomeBack = 'welcomeBack';
+
+
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sayaaratukum/widgets/padding_start.dart';
 
 class Buttons extends StatelessWidget {
   const Buttons({
@@ -30,7 +31,7 @@ class Buttons extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      padding: EdgeInsets.zero,
+      padding: spacingH16(),
       margin: EdgeInsets.zero,
       child: ElevatedButton(
         style: ButtonStyle(

@@ -22,5 +22,19 @@ class EnTranslations {
         L10n.welcomeDoc: 'Choose your favourite car,\nbuy it and enjoy new experience!',
         L10n.letStart : 'let\'s Start',
 
+        L10n.skip : 'Skip',
+        L10n.login : 'Log In',
+        L10n.alreadyHaveAccount : 'Already have an account?',
+        L10n.createAccount : 'Create Account',
+        L10n.forgotPassword : 'Forgot password?',
+        L10n.emailOrNumberPhone : 'Email Or NumberPhone',
+        L10n.isRequired : 'Is required',
+        L10n.passwordShort : 'Short password must be more than 8 digits',
+        L10n.passwordLong : 'Long password must be less than 50 digits',
+        L10n.passwordNotMatch : 'Password not match',
+
+        L10n.welcomeBack : 'Welcome Back',
+
       };
 }
+

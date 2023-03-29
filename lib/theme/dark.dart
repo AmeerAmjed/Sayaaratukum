@@ -12,6 +12,7 @@ class DarkThemeApp {
     drawerTheme: const DrawerThemeData(
       backgroundColor: _background,
     ),
+    cardColor: Colors.grey[200],
     errorColor: const Color(0xffEB5757),
     appBarTheme: AppBarTheme(
       elevation: .0,
@@ -27,6 +28,7 @@ class DarkThemeApp {
         statusBarIconBrightness: Brightness.light,
       ),
     ),
+
     cardTheme: const CardTheme(
       color: _backgroundBottomNavigationBar,
       // elevation: .0,
