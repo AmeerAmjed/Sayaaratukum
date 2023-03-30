@@ -16,6 +16,13 @@ class RoleModel extends BaseModel {
     );
   }
 
+  factory RoleModel.local(Map<String, dynamic> data) {
+    return RoleModel(
+      id: data['id'],
+      title: data['title'],
+    );
+  }
+
 
   Map<String, dynamic> toJson() {
     return {

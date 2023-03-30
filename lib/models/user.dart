@@ -47,10 +47,10 @@ class UserModel extends BaseModel {
   }
 
   factory UserModel.local(Map<String, dynamic> data) {
-    bool isActiveUser(int active) => active == 1;
+    bool isActiveUser(String active) => active == "1";
     return UserModel(
       id: data['id'],
-      fullName: data['fullname'],
+      fullName: data['fullName'],
       firstName: data['firstName'],
       lastName: data['lastName'],
       email: data['email'],
@@ -59,7 +59,7 @@ class UserModel extends BaseModel {
       isPhoneNumberVerified: data['isPhoneNumberVerified'],
       avatar: data['avatar'],
       isActive: isActiveUser(data['isActive']),
-      role: RoleModel.fromJson(data['role']),
+      role: RoleModel.local(data['role']),
     );
   }
 
@@ -75,7 +75,7 @@ class UserModel extends BaseModel {
       'phoneNumber': phoneNumber,
       'isPhoneNumberVerified': isPhoneNumberVerified,
       'avatar': avatar,
-      'isActive': isActiveUser(isActive).toString(),
+      'isActive': isActiveUser(isActive),
       'role': role.toJson()
     };
   }

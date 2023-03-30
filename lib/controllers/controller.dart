@@ -3,6 +3,11 @@ import 'package:get/route_manager.dart';
 import 'package:sayaaratukum/widgets/custom_snackbar.dart';
 
 abstract class BaseController extends GetxController {
+  String message = 'message';
+  String data = 'data';
+  String statusResponse = 'status';
+  String success = 'success';
+
   navigateTo(String toPage) {
     try {
       Get.toNamed(toPage);

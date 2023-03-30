@@ -35,16 +35,21 @@ class LoginController extends AuthController with LocalStorage {
     try {
       await LoginServices.instance.login(userInfo).then((response) {
         loading(false);
+        var body = response.body;
         if (response.isOk) {
-          var user = UserModel.fromJson(response.body['data']);
-          var token = response.body['access_token'];
-          Application.instance.login(user, token);
+          if (body[statusResponse] == success) {
+            var user = UserModel.fromJson(body[data]);
+            var token = body['access_token'];
+            Application.instance.login(user, token);
+          }
+
+          print("response $response  ${response.body}");
           // Get.offAllNamed(RoutePageApp.setUp);
         }
       });
     } on Response catch (response) {
       loading(false);
-      onError("error", response.body['message']);
+      onError("error", response.body[message]);
     }
   }
 

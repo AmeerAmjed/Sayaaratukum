@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:sayaaratukum/binding/public/login.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
@@ -15,11 +14,12 @@ Future<void> main() async {
   await GetStorage.init();
   Get.put<Application>(Application(), permanent: true);
 
-  runApp(const MyApp());
+  runApp(const Root());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Root extends GetView<Application> {
+  const Root({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -30,9 +30,13 @@ class MyApp extends StatelessWidget {
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', ''),
       translations: AppTranslations(),
-      initialBinding: LoginBinding(),
-      initialRoute: RouteScreen.login,
       getPages: routes(),
+      initialRoute: (controller.isSkipAuth.value || controller.isLogin)
+          ? RouteScreen.mainTab
+          : RouteScreen.welcome,
+      initialBinding: (controller.isSkipAuth.value || controller.isLogin)
+          ? MainTabBinding()
+          : MainTabBinding(),
       // home: const WelcomeScreen(),
     );
   }
