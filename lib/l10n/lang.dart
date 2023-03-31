@@ -47,6 +47,8 @@ class L10n {
   static const numberPhoneInvalid = 'numberPhoneInvalid';
 
   static const welcomeBack = 'welcomeBack';
+  static const searchCar = 'searchCar';
+  static const searchTool = 'searchTool';
 
 
 }
