@@ -6,7 +6,9 @@ class Constants {
   static const double spacingSmall = 4.0;
   static const double spacingXSmall = 8.0;
   static const double spacingXXSmall = 12.0;
+  static const double spacing4= 4.0;
   static const double spacing16 = 16.0;
+  static const double spacing12 = 12.0;
   static const double spacing32 = 32.0;
   static const double spacingXMedium = 20.0;
   static const double spacingLarge = 24.0;

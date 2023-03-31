@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/components/list_title_icon.dart';
 import 'package:sayaaratukum/widgets/box.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
-class DrawerApp extends StatelessWidget {
+class DrawerApp extends GetView<Application> {
   const DrawerApp({
     Key? key,
     required this.width,
@@ -37,7 +39,10 @@ class DrawerApp extends StatelessWidget {
           ListTitleIcon(
             title: L10n.myProfile.tr,
             icon: Iconsax.user,
-            onTap: () {},
+            onTap: () {
+              print("object");
+              controller.navigateTo(RouteScreen.profile);
+            },
           ),
           ListTitleIcon(
             title: L10n.favorite.tr,

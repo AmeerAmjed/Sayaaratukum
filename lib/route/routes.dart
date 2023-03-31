@@ -1,10 +1,12 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:sayaaratukum/binding/public/login.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
+import 'package:sayaaratukum/binding/user/profile.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/auth/login/login.dart';
 import 'package:sayaaratukum/screens/auth/welcom/welcome.dart';
 import 'package:sayaaratukum/screens/main.dart';
+import 'package:sayaaratukum/screens/profile/profile.dart';
 
 List<GetPage> routes() =>
     [
@@ -21,5 +23,10 @@ List<GetPage> routes() =>
         name: RouteScreen.login,
         page: () => const Login(),
         binding: LoginBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.profile,
+        page: () => const Profile(),
+        binding: ProfileBinding(),
       )
     ];

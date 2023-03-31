@@ -26,7 +26,7 @@ class ListTitleIcon extends StatelessWidget {
       height: 48,
       width: double.infinity,
       child: InkWell(
-        onTap: () {},
+        onTap: onTap,
         child: Row(
           children: [
             const HorizontalSpace16(),

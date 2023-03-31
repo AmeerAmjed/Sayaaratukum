@@ -21,6 +21,7 @@ class DarkThemeApp {
       ),
       titleTextStyle: const TextStyle(
         color: ColorSystem.primaryColor,
+        fontSize: 14
       ),
       backgroundColor: _background,
       systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(

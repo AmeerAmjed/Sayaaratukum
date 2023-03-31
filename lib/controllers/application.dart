@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
+import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/models/user.dart';
 import 'package:sayaaratukum/services/local/storage.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
-class Application extends GetxController with LocalStorage {
+class Application extends BaseController with LocalStorage {
   static Application get instance => Get.find();
 
   RxBool isSkipAuth = false.obs;

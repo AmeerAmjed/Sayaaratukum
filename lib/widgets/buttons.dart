@@ -6,6 +6,9 @@ class Buttons extends StatelessWidget {
     Key? key,
     this.label,
     this.icon,
+    this.colorOnButton,
+    this.padding,
+    this.iconRow,
     this.background,
     this.onPressed,
     this.height = 56.0,
@@ -23,6 +26,9 @@ class Buttons extends StatelessWidget {
   final Color? background;
   final VoidCallback? onPressed;
   final IconData? icon;
+  final IconData? iconRow;
+  final Color? colorOnButton;
+  final EdgeInsetsGeometry? padding;
 
   // final Color colorIcon;
 
@@ -31,7 +37,7 @@ class Buttons extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      padding: spacingH16(),
+      padding: padding ?? spacingH16(),
       margin: EdgeInsets.zero,
       child: ElevatedButton(
         style: ButtonStyle(
@@ -70,10 +76,34 @@ class Buttons extends StatelessWidget {
                       color: Colors.white,
                     ),
                   )
-                : Text(
-          label!,
-                    style: Theme.of(context).textTheme.displayMedium,
-                  )
+                : iconRow == null
+                    ? Text(
+                        label!,
+                        style: Theme.of(context).textTheme.displayMedium,
+                      )
+                    : Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 6,
+                            ),
+                            child: Icon(
+                              iconRow,
+                              color: colorOnButton,
+                            ),
+                          ),
+                          Text(
+                            label!,
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium
+                                ?.copyWith(color: colorOnButton),
+                          )
+                        ],
+                      )
             : Icon(
                 icon,
                 // color: colorIcon,

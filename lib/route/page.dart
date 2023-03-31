@@ -20,4 +20,5 @@ class RouteScreen {
   //
   // static const String notification = '/notification';
   // static const String search = '/search';
+  static const String profile = '/search';
 }
