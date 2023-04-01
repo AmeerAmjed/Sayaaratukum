@@ -42,6 +42,11 @@ class LightThemeApp{
           fontSize: Constants.fontSize38,
           fontWeight: FontWeight.w700,
         ),
+        titleMedium: TextStyle(
+          color: green,
+          fontSize: Constants.fontSize18,
+          fontWeight: FontWeight.bold,
+        ),
         labelLarge: TextStyle(
           fontFamily: Constants.fontFamily,
           color: Colors.black,
@@ -77,6 +82,12 @@ class LightThemeApp{
     cardTheme: const CardTheme(
       color: Colors.white,
       elevation: .0,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(4.0),
+        ),
+      ),
     ),
   );
 
@@ -85,4 +96,5 @@ class LightThemeApp{
   static const Color textPrimay10 = Color(0xde0D0D0D);
 
   static const Color onPrimary = Color(0xdeffffff);
+  static const Color green = Color(0xde2CB67D);
 }

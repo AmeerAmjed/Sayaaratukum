@@ -17,23 +17,25 @@ class SearchBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Expanded(
-          child: Container(
-            padding: const EdgeInsets.only(top: 4, right: 10),
+    return Container(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
             child: TextField(
               onChanged: (value) {},
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Get.theme.cardColor,
                 hintText: hintText,
-                hintStyle: Theme.of(context).textTheme.subtitle1,
+                hintStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
                 contentPadding: const EdgeInsets.symmetric(
                   vertical: 10.0,
-                  horizontal: 15.0,
+                  horizontal: 18.0,
                 ),
                 prefixIcon: const Icon(
                   Icons.search_outlined,
@@ -60,16 +62,16 @@ class SearchBox extends StatelessWidget {
               onSubmitted: onSubmitted,
             ),
           ),
-        ),
-        Buttons(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
-          width: 80,
-          height: 50,
-          icon: Iconsax.filter,
-          onPressed: onPressedFilter,
-          background: Get.theme.primaryColor,
-        )
-      ],
+          Buttons(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            width: 80,
+            height: 45,
+            icon: Iconsax.filter,
+            onPressed: onPressedFilter,
+            background: Get.theme.primaryColor,
+          )
+        ],
+      ),
     );
   }
 }
