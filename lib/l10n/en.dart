@@ -38,6 +38,8 @@ class EnTranslations {
         L10n.searchCar : 'Find your car',
         L10n.searchTool : 'Find tool',
 
+        L10n.showrooms : 'Showrooms',
+
       };
 }
 

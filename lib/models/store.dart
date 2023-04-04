@@ -12,6 +12,7 @@ class StoreModel extends BaseModel {
     required this.avatar,
     required this.address,
     required this.expiresAt,
+    required this.whatsappNumberPhone,
     required this.owner,
     required this.type,
   });
@@ -22,7 +23,8 @@ class StoreModel extends BaseModel {
   final String? cover;
   final String? description;
   final String address;
-  final String expiresAt;
+  final String? expiresAt;
+  final String whatsappNumberPhone;
   final UserModel owner;
   final StoreTypeModel type;
 
@@ -35,9 +37,15 @@ class StoreModel extends BaseModel {
       address: json['address'],
       expiresAt: json['expires_at'],
       description: json['description'],
+      whatsappNumberPhone: json['whatsapp_number'],
       owner: UserModel.fromJson(json['owner']),
       type: StoreTypeModel.fromJson(json['type']),
     );
   }
 
+  static List<StoreModel> listFromJson(list) => List<StoreModel>.from(
+    list.map(
+          (x) => StoreModel.fromJson(x),
+    ),
+  ).toList();
 }

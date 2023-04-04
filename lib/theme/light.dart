@@ -15,6 +15,7 @@ class LightThemeApp{
     errorColor: const Color(0xffEB5757),
     appBarTheme: AppBarTheme(
       elevation: .0,
+      scrolledUnderElevation: 1.5,
       iconTheme: const IconThemeData(
         color: ColorSystem.primaryColor,
       ),
@@ -49,7 +50,7 @@ class LightThemeApp{
         ),
         labelLarge: TextStyle(
           fontFamily: Constants.fontFamily,
-          color: Colors.black,
+          color: textPrimay87,
           fontSize: Constants.fontSize16,
           fontWeight: FontWeight.w700,
         ),
@@ -65,6 +66,7 @@ class LightThemeApp{
           fontSize: Constants.fontSize10,
           fontWeight: FontWeight.w500,
         ),
+
         // onPrimary
         displayMedium: TextStyle(
           color: onPrimary,

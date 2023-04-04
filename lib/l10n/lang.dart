@@ -50,5 +50,8 @@ class L10n {
   static const searchCar = 'searchCar';
   static const searchTool = 'searchTool';
 
+  static const showrooms = 'showrooms';
+
+
 
 }

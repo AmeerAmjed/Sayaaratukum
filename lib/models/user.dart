@@ -20,14 +20,14 @@ class UserModel extends BaseModel {
   final int id;
   final String fullName;
   final String firstName;
-  final String lastName;
+  final String? lastName;
   final String? email;
   final bool isPhoneNumberVerified;
   final String? phoneNumber;
   final bool isEmailVerified;
   final bool isActive;
   final String avatar;
-  final RoleModel role;
+  final RoleModel? role;
 
   factory UserModel.fromJson(Map<String, dynamic> data) {
     bool isActiveUser(int active) => active == 1;
@@ -42,7 +42,7 @@ class UserModel extends BaseModel {
       isPhoneNumberVerified: data['is_phone_number_verified'],
       avatar: data['avatar'],
       isActive: isActiveUser(data['is_actived']),
-      role: RoleModel.fromJson(data['role']),
+      role: data['role'] != null ? RoleModel.fromJson(data['role']) : null,
     );
   }
 
@@ -76,7 +76,7 @@ class UserModel extends BaseModel {
       'isPhoneNumberVerified': isPhoneNumberVerified,
       'avatar': avatar,
       'isActive': isActiveUser(isActive),
-      'role': role.toJson()
+      'role': role?.toJson()
     };
   }
 }

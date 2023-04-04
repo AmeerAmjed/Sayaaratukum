@@ -79,7 +79,10 @@ class Buttons extends StatelessWidget {
                 : iconRow == null
                     ? Text(
                         label!,
-                        style: Theme.of(context).textTheme.displayMedium,
+                        style:
+                            Theme.of(context).textTheme.displayMedium?.copyWith(
+                                  color: colorOnButton,
+                                ),
                       )
                     : Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
