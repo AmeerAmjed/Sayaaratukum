@@ -52,6 +52,8 @@ class L10n {
 
   static const showrooms = 'showrooms';
 
+  static const adsDeals = 'adsDeals';
+
 
 
 }

@@ -39,6 +39,7 @@ class EnTranslations {
         L10n.searchTool : 'Find tool',
 
         L10n.showrooms : 'Showrooms',
+        L10n.adsDeals : 'Special Deals for You',
 
       };
 }

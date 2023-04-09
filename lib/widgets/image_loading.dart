@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/widgets/loading.dart';
 
 class ImageLoading extends StatelessWidget {
   const ImageLoading({
@@ -13,15 +15,15 @@ class ImageLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeInImage.assetNetwork(
+    return CachedNetworkImage(
       width: double.maxFinite,
       height: double.maxFinite,
-      placeholder: placeholder,
       fadeOutCurve: Curves.slowMiddle,
       fadeInCurve: Curves.slowMiddle,
-      image: imageUrl,
+      imageUrl: imageUrl,
       fit: BoxFit.cover,
-      imageErrorBuilder: (c, s, o) => Image.asset(
+      placeholder: (context, url) => const Loading(),
+      errorWidget: (context, url, error) => Image.asset(
         Constants.image,
         fit: BoxFit.cover,
       ),
