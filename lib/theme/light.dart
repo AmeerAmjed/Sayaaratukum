@@ -64,7 +64,7 @@ class LightThemeApp{
           color: textPrimay10,
           fontFamily: Constants.fontFamily,
           fontSize: Constants.fontSize10,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.normal,
         ),
 
         // onPrimary

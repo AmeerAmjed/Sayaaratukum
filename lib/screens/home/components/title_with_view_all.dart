@@ -8,18 +8,20 @@ class TitleWithViewAll extends StatelessWidget {
     Key? key,
     required this.title,
     this.onPressed,
+    this.paddingH = Constants.spacing16,
     this.color = Colors.black,
   }) : super(key: key);
 
   final String title;
   final Color color;
+  final double paddingH;
   final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(
-        horizontal: Constants.spacing16,
+      margin: EdgeInsets.symmetric(
+        horizontal: paddingH,
       )
 
       //     .add(

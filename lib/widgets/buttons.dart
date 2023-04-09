@@ -109,7 +109,7 @@ class Buttons extends StatelessWidget {
                       )
             : Icon(
                 icon,
-                // color: colorIcon,
+                color: colorOnButton,
               ),
       ),
     );

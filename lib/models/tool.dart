@@ -15,7 +15,7 @@ class ToolModel extends BaseModel {
     required this.price,
     required this.color,
     required this.status,
-    // required this.store,
+    required this.store,
     // required this.category,
     // required this.brand,
     // required this.modelSelected,
@@ -29,7 +29,7 @@ class ToolModel extends BaseModel {
   final String? color;
   final String status;
   final String? description;
-  // final StoreModel store;
+  final StoreModel store;
   // final CategoryModel category;
   // final BrandModel brand;
   // final ModelsBrandModel modelSelected;
@@ -44,7 +44,7 @@ class ToolModel extends BaseModel {
       color: json['color'],
       status: json['status'],
       description: json['description'],
-      // store: StoreModel.fromJson(json['store']),
+      store: StoreModel.fromJson(json['store']),
       // category: CategoryModel.fromJson(json['category']),
       // brand: BrandModel.fromJson(json['brand']),
       // modelSelected: ModelsBrandModel.fromJson(json['brand_model']),

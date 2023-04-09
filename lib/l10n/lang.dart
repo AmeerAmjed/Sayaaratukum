@@ -54,6 +54,18 @@ class L10n {
 
   static const adsDeals = 'adsDeals';
 
+  static const specifications = 'Specifications';
+  static const note = 'note';
+  static const chatToBuy = 'chatToBuy';
+
+  static const make = 'make';
+  static const model = 'model';
+  static const status = 'status';
+  static const color = 'Color';
+
+  static const showMore = 'showMore';
+  static const showLess = 'showLess';
+
 
 
 }

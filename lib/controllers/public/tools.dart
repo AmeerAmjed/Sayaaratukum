@@ -6,6 +6,7 @@ import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
 import 'package:sayaaratukum/models/tool.dart';
+import 'package:sayaaratukum/screens/tool_details/tool_details.dart';
 import 'package:sayaaratukum/services/remote/public/tools.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
@@ -82,5 +83,9 @@ class ToolsController extends BaseController
 
   Future<void> onRefresh() async {
     getTools();
+  }
+
+  navigateToDetails(ToolModel tool) {
+    Get.to(() => ToolDetails(tool: tool));
   }
 }

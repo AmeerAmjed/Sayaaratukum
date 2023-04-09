@@ -28,6 +28,7 @@ class ColorSystem {
   static const Color backgroundInput = Color(0xffF5F5F5);
   static const Color backgroundColorDanger = Color(0x80fad5d5);
   static const Color colorDanger = Color(0xFFEB5757);
+  static const Color whatsApp = Color(0xff2ABD6E);
 
 
 

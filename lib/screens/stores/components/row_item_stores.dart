@@ -4,6 +4,7 @@ class RowItemStores extends StatelessWidget {
   const RowItemStores({
     Key? key,
     this.fontSize,
+    this.color,
     required this.text,
     required this.style,
     required this.icon,
@@ -17,6 +18,7 @@ class RowItemStores extends StatelessWidget {
   final double? fontSize;
   final double paddingHIcon;
   final TextStyle style;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -33,16 +35,17 @@ class RowItemStores extends StatelessWidget {
             child: Icon(
               icon,
               size: iconSize,
-              color: style.color,
+              color: color ?? style.color,
             ),
           ),
           Text(
             text,
             style: style.copyWith(
               fontSize: fontSize,
-              color: style.color?.withOpacity(
-                0.8,
-              ),
+              color: color ??
+                  (style.color)!.withOpacity(
+                    0.8,
+                  ),
             ),
           ),
         ],

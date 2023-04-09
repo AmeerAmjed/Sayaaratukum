@@ -36,7 +36,7 @@ class ListTitleIcon extends StatelessWidget {
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
                 title,
-                style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(
                       color: color,
                     ),
               ),

@@ -40,6 +40,17 @@ class EnTranslations {
 
         L10n.showrooms : 'Showrooms',
         L10n.adsDeals : 'Special Deals for You',
+        L10n.specifications : 'Specifications',
+        L10n.note : 'Note',
+        L10n.chatToBuy : 'Chat to Buy',
+
+        L10n.make : 'Make',
+        L10n.model : 'Model',
+        L10n.status : 'Status',
+        L10n.color : 'Color',
+
+        L10n.showMore : ' Show More',
+        L10n.showLess : ' Show Less',
 
       };
 }
