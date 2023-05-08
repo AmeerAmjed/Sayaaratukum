@@ -65,6 +65,12 @@ class L10n {
 
   static const showMore = 'showMore';
   static const showLess = 'showLess';
+  static const addCar = 'addCar';
+
+  static const back = 'back';
+  static const next = 'next';
+
+  static const publish = 'publish';
 
 
 

@@ -51,7 +51,13 @@ class EnTranslations {
 
         L10n.showMore : ' Show More',
         L10n.showLess : ' Show Less',
+        L10n.addCar : ' Add Car',
 
-      };
+        L10n.back : 'Back',
+        L10n.next : 'Next',
+        L10n.publish : 'Publish',
+
+
+  };
 }
 

@@ -1,0 +1,132 @@
+import 'package:flutter/material.dart';
+
+class ProgressState extends StatelessWidget {
+  const ProgressState({
+    Key? key,
+    required this.myOrderState,
+  }) : super(key: key);
+
+  final int myOrderState;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      // width: 150,
+      // color: Colors.blue,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(
+          3,
+          (index) => Container(
+            alignment: Alignment.center,
+            width: 120,
+            child: ticks(
+              context: context,
+              myOrderState: myOrderState,
+              orderState: states[index],
+              index: index,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget ticks({
+    required BuildContext context,
+    required int myOrderState,
+    required OrderState orderState,
+    required int index,
+  }) {
+    return Expanded(
+      flex: 1,
+      child: Row(
+        children: [
+          Expanded(
+            child: orderState.id == 1
+                ? line('#fffff')
+                : orderState.id <= myOrderState + 1
+                    ? line('#27AE60')
+                    : line('#EBEBEB'),
+          ),
+          Container(
+            height: 32.0,
+            width: 32.0,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: orderState.id <= myOrderState + 1
+                    ? Colors.green
+                    : Colors.grey,
+              ),
+              color:
+                  orderState.id <= myOrderState ? Colors.green : Colors.white,
+            ),
+            child: myOrderState >= orderState.id // isChecked
+                ? const Icon(
+                    Icons.check,
+                    color: Colors.white,
+                    size: 16,
+                  )
+                : Text(
+                    orderState.id.toString(),
+                    style: TextStyle(
+                      color: myOrderState == orderState.id
+                          ? Colors.green
+                          : Colors.grey,
+                    ),
+                  ),
+          ),
+          // if (orderState.id != 3)
+          Expanded(
+            child: orderState.id == 3
+                ? line('#fffff')
+                : orderState.id < myOrderState + 1
+                    ? line('#27AE60')
+                    : line('#EBEBEB'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget line(String color) {
+    return Container(
+      color: Color(color.getHexValue()),
+      height: 2.0,
+      width: 30,
+    );
+  }
+}
+
+class OrderState {
+  int id;
+  String color;
+
+  OrderState({
+    required this.id,
+    required this.color,
+  });
+}
+
+List<OrderState> states = [
+  OrderState(
+    id: 1,
+    color: '#27AE60',
+  ),
+  OrderState(
+    id: 2,
+    color: '#27AE60',
+  ),
+  OrderState(
+    id: 3,
+    color: '#EBEBEB',
+  ),
+];
+
+extension HexString on String {
+  int getHexValue() => int.parse(replaceAll('#', '0xff'));
+}

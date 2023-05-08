@@ -3,10 +3,12 @@ import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
 import 'package:sayaaratukum/controllers/public/home.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/home/components/brand_item.dart';
 import 'package:sayaaratukum/screens/home/components/search.dart';
 import 'package:sayaaratukum/screens/home/components/title_with_view_all.dart';
 import 'package:sayaaratukum/screens/home/widget/ads.dart';
+import 'package:sayaaratukum/screens/profile/components/add_button.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
 import 'package:sayaaratukum/widgets/space.dart';
@@ -85,6 +87,11 @@ class HomeScreen extends GetView<HomeController> {
             width: width,
           )
         ],
+      ),
+      floatingActionButton: AddButton(
+        onPressed: () {
+          Get.toNamed(RouteScreen.addCar);
+        },
       ),
     );
   }

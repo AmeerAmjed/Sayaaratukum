@@ -26,17 +26,19 @@ class Root extends GetView<Application> {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeApp.light,
-      darkTheme: ThemeApp.dark,
+      // darkTheme: ThemeApp.dark,
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', ''),
       translations: AppTranslations(),
       getPages: routes(),
-      initialRoute: (controller.isSkipAuth.value || controller.isLogin)
-          ? RouteScreen.mainTab
-          : RouteScreen.welcome,
-      initialBinding: (controller.isSkipAuth.value || controller.isLogin)
-          ? MainTabBinding()
-          : MainTabBinding(),
+      // initialRoute: (controller.isSkipAuth.value || controller.isLogin)
+      //     ? RouteScreen.mainTab
+      //     : RouteScreen.welcome,
+      // initialBinding: (controller.isSkipAuth.value || controller.isLogin)
+      //     ? MainTabBinding()
+      //     : MainTabBinding(),
+      initialRoute: RouteScreen.mainTab,
+      initialBinding: MainTabBinding(),
       // home: const WelcomeScreen(),
     );
   }
