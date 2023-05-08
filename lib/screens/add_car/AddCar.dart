@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/user/add_car.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/screens/add_car/components/state_page.dart';
+import 'package:sayaaratukum/screens/add_car/components/row_two_widget.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';
+import 'package:sayaaratukum/widgets/dropdown_list.dart';
+import 'package:sayaaratukum/widgets/input.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class AddCarScreen extends GetView<AddCarController> {
@@ -25,11 +27,12 @@ class AddCarScreen extends GetView<AddCarController> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const VerticalSpace24(),
-                GetBuilder<AddCarController>(builder: (con) {
-                  return ProgressState(
-                    myOrderState: con.onPageIndex.value,
-                  );
-                }),
+                // GetBuilder<AddCarController>(builder: (con) {
+                //   return ProgressState(
+                //     myOrderState: con.onPageIndex.value,
+                //   );
+                // }),
+                const VerticalSpace24(),
                 Expanded(
                   flex: 2,
                   child: PageView.builder(
@@ -42,14 +45,58 @@ class AddCarScreen extends GetView<AddCarController> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Expanded(
-                            child: Center(
-                              child: Icon(
-                                Icons.confirmation_num_sharp,
-                                size: 50,
-                              ),
-                            ),
+                          InputAuth(
+                            controller: TextEditingController(),
+                            label: "Asdasd",
+                            keyboardType: TextInputType.text,
                           ),
+                          const VerticalSpace8(),
+                          RowTwoWidget(
+                            leftWidget: DropdownList(
+                              margin: const EdgeInsets.only(
+                                left: 16,
+                              ),
+                              label: L10n.brand.tr,
+                              onChanged: controller.onChangeBrand,
+                              items: controller.brands
+                                  .map((e) => e.title)
+                                  .toList(),
+                            ),
+                            rightWidget:
+                                GetBuilder<AddCarController>(builder: (co) {
+                              return DropdownList(
+                                label: L10n.model.tr,
+                                onChanged: (value) {},
+                                items: co.getModelByBrandId(),
+                                margin: const EdgeInsets.only(
+                                  right: 16,
+                                ),
+                              );
+                            }),
+                          ),
+                          RowTwoWidget(
+                            leftWidget: DropdownList(
+                              margin: const EdgeInsets.only(
+                                left: 16,
+                              ),
+                              label: L10n.typeCar.tr,
+                              onChanged: controller.onChangeBrand,
+                              items: controller.brands
+                                  .map((e) => e.title)
+                                  .toList(),
+                            ),
+                            rightWidget:
+                                GetBuilder<AddCarController>(builder: (co) {
+                              return DropdownList(
+                                label: L10n.propulsionSystem.tr,
+                                onChanged: (value) {},
+                                items: co.getModelByBrandId(),
+                                margin: const EdgeInsets.only(
+                                  right: 16,
+                                ),
+                              );
+                            }),
+                          )
                         ],
                       );
                     },

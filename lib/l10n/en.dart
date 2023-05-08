@@ -4,6 +4,7 @@ class EnTranslations {
   static Map<String, String> get map => {
         L10n.viewAll: 'View All',
         L10n.brands: 'Brands',
+        L10n.brand: 'Brand',
 
         L10n.home: 'Home',
         L10n.spareParts: 'Tools',
@@ -56,6 +57,9 @@ class EnTranslations {
         L10n.back : 'Back',
         L10n.next : 'Next',
         L10n.publish : 'Publish',
+
+        L10n.typeCar : 'Type Car',
+        L10n.propulsionSystem : 'Propulsion System',
 
 
   };

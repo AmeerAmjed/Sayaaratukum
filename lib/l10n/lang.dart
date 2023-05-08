@@ -13,6 +13,7 @@ class AppTranslations extends Translations {
 class L10n {
   static const String viewAll = "viewAll";
   static const String brands = "Brands";
+  static const String brand = "brand";
 
   static const home = 'Home';
   static const spareParts = 'spareParts';
@@ -71,6 +72,9 @@ class L10n {
   static const next = 'next';
 
   static const publish = 'publish';
+
+  static const typeCar = 'typeCar';
+  static const propulsionSystem = 'propulsionSystem';
 
 
 

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
@@ -8,12 +10,12 @@ class InputAuth extends StatelessWidget {
     required this.label,
     this.hintText,
     required this.controller,
-    required this.keyboardType,
     this.validator,
     this.background,
     this.visibilityPassword = false,
     this.suffixIcon = const Space(),
     this.textInputAction = TextInputAction.next,
+    this.keyboardType = TextInputType.text,
   }) : super(key: key);
 
   final Widget suffixIcon;
@@ -36,10 +38,15 @@ class InputAuth extends StatelessWidget {
       child: TextFormField(
         obscureText: visibilityPassword,
         controller: controller,
+        style: Get.textTheme.labelMedium?.copyWith(
+          fontSize: 15,
+        ),
         decoration: InputDecoration(
           filled: true,
           fillColor: background ?? Theme.of(context).cardColor,
           hintText: hintText,
+          hintStyle: Get.textTheme.labelMedium,
+          labelStyle: Get.textTheme.labelMedium,
           suffixIcon: suffixIcon,
           labelText: label,
           contentPadding: const EdgeInsets.all(
