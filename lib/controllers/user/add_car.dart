@@ -18,12 +18,15 @@ class AddCarController extends BaseController {
   late TextEditingController yearModel;
   late TextEditingController region;
   late TextEditingController nearPoint;
-  late TextEditingController color;
+
   var yearBrand = 0.obs;
 
   var reColor = "".obs;
   var shakeCheck = "".obs;
   var gearBox = "".obs;
+  var color = "".obs;
+
+  var engineCapacity = .0.obs;
 
   final yesNo = <String>["yes", "no"];
   final typeGearBox = <String>["RadioGroup", "no"];
@@ -39,7 +42,6 @@ class AddCarController extends BaseController {
     yearModel = TextEditingController();
     region = TextEditingController();
     nearPoint = TextEditingController();
-    color = TextEditingController();
   }
 
   onSelectYearModel(int? year) {
@@ -65,11 +67,7 @@ class AddCarController extends BaseController {
     }
   }
 
-  onChangeColorCar(String? color) {
-    if (color != null) {
 
-    }
-  }
 
   List<String> getModelByBrandId() {
     return brands
@@ -124,5 +122,17 @@ class AddCarController extends BaseController {
       gearBox.value = typeGearBox.last;
     }
     update();
+  }
+
+  onChangeEngineCapacity(String? size) {
+    if (size != null) {
+      engineCapacity.value = double.parse(size);
+    }
+  }
+
+  onChangeColorCar(String? color) {
+    if (color != null) {
+      this.color.value = color;
+    }
   }
 }

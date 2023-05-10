@@ -194,6 +194,14 @@ class AddCarScreen extends GetView<AddCarController> {
                             label: L10n.color.tr,
                             onChanged: controller.onChangeBrand,
                             items: HardCode.carColors,
+                          ),
+                          DropdownList(
+                            label: L10n.engineCapacity.tr,
+                            onChanged: controller.onChangeEngineCapacity,
+                            items: HardCode.engineSizes
+                                .map((e) => e.toString())
+                                .toList()
+                              ..sort(),
                           )
                         ],
                       );

@@ -75,6 +75,7 @@ class EnTranslations {
         L10n.governorate : 'Governorate',
         L10n.region : 'Region',
         L10n.nearPoint : 'Near point',
+        L10n.engineCapacity : 'Engine Capacity',
 
 
 
