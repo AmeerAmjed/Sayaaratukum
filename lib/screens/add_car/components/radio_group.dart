@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
 class RadioGroup extends StatelessWidget {
@@ -25,6 +26,9 @@ class RadioGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final styleTextOption = Get.textTheme.labelMedium?.copyWith(
+      fontWeight: FontWeight.w600,
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
@@ -33,7 +37,10 @@ class RadioGroup extends StatelessWidget {
           Space(width: spacingTitle),
           Expanded(
             child: RadioListTile(
-              title: Text(titleOption1),
+              title: Text(
+                titleOption1,
+                style: styleTextOption,
+              ),
               value: valueOption1,
               contentPadding: const EdgeInsets.all(0),
               dense: true,
@@ -44,7 +51,10 @@ class RadioGroup extends StatelessWidget {
           Expanded(
             child: RadioListTile(
               enableFeedback: false,
-              title: Text(titleOption2),
+              title: Text(
+                titleOption2,
+                style: styleTextOption,
+              ),
               value: valueOption2,
               contentPadding: const EdgeInsets.all(0),
               dense: true,
