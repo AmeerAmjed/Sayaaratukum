@@ -188,6 +188,12 @@ class AddCarScreen extends GetView<AddCarController> {
                             controller: controller.region,
                             label: L10n.nearPoint.tr,
                             keyboardType: TextInputType.text,
+                          ),
+
+                          DropdownList(
+                            label: L10n.color.tr,
+                            onChanged: controller.onChangeBrand,
+                            items: HardCode.carColors,
                           )
                         ],
                       );

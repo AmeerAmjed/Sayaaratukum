@@ -18,6 +18,7 @@ class AddCarController extends BaseController {
   late TextEditingController yearModel;
   late TextEditingController region;
   late TextEditingController nearPoint;
+  late TextEditingController color;
   var yearBrand = 0.obs;
 
   var reColor = "".obs;
@@ -38,6 +39,7 @@ class AddCarController extends BaseController {
     yearModel = TextEditingController();
     region = TextEditingController();
     nearPoint = TextEditingController();
+    color = TextEditingController();
   }
 
   onSelectYearModel(int? year) {
@@ -60,6 +62,12 @@ class AddCarController extends BaseController {
         }
         return false;
       });
+    }
+  }
+
+  onChangeColorCar(String? color) {
+    if (color != null) {
+
     }
   }
 
