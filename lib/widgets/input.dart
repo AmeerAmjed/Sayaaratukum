@@ -17,6 +17,10 @@ class InputAuth extends StatelessWidget {
     this.onTap,
     this.visibilityPassword = false,
     this.suffixIcon = const Space(),
+    this.contentPadding = Constants.spacing16,
+    this.margin = const EdgeInsets.symmetric(
+      horizontal: Constants.spacing16,
+    ),
     this.textInputAction = TextInputAction.next,
     this.keyboardType = TextInputType.text,
   }) : super(key: key);
@@ -33,15 +37,15 @@ class InputAuth extends StatelessWidget {
   final VoidCallback? onTap;
   final TextInputType keyboardType;
   final bool visibilityPassword;
+  final EdgeInsets margin;
+  final double contentPadding;
   final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: background ?? Theme.of(context).cardColor,
-      margin: const EdgeInsets.symmetric(
-        horizontal: Constants.spacing16,
-      ),
+      margin: margin,
       child: TextFormField(
         obscureText: visibilityPassword,
         controller: controller,
@@ -59,8 +63,8 @@ class InputAuth extends StatelessWidget {
           labelStyle: Get.textTheme.labelMedium,
           suffixIcon: suffixIcon,
           labelText: label,
-          contentPadding: const EdgeInsets.all(
-            Constants.spacing16,
+          contentPadding: EdgeInsets.all(
+            contentPadding,
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4.0),

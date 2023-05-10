@@ -88,5 +88,9 @@ class L10n {
   static const shakeCheck = 'shakeCheck';
   static const gearBox = 'typeGearBox';
 
+  static const governorate = 'governorate';
+  static const region = 'region';
+  static const nearPoint = 'nearPoint';
+
 
 }

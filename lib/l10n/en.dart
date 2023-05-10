@@ -72,6 +72,10 @@ class EnTranslations {
         L10n.shakeCheck : 'Shake Check',
         L10n.gearBox : 'Gear Box',
 
+        L10n.governorate : 'Governorate',
+        L10n.region : 'Region',
+        L10n.nearPoint : 'Near point',
+
 
 
 

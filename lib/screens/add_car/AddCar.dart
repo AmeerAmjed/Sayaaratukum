@@ -7,6 +7,8 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/add_car/components/radio_group.dart';
 import 'package:sayaaratukum/screens/add_car/components/row_two_widget.dart';
 import 'package:sayaaratukum/screens/add_car/components/year_brand.dart';
+import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/hard_code.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';
 import 'package:sayaaratukum/widgets/dropdown_list.dart';
@@ -154,7 +156,7 @@ class AddCarScreen extends GetView<AddCarController> {
                           GetBuilder<AddCarController>(builder: (co) {
                             return RadioGroup(
                               label: L10n.gearBox.tr,
-                              spacingTitle:38,
+                              spacingTitle: 38,
                               titleOption1: L10n.automatic.tr,
                               valueOption1: controller.typeGearBox.first,
                               titleOption2: L10n.manual.tr,
@@ -162,28 +164,52 @@ class AddCarScreen extends GetView<AddCarController> {
                               value: controller.gearBox.value,
                               onChanged: controller.onChangeGearBox,
                             );
-                          })
+                          }),
+                          RowTwoWidget(
+                            leftWidget: DropdownList(
+                              margin: const EdgeInsets.only(
+                                left: Constants.spacing16,
+                              ),
+                              label: L10n.governorate.tr,
+                              onChanged: controller.onChangeBrand,
+                              items: HardCode.provinces,
+                            ),
+                            rightWidget: InputAuth(
+                              margin: const EdgeInsets.only(
+                                right: Constants.spacing16,
+                              ),
+                              contentPadding: Constants.spacing12,
+                              controller: controller.region,
+                              label: L10n.region.tr,
+                              keyboardType: TextInputType.text,
+                            ),
+                          ),
+                          InputAuth(
+                            controller: controller.region,
+                            label: L10n.nearPoint.tr,
+                            keyboardType: TextInputType.text,
+                          )
                         ],
                       );
                     },
                   ),
                 ),
 
-                const SizedBox(height: 48),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0,
-                  ),
-                  child: Text(
-                    "sdasdasdasd",
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.black.withOpacity(.7),
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
-                const Spacer()
+                // const SizedBox(height: 48),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(
+                //     horizontal: 20.0,
+                //   ),
+                //   child: Text(
+                //     "sdasdasdasd",
+                //     style: TextStyle(
+                //       fontSize: 40,
+                //       color: Colors.black.withOpacity(.7),
+                //       fontWeight: FontWeight.w700,
+                //     ),
+                //   ),
+                // ),
+                // const Spacer()
               ],
             ),
             Align(
