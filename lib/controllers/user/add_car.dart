@@ -16,6 +16,14 @@ class AddCarController extends BaseController {
   var pageController = PageController();
 
   late TextEditingController yearModel;
+  var yearBrand = 0.obs;
+
+  var reColor = "".obs;
+  var shakeCheck = "".obs;
+  var gearBox = "".obs;
+
+  final yesNo = <String>["yes", "no"];
+  final typeGearBox = <String>["RadioGroup", "no"];
 
   @override
   void onInit() {
@@ -32,6 +40,10 @@ class AddCarController extends BaseController {
     if (year != null) {
       yearModel.text = (DateTime.now().year - year).toString();
     }
+  }
+
+  onSelectGear(int year) {
+    yearBrand.value = year;
   }
 
   onChangeBrand(String? brand) {
@@ -72,6 +84,33 @@ class AddCarController extends BaseController {
       curve: Curves.linear,
     );
     onPageIndex.value = onPageIndex.value - 1;
+    update();
+  }
+
+  onChangeReColor(Object? option) {
+    if (option == yesNo.first) {
+      reColor.value = yesNo.first;
+    } else {
+      reColor.value = yesNo.last;
+    }
+    update();
+  }
+
+  onChangeShakeCheck(Object? option) {
+    if (option == yesNo.first) {
+      shakeCheck.value = yesNo.first;
+    } else {
+      shakeCheck.value = yesNo.last;
+    }
+    update();
+  }
+
+  onChangeGearBox(Object? option) {
+    if (option == typeGearBox.first) {
+      gearBox.value = typeGearBox.first;
+    } else {
+      gearBox.value = typeGearBox.last;
+    }
     update();
   }
 }

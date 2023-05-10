@@ -78,7 +78,15 @@ class L10n {
 
   static const year = 'year';
   static const yearBrand = 'yearBrand';
+  static const recolor = 'recolor';
 
+  static const yes = 'yes';
+  static const no = 'no';
+
+  static const automatic = 'automatic';
+  static const manual = 'manual';
+  static const shakeCheck = 'shakeCheck';
+  static const gearBox = 'typeGearBox';
 
 
 }

@@ -64,6 +64,14 @@ class EnTranslations {
 
         L10n.yearBrand : 'Year is Required!',
 
+        L10n.recolor : 'Recolor',
+        L10n.no : 'No',
+        L10n.yes : 'Yes',
+        L10n.automatic : 'Automatic',
+        L10n.manual : 'Manual',
+        L10n.shakeCheck : 'Shake Check',
+        L10n.gearBox : 'Gear Box',
+
 
 
 

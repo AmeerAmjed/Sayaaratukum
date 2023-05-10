@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/user/add_car.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/screens/add_car/components/radio_group.dart';
 import 'package:sayaaratukum/screens/add_car/components/row_two_widget.dart';
 import 'package:sayaaratukum/screens/add_car/components/year_brand.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
@@ -126,6 +127,42 @@ class AddCarScreen extends GetView<AddCarController> {
                               );
                             },
                           ),
+                          GetBuilder<AddCarController>(builder: (co) {
+                            return RadioGroup(
+                              label: L10n.recolor.tr,
+                              spacingTitle: 48,
+                              titleOption1: L10n.yes.tr,
+                              valueOption1: controller.yesNo.first,
+                              titleOption2: L10n.no.tr,
+                              valueOption2: controller.yesNo.last,
+                              value: controller.reColor.value,
+                              onChanged: controller.onChangeReColor,
+                            );
+                          }),
+                          GetBuilder<AddCarController>(builder: (co) {
+                            return RadioGroup(
+                              label: L10n.shakeCheck.tr,
+                              spacingTitle: 10,
+                              titleOption1: L10n.yes.tr,
+                              valueOption1: controller.yesNo.first,
+                              titleOption2: L10n.no.tr,
+                              valueOption2: controller.yesNo.last,
+                              value: controller.shakeCheck.value,
+                              onChanged: controller.onChangeShakeCheck,
+                            );
+                          }),
+                          GetBuilder<AddCarController>(builder: (co) {
+                            return RadioGroup(
+                              label: L10n.gearBox.tr,
+                              spacingTitle:38,
+                              titleOption1: L10n.automatic.tr,
+                              valueOption1: controller.typeGearBox.first,
+                              titleOption2: L10n.manual.tr,
+                              valueOption2: controller.typeGearBox.last,
+                              value: controller.gearBox.value,
+                              onChanged: controller.onChangeGearBox,
+                            );
+                          })
                         ],
                       );
                     },

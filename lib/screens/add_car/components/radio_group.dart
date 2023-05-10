@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sayaaratukum/widgets/horizontal_space.dart';
+import 'package:sayaaratukum/widgets/space.dart';
 
 class RadioGroup extends StatelessWidget {
   const RadioGroup({
     Key? key,
     required this.label,
+    required this.spacingTitle,
     required this.titleOption1,
     required this.valueOption1,
     required this.titleOption2,
@@ -14,6 +15,7 @@ class RadioGroup extends StatelessWidget {
   }) : super(key: key);
 
   final String label;
+  final double spacingTitle;
   final String titleOption1;
   final String valueOption1;
   final String titleOption2;
@@ -28,7 +30,7 @@ class RadioGroup extends StatelessWidget {
       child: Row(
         children: [
           Text(label),
-          const HorizontalSpace20(),
+          Space(width: spacingTitle),
           Expanded(
             child: RadioListTile(
               title: Text(titleOption1),
@@ -50,7 +52,7 @@ class RadioGroup extends StatelessWidget {
               onChanged: onChanged,
             ),
           ),
-          const Spacer(flex: 4)
+          const Spacer(flex: 2)
         ],
       ),
     );
