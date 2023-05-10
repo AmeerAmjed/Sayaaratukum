@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/user/add_car.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/add_car/components/row_two_widget.dart';
+import 'package:sayaaratukum/screens/add_car/components/year_brand.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';
 import 'package:sayaaratukum/widgets/dropdown_list.dart';
@@ -15,6 +17,15 @@ class AddCarScreen extends GetView<AddCarController> {
 
   @override
   Widget build(BuildContext context) {
+    final DateTime yesterday = DateTime.now().subtract(Duration(days: 1));
+    final List<Widget> yearItems = List<Widget>.generate(50, (int index) {
+      final int year = DateTime.now().year - index;
+      return Text(
+        year.toString(),
+        style: TextStyle(fontSize: 20.0),
+      );
+    });
+    int selectedYear = DateTime.now().year;
     return Scaffold(
       appBar: AppBars(
         title: L10n.addCar.tr,
@@ -63,7 +74,7 @@ class AddCarScreen extends GetView<AddCarController> {
                                   .toList(),
                             ),
                             rightWidget:
-                                GetBuilder<AddCarController>(builder: (co) {
+                            GetBuilder<AddCarController>(builder: (co) {
                               return DropdownList(
                                 label: L10n.model.tr,
                                 onChanged: (value) {},
@@ -74,34 +85,53 @@ class AddCarScreen extends GetView<AddCarController> {
                               );
                             }),
                           ),
-                          RowTwoWidget(
-                            leftWidget: DropdownList(
-                              margin: const EdgeInsets.only(
-                                left: 16,
-                              ),
-                              label: L10n.typeCar.tr,
-                              onChanged: controller.onChangeBrand,
-                              items: controller.brands
-                                  .map((e) => e.title)
-                                  .toList(),
+                          // RowTwoWidget(
+                          //   leftWidget: DropdownList(
+                          //     margin: const EdgeInsets.only(
+                          //       left: 16,
+                          //     ),
+                          //     label: L10n.typeCar.tr,
+                          //     onChanged: controller.onChangeBrand,
+                          //     items: controller.brands
+                          //         .map((e) => e.title)
+                          //         .toList(),
+                          //   ),
+                          //   rightWidget:
+                          //   GetBuilder<AddCarController>(builder: (co) {
+                          //     return DropdownList(
+                          //       label: L10n.propulsionSystem.tr,
+                          //       onChanged: (value) {},
+                          //       items: co.getModelByBrandId(),
+                          //       margin: const EdgeInsets.only(
+                          //         right: 16,
+                          //       ),
+                          //     );
+                          //   }),
+                          // )
+                          const VerticalSpace8(),
+                          InputAuth(
+                            readOnly: true,
+                            label: L10n.year.tr,
+                            controller: controller.yearModel,
+                            validator: (value) =>
+                                ValidatorInput.checkValidateIsRequired(
+                              L10n.yearBrand.tr,
+                              value,
                             ),
-                            rightWidget:
-                                GetBuilder<AddCarController>(builder: (co) {
-                              return DropdownList(
-                                label: L10n.propulsionSystem.tr,
-                                onChanged: (value) {},
-                                items: co.getModelByBrandId(),
-                                margin: const EdgeInsets.only(
-                                  right: 16,
-                                ),
+                            onTap: () async {
+                              yearBrand(
+                                context,
+                                controller.onSelectYearModel,
+                                yearItems,
                               );
-                            }),
-                          )
+                            },
+                          ),
                         ],
                       );
                     },
                   ),
                 ),
+
                 const SizedBox(height: 48),
                 Padding(
                   padding: const EdgeInsets.symmetric(

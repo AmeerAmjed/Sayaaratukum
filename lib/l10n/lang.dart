@@ -76,6 +76,9 @@ class L10n {
   static const typeCar = 'typeCar';
   static const propulsionSystem = 'propulsionSystem';
 
+  static const year = 'year';
+  static const yearBrand = 'yearBrand';
+
 
 
 }

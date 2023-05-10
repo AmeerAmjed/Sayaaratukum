@@ -60,6 +60,11 @@ class EnTranslations {
 
         L10n.typeCar : 'Type Car',
         L10n.propulsionSystem : 'Propulsion System',
+        L10n.year : 'Year',
+
+        L10n.yearBrand : 'Year is Required!',
+
+
 
 
   };

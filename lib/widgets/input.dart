@@ -12,6 +12,9 @@ class InputAuth extends StatelessWidget {
     required this.controller,
     this.validator,
     this.background,
+    this.readOnly = false,
+    this.maxLines = 1,
+    this.onTap,
     this.visibilityPassword = false,
     this.suffixIcon = const Space(),
     this.textInputAction = TextInputAction.next,
@@ -24,6 +27,10 @@ class InputAuth extends StatelessWidget {
   final TextEditingController controller;
   final TextInputAction textInputAction;
   final Color? background;
+  final bool readOnly;
+  final int maxLines;
+
+  final VoidCallback? onTap;
   final TextInputType keyboardType;
   final bool visibilityPassword;
   final String? Function(String?)? validator;
@@ -38,6 +45,9 @@ class InputAuth extends StatelessWidget {
       child: TextFormField(
         obscureText: visibilityPassword,
         controller: controller,
+        readOnly: readOnly,
+        maxLines: maxLines,
+        onTap: onTap,
         style: Get.textTheme.labelMedium?.copyWith(
           fontSize: 15,
         ),

@@ -15,10 +15,23 @@ class AddCarController extends BaseController {
   bool get isLastPage => onPageIndex.value == totalPageAddCar - 1;
   var pageController = PageController();
 
+  late TextEditingController yearModel;
+
   @override
   void onInit() {
     brands = BrandController.instance.brands;
+    initInput();
     super.onInit();
+  }
+
+  initInput() {
+    yearModel = TextEditingController();
+  }
+
+  onSelectYearModel(int? year) {
+    if (year != null) {
+      yearModel.text = (DateTime.now().year - year).toString();
+    }
   }
 
   onChangeBrand(String? brand) {
