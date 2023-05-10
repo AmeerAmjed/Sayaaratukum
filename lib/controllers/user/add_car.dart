@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
 import 'package:sayaaratukum/models/brand.dart';
+import 'package:sayaaratukum/models/engine_power_type.dart';
+import 'package:sayaaratukum/services/remote/user/engine_power_type.dart';
+import 'package:sayaaratukum/util/constant.dart';
 
 class AddCarController extends BaseController {
   var onPageIndex = 0.obs;
 
   final int totalPageAddCar = 3;
   var brands = <BrandModel>[].obs.toList(growable: true);
+  var enginePowers = <EnginePowerModel>[].obs.toList(growable: true);
   int idBrandSelected = 0;
+  int idEnginePower = 0;
 
   bool get isLastPage => onPageIndex.value == totalPageAddCar - 1;
   var pageController = PageController();
@@ -35,7 +41,25 @@ class AddCarController extends BaseController {
   void onInit() {
     brands = BrandController.instance.brands;
     initInput();
+    getAllEnginePower();
     super.onInit();
+  }
+
+  Future<void> getAllEnginePower() async {
+    try {
+      await EnginePowerTypeServices.instance.getAllType().then((response) {
+        if (response.isOk) {
+          List<EnginePowerModel> enginePowers = EnginePowerModel.listFromJson(
+            response.body[Constants.bodyData],
+          );
+          print("enginePowers $enginePowers");
+          this.enginePowers.addAll(enginePowers);
+        }
+      });
+    } on Response catch (response) {
+      // change(null, status: RxStatus.error());
+      print("getAllEnginePower ${response.statusCode}");
+    }
   }
 
   initInput() {
@@ -128,6 +152,16 @@ class AddCarController extends BaseController {
     if (size != null) {
       engineCapacity.value = double.parse(size);
     }
+  }
+
+  onChangeEnginePower(String? type) {
+    enginePowers.firstWhere((item) {
+      if (item.name == type) {
+        idEnginePower = item.id;
+        return true;
+      }
+      return false;
+    });
   }
 
   onChangeColorCar(String? color) {

@@ -93,6 +93,7 @@ class L10n {
   static const nearPoint = 'nearPoint';
 
   static const engineCapacity = 'engineCapacity';
+  static const enginePower = 'enginePower';
 
 
 }

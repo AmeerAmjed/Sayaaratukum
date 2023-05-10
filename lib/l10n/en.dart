@@ -76,6 +76,7 @@ class EnTranslations {
         L10n.region : 'Region',
         L10n.nearPoint : 'Near point',
         L10n.engineCapacity : 'Engine Capacity',
+        L10n.enginePower : 'Engine Power',
 
 
 

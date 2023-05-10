@@ -195,14 +195,32 @@ class AddCarScreen extends GetView<AddCarController> {
                             onChanged: controller.onChangeBrand,
                             items: HardCode.carColors,
                           ),
-                          DropdownList(
-                            label: L10n.engineCapacity.tr,
-                            onChanged: controller.onChangeEngineCapacity,
-                            items: HardCode.engineSizes
-                                .map((e) => e.toString())
-                                .toList()
-                              ..sort(),
-                          )
+                          RowTwoWidget(
+                            leftWidget: DropdownList(
+                              label: L10n.engineCapacity.tr,
+                              margin: const EdgeInsets.only(
+                                left: Constants.spacing16,
+                              ),
+                              onChanged: controller.onChangeEngineCapacity,
+                              items: HardCode.engineSizes
+                                  .map((e) => e.toString())
+                                  .toList()
+                                ..sort(),
+                            ),
+                            rightWidget:
+                                GetBuilder<AddCarController>(builder: (con) {
+                              return DropdownList(
+                                label: L10n.enginePower.tr,
+                                margin: const EdgeInsets.only(
+                                  right: Constants.spacing16,
+                                ),
+                                onChanged: controller.onChangeEnginePower,
+                                items: con.enginePowers
+                                    .map((e) => e.name)
+                                    .toList(),
+                              );
+                            }),
+                          ),
                         ],
                       );
                     },
