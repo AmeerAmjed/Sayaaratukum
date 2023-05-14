@@ -59,6 +59,7 @@ class EnTranslations {
         L10n.publish : 'Publish',
 
         L10n.typeCar : 'Type Car',
+        L10n.fullNameCar : 'Full name car',
         L10n.propulsionSystem : 'Propulsion System',
         L10n.year : 'Year',
 
@@ -77,6 +78,13 @@ class EnTranslations {
         L10n.nearPoint : 'Near point',
         L10n.engineCapacity : 'Engine Capacity',
         L10n.enginePower : 'Engine Power',
+        L10n.drivingMiles : 'Driving Miles',
+
+        L10n.informationCar : 'Information Car',
+        L10n.locationCar : 'Location Car',
+        L10n.imagesCar : 'Images & Price',
+        L10n.price : 'Price',
+        L10n.addImagesCar : 'Add ten images to the car',
 
 
 

@@ -6,6 +6,7 @@ class Buttons extends StatelessWidget {
     Key? key,
     this.label,
     this.icon,
+    this.iconSize,
     this.colorOnButton,
     this.padding,
     this.iconRow,
@@ -26,6 +27,7 @@ class Buttons extends StatelessWidget {
   final Color? background;
   final VoidCallback? onPressed;
   final IconData? icon;
+  final double? iconSize;
   final IconData? iconRow;
   final Color? colorOnButton;
   final EdgeInsetsGeometry? padding;
@@ -108,7 +110,8 @@ class Buttons extends StatelessWidget {
                         ],
                       )
             : Icon(
-                icon,
+          icon,
+                size: iconSize,
                 color: colorOnButton,
               ),
       ),

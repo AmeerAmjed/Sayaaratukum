@@ -18,7 +18,7 @@ class RowTwoWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const VerticalSpace8(),
+        const VerticalSpace4(),
         Row(
           children: [
             Expanded(
@@ -30,7 +30,7 @@ class RowTwoWidget extends StatelessWidget {
             ),
           ],
         ),
-        const VerticalSpace8(),
+        const VerticalSpace4(),
       ],
     );
   }

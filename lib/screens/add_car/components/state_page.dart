@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
 
 class ProgressState extends StatelessWidget {
   const ProgressState({
@@ -12,7 +14,7 @@ class ProgressState extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      // width: 150,
+      width: 150,
       // color: Colors.blue,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,56 +42,73 @@ class ProgressState extends StatelessWidget {
     required OrderState orderState,
     required int index,
   }) {
-    return Expanded(
-      flex: 1,
-      child: Row(
-        children: [
-          Expanded(
-            child: orderState.id == 1
-                ? line('#fffff')
-                : orderState.id <= myOrderState + 1
-                    ? line('#27AE60')
-                    : line('#EBEBEB'),
-          ),
-          Container(
-            height: 32.0,
-            width: 32.0,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: orderState.id <= myOrderState + 1
-                    ? Colors.green
-                    : Colors.grey,
-              ),
-              color:
-                  orderState.id <= myOrderState ? Colors.green : Colors.white,
+    List<String> labelState = [
+      L10n.informationCar.tr,
+      L10n.locationCar.tr,
+      L10n.imagesCar.tr,
+    ];
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: orderState.id == 1
+                  ? line('#fffff')
+                  : orderState.id <= myOrderState + 1
+                      ? line('#27AE60')
+                      : line('#EBEBEB'),
             ),
-            child: myOrderState >= orderState.id // isChecked
-                ? const Icon(
-                    Icons.check,
-                    color: Colors.white,
-                    size: 16,
-                  )
-                : Text(
-                    orderState.id.toString(),
-                    style: TextStyle(
-                      color: myOrderState == orderState.id
-                          ? Colors.green
-                          : Colors.grey,
+            Container(
+              height: 32.0,
+              width: 32.0,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: orderState.id <= myOrderState + 1
+                      ? Colors.green
+                      : Colors.grey,
+                ),
+                color:
+                    orderState.id <= myOrderState ? Colors.green : Colors.white,
+              ),
+              child: myOrderState >= orderState.id // isChecked
+                  ? const Icon(
+                      Icons.check,
+                      color: Colors.white,
+                      size: 16,
+                    )
+                  : Text(
+                      orderState.id.toString(),
+                      style: TextStyle(
+                        color: myOrderState == orderState.id
+                            ? Colors.green
+                            : (orderState.id > myOrderState + 1
+                                ? Colors.white
+                                : Colors.grey),
+                      ),
                     ),
-                  ),
+            ),
+            // if (orderState.id != 3)
+            Expanded(
+              child: orderState.id == 3
+                  ? line('#fffff')
+                  : orderState.id < myOrderState + 1
+                      ? line('#27AE60')
+                      : line('#EBEBEB'),
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Text(
+            labelState[index],
+            style: TextStyle(
+              color: myOrderState >= orderState.id ? Colors.green : Colors.grey,
+            ),
           ),
-          // if (orderState.id != 3)
-          Expanded(
-            child: orderState.id == 3
-                ? line('#fffff')
-                : orderState.id < myOrderState + 1
-                    ? line('#27AE60')
-                    : line('#EBEBEB'),
-          ),
-        ],
-      ),
+        )
+      ],
     );
   }
 

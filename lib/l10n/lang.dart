@@ -74,6 +74,7 @@ class L10n {
   static const publish = 'publish';
 
   static const typeCar = 'typeCar';
+  static const fullNameCar = 'fullNameCar';
   static const propulsionSystem = 'propulsionSystem';
 
   static const year = 'year';
@@ -94,6 +95,13 @@ class L10n {
 
   static const engineCapacity = 'engineCapacity';
   static const enginePower = 'enginePower';
+  static const drivingMiles = 'drivingMiles';
+
+  static const informationCar = 'informationCar';
+  static const locationCar = 'locationCar';
+  static const imagesCar = 'imagesCar';
+  static const price = 'price';
+  static const addImagesCar = 'addImagesCar';
 
 
 }

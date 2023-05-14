@@ -1,32 +1,51 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
 import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/models/engine_power_type.dart';
+import 'package:sayaaratukum/screens/add_car/components/inforamtion_car_form.dart';
+import 'package:sayaaratukum/screens/add_car/components/location_car_form.dart';
 import 'package:sayaaratukum/services/remote/user/engine_power_type.dart';
 import 'package:sayaaratukum/util/constant.dart';
+
+import '../../screens/add_car/components/image_price_form.dart';
 
 class AddCarController extends BaseController {
   var onPageIndex = 0.obs;
 
   final int totalPageAddCar = 3;
   var brands = <BrandModel>[].obs.toList(growable: true);
+  var imagesCar = <File>[].obs.toList(growable: true);
+
+  var stepForm = const <Widget>[
+    InformationCarForm(),
+    LocationCarForm(),
+    ImageWithPriceForm()
+  ];
+
   var enginePowers = <EnginePowerModel>[].obs.toList(growable: true);
   int idBrandSelected = 0;
   int idEnginePower = 0;
 
   bool get isLastPage => onPageIndex.value == totalPageAddCar - 1;
-  var pageController = PageController();
+  late PageController pageController;
 
+  late TextEditingController fullNameCar;
   late TextEditingController yearModel;
+  late TextEditingController drivingMiles;
   late TextEditingController region;
   late TextEditingController nearPoint;
+  late TextEditingController price;
+  late TextEditingController note;
 
   var yearBrand = 0.obs;
-
   var reColor = "".obs;
   var shakeCheck = "".obs;
   var gearBox = "".obs;
@@ -40,6 +59,8 @@ class AddCarController extends BaseController {
   @override
   void onInit() {
     brands = BrandController.instance.brands;
+    pageController = PageController(initialPage: onPageIndex.value);
+
     initInput();
     getAllEnginePower();
     super.onInit();
@@ -63,10 +84,75 @@ class AddCarController extends BaseController {
   }
 
   initInput() {
+    fullNameCar = TextEditingController();
     yearModel = TextEditingController();
+    drivingMiles = TextEditingController();
     region = TextEditingController();
     nearPoint = TextEditingController();
+    price = TextEditingController();
+    note = TextEditingController();
   }
+
+  //region Imges Car
+
+  Future<void> selectMultipleImages() async {
+    var status = await Permission.photos.request();
+
+    List<XFile>? pickedFiles = await ImagePicker().pickMultiImage();
+    if (pickedFiles.isNotEmpty) {
+      onAddImage(pickedFiles);
+    } else {
+      print("No images selecteds");
+
+      // No images selected
+    }
+    // if (status.isGranted) {
+    //   if (pickedFiles != null) {
+    //     List<File> selectedImages =
+    //         pickedFiles.map((XFile file) => File(file.path)).toList();
+    //     print("image file $selectedImages");
+    //     imagesCar = selectedImages;
+    //     update();
+    //     // Use the selectedImages list as needed
+    //   } else {
+    //     print("No images selecteds");
+    //
+    //     // No images selected
+    //   }
+    // } else {
+    //   if(status.isDenied){
+    //     print("No Permission");
+    //   }else{
+    //     print(" error No Permission");
+    //
+    //   }
+    //   // status.
+    //   // openAppSettings();
+    //   // print("No Permission");
+    // }
+  }
+
+  onAddImage(List<XFile> pickedFiles) {
+    List<File> imagesAllCar = [];
+    List<File> images = pickedFiles
+        .map(
+          (XFile file) => File(file.path),
+        )
+        .toList();
+
+    imagesCar.addAll(images);
+    imagesAllCar.addAll(imagesCar);
+    imagesCar.clear();
+    imagesCar.addAll(imagesAllCar.sublist(0, 11));
+    update();
+  }
+
+  onClickDeleteImage(File file) {
+    imagesCar.remove(file);
+    update();
+  }
+
+  //endregion
 
   onSelectYearModel(int? year) {
     if (year != null) {
@@ -92,7 +178,6 @@ class AddCarController extends BaseController {
   }
 
 
-
   List<String> getModelByBrandId() {
     return brands
         .map((brand) => brand.id == idBrandSelected
@@ -105,8 +190,8 @@ class AddCarController extends BaseController {
 
   forward() {
     pageController.nextPage(
-      duration: 200.milliseconds,
-      curve: Curves.linear,
+      duration: 500.milliseconds,
+      curve: Curves.easeIn,
     );
     onPageIndex.value = onPageIndex.value + 1;
     update();
@@ -114,8 +199,8 @@ class AddCarController extends BaseController {
 
   backward() {
     pageController.previousPage(
-      duration: 200.milliseconds,
-      curve: Curves.linear,
+      duration: 500.milliseconds,
+      curve: Curves.easeOutSine,
     );
     onPageIndex.value = onPageIndex.value - 1;
     update();

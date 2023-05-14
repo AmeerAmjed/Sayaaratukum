@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sayaaratukum/util/constant.dart';
@@ -12,6 +13,7 @@ class InputAuth extends StatelessWidget {
     required this.controller,
     this.validator,
     this.background,
+    this.inputFormatters,
     this.readOnly = false,
     this.maxLines = 1,
     this.onTap,
@@ -39,6 +41,7 @@ class InputAuth extends StatelessWidget {
   final bool visibilityPassword;
   final EdgeInsets margin;
   final double contentPadding;
+  final List<TextInputFormatter>? inputFormatters;
   final String? Function(String?)? validator;
 
   @override
@@ -55,8 +58,10 @@ class InputAuth extends StatelessWidget {
         style: Get.textTheme.labelMedium?.copyWith(
           fontSize: 15,
         ),
+        inputFormatters: inputFormatters,
         decoration: InputDecoration(
           filled: true,
+          alignLabelWithHint: true,
           fillColor: background ?? Theme.of(context).cardColor,
           hintText: hintText,
           hintStyle: Get.textTheme.labelMedium,
