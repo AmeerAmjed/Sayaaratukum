@@ -31,7 +31,7 @@ class InformationCarForm extends GetView<AddCarController> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         InputAuth(
-          controller: controller.fullNameCar,
+          controller: controller.name,
           label: L10n.fullNameCar.tr,
           keyboardType: TextInputType.name,
         ),
@@ -47,8 +47,9 @@ class InformationCarForm extends GetView<AddCarController> {
           ),
           rightWidget: GetBuilder<AddCarController>(builder: (co) {
             return DropdownList(
+              keyDropdownList: controller.keyManagerModelBrand,
               label: L10n.model.tr,
-              onChanged: (value) {},
+              onChanged:  controller.onChangeModelBrand,
               items: co.getModelByBrandId(),
               margin: const EdgeInsets.only(
                 right: 16,

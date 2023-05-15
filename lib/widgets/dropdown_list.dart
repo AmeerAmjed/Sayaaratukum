@@ -6,6 +6,7 @@ import 'package:sayaaratukum/widgets/space.dart';
 class DropdownList extends StatelessWidget {
   const DropdownList({
     Key? key,
+    this.keyDropdownList,
     required this.items,
     required this.label,
     this.hintText,
@@ -16,6 +17,7 @@ class DropdownList extends StatelessWidget {
     this.suffixIcon = const Space(),
   }) : super(key: key);
 
+  final Key? keyDropdownList;
   final List<String> items;
   final Widget suffixIcon;
   final String label;
@@ -34,6 +36,7 @@ class DropdownList extends StatelessWidget {
             horizontal: Constants.spacing16,
           ),
       child: DropdownButtonFormField(
+        key: keyDropdownList,
         isExpanded: true,
         iconSize: 24,
         validator: validator,
@@ -69,10 +72,10 @@ class DropdownList extends StatelessWidget {
         items: items
             .map(
               (e) => DropdownMenuItem(
-                value: e,
-                child: Text(e),
-              ),
-            )
+            value: e,
+            child: Text(e),
+          ),
+        )
             .toList(),
       ),
     );

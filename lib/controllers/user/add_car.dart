@@ -22,39 +22,38 @@ class AddCarController extends BaseController {
 
   final int totalPageAddCar = 3;
   var brands = <BrandModel>[].obs.toList(growable: true);
-  var imagesCar = <File>[].obs.toList(growable: true);
-
+  var enginePowers = <EnginePowerModel>[].obs.toList(growable: true);
   var stepForm = const <Widget>[
     InformationCarForm(),
     LocationCarForm(),
     ImageWithPriceForm()
   ];
-
-  var enginePowers = <EnginePowerModel>[].obs.toList(growable: true);
-  int idBrandSelected = 0;
-  int idEnginePower = 0;
+  final yesNo = <String>["yes", "no"];
+  final typeGearBox = <String>["RadioGroup", "no"];
 
   bool get isLastPage => onPageIndex.value == totalPageAddCar - 1;
   late PageController pageController;
 
-  late TextEditingController fullNameCar;
+  late TextEditingController name;
   late TextEditingController yearModel;
   late TextEditingController drivingMiles;
   late TextEditingController region;
   late TextEditingController nearPoint;
   late TextEditingController price;
   late TextEditingController note;
+  final GlobalKey<FormFieldState> keyManagerModelBrand =
+  GlobalKey<FormFieldState>();
 
-  var yearBrand = 0.obs;
+  int idBrandSelected = 0;
+  int idModelBrandSelected = 0;
+  int idEnginePower = 0;
   var reColor = "".obs;
   var shakeCheck = "".obs;
   var gearBox = "".obs;
   var color = "".obs;
-
   var engineCapacity = .0.obs;
+  var imagesCar = <File>[].obs.toList(growable: true);
 
-  final yesNo = <String>["yes", "no"];
-  final typeGearBox = <String>["RadioGroup", "no"];
 
   @override
   void onInit() {
@@ -64,6 +63,18 @@ class AddCarController extends BaseController {
     initInput();
     getAllEnginePower();
     super.onInit();
+  }
+
+  addCar() {
+    // AddCarModel(
+    //   name: name.text,
+    //   idBrand: idBrandSelected,
+    //   idModelBrand: idModelBrandSelected,
+    //   idEnginePower: idEnginePower,
+    //   yearModel
+    //   price: price.text,
+    //   color: color,
+    // )
   }
 
   Future<void> getAllEnginePower() async {
@@ -84,7 +95,7 @@ class AddCarController extends BaseController {
   }
 
   initInput() {
-    fullNameCar = TextEditingController();
+    name = TextEditingController();
     yearModel = TextEditingController();
     drivingMiles = TextEditingController();
     region = TextEditingController();
@@ -156,19 +167,22 @@ class AddCarController extends BaseController {
 
   onSelectYearModel(int? year) {
     if (year != null) {
+      print("year $year");
       yearModel.text = (DateTime.now().year - year).toString();
     }
   }
 
   onSelectGear(int year) {
-    yearBrand.value = year;
   }
 
+  //region Brand,Model Car
   onChangeBrand(String? brand) {
+    keyManagerModelBrand.currentState?.reset();
     if (brand != null) {
       brands.firstWhere((element) {
         if (element.title == brand) {
           idBrandSelected = element.id;
+          getModelByBrandId();
           update();
           return true;
         }
@@ -177,16 +191,32 @@ class AddCarController extends BaseController {
     }
   }
 
-
   List<String> getModelByBrandId() {
     return brands
-        .map((brand) => brand.id == idBrandSelected
-            ? brand.models.map((model) => model.name).toList()
-            : [])
+        .map((brand) =>
+    brand.id == idBrandSelected
+        ? brand.models.map((model) => model.name).toList()
+        : [])
         .expand((list) => list)
         .cast<String>()
         .toList();
   }
+
+  onChangeModelBrand(String? modelName) {
+    if (modelName != null) {
+      BrandModel specificModel =
+      brands.firstWhere((itemBrand) => itemBrand.id == idBrandSelected);
+      specificModel.models.firstWhere((itemModelBrand) {
+        if (itemModelBrand.name == modelName) {
+          idModelBrandSelected = itemModelBrand.id;
+          return true;
+        }
+        return false;
+      });
+    }
+  }
+
+  //endregion
 
   forward() {
     pageController.nextPage(
