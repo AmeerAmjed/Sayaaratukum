@@ -125,7 +125,7 @@ class ImageWithPriceForm extends GetView<AddCarController> {
                                         child: Card(
                                           child: Image.file(
                                             File(
-                                              controller.imagesCar[index].path,
+                                              controller.imagesCar[index],
                                             ),
                                           ),
                                         ),

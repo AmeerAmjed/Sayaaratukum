@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:get/get.dart';
+
 import 'model.dart';
 
 class AddCarModel extends BaseModel {
@@ -18,7 +20,7 @@ class AddCarModel extends BaseModel {
   String closerPoint;
   String gearbox;
   int mileage;
-  List<File> images;
+  List<String> images;
 
   AddCarModel({
     required this.name,
@@ -38,4 +40,39 @@ class AddCarModel extends BaseModel {
     required this.mileage,
     required this.images,
   });
+
+  Future<FormData> getFormData() async {
+    var data = FormData({
+      'name': name,
+      'price': price.toString(),
+      'color': color,
+      'engine': engine.toString(),
+      'year_model': yearModel.toString(),
+      'brand_id': idBrand.toString(),
+      'brand_model_id': idModelBrand.toString(),
+      'engine_power_id': idEnginePower.toString(),
+      'carable_type': userType,
+      'carable_id': userId.toString(),
+      'city': city,
+      'gov': gov,
+      'closerPoint': closerPoint,
+      'gearbox': gearbox,
+      'mileage': mileage.toString(),
+    });
+
+    for (var i = 0; i < images.length; i++) {
+      var image = MapEntry(
+        "images[$i]",
+        MultipartFile(
+          File(images[i]),
+          filename:
+              "${DateTime.now().millisecondsSinceEpoch}.${images[i].split('.').last}",
+        ),
+      );
+
+      data.files.add(image);
+    }
+
+    return data;
+  }
 }

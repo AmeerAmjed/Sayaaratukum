@@ -88,7 +88,10 @@ class AddCarScreen extends GetView<AddCarController> {
                             fullBackground: false,
                             width: 100,
                             colorOnButton: Get.textTheme.labelMedium?.color,
-                            onPressed: controller.backward,
+                            onPressed: (){
+                              controller.addCar();
+                            },
+                            // onPressed: controller.backward,
                             padding: EdgeInsets.zero,
                           ),
                         ),

@@ -11,5 +11,7 @@ class ApiEndpoint {
   static const String ads = '/ads';
   static const String enginePowerType = '/engine-power-type';
 
+  static const String addCar = '/admin/cars';
+
 
 }

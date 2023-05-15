@@ -8,10 +8,12 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
+import 'package:sayaaratukum/models/add_car.dart';
 import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/models/engine_power_type.dart';
 import 'package:sayaaratukum/screens/add_car/components/inforamtion_car_form.dart';
 import 'package:sayaaratukum/screens/add_car/components/location_car_form.dart';
+import 'package:sayaaratukum/services/remote/user/add_car.dart';
 import 'package:sayaaratukum/services/remote/user/engine_power_type.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
@@ -52,8 +54,7 @@ class AddCarController extends BaseController {
   var gearBox = "".obs;
   var color = "".obs;
   var engineCapacity = .0.obs;
-  var imagesCar = <File>[].obs.toList(growable: true);
-
+  var imagesCar = <String>[].obs.toList(growable: true);
 
   @override
   void onInit() {
@@ -65,16 +66,43 @@ class AddCarController extends BaseController {
     super.onInit();
   }
 
-  addCar() {
-    // AddCarModel(
-    //   name: name.text,
-    //   idBrand: idBrandSelected,
-    //   idModelBrand: idModelBrandSelected,
-    //   idEnginePower: idEnginePower,
-    //   yearModel
-    //   price: price.text,
-    //   color: color,
-    // )
+  addCar() async {
+    var info = AddCarModel(
+      // name: name.text,
+      // idBrand: idBrandSelected,
+      // idModelBrand: idModelBrandSelected,
+      // idEnginePower: idEnginePower,
+      // yearModel
+      // price: price.text,
+      // color: color,
+      name: 'asdfasdfasf',
+      price: 0,
+      color: 'b',
+      engine: 12,
+      yearModel: 222,
+      idBrand: 1,
+      idModelBrand: 195,
+      idEnginePower: 2,
+      userType: 'user',
+      userId: 1,
+      city: 'kut',
+      gov: 'wasite',
+      closerPoint: 'asdfasdf',
+      gearbox: 'auto',
+      mileage: 22,
+      images: imagesCar,
+    );
+
+    try {
+      await AddCarService.instance.addCar(info).then((response) {
+        // print("response ${response.statusCode} ${response.body}");
+        // if (response.isOk) {
+        //
+        // }
+      });
+    } on Response catch (response) {
+      print("response ${response.statusCode} ${response.body}");
+    }
   }
 
   Future<void> getAllEnginePower() async {
@@ -144,21 +172,21 @@ class AddCarController extends BaseController {
   }
 
   onAddImage(List<XFile> pickedFiles) {
-    List<File> imagesAllCar = [];
-    List<File> images = pickedFiles
+    List<String> imagesAllCar = [];
+    List<String> images = pickedFiles
         .map(
           (XFile file) => File(file.path),
-        )
-        .toList();
+        ).toList()
+        .map((e) => e.path).toList();
 
     imagesCar.addAll(images);
-    imagesAllCar.addAll(imagesCar);
-    imagesCar.clear();
-    imagesCar.addAll(imagesAllCar.sublist(0, 11));
+    // imagesAllCar.addAll(imagesCar);
+    // imagesCar.clear();
+    // imagesCar.addAll(imagesAllCar.sublist(0, 11));
     update();
   }
 
-  onClickDeleteImage(File file) {
+  onClickDeleteImage(String file) {
     imagesCar.remove(file);
     update();
   }

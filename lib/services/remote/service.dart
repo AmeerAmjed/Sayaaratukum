@@ -13,12 +13,13 @@ abstract class BaseService extends GetConnect with LocalStorage {
     httpClient.timeout = const Duration(seconds: 3000);
     httpClient.defaultContentType = "application/json";
     httpClient.addResponseModifier((request, response) async {
-      print("Service ${response.body}");
+      print("BaseService ${response.body}");
       return response;
     });
 
     httpClient.addRequestModifier((Request request) {
       request.headers['Authorization'] = "Bearer $token";
+      request.headers['Accept'] = "application/json";
       return request;
     });
 
