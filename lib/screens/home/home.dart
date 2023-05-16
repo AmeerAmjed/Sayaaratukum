@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaaratukum/controllers/public/cars.dart';
 import 'package:sayaaratukum/controllers/public/home.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/route/page.dart';
@@ -18,11 +19,11 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-
+    final ScrollController _scrollController = ScrollController();
     return Scaffold(
       body: Container(
         child: SingleChildScrollView(
-
+          controller: CarsController.instance.scroll,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

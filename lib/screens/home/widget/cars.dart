@@ -11,45 +11,54 @@ import 'package:sayaaratukum/widgets/buttons.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
-class ItemsCar extends StatelessWidget {
+class ItemsCar extends GetView<CarsController> {
   const ItemsCar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: CarsController.instance.obx(onLoading: const Loading(), (state) {
-        return GetBuilder<CarsController>(builder: (controller) {
-          return ListView.separated(
-            controller: CarsController.instance.scroll,
-            // physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.symmetric(
-              horizontal: Constants.spacing16,
-            ),
-            shrinkWrap: true,
-            itemCount: controller.isLoadingMore.value
-                ? state!.length + 1
-                : state!.length,
-            separatorBuilder: (context, index) => const Space(
-              height: Constants.spacing8,
-            ),
-            itemBuilder: (context, index) {
-              if (index >= state.length && controller.isLoadingMore.value) {
-                return const Center(
-                  child: Loading(),
-                );
-              }
-              return InkWell(
-                onTap: () {
-                  // TopAdsController.to.onClickItem(state[index].id);
-                },
-                child: ItemCar(
-                  car: state[index],
-                ),
-              );
-            },
-          );
-        });
-      }),
+    return controller.obx(onLoading: const Loading(), (state) {
+      return GetBuilder<CarsController>(builder: (controller) {
+        return ListView.separated(
+          controller: ScrollController(),
+          padding: const EdgeInsets.symmetric(
+            horizontal: Constants.spacing16,
+          ),
+          shrinkWrap: true,
+          itemCount: controller.isLoadingMore.value
+              ? state!.length + 1
+              : state!.length,
+          separatorBuilder: (context, index) => const Space(
+            height: Constants.spacing8,
+          ),
+          itemBuilder: (context, index) {
+            if (index >= state.length && controller.isLoadingMore.value) {
+              return const _ItemLoadingCar();
+            }
+            return InkWell(
+              onTap: () {
+                // TopAdsController.to.onClickItem(state[index].id);
+              },
+              child: ItemCar(
+                car: state[index],
+              ),
+            );
+          },
+        );
+      });
+    });
+  }
+}
+
+class _ItemLoadingCar extends StatelessWidget {
+  const _ItemLoadingCar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Center(
+        child: Loading(),
+      ),
     );
   }
 }
