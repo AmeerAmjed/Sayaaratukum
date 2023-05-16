@@ -36,7 +36,7 @@ class ItemsCar extends GetView<CarsController> {
             }
             return InkWell(
               onTap: () {
-                // TopAdsController.to.onClickItem(state[index].id);
+                controller.navigateToDetails(state[index]);
               },
               child: ItemCar(
                 car: state[index],

@@ -6,11 +6,13 @@ import 'package:sayaaratukum/widgets/loading.dart';
 class ImageLoading extends StatelessWidget {
   const ImageLoading({
     Key? key,
+    this.fitImage,
     required this.imageUrl,
     this.placeholder = Constants.loadingImage,
   }) : super(key: key);
 
   final String imageUrl;
+  final BoxFit? fitImage;
   final String placeholder;
 
   @override
@@ -21,7 +23,7 @@ class ImageLoading extends StatelessWidget {
       fadeOutCurve: Curves.slowMiddle,
       fadeInCurve: Curves.slowMiddle,
       imageUrl: imageUrl,
-      fit: BoxFit.cover,
+      fit: fitImage ?? BoxFit.cover,
       placeholder: (context, url) => const Loading(),
       errorWidget: (context, url, error) => Image.asset(
         Constants.image,
