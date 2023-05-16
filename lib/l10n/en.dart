@@ -5,6 +5,7 @@ class EnTranslations {
         L10n.viewAll: 'View All',
         L10n.brands: 'Brands',
         L10n.brand: 'Brand',
+        L10n.recommended: 'Recommended',
 
         L10n.home: 'Home',
         L10n.spareParts: 'Tools',
@@ -85,6 +86,7 @@ class EnTranslations {
         L10n.imagesCar : 'Images & Price',
         L10n.price : 'Price',
         L10n.addImagesCar : 'Add ten images to the car',
+        L10n.available : 'Available',
 
 
 

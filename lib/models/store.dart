@@ -26,7 +26,7 @@ class StoreModel extends BaseModel {
   final String? expiresAt;
   final String whatsappNumberPhone;
   final UserModel owner;
-  final StoreTypeModel type;
+  final SubModel type;
 
   factory StoreModel.fromJson(Map<String, dynamic> json) {
     return StoreModel(
@@ -39,7 +39,7 @@ class StoreModel extends BaseModel {
       description: json['description'],
       whatsappNumberPhone: json['whatsapp_number'],
       owner: UserModel.fromJson(json['owner']),
-      type: StoreTypeModel.fromJson(json['type']),
+      type: SubModel.fromJson(json['type']),
     );
   }
 

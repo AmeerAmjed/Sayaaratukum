@@ -1,7 +1,7 @@
 import 'model.dart';
 
-class StoreTypeModel extends BaseModel {
-  StoreTypeModel({
+class SubModel extends BaseModel {
+  SubModel({
     required this.id,
     required this.name,
   });
@@ -9,8 +9,8 @@ class StoreTypeModel extends BaseModel {
   final int id;
   final String name;
 
-  factory StoreTypeModel.fromJson(Map<String, dynamic> data) {
-    return StoreTypeModel(
+  factory SubModel.fromJson(Map<String, dynamic> data) {
+    return SubModel(
       id: data['id'],
       name: data['name'],
     );
