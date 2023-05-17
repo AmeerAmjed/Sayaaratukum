@@ -10,15 +10,17 @@ class InputAuth extends StatelessWidget {
     Key? key,
     required this.label,
     this.hintText,
+    this.prefixIcon,
     required this.controller,
     this.validator,
+    this.onChanged,
     this.background,
     this.inputFormatters,
     this.readOnly = false,
     this.maxLines = 1,
     this.onTap,
     this.visibilityPassword = false,
-    this.suffixIcon = const Space(),
+    this.suffixIcon,
     this.contentPadding = Constants.spacing16,
     this.margin = const EdgeInsets.symmetric(
       horizontal: Constants.spacing16,
@@ -27,7 +29,8 @@ class InputAuth extends StatelessWidget {
     this.keyboardType = TextInputType.text,
   }) : super(key: key);
 
-  final Widget suffixIcon;
+  final Widget? suffixIcon;
+  final IconData? prefixIcon;
   final String label;
   final String? hintText;
   final TextEditingController controller;
@@ -43,13 +46,15 @@ class InputAuth extends StatelessWidget {
   final double contentPadding;
   final List<TextInputFormatter>? inputFormatters;
   final String? Function(String?)? validator;
+  final Function(String?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: background ?? Theme.of(context).cardColor,
+      // color: background ?? Theme.of(context).cardColor,
       margin: margin,
       child: TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         obscureText: visibilityPassword,
         controller: controller,
         readOnly: readOnly,
@@ -59,15 +64,18 @@ class InputAuth extends StatelessWidget {
           fontSize: 15,
         ),
         inputFormatters: inputFormatters,
+        onChanged: onChanged,
         decoration: InputDecoration(
           filled: true,
           alignLabelWithHint: true,
           fillColor: background ?? Theme.of(context).cardColor,
-          hintText: hintText,
+          // hintText: hintText,
           hintStyle: Get.textTheme.labelMedium,
           labelStyle: Get.textTheme.labelMedium,
           suffixIcon: suffixIcon,
+          prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
           labelText: label,
+          floatingLabelAlignment: FloatingLabelAlignment.start,
           contentPadding: EdgeInsets.all(
             contentPadding,
           ),

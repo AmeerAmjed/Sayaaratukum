@@ -27,11 +27,17 @@ class EnTranslations {
         L10n.skip : 'Skip',
         L10n.login : 'Log In',
         L10n.register : 'Register',
+        L10n.email : 'Email',
+        L10n.phoneNumber : 'Phone Number',
+        L10n.firstName : 'First Name',
+        L10n.lastName : 'Last Name',
+
         L10n.alreadyHaveAccount : 'Already have an account?',
         L10n.createAccount : 'Create Account',
         L10n.forgotPassword : 'Forgot password?',
         L10n.emailOrNumberPhone : 'Email Or NumberPhone',
         L10n.isRequired : 'Is required',
+        L10n.emailIsInvalid : 'Email is invalid',
         L10n.passwordShort : 'Short password must be more than 8 digits',
         L10n.passwordLong : 'Long password must be less than 50 digits',
         L10n.passwordNotMatch : 'Password not match',
@@ -88,6 +94,8 @@ class EnTranslations {
         L10n.price : 'Price',
         L10n.addImagesCar : 'Add ten images to the car',
         L10n.available : 'Available',
+
+        L10n.failedCreateAccount : 'Failed create account',
 
 
 

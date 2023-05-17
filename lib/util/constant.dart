@@ -65,4 +65,6 @@ class Constants {
   static const String allImage = "https://api.mooappx.com/storage/h7sNnp2119BSZe8URUe6sFlB92yNewoiqigJSfZL.png";
 
 
+  static  RegExp emailRegExp =  RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
+
 }

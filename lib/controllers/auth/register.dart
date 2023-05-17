@@ -1,14 +1,21 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:sayaaratukum/controllers/application.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/models/register.dart';
 import 'package:sayaaratukum/models/user.dart';
 import 'package:sayaaratukum/services/local/storage.dart';
-import 'package:sayaaratukum/services/remote/auth/login.dart';
+import 'package:sayaaratukum/services/remote/auth/register.dart';
 
 import 'auth.dart';
 
 class RegisterController extends AuthController with LocalStorage {
+  var imagePath = ''.obs;
   late TextEditingController firstName;
   late TextEditingController lastName;
   late TextEditingController email;
@@ -30,21 +37,45 @@ class RegisterController extends AuthController with LocalStorage {
     formKey = GlobalKey<FormState>();
   }
 
+  void imageAvatar() async {
+    imagePath.value = "";
+    await ImagePicker().pickImage(source: ImageSource.gallery).then((image) {
+      if (image != null) {
+        imagePath.value = File(image.path).path;
+      }
+    });
+    update();
+  }
+
   Future<void> register() async {
     loading(true);
     try {
-      await LoginServices.instance.login(getUserInfo()).then((response) {
+      await RegisterServices.instance.register(getUserInfo()).then((response) {
         loading(false);
         if (response.isOk) {
+          print(" body ${response.body}");
           var user = UserModel.fromJson(response.body['data']);
           var token = response.body['access_token'];
           Application.instance.login(user, token);
           // Get.offAllNamed(RoutePageApp.setUp);
+        } else {
+          print(" body ${response.body} ${response.statusCode}");
+          getError(response);
         }
       });
     } on Response catch (response) {
       loading(false);
-      // onError(response.body['error']);
+      getError(response);
+    }
+  }
+
+  getError(response) {
+    try {
+      var error = RegisterModel.error(response.body['errors']);
+      onError(L10n.failedCreateAccount.tr, error);
+      print("error register $error");
+    } catch (e) {
+      print("error register $e");
     }
   }
 
@@ -52,13 +83,15 @@ class RegisterController extends AuthController with LocalStorage {
     visibilityPassword.value = !visibilityPassword.value;
   }
 
-  getUserInfo() => {
-    "first_name": firstName.text,
-    "last_name": lastName.text,
-    "email": email.text,
-    "phone_number": phoneNumber.text,
-    "password": password.text,
-  };
+  RegisterModel getUserInfo() {
+    return RegisterModel(
+      firstName: firstName.text,
+      lastName: lastName.text,
+      email: email.text,
+      phoneNumber: phoneNumber.text,
+      password: password.text,
+    );
+  }
 
   loading(bool state) {
     disableSubmit.value = state;

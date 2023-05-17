@@ -3,6 +3,7 @@ import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/route/page.dart';
+import 'package:sayaaratukum/util/constant.dart';
 
 class AuthController extends BaseController {
 
@@ -38,6 +39,16 @@ class AuthController extends BaseController {
         return L10n.passwordNotMatch.tr;
       }
     }
+    return null;
+  }
+
+  String? checkValidateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return L10n.isRequired.tr;
+    } else if (!Constants.emailRegExp.hasMatch(value)) {
+      return L10n.emailIsInvalid.tr;
+    }
+
     return null;
   }
 }

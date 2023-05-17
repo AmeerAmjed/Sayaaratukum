@@ -78,7 +78,7 @@ class FormLogin extends GetView<LoginController> {
                         margin: spacingH16(),
                         alignment: Alignment.centerRight,
                         child: InkWell(
-                          onTap: () => Get.toNamed('/forgotpassword'),
+                          // onTap: () => Get.toNamed('/forgotpassword'),
                           child: Text(
                             L10n.forgotPassword.tr,
                           ),

@@ -39,7 +39,13 @@ class L10n {
   static const forgotPassword = 'forgotPassword';
   static const password = 'password';
   static const emailOrNumberPhone = 'emailOrNumberPhone';
+  static const phoneNumber = 'phoneNumber';
+  static const firstName = 'firstName';
+  static const lastName = 'lastName';
+  static const email = 'email';
+
   static const isRequired = 'isRequired';
+  static const emailIsInvalid= 'emailIsInvalid';
 
   static const passwordShort = 'passwordShort';
   static const passwordLong = 'passwordLong';
@@ -105,6 +111,8 @@ class L10n {
   static const price = 'price';
   static const addImagesCar = 'addImagesCar';
   static const available = 'available';
+
+  static const failedCreateAccount = 'failedCreateAccount';
 
 
 }
