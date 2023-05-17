@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/auth/login.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/auth/components/form.dart';
 
 class Login extends GetView<LoginController> {
@@ -15,7 +14,7 @@ class Login extends GetView<LoginController> {
         title: Text(L10n.login.tr),
         actions: [
           TextButton(
-            onPressed: () => controller.navigateTo(RouteScreen.mainTab),
+            onPressed: () => controller.skipAuth(),
             child: Text(
               L10n.skip.tr,
               style: Theme.of(context).textTheme.labelMedium?.copyWith(

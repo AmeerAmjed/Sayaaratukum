@@ -38,9 +38,8 @@ class Application extends BaseController with LocalStorage {
 
   _getUserInfo() {
     final userInfo = getData(Constants.userKey);
-    if (userInfo != null)  user?.value = UserModel.local(userInfo);
+    if (userInfo != null) user?.value = UserModel.local(userInfo);
   }
-
 
   void login(UserModel user, String token) async {
     isLogged.value = true;
@@ -48,6 +47,12 @@ class Application extends BaseController with LocalStorage {
     this.user?.value = user;
     await save<String>(Constants.tokenKey, token);
     await save<UserModel>(Constants.userKey, user);
+    update();
+  }
+
+  void skipAuth() async {
+    isSkipAuth.value = true;
+    await save<bool>(Constants.skipAuthKey, true);
     update();
   }
 

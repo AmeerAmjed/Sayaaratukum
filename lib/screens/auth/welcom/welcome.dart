@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';
 import 'package:sayaaratukum/widgets/fake_app_bar.dart';
@@ -62,7 +63,9 @@ class WelcomeScreen extends StatelessWidget {
             child: Buttons(
               label: L10n.letStart.tr,
               width: double.infinity,
-              onPressed: () {},
+              onPressed: () {
+                Get.offAndToNamed(RouteScreen.login);
+              },
             ),
           ),
         ],

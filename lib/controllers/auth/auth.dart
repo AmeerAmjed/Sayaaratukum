@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/route/page.dart';
 
 class AuthController extends BaseController {
 
@@ -11,6 +13,11 @@ class AuthController extends BaseController {
     '078',
     '079'
   ];
+
+  skipAuth() {
+    Application.instance.skipAuth();
+    Get.offAllNamed(RouteScreen.mainTab);
+  }
 
   String? checkValidateIsRequired(String? value) {
     if (value == null || value.isEmpty) {
