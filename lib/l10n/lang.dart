@@ -33,6 +33,7 @@ class L10n {
 
   static const skip = 'skip';
   static const login = 'login';
+  static const register = 'register';
   static const createAccount = 'createAccount';
   static const alreadyHaveAccount = 'alreadyHaveAccount';
   static const forgotPassword = 'forgotPassword';

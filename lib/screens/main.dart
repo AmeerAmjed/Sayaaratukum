@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/main_tab.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/components/drawer.dart';
@@ -25,11 +26,14 @@ class MainTab extends GetView<MainTabController> {
           onTap: () {
             controller.scaffoldKey.currentState?.openDrawer();
           },
-          child: const Box(
+          child: Box(
             size: 48.0,
-            child: ImageLoading(
-              imageUrl: "https://avatars.githubusercontent.com/u/45900975?v=4",
-            ),
+            child: Application.instance.user?.value != null
+                ? const ImageLoading(
+                    imageUrl:
+                        "https://avatars.githubusercontent.com/u/45900975?v=4",
+                  )
+                : const Icon(Iconsax.user),
           ),
         ),
         actions: const [

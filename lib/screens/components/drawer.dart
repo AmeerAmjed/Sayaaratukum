@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/route/page.dart';
+import 'package:sayaaratukum/screens/components/auth_option_drawer.dart';
 import 'package:sayaaratukum/screens/components/list_title_icon.dart';
-import 'package:sayaaratukum/widgets/box.dart';
-import 'package:sayaaratukum/widgets/image_loading.dart';
+import 'package:sayaaratukum/screens/components/try_auth.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class DrawerApp extends GetView<Application> {
@@ -22,34 +21,9 @@ class DrawerApp extends GetView<Application> {
     return Drawer(
       child: ListView(
         children: <Widget>[
-          UserAccountsDrawerHeader(
-            decoration: BoxDecoration(color: Theme.of(context).primaryColor),
-            currentAccountPicture: const Box(
-              size: 92.0,
-              child: ImageLoading(
-                imageUrl:
-                    "https://avatars.githubusercontent.com/u/45900975?v=4",
-              ),
-            ),
-            accountName: Text("ameeeerea"),
-            accountEmail: Text("ameeeerea"),
-            // margin: EdgeInsets.zero,
-          ),
-          const VerticalSpace16(),
-          ListTitleIcon(
-            title: L10n.myProfile.tr,
-            icon: Iconsax.user,
-            onTap: () {
-              print("object");
-              controller.navigateTo(RouteScreen.profile);
-            },
-          ),
-          ListTitleIcon(
-            title: L10n.favorite.tr,
-            icon: Iconsax.heart,
-            onTap: () {},
-          ),
-          const VerticalSpace16(),
+          Application.instance.user?.value != null
+              ? const AuthOptionDrawer()
+              : const TryAuth(),
           const VerticalSpace8(),
           ListTitleIcon(
             title: L10n.setting.tr,
@@ -71,12 +45,13 @@ class DrawerApp extends GetView<Application> {
           const VerticalSpace16(),
           const VerticalSpace16(),
           const VerticalSpace16(),
-          ListTitleIcon(
-            title: L10n.logout.tr,
-            icon: Iconsax.logout,
-            onTap: () {},
-            color: Theme.of(context).errorColor,
-          ),
+          if (Application.instance.isLogin)
+            ListTitleIcon(
+              title: L10n.logout.tr,
+              icon: Iconsax.logout,
+              onTap: () {},
+              color: Theme.of(context).errorColor,
+            ),
         ],
       ),
     );

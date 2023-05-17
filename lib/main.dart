@@ -31,14 +31,14 @@ class Root extends GetView<Application> {
       fallbackLocale: const Locale('en', ''),
       translations: AppTranslations(),
       getPages: routes(),
-      // initialRoute: (controller.isSkipAuth.value || controller.isLogin)
-      //     ? RouteScreen.mainTab
-      //     : RouteScreen.welcome,
-      // initialBinding: (controller.isSkipAuth.value || controller.isLogin)
-      //     ? MainTabBinding()
-      //     : MainTabBinding(),
-      initialRoute: RouteScreen.mainTab,
-      initialBinding: MainTabBinding(),
+      initialRoute: (controller.isSkipAuth.value || controller.isLogin)
+          ? RouteScreen.mainTab
+          : RouteScreen.welcome,
+      initialBinding: (controller.isSkipAuth.value || controller.isLogin)
+          ? MainTabBinding()
+          : MainTabBinding(),
+      // initialRoute: RouteScreen.mainTab,
+      // initialBinding: MainTabBinding(),
       // home: const WelcomeScreen(),
     );
   }

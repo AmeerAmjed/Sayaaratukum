@@ -26,6 +26,7 @@ class EnTranslations {
 
         L10n.skip : 'Skip',
         L10n.login : 'Log In',
+        L10n.register : 'Register',
         L10n.alreadyHaveAccount : 'Already have an account?',
         L10n.createAccount : 'Create Account',
         L10n.forgotPassword : 'Forgot password?',
