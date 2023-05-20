@@ -61,6 +61,7 @@ class EnTranslations {
         L10n.showMore : ' Show More',
         L10n.showLess : ' Show Less',
         L10n.addCar : ' Add Car',
+        L10n.addTool : 'Add Tool',
 
         L10n.back : 'Back',
         L10n.next : 'Next',
@@ -96,6 +97,9 @@ class EnTranslations {
         L10n.available : 'Available',
 
         L10n.failedCreateAccount : 'Failed create account',
+
+        L10n.name : 'Name',
+        L10n.category : 'Category',
 
 
 

@@ -3,9 +3,11 @@ import 'package:sayaaratukum/binding/auth/login.dart';
 import 'package:sayaaratukum/binding/auth/register.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
 import 'package:sayaaratukum/binding/user/add_car.dart';
+import 'package:sayaaratukum/binding/user/add_tool.dart';
 import 'package:sayaaratukum/binding/user/profile.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/add_car/AddCar.dart';
+import 'package:sayaaratukum/screens/add_tool/add_tool.dart';
 import 'package:sayaaratukum/screens/auth/login/login.dart';
 import 'package:sayaaratukum/screens/auth/register/register.dart';
 import 'package:sayaaratukum/screens/auth/welcom/welcome.dart';
@@ -42,5 +44,10 @@ List<GetPage> routes() =>
         name: RouteScreen.addCar,
         page: () => const AddCarScreen(),
         binding: AddCarBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.addTool,
+        page: () => const AddTool(),
+        binding: AddToolBinding(),
       )
     ];

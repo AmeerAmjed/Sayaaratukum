@@ -75,6 +75,7 @@ class L10n {
   static const showMore = 'showMore';
   static const showLess = 'showLess';
   static const addCar = 'addCar';
+  static const addTool = 'addTool';
 
   static const back = 'back';
   static const next = 'next';
@@ -113,6 +114,9 @@ class L10n {
   static const available = 'available';
 
   static const failedCreateAccount = 'failedCreateAccount';
+
+  static const name = 'name';
+  static const category = 'category';
 
 
 }
