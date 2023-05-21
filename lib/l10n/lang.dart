@@ -130,6 +130,8 @@ class L10n {
   static const successAddTool = 'successAddTool';
   static const loginToAddFavorites = 'loginToAddFavorites';
 
+  static const empty = 'empty';
+
 
 
 }

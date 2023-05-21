@@ -7,6 +7,7 @@ import 'package:sayaaratukum/controllers/pagination.dart';
 import 'package:sayaaratukum/models/ads.dart';
 import 'package:sayaaratukum/services/remote/public/ads.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/error_handler.dart';
 
 class AdsController extends BaseController
     with StateMixin<List<AdsModel>>, PaginationController, ScrollMixin {
@@ -51,7 +52,8 @@ class AdsController extends BaseController
         }
       });
     } on Response catch (response) {
-      change(null, status: RxStatus.error());
+      RequestResult result = errorHandler(response);
+      change(null, status: RxStatus.error(result.message));
       print("getAds ${response.statusCode}");
     }
   }

@@ -28,6 +28,7 @@ class BrandItem extends StatelessWidget {
             child: Card(
               child: ImageLoading(
                 imageUrl: item.imageUrl,
+                fitImage: BoxFit.fill,
               ),
             ),
           ),

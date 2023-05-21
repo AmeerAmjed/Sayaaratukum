@@ -112,6 +112,8 @@ class EnTranslations {
 
         L10n.loginToAddFavorites : 'Login to add favorites.',
 
+        L10n.empty : 'Empty',
+
 
 
 
