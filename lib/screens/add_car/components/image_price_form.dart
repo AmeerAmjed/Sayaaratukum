@@ -52,7 +52,7 @@ class ImageWithPriceForm extends GetView<AddCarController> {
             child: cont.imagesCar.isEmpty
                 ? InkWell(
                     onTap: controller.selectMultipleImages,
-                    child: const HintAddCarImages(),
+                    child:  HintAddCarImages(title:  L10n.addImagesCar.tr,),
                   )
                 : Column(
                     children: [

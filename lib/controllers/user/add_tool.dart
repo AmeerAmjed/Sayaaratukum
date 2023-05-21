@@ -3,98 +3,90 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
-import 'package:sayaaratukum/models/add_car.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/models/category_tool.dart';
-import 'package:sayaaratukum/services/remote/user/add_car.dart';
 import 'package:sayaaratukum/services/remote/user/add_tool.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
-class AddToolController extends BaseController {
-  var onPageIndex = 0.obs;
-
-  final int totalPageAddCar = 3;
+class AddToolController extends BaseController with StateMixin {
   var brands = <BrandModel>[].obs.toList(growable: true);
   var category = <CategoryToolModel>[].obs.toList(growable: true);
+  final statusTool = <String>["new", "old"];
 
-  final yesNo = <String>["yes", "no"];
-  final typeGearBox = <String>["RadioGroup", "no"];
-
-  bool get isLastPage => onPageIndex.value == totalPageAddCar - 1;
-  late PageController pageController;
-
+  late GlobalKey<FormState> formKey;
+  late GlobalKey<FormFieldState> keyManagerModelBrand;
   late TextEditingController name;
-  late TextEditingController yearModel;
-  late TextEditingController drivingMiles;
-  late TextEditingController region;
-  late TextEditingController nearPoint;
+  late TextEditingController color;
   late TextEditingController price;
-  late TextEditingController note;
-  final GlobalKey<FormFieldState> keyManagerModelBrand =
-      GlobalKey<FormFieldState>();
+  late TextEditingController description;
 
   int idBrandSelected = 0;
   int idModelBrandSelected = 0;
   int idCategorySelected = 0;
-  int idEnginePower = 0;
-  var reColor = "".obs;
-  var shakeCheck = "".obs;
-  var gearBox = "".obs;
-  var color = "".obs;
-  var engineCapacity = .0.obs;
-  var imagesCar = <String>[].obs.toList(growable: true);
+  var statusSelected = "".obs;
+  var imagesTool = "".obs;
+  final typeGearBox = <String>["RadioGroup", "no"];
 
   @override
   void onInit() {
     brands = BrandController.instance.brands;
-    pageController = PageController(initialPage: onPageIndex.value);
-
     initInput();
     getCategories();
     super.onInit();
   }
 
-  addCar() async {
-    var info = AddCarModel(
-      // name: name.text,
-      // idBrand: idBrandSelected,
-      // idModelBrand: idModelBrandSelected,
-      // idEnginePower: idEnginePower,
-      // yearModel
-      // price: price.text,
-      // color: color,
-      name: 'asdfasdfasf',
-      price: 0,
-      color: 'b',
-      engine: 12,
-      yearModel: 222,
-      idBrand: 1,
-      idModelBrand: 195,
-      idEnginePower: 2,
-      userType: 'user',
-      userId: 1,
-      city: 'kut',
-      gov: 'wasite',
-      closerPoint: 'asdfasdf',
-      gearbox: 'auto',
-      mileage: 22,
-      images: imagesCar,
-    );
+  initInput() {
+    formKey = GlobalKey<FormState>();
+    keyManagerModelBrand = GlobalKey<FormFieldState>();
+    name = TextEditingController();
+    color = TextEditingController();
+    price = TextEditingController();
+    description = TextEditingController();
+  }
 
-    try {
-      await AddCarService.instance.addCar(info).then((response) {
-        // print("response ${response.statusCode} ${response.body}");
-        // if (response.isOk) {
-        //
-        // }
-      });
-    } on Response catch (response) {
-      print("response ${response.statusCode} ${response.body}");
-    }
+  addCar() async {
+    // var info = AddToolModel(
+    //   // name: name.text,
+    //   // idBrand: idBrandSelected,
+    //   // idModelBrand: idModelBrandSelected,
+    //   // idEnginePower: idEnginePower,
+    //   // yearModel
+    //   // price: price.text,
+    //   // color: color,
+    //   name: 'asdfasdfasf',
+    //   price: 0,
+    //   color: 'b',
+    //   engine: 12,
+    //   yearModel: 222,
+    //   idBrand: 1,
+    //   idModelBrand: 195,
+    //   idEnginePower: 2,
+    //   userType: 'user',
+    //   userId: 1,
+    //   city: 'kut',
+    //   gov: 'wasite',
+    //   closerPoint: 'asdfasdf',
+    //   gearbox: 'auto',
+    //   mileage: 22,
+    //   images: imagesTool.value,
+    // );
+    //
+    // try {
+    //   await AddCarService.instance.addCar(info).then((response) {
+    //     // print("response ${response.statusCode} ${response.body}");
+    //     // if (response.isOk) {
+    //     //
+    //     // }
+    //   });
+    // } on Response catch (response) {
+    //   print("response ${response.statusCode} ${response.body}");
+    // }
   }
 
   Future<void> getCategories() async {
@@ -106,6 +98,7 @@ class AddToolController extends BaseController {
             response.body[Constants.bodyData],
           );
           category.addAll(resultCategory);
+          change(null, status: RxStatus.success());
           update();
         }
       });
@@ -118,56 +111,15 @@ class AddToolController extends BaseController {
     return category.map((item) => item.name).toList();
   }
 
-  initInput() {
-    name = TextEditingController();
-    yearModel = TextEditingController();
-    drivingMiles = TextEditingController();
-    region = TextEditingController();
-    nearPoint = TextEditingController();
-    price = TextEditingController();
-    note = TextEditingController();
-  }
-
-  //region Imges Car
-
-  Future<void> selectMultipleImages() async {
-    var status = await Permission.photos.request();
-
-    List<XFile>? pickedFiles = await ImagePicker().pickMultiImage();
-    if (pickedFiles.isNotEmpty) {
-      onAddImage(pickedFiles);
-    } else {
-      print("No images selecteds");
-
-      // No images selected
-    }
-  }
-
-  onAddImage(List<XFile> pickedFiles) {
-    List<String> imagesAllCar = [];
-    List<String> images = pickedFiles
-        .map(
-          (XFile file) => File(file.path),
-        )
-        .toList()
-        .map((e) => e.path)
-        .toList();
-
-    imagesCar.addAll(images);
-    // imagesAllCar.addAll(imagesCar);
-    // imagesCar.clear();
-    // imagesCar.addAll(imagesAllCar.sublist(0, 11));
+  Future<void> selectToolImage() async {
+    imagesTool.value = "";
+    await ImagePicker().pickImage(source: ImageSource.gallery).then((image) {
+      if (image != null) {
+        imagesTool.value = File(image.path).path;
+      }
+    });
     update();
   }
-
-  onClickDeleteImage(String file) {
-    imagesCar.remove(file);
-    update();
-  }
-
-  //endregion
-
-  onSelectGear(int year) {}
 
   //region Brand,Model Car
   onChangeBrand(String? brand) {
@@ -223,18 +175,52 @@ class AddToolController extends BaseController {
 
   //endregion
 
-  onChangeReColor(Object? option) {
-    if (option == yesNo.first) {
-      reColor.value = yesNo.first;
+  onChangeStatus(Object? option) {
+    if (option == statusTool.first) {
+      statusSelected.value = statusTool.first;
     } else {
-      reColor.value = yesNo.last;
+      statusSelected.value = statusTool.last;
     }
     update();
   }
 
-  onChangeColorCar(String? color) {
-    if (color != null) {
-      this.color.value = color;
+  bool checkValidationForm() {
+    if (name.text == "") {
+      onError(
+          L10n.failedPublishTool.tr, "${L10n.name.tr} ${L10n.isRequired.tr}");
+
+      return false;
+    } else if (idBrandSelected == 0) {
+      onError(
+          L10n.failedPublishTool.tr, "${L10n.brand.tr} ${L10n.isRequired.tr}");
+
+      return false;
+    } else if (idModelBrandSelected == 0) {
+      onError(
+          L10n.failedPublishTool.tr, "${L10n.model.tr} ${L10n.isRequired.tr}");
+
+      return false;
+    } else if (idCategorySelected == 0) {
+      onError(L10n.failedPublishTool.tr,
+          "${L10n.category.tr} ${L10n.isRequired.tr}");
+
+      return false;
+    } else if (price.text == "") {
+      onError(
+          L10n.failedPublishTool.tr, "${L10n.price.tr} ${L10n.isRequired.tr}");
+
+      return false;
+    } else if (imagesTool.value == "") {
+      onError(L10n.failedPublishTool.tr,
+          "${L10n.imagesTool.tr} ${L10n.isRequired.tr}");
+
+      return false;
+    } else if (statusSelected.value == "") {
+      onError(L10n.failedPublishTool.tr,
+          "${L10n.statusTool.tr} ${L10n.isRequired.tr}");
+
+      return false;
     }
+    return true;
   }
 }

@@ -94,12 +94,21 @@ class EnTranslations {
         L10n.imagesCar : 'Images & Price',
         L10n.price : 'Price',
         L10n.addImagesCar : 'Add ten images to the car',
+        L10n.addImageTool : 'Add tool image',
         L10n.available : 'Available',
 
         L10n.failedCreateAccount : 'Failed create account',
 
+        L10n.statusTool : 'status Tool',
         L10n.name : 'Name',
         L10n.category : 'Category',
+        L10n.imagesTool : 'Image Tool',
+        L10n.description : 'Description',
+        L10n.newTool : 'New',
+        L10n.oldTool : 'Old',
+        L10n.failedPublishTool : 'Failed Publish Tool',
+
+
 
 
 

@@ -109,14 +109,24 @@ class L10n {
   static const informationCar = 'informationCar';
   static const locationCar = 'locationCar';
   static const imagesCar = 'imagesCar';
+  static const imagesTool = 'imagesTool';
   static const price = 'price';
   static const addImagesCar = 'addImagesCar';
+  static const addImageTool = 'addImageTool';
   static const available = 'available';
 
   static const failedCreateAccount = 'failedCreateAccount';
 
+  static const statusTool = 'statusTool';
+
   static const name = 'name';
   static const category = 'category';
+  static const description = 'description';
+  static const newTool = 'new';
+  static const oldTool = 'old';
+
+  static const failedPublishTool = 'failedPublishTool';
+
 
 
 }

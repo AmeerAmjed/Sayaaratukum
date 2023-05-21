@@ -5,7 +5,12 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class HintAddCarImages extends StatelessWidget {
-  const HintAddCarImages({Key? key}) : super(key: key);
+  const HintAddCarImages({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,7 @@ class HintAddCarImages extends StatelessWidget {
           size: 30,
         ),
         const VerticalSpace8(),
-        Text(L10n.addImagesCar.tr)
+        Text(title)
       ],
     );
   }
