@@ -12,7 +12,7 @@ class UserModel extends BaseModel {
     required this.lastName,
     required this.isPhoneNumberVerified,
     required this.isEmailVerified,
-    required this.isActive,
+    // required this.isActive,
     required this.avatar,
     required this.role,
   });
@@ -25,7 +25,8 @@ class UserModel extends BaseModel {
   final bool isPhoneNumberVerified;
   final String? phoneNumber;
   final bool isEmailVerified;
-  final bool isActive;
+
+  // final bool isActive;
   final String avatar;
   final RoleModel? role;
 
@@ -41,7 +42,7 @@ class UserModel extends BaseModel {
       phoneNumber: data['phone_number'],
       isPhoneNumberVerified: data['is_phone_number_verified'],
       avatar: data['avatar'],
-      isActive: isActiveUser(data['is_actived']),
+      // isActive: isActiveUser(data['is_actived']),
       role: data['role'] != null ? RoleModel.fromJson(data['role']) : null,
     );
   }
@@ -58,7 +59,7 @@ class UserModel extends BaseModel {
       phoneNumber: data['phoneNumber'],
       isPhoneNumberVerified: data['isPhoneNumberVerified'],
       avatar: data['avatar'],
-      isActive: isActiveUser(data['isActive']),
+      // isActive: isActiveUser(data['isActive']),
       role: RoleModel.local(data['role']),
     );
   }
@@ -75,7 +76,7 @@ class UserModel extends BaseModel {
       'phoneNumber': phoneNumber,
       'isPhoneNumberVerified': isPhoneNumberVerified,
       'avatar': avatar,
-      'isActive': isActiveUser(isActive),
+      // 'isActive': isActiveUser(isActive),
       'role': role?.toJson()
     };
   }

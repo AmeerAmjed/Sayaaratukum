@@ -29,6 +29,8 @@ class ColorSystem {
   static const Color backgroundColorDanger = Color(0x80fad5d5);
   static const Color colorDanger = Color(0xFFEB5757);
   static const Color whatsApp = Color(0xff2ABD6E);
+  static const Color snackBar = Color(0xff242A32);
+  static const Color actionButtonSnackBar = Color(0xff0296E5);
 
 
 

@@ -1,10 +1,12 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/models/user.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/local/storage.dart';
 import 'package:sayaaratukum/services/remote/auth/login.dart';
 
@@ -38,12 +40,10 @@ class LoginController extends AuthController with LocalStorage {
         if (response.isOk) {
           if (body[statusResponse] == success) {
             var user = UserModel.fromJson(body[data]);
-            var token = body['access_token'];
-            Application.instance.login(user, token);
+            var tokenUser = body[bodyToken];
+            Application.instance.login(user, tokenUser);
           }
-
-          print("response $response  ${response.body}");
-          // Get.offAllNamed(RoutePageApp.setUp);
+          Get.offAllNamed(RouteScreen.mainTab);
         }
       });
     } on Response catch (response) {

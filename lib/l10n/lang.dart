@@ -128,6 +128,7 @@ class L10n {
   static const failedPublishTool = 'failedPublishTool';
   static const success = 'success';
   static const successAddTool = 'successAddTool';
+  static const loginToAddFavorites = 'loginToAddFavorites';
 
 
 

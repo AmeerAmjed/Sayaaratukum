@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/public/cars.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/home/components/item_car.dart';
+import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/box.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';
@@ -40,6 +44,25 @@ class ItemsCar extends GetView<CarsController> {
               },
               child: ItemCar(
                 car: state[index],
+                onPressedFavouriteCar: () {
+                  if (Application.instance.isLogin) {
+                  } else {
+                    controller.showMessage(
+                      L10n.loginToAddFavorites.tr,
+                      action: TextButton(
+                        onPressed: () {
+                          Get.toNamed(RouteScreen.login);
+                        },
+                        child: Text(
+                          L10n.login.tr,
+                          style: TextStyle(
+                            color: ColorSystem.primaryColor[600],
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                },
               ),
             );
           },

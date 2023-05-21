@@ -13,12 +13,15 @@ class Application extends BaseController with LocalStorage {
   Rxn<UserModel?>? user = Rxn<UserModel?>();
   Rxn<String> token = Rxn<String>(null);
 
-
   RxString langCode = 'en'.obs;
 
   String get getLangCode => langCode.value;
 
   bool get isLogin => token.value != null;
+
+  bool get isSkip => isSkipAuth.value;
+
+  bool get isUserStore => Application.instance.user?.value?.role?.id == 2;
 
   @override
   void onInit() {
@@ -32,7 +35,6 @@ class Application extends BaseController with LocalStorage {
     token.value = getData(Constants.tokenKey);
     var lang = await getData(Constants.langCodeKey);
     if (lang != null) langCode.value = lang;
-
   }
 
 

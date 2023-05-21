@@ -13,7 +13,6 @@ import 'package:sayaaratukum/models/add_tool.dart';
 import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/models/category_tool.dart';
 import 'package:sayaaratukum/services/remote/user/add_tool.dart';
-import 'package:sayaaratukum/util/constant.dart';
 
 class AddToolController extends BaseController {
   var brands = <BrandModel>[].obs.toList(growable: true);
@@ -59,7 +58,7 @@ class AddToolController extends BaseController {
 
         print("response ${response.statusCode} ${response.body}");
         if (response.isOk) {
-          showMessage(L10n.success.tr, L10n.successAddTool.tr);
+          showMessage(L10n.successAddTool.tr);
         }
       });
     } on Response catch (response) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/public/cars.dart';
 import 'package:sayaaratukum/controllers/public/home.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
@@ -10,6 +11,7 @@ import 'package:sayaaratukum/screens/home/widget/ads.dart';
 import 'package:sayaaratukum/screens/home/widget/brands.dart';
 import 'package:sayaaratukum/screens/home/widget/cars.dart';
 import 'package:sayaaratukum/screens/profile/components/add_button.dart';
+import 'package:sayaaratukum/widgets/space.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class HomeScreen extends GetView<HomeController> {
@@ -19,7 +21,6 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    final ScrollController _scrollController = ScrollController();
     return Scaffold(
       body: Container(
         child: SingleChildScrollView(
@@ -59,9 +60,13 @@ class HomeScreen extends GetView<HomeController> {
           ),
         ),
       ),
-      floatingActionButton: AddButton(
-        onPressed: () {
-          Get.toNamed(RouteScreen.addCar);
+      floatingActionButton: GetBuilder<Application>(
+        builder: (c) {
+          return Application.instance.isLogin
+              ? AddButton(
+                  onPressed: () => Get.toNamed(RouteScreen.addCar),
+                )
+              : const Space();
         },
       ),
     );

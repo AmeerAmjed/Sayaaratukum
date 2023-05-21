@@ -12,9 +12,11 @@ class ItemCar extends StatelessWidget {
   const ItemCar({
     Key? key,
     required this.car,
+    required this.onPressedFavouriteCar,
   }) : super(key: key);
 
   final CarModel car;
+  final VoidCallback onPressedFavouriteCar;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class ItemCar extends StatelessWidget {
                     imageUrl: car.images[0],
                   ),
                   FavouriteCar(
-                    onPressed: () {},
+                    onPressed: onPressedFavouriteCar,
                   )
                 ],
               ),
@@ -113,3 +115,24 @@ class ItemCar extends StatelessWidget {
     );
   }
 }
+// class SnackbarButton extends StatelessWidget {
+//   Widget build(BuildContext context) {
+//     return RaisedButton(
+//       onPressed: () {
+//         final snackBar = SnackBar(
+//           behavior: SnackBarBehavior.floating,
+//           content: Text('Text label'),
+//           action: SnackBarAction(
+//             label: 'Action',
+//             onPressed: () {},
+//           ),
+//         );
+//
+//         // Find the Scaffold in the widget tree and use
+//         // it to show a SnackBar.
+//         Scaffold.of(context).showSnackBar(snackBar);
+//       },
+//       child: Text('Show SnackBar'),
+//     );
+//   }
+// }

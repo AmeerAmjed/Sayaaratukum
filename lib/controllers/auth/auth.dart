@@ -7,6 +7,8 @@ import 'package:sayaaratukum/util/constant.dart';
 
 class AuthController extends BaseController {
 
+  final String bodyToken = 'access_token';
+
   static const List<String> keyNumberPhoneIraq = [
     '075',
     '076',

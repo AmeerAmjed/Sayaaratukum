@@ -110,6 +110,8 @@ class EnTranslations {
         L10n.success : 'Success',
         L10n.successAddTool : 'Success Add Tool',
 
+        L10n.loginToAddFavorites : 'Login to add favorites.',
+
 
 
 
