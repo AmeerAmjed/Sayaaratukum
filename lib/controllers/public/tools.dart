@@ -33,8 +33,9 @@ class ToolsController extends BaseController
           List<ToolModel> result = ToolModel.listFromJson(
             response.body[Constants.bodyData],
           );
-
-          final bool emptyRepositories = response.body?.isEmpty ?? true;
+          var responseData = response.body[data];
+          final bool emptyRepositories =
+              (responseData == null || responseData.isEmpty);
           if (!getFirstData && emptyRepositories) {
             change(null, status: RxStatus.empty());
           } else if (getFirstData && emptyRepositories) {

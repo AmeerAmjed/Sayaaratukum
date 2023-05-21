@@ -9,6 +9,7 @@ import 'package:sayaaratukum/screens/home/components/search.dart';
 import 'package:sayaaratukum/screens/profile/components/add_button.dart';
 import 'package:sayaaratukum/screens/tools/components/tool_item.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/widgets/empty.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
@@ -37,7 +38,11 @@ class ToolsScreen extends GetView<ToolsController> {
         },
         body: RefreshIndicator(
           onRefresh: () => controller.onRefresh(),
-          child: controller.obx(onLoading: const Loading(), (state) {
+          child: controller.obx(
+              onLoading: const Loading(),
+              onEmpty: Empty(
+                title: L10n.empty.tr,
+              ), (state) {
             return GetBuilder<ToolsController>(builder: (controller) {
               return GridView.builder(
                 controller: controller.scroll,
