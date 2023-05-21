@@ -1,9 +1,16 @@
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/widgets/custom_snackbar.dart';
 
 abstract class BaseController extends GetxController with ValidatorInput {
+
+  RxBool disableSubmit = false.obs;
+  loading(bool state) {
+    disableSubmit.value = state;
+    update();
+  }
   String message = 'message';
   String data = 'data';
   String statusResponse = 'status';
@@ -28,6 +35,19 @@ abstract class BaseController extends GetxController with ValidatorInput {
       marginBottom: .0,
       duration: duration,
       backgroundColor: ColorSystem.colorDanger,
+    );
+  }
+
+  showMessage(
+    String title,
+    String message, {
+    Duration duration = const Duration(seconds: 4),
+  }) {
+    customSnackBar(
+      title,
+      message,
+      marginBottom: .0,
+      duration: duration,
     );
   }
 }

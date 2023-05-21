@@ -57,6 +57,7 @@ class Constants {
   static const String notificationKey = 'notification';
 
   static const String bodyData = 'data';
+  static const String bodyMessage = 'message';
 
 
 

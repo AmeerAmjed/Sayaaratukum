@@ -16,7 +16,6 @@ class LoginController extends AuthController with LocalStorage {
   late GlobalKey<FormState> loginFormKey;
 
   RxBool visibilityPassword = true.obs;
-  RxBool disableSubmit = false.obs;
 
   @override
   void onInit() {
@@ -56,12 +55,6 @@ class LoginController extends AuthController with LocalStorage {
   toggle() {
     visibilityPassword.value = !visibilityPassword.value;
   }
-
-  loading(bool state) {
-    disableSubmit.value = state;
-    update();
-  }
-
 
   @override
   void dispose() {

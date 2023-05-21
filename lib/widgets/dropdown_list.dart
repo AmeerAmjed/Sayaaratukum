@@ -11,6 +11,7 @@ class DropdownList extends StatelessWidget {
     required this.label,
     this.hintText,
     this.margin,
+    this.onTap,
     required this.onChanged,
     this.validator,
     this.background,
@@ -26,6 +27,7 @@ class DropdownList extends StatelessWidget {
   final Color? background;
   final String? Function(String?)? validator;
   final Function(String?) onChanged;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,7 @@ class DropdownList extends StatelessWidget {
         isExpanded: true,
         iconSize: 24,
         validator: validator,
+        onTap: onTap,
         icon: const Icon(Icons.keyboard_arrow_down_rounded),
         decoration: InputDecoration(
           focusedBorder: const OutlineInputBorder(

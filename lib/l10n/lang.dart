@@ -123,9 +123,11 @@ class L10n {
   static const category = 'category';
   static const description = 'description';
   static const newTool = 'new';
-  static const oldTool = 'old';
+  static const usedTool = 'usedTool';
 
   static const failedPublishTool = 'failedPublishTool';
+  static const success = 'success';
+  static const successAddTool = 'successAddTool';
 
 
 

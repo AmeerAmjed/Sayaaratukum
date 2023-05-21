@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 
 import 'model.dart';
 
-class AddToolModel extends BaseModel {
+class FormAddToolModel extends BaseModel {
   String name;
-  double price;
+  int price;
   String color;
   String? currency;
   String? description;
@@ -12,10 +12,10 @@ class AddToolModel extends BaseModel {
   int idModelBrand;
   int idCategory;
   int idStore;
-  int status;
+  String status;
   String image;
 
-  AddToolModel({
+  FormAddToolModel({
     this.description,
     this.currency = "USD",
     required this.name,
@@ -33,11 +33,11 @@ class AddToolModel extends BaseModel {
     return FormData({
       'name': name,
       'price': price.toString(),
-      // 'color': color,
+      'color': color,
       'brand_id': idBrand.toString(),
       'brand_model_id': idModelBrand.toString(),
       'store_id': idStore.toString(),
-      'status': status.toString(),
+      'status': status,
       'currency': currency,
       'description': description,
       'category_id': idCategory.toString(),

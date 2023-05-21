@@ -22,7 +22,7 @@ class AdsController extends BaseController
   }
 
   init() {
-    loading();
+    loadingData();
     getAds();
   }
 
@@ -67,7 +67,7 @@ class AdsController extends BaseController
     }
   }
 
-  loading() {
+  loadingData() {
     change(null, status: RxStatus.loading());
   }
 

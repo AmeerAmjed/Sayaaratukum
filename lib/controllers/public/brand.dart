@@ -18,7 +18,7 @@ class BrandController extends BaseController
   @override
   void onInit() {
     super.onInit();
-    loading();
+    loadingData();
     getAllBrand();
   }
 
@@ -63,7 +63,7 @@ class BrandController extends BaseController
     }
   }
 
-  loading() {
+  loadingData() {
     change(null, status: RxStatus.loading());
   }
 

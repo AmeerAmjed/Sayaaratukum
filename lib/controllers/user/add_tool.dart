@@ -3,21 +3,22 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
+import 'package:sayaaratukum/controllers/public/category_tool.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/models/add_tool.dart';
 import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/models/category_tool.dart';
 import 'package:sayaaratukum/services/remote/user/add_tool.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
-class AddToolController extends BaseController with StateMixin {
+class AddToolController extends BaseController {
   var brands = <BrandModel>[].obs.toList(growable: true);
   var category = <CategoryToolModel>[].obs.toList(growable: true);
-  final statusTool = <String>["new", "old"];
+  final statusTool = <String>["new", "used"];
 
   late GlobalKey<FormState> formKey;
   late GlobalKey<FormFieldState> keyManagerModelBrand;
@@ -31,7 +32,6 @@ class AddToolController extends BaseController with StateMixin {
   int idCategorySelected = 0;
   var statusSelected = "".obs;
   var imagesTool = "".obs;
-  final typeGearBox = <String>["RadioGroup", "no"];
 
   @override
   void onInit() {
@@ -50,60 +50,50 @@ class AddToolController extends BaseController with StateMixin {
     description = TextEditingController();
   }
 
-  addCar() async {
-    // var info = AddToolModel(
-    //   // name: name.text,
-    //   // idBrand: idBrandSelected,
-    //   // idModelBrand: idModelBrandSelected,
-    //   // idEnginePower: idEnginePower,
-    //   // yearModel
-    //   // price: price.text,
-    //   // color: color,
-    //   name: 'asdfasdfasf',
-    //   price: 0,
-    //   color: 'b',
-    //   engine: 12,
-    //   yearModel: 222,
-    //   idBrand: 1,
-    //   idModelBrand: 195,
-    //   idEnginePower: 2,
-    //   userType: 'user',
-    //   userId: 1,
-    //   city: 'kut',
-    //   gov: 'wasite',
-    //   closerPoint: 'asdfasdf',
-    //   gearbox: 'auto',
-    //   mileage: 22,
-    //   images: imagesTool.value,
-    // );
-    //
-    // try {
-    //   await AddCarService.instance.addCar(info).then((response) {
-    //     // print("response ${response.statusCode} ${response.body}");
-    //     // if (response.isOk) {
-    //     //
-    //     // }
-    //   });
-    // } on Response catch (response) {
-    //   print("response ${response.statusCode} ${response.body}");
-    // }
-  }
+  addTool() async {
+    loading(true);
 
-  Future<void> getCategories() async {
     try {
-      await AddToolService.instance.getCategory().then((response) {
+      await AddToolService.instance.add(getFormData()).then((response) {
+        loading(false);
+
+        print("response ${response.statusCode} ${response.body}");
         if (response.isOk) {
-          List<CategoryToolModel> resultCategory =
-              CategoryToolModel.listFromJson(
-            response.body[Constants.bodyData],
-          );
-          category.addAll(resultCategory);
-          change(null, status: RxStatus.success());
-          update();
+          showMessage(L10n.success.tr, L10n.successAddTool.tr);
         }
       });
     } on Response catch (response) {
-      print("getCategory ${response.statusCode}");
+      loading(false);
+
+      onError(L10n.failedPublishTool.tr, response.body[message]);
+      print("response ${response.statusCode} ${response.body}");
+    }
+  }
+
+  FormAddToolModel getFormData() {
+    return FormAddToolModel(
+      idStore: 1,
+      name: name.text,
+      idBrand: idBrandSelected,
+      idModelBrand: idModelBrandSelected,
+      idCategory: idCategorySelected,
+      color: color.text,
+      price: int.parse(price.text),
+      description: description.text == "" ? null : description.text,
+      image: imagesTool.value,
+      status: statusSelected.value,
+    );
+  }
+
+  getCategories() {
+    category.addAll(CategoryToolController.instance.category);
+  }
+
+  tryGetCategoriesWhenFailed() {
+    if (category == []) {
+      CategoryToolController.instance.getCategories().then((value) {
+        getCategories();
+      });
     }
   }
 

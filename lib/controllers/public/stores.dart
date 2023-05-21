@@ -17,7 +17,7 @@ class StoresController extends BaseController
   @override
   void onInit() {
     super.onInit();
-    loading();
+    loadingData();
     getAllStore();
   }
 
@@ -62,7 +62,7 @@ class StoresController extends BaseController
     }
   }
 
-  loading() {
+  loadingData() {
     change(null, status: RxStatus.loading());
   }
 

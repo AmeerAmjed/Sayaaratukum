@@ -20,7 +20,7 @@ class ToolsController extends BaseController
   @override
   void onInit() {
     super.onInit();
-    loading();
+    loadingData();
     getTools();
   }
 
@@ -65,7 +65,7 @@ class ToolsController extends BaseController
     }
   }
 
-  loading() {
+  loadingData() {
     change(null, status: RxStatus.loading());
   }
 

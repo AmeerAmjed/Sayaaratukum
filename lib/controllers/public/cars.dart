@@ -21,7 +21,7 @@ class CarsController extends BaseController
   @override
   void onInit() {
     super.onInit();
-    loading();
+    loadingData();
     getCars();
   }
 
@@ -67,7 +67,7 @@ class CarsController extends BaseController
     }
   }
 
-  loading() {
+  loadingData() {
     change(null, status: RxStatus.loading());
   }
 

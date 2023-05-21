@@ -6,7 +6,7 @@ class AddToolBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<AddToolService>(() => AddToolService());
-    Get.put<AddToolController>(AddToolController(), permanent: true);
+    Get.lazyPut<AddToolController>(() => AddToolController());
 
   }
 }

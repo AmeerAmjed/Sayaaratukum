@@ -99,14 +99,16 @@ class EnTranslations {
 
         L10n.failedCreateAccount : 'Failed create account',
 
-        L10n.statusTool : 'status Tool',
+        L10n.statusTool : 'Status Tool',
         L10n.name : 'Name',
         L10n.category : 'Category',
         L10n.imagesTool : 'Image Tool',
         L10n.description : 'Description',
         L10n.newTool : 'New',
-        L10n.oldTool : 'Old',
+        L10n.usedTool : 'Used',
         L10n.failedPublishTool : 'Failed Publish Tool',
+        L10n.success : 'Success',
+        L10n.successAddTool : 'Success Add Tool',
 
 
 
