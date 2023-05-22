@@ -17,6 +17,7 @@ class ApiEndpoint {
 
   static const String category = '/category';
   static const String favorite = '/me/favorites';
+  static const String toggleFavorite = '/me/favorite';
 
 
 }

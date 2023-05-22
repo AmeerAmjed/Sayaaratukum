@@ -91,10 +91,12 @@ class FavouriteCar extends StatelessWidget {
     Key? key,
     required this.onPressed,
     this.disable = false,
+    this.disableWithShowLoading = false,
   }) : super(key: key);
 
   final VoidCallback? onPressed;
   final bool disable;
+  final bool disableWithShowLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -105,16 +107,16 @@ class FavouriteCar extends StatelessWidget {
         child: Box(
           size: 40,
           child: Buttons(
-            background: Colors.black12,
+            background: Colors.white,
             colorOnButton: Get.theme.primaryColor,
             width: 30,
             height: 30,
-            label: disable.toString(),
             iconSize: 20,
+            disableWithShowLoading: disableWithShowLoading,
             disable: disable,
             padding: EdgeInsets.zero,
             onPressed: onPressed,
-            // icon: Iconsax.heart,
+            icon: Iconsax.heart,
             colorLoading: Get.theme.primaryColor,
             sizeLoading: 15,
           ),

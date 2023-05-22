@@ -138,6 +138,9 @@ class L10n {
   static const messageLogout = 'messageLogout';
 
   static const notAuth = 'notAuth';
+  static const successAddFavorite = 'successAddFavorite';
+  static const successRemoveFavorite = 'successRemoveFavorite';
+  static const failedAddFavorite = 'failedAddFavorite';
 
 
 

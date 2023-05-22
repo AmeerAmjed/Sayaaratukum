@@ -20,4 +20,19 @@ class FavoriteService extends BaseService {
     }
   }
 
+  Future<Response> toggleFavorite(int id) async {
+    var body = {"type": "car", "id": id};
+
+    try {
+      Response response = await post(ApiEndpoint.toggleFavorite, body);
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error FavoriteService addRemoveFavorite $e");
+      return Future.error(e);
+    }
+  }
 }

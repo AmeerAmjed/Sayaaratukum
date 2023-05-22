@@ -123,6 +123,10 @@ class EnTranslations {
 
         L10n.notAuth : 'Please log in / Register',
 
+        L10n.successAddFavorite : 'Success Add Favorite',
+        L10n.successRemoveFavorite : 'Success Remove Favorite',
+        L10n.failedAddFavorite : 'Failed Add Favorite',
+
 
 
 

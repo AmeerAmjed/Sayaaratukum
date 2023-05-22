@@ -60,14 +60,12 @@ class FavoriteScreen extends GetView<FavoriteController> {
                 }, child: GetBuilder<FavoriteController>(builder: (con) {
                   return ItemFavorite(
                     item: state[index],
-                    buttonFavorite: Column(
-                      children: [
-                        Text(con.disableSubmit.value.toString()),
-                        FavouriteCar(
-                          onPressed: controller.favorite,
-                          disable: con.disableSubmit.value,
-                        ),
-                      ],
+                    buttonFavorite: FavouriteCar(
+                      onPressed: () {
+                        controller.favorite(state[index].id);
+                      },
+                      disableWithShowLoading: state[index].isLoading,
+                      disable: con.disableSubmit.value,
                     ),
                   );
                 }));

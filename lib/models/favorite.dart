@@ -7,11 +7,13 @@ class FavoriteModel extends BaseModel {
     required this.id,
     required this.product,
     required this.type,
+    this.isLoading = false,
   });
 
   final int id;
   final CarModel product;
   final String type;
+  bool isLoading;
 
   factory FavoriteModel.fromJson(Map<String, dynamic> json) {
     return FavoriteModel(
