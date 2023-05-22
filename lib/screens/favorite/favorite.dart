@@ -9,6 +9,7 @@ import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/empty.dart';
 import 'package:sayaaratukum/widgets/error.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
+import 'package:sayaaratukum/widgets/not_auth.dart';
 
 class FavoriteScreen extends GetView<FavoriteController> {
   const FavoriteScreen({Key? key}) : super(key: key);
@@ -22,42 +23,49 @@ class FavoriteScreen extends GetView<FavoriteController> {
     return Scaffold(
       body: controller.obx(
           onLoading: const Loading(),
-          onError: (e) => ErrorScreen(
-                textError: e.toString(),
-                onPressed: () {
-                  controller.init();
-                },
-              ),
-          // onError: (e) => const NotAuth(),
+          onError: (e) {
+            if (e == L10n.notAuth) {
+              return NotAuthScreen(
+                message: L10n.emptyFavorite.tr,
+              );
+            }
+            return ErrorScreen(
+              textError: e.toString(),
+              onPressed: () {
+                controller.init();
+              },
+            );
+          },
           onEmpty: Empty(
             title: L10n.emptyFavorite.tr,
             icon: Iconsax.heart,
-          ), (state) {
-        return GridView.builder(
-          padding: const EdgeInsets.symmetric(
-            horizontal: Constants.spacingXMedium,
           ),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisExtent: size.height * 0.30,
-            mainAxisSpacing: Constants.spacingXXSmall,
-            crossAxisSpacing: Constants.spacingLarge,
-          ),
-          scrollDirection: Axis.vertical,
-          itemCount: state!.length,
-          itemBuilder: (_, index) {
-            return InkWell(
-              onTap: () {
-                // controller.onClickItem(state[index].id.toString());
-              },
-              child: ItemFavorite(
-                // height: size.height * 0.30,
-                item: state[index],
+          (state) {
+            return GridView.builder(
+              padding: const EdgeInsets.symmetric(
+                horizontal: Constants.spacingXMedium,
               ),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisExtent: size.height * 0.30,
+                mainAxisSpacing: Constants.spacingXXSmall,
+                crossAxisSpacing: Constants.spacingLarge,
+              ),
+              scrollDirection: Axis.vertical,
+              itemCount: state!.length,
+              itemBuilder: (_, index) {
+                return InkWell(
+                  onTap: () {
+                    // controller.onClickItem(state[index].id.toString());
+                  },
+                  child: ItemFavorite(
+                    // height: size.height * 0.30,
+                    item: state[index],
+                  ),
+                );
+              },
             );
-          },
-        );
-      }),
+          }),
     );
   }
 }

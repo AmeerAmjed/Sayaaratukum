@@ -137,6 +137,8 @@ class L10n {
   static const messageDeleteAccount = 'messageDeleteAccount';
   static const messageLogout = 'messageLogout';
 
+  static const notAuth = 'notAuth';
+
 
 
 }

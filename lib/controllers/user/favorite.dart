@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/favorite.dart';
 import 'package:sayaaratukum/services/remote/user/favorite.dart';
 
@@ -24,7 +25,7 @@ class FavoriteController extends BaseController
       loadingData();
       getFavorite();
     } else {
-      change(null, status: RxStatus.error("Not Login"));
+      change(null, status: RxStatus.error(L10n.notAuth));
     }
   }
 

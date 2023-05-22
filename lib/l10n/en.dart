@@ -121,7 +121,7 @@ class EnTranslations {
         L10n.messageDeleteAccount : 'Do you really want to delete Your account? You will not be able to undo this action.',
         L10n.messageLogout : 'Are you sure want to log out?',
 
-
+        L10n.notAuth : 'Please log in / Register',
 
 
 
