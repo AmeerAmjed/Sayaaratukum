@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
+import 'package:sayaaratukum/controllers/user/favorite.dart';
 import 'package:sayaaratukum/models/user.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/local/storage.dart';
@@ -50,6 +51,7 @@ class Application extends BaseController with LocalStorage {
     this.user?.value = user;
     await save<String>(Constants.tokenKey, token);
     await save<UserModel>(Constants.userKey, user);
+    await resetStateAuthController();
     update();
   }
 
@@ -88,10 +90,18 @@ class Application extends BaseController with LocalStorage {
     await removeData(Constants.tokenKey);
     await removeData(Constants.userKey);
     Get.offAllNamed(RouteScreen.login);
-    // await resetStateAuthController();
+    await resetStateAuthController();
     // needToLogin
     //     ? Get.offAllNamed(RoutePageApp.login)
     //     : Get.offAllNamed(RoutePageApp.chooseAuth);
+  }
+
+  resetStateAuthController() async {
+    try {
+      FavoriteController.instance.init();
+    } catch (err) {
+      print("error resetStateAuthController init FavoriteController $err");
+    }
   }
 
   bool activeLang(String value) => value == getLangCode;
