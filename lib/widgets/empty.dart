@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
@@ -8,11 +7,11 @@ class Empty extends StatelessWidget {
     Key? key,
     required this.title,
     this.description,
-    // this.imageAsset = Constant.iconEmptyCart,
+    required this.icon,
     this.showBackButton = false,
   }) : super(key: key);
 
-  // final String imageAsset;
+  final IconData icon;
   final String title;
   final String? description;
   final bool showBackButton;
@@ -35,8 +34,8 @@ class Empty extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Spacer(flex: 1),
-        const Icon(
-          Iconsax.clipboard_close,
+        Icon(
+          icon,
           size: 50,
         ),
         const VerticalSpace24(),

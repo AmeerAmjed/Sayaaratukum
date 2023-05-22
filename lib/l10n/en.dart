@@ -113,6 +113,14 @@ class EnTranslations {
         L10n.loginToAddFavorites : 'Login to add favorites.',
 
         L10n.empty : 'Empty',
+        L10n.emptyFavorite : 'Start adding items as favorite to see them here',
+
+
+        L10n.cancel : 'Cancel',
+        L10n.areYouSure : 'Are you sure?',
+        L10n.messageDeleteAccount : 'Do you really want to delete Your account? You will not be able to undo this action.',
+        L10n.messageLogout : 'Are you sure want to log out?',
+
 
 
 

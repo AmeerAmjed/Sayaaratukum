@@ -130,7 +130,12 @@ class L10n {
   static const successAddTool = 'successAddTool';
   static const loginToAddFavorites = 'loginToAddFavorites';
 
+  static const cancel = 'cancel';
   static const empty = 'empty';
+  static const emptyFavorite = 'emptyFavorite';
+  static const areYouSure = 'areYouSure';
+  static const messageDeleteAccount = 'messageDeleteAccount';
+  static const messageLogout = 'messageLogout';
 
 
 

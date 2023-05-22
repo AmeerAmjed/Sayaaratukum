@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/public/tools.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
@@ -42,6 +43,7 @@ class ToolsScreen extends GetView<ToolsController> {
               onLoading: const Loading(),
               onEmpty: Empty(
                 title: L10n.empty.tr,
+                icon: Iconsax.clipboard_close,
               ), (state) {
             return GetBuilder<ToolsController>(builder: (controller) {
               return GridView.builder(
