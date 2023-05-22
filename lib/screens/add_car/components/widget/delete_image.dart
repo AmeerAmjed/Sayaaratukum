@@ -26,7 +26,7 @@ class DeleteImageCar extends StatelessWidget {
             width: 30,
             height: 30,
             iconSize: 15,
-            disable: disable,
+            disableWithShowLoading: disable,
             padding: EdgeInsets.zero,
             onPressed: onPressed,
             icon: CupertinoIcons.delete_simple,

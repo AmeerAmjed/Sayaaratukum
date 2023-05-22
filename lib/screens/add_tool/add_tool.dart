@@ -116,7 +116,7 @@ class AddTool extends GetView<AddToolController> {
                 controller.addTool();
               }
             },
-            disable: controller.disableSubmit.value,
+            disableWithShowLoading: controller.disableSubmit.value,
           ),
         ),
       ),

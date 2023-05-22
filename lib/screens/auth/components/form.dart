@@ -107,7 +107,7 @@ class FormLogin extends GetView<LoginController> {
                             controller.login();
                           }
                         },
-                        disable: controller.disableSubmit.value,
+                        disableWithShowLoading: controller.disableSubmit.value,
                       ),
                     ),
                     const Space(

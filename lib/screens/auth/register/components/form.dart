@@ -127,7 +127,7 @@ class FormRegister extends GetView<RegisterController> {
                               controller.register();
                             }
                           },
-                          disable: controller.disableSubmit.value,
+                          disableWithShowLoading: controller.disableSubmit.value,
                         ),
                       )
                     ],

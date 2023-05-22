@@ -18,6 +18,7 @@ class Buttons extends StatelessWidget {
     this.height = 56.0,
     this.width = 30.0,
     this.sizeLoading = 30.0,
+    this.disableWithShowLoading = false,
     this.disable = false,
     this.fullBackground = true,
     // this.colorIcon = ThemeApp.primaryColor,
@@ -26,6 +27,7 @@ class Buttons extends StatelessWidget {
   final String? label;
   final double height;
   final double width;
+  final bool disableWithShowLoading;
   final bool disable;
   final bool fullBackground;
   final Color? background;
@@ -56,7 +58,7 @@ class Buttons extends StatelessWidget {
           backgroundColor: MaterialStateProperty.all(
             fullBackground
                 ? (background ??
-                    ((disable || onPressed == null)
+                ((disableWithShowLoading || onPressed == null)
                         ? Theme.of(context).primaryColor.withOpacity(0.8)
                         : Theme.of(context).primaryColor))
                 : Colors.transparent,
@@ -76,16 +78,21 @@ class Buttons extends StatelessWidget {
             ),
           ),
         ),
-        onPressed: disable ? null : onPressed,
-        child: icon == null
-            ? disable
-                ? SizedBox(
-                    height: sizeLoading,
-                    width: sizeLoading,
-                    child: CupertinoActivityIndicator(
-                      color: colorLoading ?? Colors.white,
-                      radius: radiusLoading ?? 10,
-                    ),
+        onPressed: disable ? null : (disableWithShowLoading ? null : onPressed),
+        child: disableWithShowLoading
+            ? SizedBox(
+                height: sizeLoading,
+                width: sizeLoading,
+                child: CupertinoActivityIndicator(
+                  color: colorLoading ?? Colors.white,
+                  radius: radiusLoading ?? 10,
+                ),
+              )
+            : icon != null
+                ? Icon(
+                    icon,
+                    size: iconSize,
+                    color: colorOnButton,
                   )
                 : iconRow == null
                     ? Text(
@@ -118,11 +125,7 @@ class Buttons extends StatelessWidget {
                           )
                         ],
                       )
-            : Icon(
-          icon,
-          size: iconSize,
-          color: colorOnButton,
-        ),
+        ,
       ),
     );
   }
