@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sayaaratukum/widgets/padding_start.dart';
 
@@ -12,8 +13,11 @@ class Buttons extends StatelessWidget {
     this.iconRow,
     this.background,
     this.onPressed,
+    this.colorLoading,
+    this.radiusLoading,
     this.height = 56.0,
     this.width = 30.0,
+    this.sizeLoading = 30.0,
     this.disable = false,
     this.fullBackground = true,
     // this.colorIcon = ThemeApp.primaryColor,
@@ -30,8 +34,12 @@ class Buttons extends StatelessWidget {
   final double? iconSize;
   final IconData? iconRow;
   final Color? colorOnButton;
+  final Color? colorLoading;
+  final double sizeLoading;
+  final double? radiusLoading;
   final EdgeInsetsGeometry? padding;
 
+  // strokeWidth
   // final Color colorIcon;
 
   @override
@@ -71,11 +79,12 @@ class Buttons extends StatelessWidget {
         onPressed: disable ? null : onPressed,
         child: icon == null
             ? disable
-                ? const SizedBox(
-                    height: 30.0,
-                    width: 30.0,
-                    child: CircularProgressIndicator(
-                      color: Colors.white,
+                ? SizedBox(
+                    height: sizeLoading,
+                    width: sizeLoading,
+                    child: CupertinoActivityIndicator(
+                      color: colorLoading ?? Colors.white,
+                      radius: radiusLoading ?? 10,
                     ),
                   )
                 : iconRow == null
@@ -111,9 +120,9 @@ class Buttons extends StatelessWidget {
                       )
             : Icon(
           icon,
-                size: iconSize,
-                color: colorOnButton,
-              ),
+          size: iconSize,
+          color: colorOnButton,
+        ),
       ),
     );
   }

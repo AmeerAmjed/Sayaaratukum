@@ -9,9 +9,10 @@ class ItemFavorite extends StatelessWidget {
   const ItemFavorite({
     Key? key,
     required this.item,
+    required this.buttonFavorite,
   }) : super(key: key);
-
   final FavoriteModel item;
+  final Widget buttonFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +21,15 @@ class ItemFavorite extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
-          child: Card(
-            child: ImageLoading(
-              imageUrl: item.product.images.first,
-            ),
+          child: Stack(
+            children: [
+              Card(
+                child: ImageLoading(
+                  imageUrl: item.product.images.first,
+                ),
+              ),
+              buttonFavorite
+            ],
           ),
         ),
         const VerticalSpace4(),

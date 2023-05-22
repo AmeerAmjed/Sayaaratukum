@@ -5,6 +5,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/user/favorite.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/favorite/components/item_favorite.dart';
+import 'package:sayaaratukum/screens/home/widget/cars.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/empty.dart';
 import 'package:sayaaratukum/widgets/error.dart';
@@ -54,15 +55,22 @@ class FavoriteScreen extends GetView<FavoriteController> {
               scrollDirection: Axis.vertical,
               itemCount: state!.length,
               itemBuilder: (_, index) {
-                return InkWell(
-                  onTap: () {
-                    // controller.onClickItem(state[index].id.toString());
-                  },
-                  child: ItemFavorite(
-                    // height: size.height * 0.30,
+                return InkWell(onTap: () {
+                  // controller.onClickItem(state[index].id.toString());
+                }, child: GetBuilder<FavoriteController>(builder: (con) {
+                  return ItemFavorite(
                     item: state[index],
-                  ),
-                );
+                    buttonFavorite: Column(
+                      children: [
+                        Text(con.disableSubmit.value.toString()),
+                        FavouriteCar(
+                          onPressed: controller.favorite,
+                          disable: con.disableSubmit.value,
+                        ),
+                      ],
+                    ),
+                  );
+                }));
               },
             );
           }),

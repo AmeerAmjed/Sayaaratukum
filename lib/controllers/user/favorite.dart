@@ -14,6 +14,8 @@ class FavoriteController extends BaseController
 
   var favorites = <FavoriteModel>[].obs.toList(growable: true);
 
+  RxBool disableSubmit = false.obs;
+
   @override
   void onInit() {
     init();
@@ -50,6 +52,17 @@ class FavoriteController extends BaseController
       change(null, status: RxStatus.error());
       print("getFavorite ${response.statusCode} ${response.body} ");
     }
+  }
+
+  favorite() {
+    print("getFavorite getFavorite ");
+    disableSubmit.value = !disableSubmit.value;;
+    update();
+  }
+
+  loading(bool state) {
+    disableSubmit.value = state;
+    update();
   }
 
   loadingData() {

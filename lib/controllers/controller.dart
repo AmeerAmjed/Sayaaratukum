@@ -6,12 +6,6 @@ import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/widgets/custom_snackbar.dart';
 
 abstract class BaseController extends GetxController with ValidatorInput {
-  RxBool disableSubmit = false.obs;
-
-  loading(bool state) {
-    disableSubmit.value = state;
-    update();
-  }
 
   String message = 'message';
   String data = 'data';

@@ -212,4 +212,10 @@ class AddToolController extends BaseController {
     }
     return true;
   }
+
+  RxBool disableSubmit = false.obs;
+  loading(bool state) {
+    disableSubmit.value = state;
+    update();
+  }
 }
