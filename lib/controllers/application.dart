@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/models/user.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/local/storage.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
@@ -86,6 +87,7 @@ class Application extends BaseController with LocalStorage {
     user?.value = null;
     await removeData(Constants.tokenKey);
     await removeData(Constants.userKey);
+    Get.offAllNamed(RouteScreen.login);
     // await resetStateAuthController();
     // needToLogin
     //     ? Get.offAllNamed(RoutePageApp.login)

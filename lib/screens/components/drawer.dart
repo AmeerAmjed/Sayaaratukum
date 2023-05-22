@@ -6,6 +6,7 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/components/auth_option_drawer.dart';
 import 'package:sayaaratukum/screens/components/list_title_icon.dart';
 import 'package:sayaaratukum/screens/components/try_auth.dart';
+import 'package:sayaaratukum/widgets/CustomDialog.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class DrawerApp extends GetView<Application> {
@@ -49,7 +50,15 @@ class DrawerApp extends GetView<Application> {
             ListTitleIcon(
               title: L10n.logout.tr,
               icon: Iconsax.logout,
-              onTap: () {},
+              onTap: () {
+                showCustomDialog(
+                  L10n.logout.tr,
+                  isDanger: true,
+                  message: L10n.messageLogout.tr,
+                  labelButtonAction: L10n.logout.tr,
+                  onPressedAction: Application.instance.logout,
+                );
+              },
               color: Theme.of(context).errorColor,
             ),
         ],
