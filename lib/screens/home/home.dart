@@ -40,7 +40,9 @@ class HomeScreen extends GetView<HomeController> {
               const VerticalSpace8(),
               TitleWithViewAll(
                 title: L10n.brands.tr,
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed(RouteScreen.viewAllBrand);
+                },
               ),
               Brands(),
               const VerticalSpace12(),

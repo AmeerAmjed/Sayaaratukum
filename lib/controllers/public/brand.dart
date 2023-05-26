@@ -72,6 +72,10 @@ class BrandController extends BaseController
     update();
   }
 
+  bool stateLastItem(int index, int length) {
+    return index >= length && isLoadingMore.value;
+  }
+
   @override
   Future<void> onTopScroll() async {}
 }

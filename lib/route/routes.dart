@@ -13,6 +13,7 @@ import 'package:sayaaratukum/screens/auth/register/register.dart';
 import 'package:sayaaratukum/screens/auth/welcom/welcome.dart';
 import 'package:sayaaratukum/screens/main.dart';
 import 'package:sayaaratukum/screens/profile/profile.dart';
+import 'package:sayaaratukum/screens/view_all/brand/view_all_brand.dart';
 
 List<GetPage> routes() =>
     [
@@ -49,5 +50,9 @@ List<GetPage> routes() =>
         name: RouteScreen.addTool,
         page: () => const AddTool(),
         binding: AddToolBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.viewAllBrand,
+        page: () => const ViewAllBrand(),
       )
     ];
