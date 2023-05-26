@@ -72,7 +72,7 @@ class RegisterController extends AuthController with LocalStorage {
   getError(response) {
     try {
       var error = RegisterModel.error(response.body['errors']);
-      onError(L10n.failedCreateAccount.tr, error);
+      onError(error);
       print("error register $error");
     } catch (e) {
       print("error register $e");

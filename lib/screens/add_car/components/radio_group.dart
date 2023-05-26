@@ -62,7 +62,7 @@ class RadioGroup extends StatelessWidget {
               onChanged: onChanged,
             ),
           ),
-          const Spacer(flex: 2)
+          // const Spacer(flex: 2)
         ],
       ),
     );

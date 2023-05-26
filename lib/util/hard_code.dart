@@ -1,3 +1,5 @@
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
+
 class HardCode {
   static List<String> provinces = [
     'Baghdad',
@@ -97,16 +99,89 @@ class HardCode {
   ];
 
   static List<double> engineSizes = [
-    1.5, 2.0, 2.5, 3.5, 4.0,
-    1.5, 2.0, 2.4, 3.5,
-    1.0, 1.4, 2.0, 2.4, 3.3,
-    1.2, 1.6, 2.0, 3.5, 5.6,
-    1.0, 1.4, 2.0, 3.0, 4.0,
-    1.6, 2.0, 3.0, 4.0, 4.7,
-    1.5, 2.0, 3.0, 4.4,
-    1.0, 1.4, 1.8, 2.0, 3.6,
-    1.4, 1.5, 2.0, 2.5, 6.2,
-    1.0, 1.5, 2.0, 2.3, 3.5, 5.0,
+    1.5,
+    2.0,
+    2.5,
+    3.5,
+    4.0,
+    1.5,
+    2.0,
+    2.4,
+    3.5,
+    1.0,
+    1.4,
+    2.0,
+    2.4,
+    3.3,
+    1.2,
+    1.6,
+    2.0,
+    3.5,
+    5.6,
+    1.0,
+    1.4,
+    2.0,
+    3.0,
+    4.0,
+    1.6,
+    2.0,
+    3.0,
+    4.0,
+    4.7,
+    1.5,
+    2.0,
+    3.0,
+    4.4,
+    1.0,
+    1.4,
+    1.8,
+    2.0,
+    3.6,
+    1.4,
+    1.5,
+    2.0,
+    2.5,
+    6.2,
+    1.0,
+    1.5,
+    2.0,
+    2.3,
+    3.5,
+    5.0,
   ].toList().toSet().toList();
+
+  // static Map<String, String> provinces = {
+  //   'Baghdad': 'Baghdad',
+  //   'Basra': 'Basra',
+  //   'Maysan': 'Maysan',
+  //   'Dhi-Qar': 'Dhi Qar',
+  //   'Muthanna': 'Muthanna',
+  //   'Qadisiyah': 'Qadisiyah',
+  //   'Wasit': 'Wasit',
+  //   'Al-Qadisiyyah': 'Al-Qadisiyyah',
+  //   'Babylon': 'Babylon',
+  //   'Najaf': 'Najaf',
+  //   'Karbala': 'Karbala',
+  //   'Al-Anbar': 'Al-Anbar',
+  //   'Salahuddin': 'Salahuddin',
+  //   'Diyala': 'Diyala',
+  //   'Kirkuk': 'Kirkuk',
+  //   'Sulaymaniyah': 'Sulaymaniyah',
+  //   'Erbil': 'Erbil',
+  //   'Dohuk': 'Dohuk',
+  //   'Halabja': 'Halabja',
+  // };
+
+  static List<Map<String, String>> madeTo = [
+    {
+      "us": "USA".tr,
+    },
+    {
+      "ur": "Europe".tr,
+    },
+    {
+      "ar": "Gulf".tr,
+    }
+  ];
 
 }

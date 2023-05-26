@@ -57,6 +57,7 @@ class EnTranslations {
         L10n.model : 'Model',
         L10n.status : 'Status',
         L10n.color : 'Color',
+        L10n.madeTo : 'Made To',
 
         L10n.showMore : ' Show More',
         L10n.showLess : ' Show Less',
@@ -68,7 +69,7 @@ class EnTranslations {
         L10n.publish : 'Publish',
 
         L10n.typeCar : 'Type Car',
-        L10n.fullNameCar : 'Full name car',
+        L10n.numberRegisterCar : 'Number Register Car',
         L10n.propulsionSystem : 'Propulsion System',
         L10n.year : 'Year',
 
@@ -81,6 +82,7 @@ class EnTranslations {
         L10n.manual : 'Manual',
         L10n.shakeCheck : 'Shake Check',
         L10n.gearBox : 'Gear Box',
+        L10n.isDamage : 'Car Damage',
 
         L10n.governorate : 'Governorate',
         L10n.region : 'Region',
@@ -126,6 +128,14 @@ class EnTranslations {
         L10n.successAddFavorite : 'Success Add Favorite',
         L10n.successRemoveFavorite : 'Success Remove Favorite',
         L10n.failedAddFavorite : 'Failed Add Favorite',
+
+        L10n.check : 'Check',
+        L10n.option : 'Option',
+
+
+        "USA" : 'USA',
+        "Europe" : 'Europe',
+        "Gulf" : 'Gulf',
 
 
 

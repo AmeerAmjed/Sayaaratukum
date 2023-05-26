@@ -30,12 +30,7 @@ class InformationCarForm extends GetView<AddCarController> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        InputAuth(
-          controller: controller.name,
-          label: L10n.fullNameCar.tr,
-          keyboardType: TextInputType.name,
-        ),
-        const VerticalSpace4(),
+        const VerticalSpace8(),
         RowTwoWidget(
           leftWidget: DropdownList(
             margin: const EdgeInsets.only(
@@ -78,6 +73,24 @@ class InformationCarForm extends GetView<AddCarController> {
             );
           }),
         ),
+        const VerticalSpace4(),
+        DropdownList(
+          label: L10n.madeTo.tr,
+          onChanged: controller.onChangeMadeTo,
+          items: HardCode.madeTo.map((map) => map.values.first).toList(),
+        ),
+        const VerticalSpace8(),
+        DropdownList(
+          label: L10n.color.tr,
+          onChanged: controller.onChangeColorCar,
+          items: HardCode.carColors,
+        ),
+        const VerticalSpace8(),
+        InputAuth(
+          controller: controller.numberRegisterCar,
+          label: L10n.numberRegisterCar.tr,
+          keyboardType: TextInputType.text,
+        ),
         // RowTwoWidget(
         //   leftWidget: DropdownList(
         //     margin: const EdgeInsets.only(
@@ -101,7 +114,7 @@ class InformationCarForm extends GetView<AddCarController> {
         //     );
         //   }),
         // )
-        const VerticalSpace4(),
+        const VerticalSpace8(),
         InputAuth(
           readOnly: true,
           label: L10n.year.tr,
@@ -129,22 +142,29 @@ class InformationCarForm extends GetView<AddCarController> {
           keyboardType: TextInputType.number,
         ),
 
-        const VerticalSpace8(),
-        DropdownList(
-          label: L10n.color.tr,
-          onChanged: controller.onChangeBrand,
-          items: HardCode.carColors,
-        ),
         GetBuilder<AddCarController>(builder: (co) {
           return RadioGroup(
-            label: L10n.recolor.tr,
-            spacingTitle: 48,
+            label: L10n.gearBox.tr,
+            spacingTitle: 38,
+            titleOption1: L10n.automatic.tr,
+            valueOption1: controller.typeGearBox.first,
+            titleOption2: L10n.manual.tr,
+            valueOption2: controller.typeGearBox.last,
+            value: controller.gearBox.value,
+            onChanged: controller.onChangeGearBox,
+          );
+        }),
+
+        GetBuilder<AddCarController>(builder: (co) {
+          return RadioGroup(
+            label: L10n.isDamage.tr,
+            spacingTitle: 10,
             titleOption1: L10n.yes.tr,
             valueOption1: controller.yesNo.first,
             titleOption2: L10n.no.tr,
             valueOption2: controller.yesNo.last,
-            value: controller.reColor.value,
-            onChanged: controller.onChangeReColor,
+            value: controller.isDamage.value,
+            onChanged: controller.onChangeIsDamage,
           );
         }),
         GetBuilder<AddCarController>(builder: (co) {
@@ -161,14 +181,14 @@ class InformationCarForm extends GetView<AddCarController> {
         }),
         GetBuilder<AddCarController>(builder: (co) {
           return RadioGroup(
-            label: L10n.gearBox.tr,
-            spacingTitle: 38,
-            titleOption1: L10n.automatic.tr,
-            valueOption1: controller.typeGearBox.first,
-            titleOption2: L10n.manual.tr,
-            valueOption2: controller.typeGearBox.last,
-            value: controller.gearBox.value,
-            onChanged: controller.onChangeGearBox,
+            label: L10n.recolor.tr,
+            spacingTitle: 48,
+            titleOption1: L10n.yes.tr,
+            valueOption1: controller.yesNo.first,
+            titleOption2: L10n.no.tr,
+            valueOption2: controller.yesNo.last,
+            value: controller.reColor.value,
+            onChanged: controller.onChangeReColor,
           );
         }),
       ],

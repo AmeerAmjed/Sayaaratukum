@@ -8,6 +8,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/add_car.dart';
 import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/models/engine_power_type.dart';
@@ -16,6 +17,7 @@ import 'package:sayaaratukum/screens/add_car/components/location_car_form.dart';
 import 'package:sayaaratukum/services/remote/user/add_car.dart';
 import 'package:sayaaratukum/services/remote/user/engine_power_type.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/hard_code.dart';
 
 import '../../screens/add_car/components/image_price_form.dart';
 
@@ -36,7 +38,7 @@ class AddCarController extends BaseController {
   bool get isLastPage => onPageIndex.value == totalPageAddCar - 1;
   late PageController pageController;
 
-  late TextEditingController name;
+  late TextEditingController numberRegisterCar;
   late TextEditingController yearModel;
   late TextEditingController drivingMiles;
   late TextEditingController region;
@@ -44,7 +46,7 @@ class AddCarController extends BaseController {
   late TextEditingController price;
   late TextEditingController note;
   final GlobalKey<FormFieldState> keyManagerModelBrand =
-  GlobalKey<FormFieldState>();
+      GlobalKey<FormFieldState>();
 
   int idBrandSelected = 0;
   int idModelBrandSelected = 0;
@@ -52,6 +54,8 @@ class AddCarController extends BaseController {
   var reColor = "".obs;
   var shakeCheck = "".obs;
   var gearBox = "".obs;
+  var isDamage = "".obs;
+  var madeTo = "".obs;
   var color = "".obs;
   var engineCapacity = .0.obs;
   var imagesCar = <String>[].obs.toList(growable: true);
@@ -123,7 +127,7 @@ class AddCarController extends BaseController {
   }
 
   initInput() {
-    name = TextEditingController();
+    numberRegisterCar = TextEditingController();
     yearModel = TextEditingController();
     drivingMiles = TextEditingController();
     region = TextEditingController();
@@ -273,6 +277,15 @@ class AddCarController extends BaseController {
     update();
   }
 
+  onChangeIsDamage(Object? option) {
+    if (option == yesNo.first) {
+      isDamage.value = yesNo.first;
+    } else {
+      isDamage.value = yesNo.last;
+    }
+    update();
+  }
+
   onChangeShakeCheck(Object? option) {
     if (option == yesNo.first) {
       shakeCheck.value = yesNo.first;
@@ -311,5 +324,68 @@ class AddCarController extends BaseController {
     if (color != null) {
       this.color.value = color;
     }
+  }
+
+  onChangeMadeTo(String? madeTo) {
+    if (madeTo != null) {
+      for (var map in HardCode.madeTo) {
+        if (map.containsValue(madeTo)) {
+          String key = map.keys.first;
+          this.madeTo.value = key;
+          print("made to $key");
+        }
+      }
+    }
+  }
+
+  bool checkValidationForm1() {
+    if (idBrandSelected == 0) {
+      onError("${L10n.brand.tr} ${L10n.isRequired.tr}");
+
+      return false;
+    } else if (idModelBrandSelected == 0) {
+      onError("${L10n.model.tr} ${L10n.isRequired.tr}");
+
+      return false;
+    } else if (engineCapacity.value == 0) {
+      onError("${L10n.engineCapacity.tr} ${L10n.isRequired.tr}");
+
+      return false;
+    } else if (idEnginePower == 0) {
+      onError("${L10n.enginePower.tr} ${L10n.isRequired.tr}");
+
+      return false;
+    } else if (madeTo.value == "") {
+      onError("${L10n.madeTo.tr} ${L10n.isRequired.tr}");
+      return false;
+    } else if (color.value == "") {
+      onError("${L10n.color.tr} ${L10n.isRequired.tr}");
+      return false;
+    } else if (numberRegisterCar.text == "") {
+      onError("${L10n.numberRegisterCar.tr} ${L10n.isRequired.tr}");
+      return false;
+    } else if (yearModel.text == "") {
+      onError("${L10n.year.tr} ${L10n.isRequired.tr}");
+      return false;
+    } else if (drivingMiles.text == "") {
+      onError("${L10n.drivingMiles.tr} ${L10n.isRequired.tr}");
+      return false;
+    } else if (color.value == "") {
+      onError("${L10n.color.tr} ${L10n.isRequired.tr}");
+      return false;
+    } else if (isDamage.value == "") {
+      onError("${L10n.isDamage.tr} ${L10n.isRequired.tr}");
+      return false;
+    } else if (reColor.value == "") {
+      onError("${L10n.check.tr} ${L10n.recolor.tr} ${L10n.isRequired.tr}");
+      return false;
+    } else if (shakeCheck.value == "") {
+      onError("${L10n.option.tr} ${L10n.shakeCheck.tr} ${L10n.isRequired.tr}");
+      return false;
+    } else if (gearBox.value == "") {
+      onError("${L10n.option.tr} ${L10n.gearBox.tr} ${L10n.isRequired.tr}");
+      return false;
+    }
+    return true;
   }
 }

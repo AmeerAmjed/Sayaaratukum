@@ -19,7 +19,7 @@ class FavoriteController extends BaseController
 
   @override
   void onInit() {
-    init();
+    // init();
     super.onInit();
   }
 

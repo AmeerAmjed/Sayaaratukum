@@ -64,7 +64,7 @@ class AddToolController extends BaseController {
     } on Response catch (response) {
       loading(false);
 
-      onError(L10n.failedPublishTool.tr, response.body[message]);
+      onError(response.body[message]);
       print("response ${response.statusCode} ${response.body}");
     }
   }
@@ -175,38 +175,31 @@ class AddToolController extends BaseController {
 
   bool checkValidationForm() {
     if (name.text == "") {
-      onError(
-          L10n.failedPublishTool.tr, "${L10n.name.tr} ${L10n.isRequired.tr}");
+      onError("${L10n.name.tr} ${L10n.isRequired.tr}");
 
       return false;
     } else if (idBrandSelected == 0) {
-      onError(
-          L10n.failedPublishTool.tr, "${L10n.brand.tr} ${L10n.isRequired.tr}");
+      onError("${L10n.brand.tr} ${L10n.isRequired.tr}");
 
       return false;
     } else if (idModelBrandSelected == 0) {
-      onError(
-          L10n.failedPublishTool.tr, "${L10n.model.tr} ${L10n.isRequired.tr}");
+      onError("${L10n.model.tr} ${L10n.isRequired.tr}");
 
       return false;
     } else if (idCategorySelected == 0) {
-      onError(L10n.failedPublishTool.tr,
-          "${L10n.category.tr} ${L10n.isRequired.tr}");
+      onError("${L10n.category.tr} ${L10n.isRequired.tr}");
 
       return false;
     } else if (price.text == "") {
-      onError(
-          L10n.failedPublishTool.tr, "${L10n.price.tr} ${L10n.isRequired.tr}");
+      onError("${L10n.price.tr} ${L10n.isRequired.tr}");
 
       return false;
     } else if (imagesTool.value == "") {
-      onError(L10n.failedPublishTool.tr,
-          "${L10n.imagesTool.tr} ${L10n.isRequired.tr}");
+      onError("${L10n.imagesTool.tr} ${L10n.isRequired.tr}");
 
       return false;
     } else if (statusSelected.value == "") {
-      onError(L10n.failedPublishTool.tr,
-          "${L10n.statusTool.tr} ${L10n.isRequired.tr}");
+      onError("${L10n.statusTool.tr} ${L10n.isRequired.tr}");
 
       return false;
     }

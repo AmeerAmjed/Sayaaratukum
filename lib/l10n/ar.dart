@@ -17,5 +17,8 @@ class ArTranslations {
         L10n.socialMedia: 'التواصل الاجتماعي',
         L10n.logout: 'تسجيل خروج',
 
+        "USA" : 'امريكي',
+        "Europe" : 'اوربي',
+        "Gulf" : 'خليجي',
   };
 }

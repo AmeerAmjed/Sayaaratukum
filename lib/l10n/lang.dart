@@ -71,6 +71,7 @@ class L10n {
   static const model = 'model';
   static const status = 'status';
   static const color = 'Color';
+  static const madeTo = 'madeTo';
 
   static const showMore = 'showMore';
   static const showLess = 'showLess';
@@ -83,7 +84,7 @@ class L10n {
   static const publish = 'publish';
 
   static const typeCar = 'typeCar';
-  static const fullNameCar = 'fullNameCar';
+  static const numberRegisterCar = 'numberRegisterCar';
   static const propulsionSystem = 'propulsionSystem';
 
   static const year = 'year';
@@ -97,6 +98,7 @@ class L10n {
   static const manual = 'manual';
   static const shakeCheck = 'shakeCheck';
   static const gearBox = 'typeGearBox';
+  static const isDamage = 'isDamage';
 
   static const governorate = 'governorate';
   static const region = 'region';
@@ -141,6 +143,9 @@ class L10n {
   static const successAddFavorite = 'successAddFavorite';
   static const successRemoveFavorite = 'successRemoveFavorite';
   static const failedAddFavorite = 'failedAddFavorite';
+
+  static const check = 'check';
+  static const option = 'option';
 
 
 

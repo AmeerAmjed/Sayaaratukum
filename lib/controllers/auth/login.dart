@@ -49,7 +49,7 @@ class LoginController extends AuthController with LocalStorage {
       });
     } on Response catch (response) {
       loading(false);
-      onError("error", response.body[message]);
+      onError(response.body[message]);
     }
   }
 

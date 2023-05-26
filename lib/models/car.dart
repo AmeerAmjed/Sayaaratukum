@@ -8,7 +8,7 @@ class CarModel extends BaseModel {
   final String name;
   final int price;
   final String color;
-  final String? state;
+  final int? state;
   final String? notes;
   final String? registerNumber;
   final int isPublished;
