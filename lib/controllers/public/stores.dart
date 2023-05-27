@@ -12,19 +12,22 @@ class StoresController extends BaseController
 
   var stores = <StoreModel>[].obs.toList(growable: true);
   RxBool isLoadingMore = false.obs;
-  RxString storeType = "cars".obs;
+  RxInt storeTypeId = 1.obs;
 
   @override
   void onInit() {
     super.onInit();
     loadingData();
-    getAllStore();
+    getAllStore(storeTypeId.value);
   }
 
-  Future<void> getAllStore() async {
+  Future<void> getAllStore(int typeId) async {
+    stores.clear();
+    loadingData();
     try {
       await StoreServices.instance
-          .getStoresByType(page: page, limit: limitRepositories)
+          .getStoresByType(storeTypeId.value,
+              page: page, limit: limitRepositories)
           .then((response) {
         if (response.isOk) {
           List<StoreModel> result = StoreModel.listFromJson(
@@ -57,7 +60,7 @@ class StoresController extends BaseController
       page += 1;
       loadingMore(true);
       change(stores, status: RxStatus.loadingMore());
-      await getAllStore();
+      await getAllStore(storeTypeId.value);
       Get.back();
     }
   }
@@ -73,7 +76,22 @@ class StoresController extends BaseController
 
 
   filterStores(StoreType type) {
-    storeType.value = type.name;
+    switch (type) {
+      case StoreType.cars:
+        {
+          storeTypeId.value = 1;
+          getAllStore(storeTypeId.value);
+          break;
+        }
+
+      case StoreType.tools:
+        {
+          storeTypeId.value = 2;
+          getAllStore(storeTypeId.value);
+          break;
+        }
+    }
+
     update();
   }
 
@@ -86,6 +104,11 @@ class StoresController extends BaseController
 
   Future<void> onRefresh() async {
     stores.clear();
-    getAllStore();
+    getAllStore(storeTypeId.value);
+  }
+}
+extension IntExtensions on int {
+  StoreType toTypeStore() {
+    return this == 1 ? StoreType.cars : StoreType.tools;
   }
 }

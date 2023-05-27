@@ -5,7 +5,6 @@ import 'package:sayaaratukum/controllers/public/stores.dart';
 import 'package:sayaaratukum/screens/stores/components/filtter_store.dart';
 import 'package:sayaaratukum/screens/stores/components/item_stores.dart';
 import 'package:sayaaratukum/util/constant.dart';
-import 'package:sayaaratukum/util/exta/string.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
 import '../../util/store_type.dart';
@@ -28,7 +27,7 @@ class StoresScreen extends GetView<StoresController> {
                   delegate: SliverChildListDelegate([
                     GetBuilder<StoresController>(builder: (controller) {
                       return FilterStores(
-                        typeActive: controller.storeType.value.toStoreType(),
+                        typeActive: controller.storeTypeId.value.toTypeStore(),
                         onClickShowrooms: () {
                           controller.filterStores(StoreType.cars);
                         },

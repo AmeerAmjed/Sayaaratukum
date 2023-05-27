@@ -6,13 +6,15 @@ import 'package:sayaaratukum/services/remote/service.dart';
 class StoreServices extends BaseService {
   static StoreServices get instance => Get.find();
 
-  Future<Response> getStoresByType({
+  Future<Response> getStoresByType(
+    int typeId, {
     required int page,
     required int limit,
   }) async {
     try {
-      String urlStores = pagination(ApiEndpoint.stores, page: page, limit: limit);
-      Response response = await get(urlStores);
+      String urlStores =
+          pagination(ApiEndpoint.stores, page: page, limit: limit);
+      Response response = await get("$urlStores&type=$typeId");
       if (response.status.hasError) {
         return Future.error(response);
       } else {

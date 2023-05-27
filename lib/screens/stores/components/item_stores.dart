@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/models/store.dart';
 import 'package:sayaaratukum/screens/stores/components/row_item_stores.dart';
+import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
 
 class ItemStores extends StatelessWidget {
@@ -18,7 +19,6 @@ class ItemStores extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      // height: 85,
       child: InkWell(
         onTap: onTap,
         child: Row(
@@ -30,9 +30,19 @@ class ItemStores extends StatelessWidget {
               child: Card(
                 color: Get.theme.scaffoldBackgroundColor,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: ImageLoading(
-                  imageUrl: item.avatar,
-                ),
+                child: item.avatar == Constants.websiteLink
+                    ? Center(
+                        child: Text(
+                          item.name.substring(0, 1),
+                          style: Get.textTheme.titleLarge?.copyWith(
+                            color: Get.theme.primaryColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      )
+                    : ImageLoading(
+                        imageUrl: item.avatar,
+                      ),
               ),
             ),
             Expanded(
