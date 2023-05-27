@@ -56,6 +56,9 @@ class Constants {
   static const String langCodeKey = 'langCode';
   static const String notificationKey = 'notification';
 
+  static const String brandIdKey = 'brandIdKey';
+  static const String nameBrandKey = 'nameBrandKey';
+
   static const String bodyData = 'data';
   static const String bodyMessage = 'message';
 

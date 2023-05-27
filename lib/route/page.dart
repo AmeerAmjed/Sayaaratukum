@@ -25,5 +25,6 @@ class RouteScreen {
   static const String addTool = '/addTool';
 
   static const String viewAllBrand = '/viewAllBrand';
+  static const String searchCar = '/searchCar';
 
 }

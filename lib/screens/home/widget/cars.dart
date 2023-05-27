@@ -89,6 +89,7 @@ class _ItemLoadingCar extends StatelessWidget {
 class FavouriteCar extends StatelessWidget {
   const FavouriteCar({
     Key? key,
+    this.colorBackground,
     required this.onPressed,
     this.disable = false,
     this.disableWithShowLoading = false,
@@ -96,6 +97,7 @@ class FavouriteCar extends StatelessWidget {
 
   final VoidCallback? onPressed;
   final bool disable;
+  final Color? colorBackground;
   final bool disableWithShowLoading;
 
   @override
@@ -107,7 +109,7 @@ class FavouriteCar extends StatelessWidget {
         child: Box(
           size: 40,
           child: Buttons(
-            background: Colors.white,
+            background: colorBackground ?? Colors.white,
             colorOnButton: Get.theme.primaryColor,
             width: 30,
             height: 30,

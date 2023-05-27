@@ -3,10 +3,12 @@ import 'package:sayaaratukum/controllers/public/ads.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
 import 'package:sayaaratukum/controllers/public/cars.dart';
 import 'package:sayaaratukum/controllers/public/home.dart';
+import 'package:sayaaratukum/controllers/public/search_car.dart';
 import 'package:sayaaratukum/controllers/user/favorite.dart';
 import 'package:sayaaratukum/services/remote/public/ads.dart';
 import 'package:sayaaratukum/services/remote/public/brand.dart';
 import 'package:sayaaratukum/services/remote/public/cars.dart';
+import 'package:sayaaratukum/services/remote/public/search.dart';
 import 'package:sayaaratukum/services/remote/user/favorite.dart';
 
 class HomeBinding extends Bindings {
@@ -26,5 +28,9 @@ class HomeBinding extends Bindings {
 
     Get.lazyPut<FavoriteService>(() => FavoriteService());
     Get.put<FavoriteController>(FavoriteController(), permanent: true);
+    // Get.put<SearchCarController>(SearchCarController(), permanent: true);
+
+    // Get.lazyPut<SearchCarController>(() => SearchCarController());
+    // Get.lazyPut<SearchServices>(() => SearchServices());
   }
 }

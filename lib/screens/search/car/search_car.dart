@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:sayaaratukum/controllers/public/brand.dart';
+import 'package:sayaaratukum/controllers/public/search_car.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/screens/search/car/components/item_search_car.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
 import 'package:sayaaratukum/widgets/empty.dart';
-import 'package:sayaaratukum/widgets/image_loading.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
+import 'package:sayaaratukum/widgets/space.dart';
 
-class ViewAllBrand extends GetView<BrandController> {
-  const ViewAllBrand({Key? key}) : super(key: key);
+class SearchCar extends GetView<SearchCarController> {
+  const SearchCar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBars(
-        title: L10n.brands.tr,
+        title: controller.nameBrand,
       ),
       body: controller.obx(
           onLoading: const Loading(),
@@ -24,39 +25,31 @@ class ViewAllBrand extends GetView<BrandController> {
             title: L10n.empty.tr,
             icon: Iconsax.clipboard_close,
           ), (state) {
-        return GridView.builder(
+        return ListView.separated(
           controller: controller.scroll,
           scrollDirection: Axis.vertical,
           padding: const EdgeInsets.symmetric(
             horizontal: Constants.spacing16,
+            vertical: Constants.spacing8,
           ),
           shrinkWrap: true,
           itemCount: controller.isLoadingMore.value
               ? state!.length + 1
               : state!.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
+          separatorBuilder: (context, index) => const Space(
+            width: Constants.spacing,
           ),
           itemBuilder: (context, index) {
-            var isLastItem = controller.stateLastItem(index, state.length);
-            if (isLastItem) {
-              return const Center(
-                child: Loading(),
-              );
+            if (index >= state.length && controller.isLoadingMore.value) {
+              return const Loading();
             }
-            return InkWell(
-              onTap: () {
-                controller.onBrandClicked(
-                  state[index].id.toString(),
-                  state[index].title,
-                );
+
+            return ItemSearchCar(
+              car: state[index],
+              onPressedItem: () {
+                controller.onClickItemCar(state[index]);
               },
-              child: Card(
-                child: ImageLoading(
-                  fitImage: BoxFit.fill,
-                  imageUrl: state[index].imageUrl,
-                ),
-              ),
+              onPressedFavouriteCar: () {},
             );
           },
         );

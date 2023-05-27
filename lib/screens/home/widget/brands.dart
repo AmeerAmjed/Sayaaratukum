@@ -37,7 +37,10 @@ class Brands extends StatelessWidget {
               }
               return InkWell(
                 onTap: () {
-// TopAdsController.to.onClickItem(state[index].id);
+                  controller.onBrandClicked(
+                    state[index].id.toString(),
+                    state[index].title,
+                  );
                 },
                 child: BrandItem(
                   item: state[index],

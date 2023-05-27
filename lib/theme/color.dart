@@ -31,6 +31,7 @@ class ColorSystem {
   static const Color whatsApp = Color(0xff2ABD6E);
   static const Color snackBar = Color(0xff242A32);
   static const Color actionButtonSnackBar = Color(0xff0296E5);
+  static const Color arrow = Color(0xff666666);
 
 
 

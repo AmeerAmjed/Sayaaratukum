@@ -13,10 +13,12 @@ import 'package:sayaaratukum/screens/auth/register/register.dart';
 import 'package:sayaaratukum/screens/auth/welcom/welcome.dart';
 import 'package:sayaaratukum/screens/main.dart';
 import 'package:sayaaratukum/screens/profile/profile.dart';
+import 'package:sayaaratukum/screens/search/car/search_car.dart';
 import 'package:sayaaratukum/screens/view_all/brand/view_all_brand.dart';
 
-List<GetPage> routes() =>
-    [
+import '../binding/public/search_car_by_brand.dart';
+
+List<GetPage> routes() => [
       GetPage(
         name: RouteScreen.welcome,
         page: () => const WelcomeScreen(),
@@ -54,5 +56,10 @@ List<GetPage> routes() =>
       GetPage(
         name: RouteScreen.viewAllBrand,
         page: () => const ViewAllBrand(),
+      ),
+      GetPage(
+        name: RouteScreen.searchCar,
+        page: () => const SearchCar(),
+        binding: SearchCarByBrandIdBinding(),
       )
     ];

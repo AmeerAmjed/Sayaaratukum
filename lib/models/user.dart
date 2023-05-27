@@ -10,8 +10,8 @@ class UserModel extends BaseModel {
     required this.fullName,
     required this.firstName,
     required this.lastName,
-    required this.isPhoneNumberVerified,
-    required this.isEmailVerified,
+    // required this.isPhoneNumberVerified,
+    // required this.isEmailVerified,
     // required this.isActive,
     required this.avatar,
     required this.role,
@@ -22,9 +22,9 @@ class UserModel extends BaseModel {
   final String firstName;
   final String? lastName;
   final String? email;
-  final bool isPhoneNumberVerified;
+  // final bool isPhoneNumberVerified;
   final String? phoneNumber;
-  final bool isEmailVerified;
+  // final bool isEmailVerified;
 
   // final bool isActive;
   final String avatar;
@@ -38,9 +38,9 @@ class UserModel extends BaseModel {
       firstName: data['first_name'],
       lastName: data['last_name'],
       email: data['email'],
-      isEmailVerified: data['is_email_verified'],
+      // isEmailVerified: data['is_email_verified'],
       phoneNumber: data['phone_number'],
-      isPhoneNumberVerified: data['is_phone_number_verified'],
+      // isPhoneNumberVerified: data['is_phone_number_verified'],
       avatar: data['avatar'],
       // isActive: isActiveUser(data['is_actived']),
       role: data['role'] != null ? RoleModel.fromJson(data['role']) : null,
@@ -55,9 +55,9 @@ class UserModel extends BaseModel {
       firstName: data['firstName'],
       lastName: data['lastName'],
       email: data['email'],
-      isEmailVerified: data['isEmailVerified'],
+      // isEmailVerified: data['isEmailVerified'],
       phoneNumber: data['phoneNumber'],
-      isPhoneNumberVerified: data['isPhoneNumberVerified'],
+      // isPhoneNumberVerified: data['isPhoneNumberVerified'],
       avatar: data['avatar'],
       // isActive: isActiveUser(data['isActive']),
       role: RoleModel.local(data['role']),
@@ -72,9 +72,9 @@ class UserModel extends BaseModel {
       'firstName': firstName,
       'lastName': lastName,
       'email': email,
-      'isEmailVerified': isEmailVerified,
+      // 'isEmailVerified': isEmailVerified,
       'phoneNumber': phoneNumber,
-      'isPhoneNumberVerified': isPhoneNumberVerified,
+      // 'isPhoneNumberVerified': isPhoneNumberVerified,
       'avatar': avatar,
       // 'isActive': isActiveUser(isActive),
       'role': role?.toJson()

@@ -5,6 +5,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
 import 'package:sayaaratukum/models/brand.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/remote/public/brand.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
@@ -50,6 +51,16 @@ class BrandController extends BaseController
       change(null, status: RxStatus.error());
       print("getAllBrand ${response.statusCode}");
     }
+  }
+
+  onBrandClicked(String id, String name) {
+    Get.toNamed(
+      RouteScreen.searchCar,
+      parameters: {
+        Constants.brandIdKey: id,
+        Constants.nameBrandKey: name,
+      },
+    );
   }
 
   @override
