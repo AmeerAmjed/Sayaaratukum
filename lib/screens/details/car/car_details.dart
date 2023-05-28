@@ -137,11 +137,11 @@ class CarDetails extends GetView<CarDetailsController> {
         ],
       ),
       bottomNavigationBar: BottomInfoStore(
-        nameStore: car.name,
+        nameStore: car.owner.name,
         address: "${car.gov}, ${car.city} ${car.closerPoint ?? ""} ",
-        whatsappNumberPhone: car.user.phoneNumber.toString(),
-        numberPhone: car.user.phoneNumber.toString(),
-        imageUrl: car.user.avatar,
+        whatsappNumberPhone: car.owner.phoneNumber.toString(),
+        numberPhone: car.owner.phoneNumber.toString(),
+        imageUrl: car.owner.avatar,
       ),
     );
   }

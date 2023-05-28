@@ -1,5 +1,6 @@
+import 'package:sayaaratukum/models/owner_car.dart';
 import 'package:sayaaratukum/models/store_type.dart';
-import 'package:sayaaratukum/models/user.dart';
+import 'package:sayaaratukum/util/constant.dart';
 
 import 'model.dart';
 
@@ -17,8 +18,8 @@ class CarModel extends BaseModel {
   final SubModel brand;
   final SubModel modelBrand;
   final SubModel enginePowerType;
-  final String userType;
-  final UserModel user;
+  final String ownerType;
+  final OwnerCarModel owner;
   final String city;
   final String gov;
   final String? closerPoint;
@@ -41,8 +42,8 @@ class CarModel extends BaseModel {
     required this.brand,
     required this.modelBrand,
     required this.enginePowerType,
-    required this.userType,
-    required this.user,
+    required this.ownerType,
+    required this.owner,
     required this.city,
     required this.gov,
     required this.gearbox,
@@ -51,6 +52,10 @@ class CarModel extends BaseModel {
   });
 
   factory CarModel.fromJson(Map<String, dynamic> json) {
+    bool isUserOwner(String type) {
+      return type == OwnerType.user.name;
+    }
+
     return CarModel(
       id: json['id'],
       name: json['name'],
@@ -62,7 +67,7 @@ class CarModel extends BaseModel {
       yearModel: json['year_model'],
       mileage: json['mileage'],
       gearbox: json['gearbox'],
-      userType: json['carable_type'],
+      ownerType: json['carable_type'],
       gov: json['gov'],
       city: json['city'],
       closerPoint: json['location'],
@@ -71,19 +76,19 @@ class CarModel extends BaseModel {
       modelBrand: SubModel.fromJson(json['model']),
       enginePowerType: SubModel.fromJson(json['power_type']),
       images: listImagesFromJson(json['images']),
-      user: UserModel.fromJson(json['carable']),
+      owner: OwnerCarModel.fromJson(json),
     );
   }
 
   static List<CarModel> listFromJson(list) => List<CarModel>.from(
-        list.map(
+    list.map(
           (item) => CarModel.fromJson(item),
-        ),
-      ).toList();
+    ),
+  ).toList();
 
   static List<String> listImagesFromJson(list) => List<String>.from(
-        list.map(
+    list.map(
           (item) => item['path'],
-        ),
-      ).cast<String>().toList();
+    ),
+  ).cast<String>().toList();
 }

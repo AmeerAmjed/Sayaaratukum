@@ -4,7 +4,9 @@ import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/stores/components/row_item_stores.dart';
 import 'package:sayaaratukum/theme/color.dart';
+import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';
+import 'package:sayaaratukum/widgets/default_image.dart';
 import 'package:sayaaratukum/widgets/horizontal_space.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
 
@@ -47,13 +49,16 @@ class BottomInfoStore extends StatelessWidget {
                 height: 38.0,
                 width: 38.0,
                 clipBehavior: Clip.antiAliasWithSaveLayer,
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Get.theme.cardColor,
                 ),
-                child: ImageLoading(
-                  imageUrl: imageUrl,
-                ),
+                child: imageUrl == Constants.websiteLink
+                    ? DefaultImage(name: nameStore, sizeAlphabet: 20)
+                    : ImageLoading(
+                        imageUrl: imageUrl,
+                      ),
               ),
               const HorizontalSpace8(),
               Column(
