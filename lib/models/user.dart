@@ -1,6 +1,6 @@
 import 'package:sayaaratukum/models/model.dart';
 import 'package:sayaaratukum/models/role.dart';
-
+import 'package:sayaaratukum/util/constant.dart';
 
 class UserModel extends BaseModel {
   UserModel({
@@ -41,7 +41,7 @@ class UserModel extends BaseModel {
       // isEmailVerified: data['is_email_verified'],
       phoneNumber: data['phone_number'],
       // isPhoneNumberVerified: data['is_phone_number_verified'],
-      avatar: data['avatar'],
+      avatar: data['avatar'] ?? Constants.websiteLink,
       // isActive: isActiveUser(data['is_actived']),
       role: data['role'] != null ? RoleModel.fromJson(data['role']) : null,
     );
