@@ -1,11 +1,12 @@
 import 'package:sayaaratukum/models/store_type.dart';
 import 'package:sayaaratukum/models/user.dart';
+import 'package:sayaaratukum/util/constant.dart';
 
 import 'model.dart';
 
 class StoreModel extends BaseModel {
   StoreModel({
-    this.cover,
+    required this.cover,
     this.description,
     required this.id,
     required this.name,
@@ -20,7 +21,7 @@ class StoreModel extends BaseModel {
   final int id;
   final String name;
   final String avatar;
-  final String? cover;
+  final String cover;
   final String? description;
   final String address;
   final String? expiresAt;
@@ -32,8 +33,8 @@ class StoreModel extends BaseModel {
     return StoreModel(
       id: json['id'],
       name: json['name'],
-      avatar: json['image'],
-      cover: json['img_cover'],
+      avatar: json['image'] ?? Constants.websiteLink,
+      cover: json['img_cover'] ?? Constants.websiteLink,
       address: json['address'],
       expiresAt: json['expires_at'],
       description: json['description'],
