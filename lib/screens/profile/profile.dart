@@ -23,6 +23,7 @@ class Profile extends StatelessWidget {
         body: ListView(
           children: [
             const AvatarWithCoverUser(
+              name: "Ameer",
               avatar: "https://avatars.githubusercontent.com/u/45900975?v=4",
               cover: "https://avatars.githubusercontent.com/u/45900975?v=4",
             ),

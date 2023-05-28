@@ -65,7 +65,9 @@ class StoresScreen extends GetView<StoresController> {
                   }
                   return ItemStores(
                     item: state[index],
-                    onTap: () {},
+                    onTap: () {
+                      controller.onClickStoreCar(state[index]);
+                    },
                   );
                 },
               );

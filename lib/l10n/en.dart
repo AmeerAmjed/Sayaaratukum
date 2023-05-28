@@ -132,6 +132,9 @@ class EnTranslations {
         L10n.check : 'Check',
         L10n.option : 'Option',
 
+        L10n.subscribe : 'Subscribe',
+        L10n.cars : 'Cars',
+
 
         "USA" : 'USA',
         "Europe" : 'Europe',

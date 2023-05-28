@@ -48,8 +48,6 @@ class Constants {
 
   static const String iconApp = 'assets/images/image.png';
 
-
-
   static const String userKey = 'user';
   static const String tokenKey = 'token';
   static const String skipAuthKey = 'skipAuth';
@@ -58,17 +56,18 @@ class Constants {
 
   static const String brandIdKey = 'brandIdKey';
   static const String nameBrandKey = 'nameBrandKey';
+  static const String idStoreKey = 'idStoreKey';
 
   static const String bodyData = 'data';
   static const String bodyMessage = 'message';
 
-
-
   static const String loadingImage = 'assets/images/loading.gif';
   static const String looPLoadingImage = 'assets/images/loop_loading.gif';
-  static const String allImage = "https://api.mooappx.com/storage/h7sNnp2119BSZe8URUe6sFlB92yNewoiqigJSfZL.png";
-
+  static const String allImage =
+      "https://api.mooappx.com/storage/h7sNnp2119BSZe8URUe6sFlB92yNewoiqigJSfZL.png";
 
   static  RegExp emailRegExp =  RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
 
 }
+
+enum OwnerType { user, store }

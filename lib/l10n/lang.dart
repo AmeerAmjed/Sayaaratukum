@@ -147,6 +147,9 @@ class L10n {
   static const check = 'check';
   static const option = 'option';
 
+  static const subscribe = 'subscribe';
+  static const cars = 'cars';
+
 
 
 }

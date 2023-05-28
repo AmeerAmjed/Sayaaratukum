@@ -23,4 +23,23 @@ class CarsServices extends BaseService {
       return Future.error(e);
     }
   }
+
+  Future<Response> getCarsByStore(
+    String idStore, {
+    required int page,
+    required int limit,
+  }) async {
+    try {
+      String url = pagination(ApiEndpoint.cars, page: page, limit: limit);
+      Response response = await get("$url&type=store&creator=$idStore");
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error CarsServices searchCarByBrandId $e");
+      return Future.error(e);
+    }
+  }
 }

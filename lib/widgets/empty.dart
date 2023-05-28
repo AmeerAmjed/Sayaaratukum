@@ -7,6 +7,7 @@ class Empty extends StatelessWidget {
     Key? key,
     required this.title,
     this.description,
+    this.height,
     required this.icon,
     this.showBackButton = false,
   }) : super(key: key);
@@ -15,6 +16,7 @@ class Empty extends StatelessWidget {
   final String title;
   final String? description;
   final bool showBackButton;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -29,32 +31,36 @@ class Empty extends StatelessWidget {
   }
 
   Widget screen() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Spacer(flex: 1),
-        Icon(
-          icon,
-          size: 50,
-        ),
-        const VerticalSpace24(),
-        Center(
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
+    return Container(
+      color: Colors.red,
+      height: height,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Spacer(flex: 1),
+          Icon(
+            icon,
+            size: 50,
           ),
-        ),
-        const VerticalSpace8(),
-        if (description != null)
+          const VerticalSpace24(),
           Center(
             child: Text(
-              description!,
-              // style: ThemeApp.primaryTextStyle,
+              title,
+              textAlign: TextAlign.center,
             ),
           ),
-        const Spacer(flex: 2)
-      ],
+          const VerticalSpace8(),
+          if (description != null)
+            Center(
+              child: Text(
+                description!,
+                // style: ThemeApp.primaryTextStyle,
+              ),
+            ),
+          const Spacer(flex: 2)
+        ],
+      ),
     );
   }
 }

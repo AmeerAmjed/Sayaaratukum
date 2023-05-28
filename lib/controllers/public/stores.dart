@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:sayaaratukum/binding/public/store_car_details.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
 import 'package:sayaaratukum/models/store.dart';
+import 'package:sayaaratukum/screens/details/store/store_details.dart';
 import 'package:sayaaratukum/services/remote/public/store.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/store_type.dart';
@@ -34,7 +36,9 @@ class StoresController extends BaseController
             response.body[Constants.bodyData],
           );
 
-          final bool emptyRepositories = response.body?.isEmpty ?? true;
+          var responseData = response.body[data];
+          final bool emptyRepositories =
+          (responseData == null || responseData.isEmpty);
           if (!getFirstData && emptyRepositories) {
             change(null, status: RxStatus.empty());
           } else if (getFirstData && emptyRepositories) {
@@ -51,6 +55,20 @@ class StoresController extends BaseController
     } on Response catch (response) {
       change(null, status: RxStatus.error());
       print("getAllBrand ${response.statusCode}");
+    }
+  }
+
+  onClickStoreCar(StoreModel storeCars) {
+    if (storeTypeId.value.toTypeStore() == StoreType.cars) {
+      Get.to(
+        () => StoreCarDetails(
+          storeCars: storeCars,
+        ),
+        arguments: {
+          Constants.idStoreKey: storeCars.id.toString(),
+        },
+        binding: StoreCarDetailsBinding(),
+      );
     }
   }
 
