@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
 
 class AvatarWithCoverUser extends StatelessWidget {
   const AvatarWithCoverUser({
     Key? key,
+    required this.name,
     required this.avatar,
     required this.cover,
   }) : super(key: key);
 
-  final String avatar, cover;
+  final String avatar, cover, name;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +26,19 @@ class AvatarWithCoverUser extends StatelessWidget {
               Container(
                 height: 150.0,
                 color: Get.theme.cardColor,
-                child: ImageLoading(
-                  imageUrl: cover,
-                ),
+                child: cover == Constants.websiteLink
+                    ? Center(
+                        child: Text(
+                          name.substring(0, 1),
+                          style: Get.textTheme.titleLarge?.copyWith(
+                            color: Get.theme.primaryColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      )
+                    : ImageLoading(
+                        imageUrl: cover,
+                      ),
               ),
             ],
           ),
@@ -54,9 +66,19 @@ class AvatarWithCoverUser extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: Get.theme.cardColor,
                 ),
-                child: ImageLoading(
-                  imageUrl: avatar,
-                ),
+                child: cover == Constants.websiteLink
+                    ? Center(
+                        child: Text(
+                          name.substring(0, 1),
+                          style: Get.textTheme.titleLarge?.copyWith(
+                            color: Get.theme.primaryColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      )
+                    : ImageLoading(
+                        imageUrl: avatar,
+                      ),
               ),
             ),
           )
