@@ -11,9 +11,9 @@ import 'package:sayaaratukum/services/remote/public/search.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/error_handler.dart';
 
-class SearchCarController extends BaseController
+class SearchCarByBrandController extends BaseController
     with StateMixin<List<CarModel>>, PaginationController, ScrollMixin {
-  static SearchCarController get instance => Get.find();
+  static SearchCarByBrandController get instance => Get.find();
 
   var cars = <CarModel>[].obs.toList(growable: true);
   RxBool isLoadingMore = false.obs;
@@ -22,7 +22,6 @@ class SearchCarController extends BaseController
 
   @override
   void onInit() {
-    print("id asdsadasdasd");
     super.onInit();
     init();
   }
@@ -30,7 +29,6 @@ class SearchCarController extends BaseController
   init() {
     String? id = Get.parameters[Constants.brandIdKey];
     nameBrand = Get.parameters[Constants.nameBrandKey];
-    print("id $id");
     if (id != null) {
       searchCarByBrandId(id);
     } else {}

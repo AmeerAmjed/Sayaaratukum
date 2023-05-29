@@ -55,7 +55,7 @@ class BrandController extends BaseController
 
   onBrandClicked(String id, String name) {
     Get.toNamed(
-      RouteScreen.searchCar,
+      RouteScreen.searchCarByBrand,
       parameters: {
         Constants.brandIdKey: id,
         Constants.nameBrandKey: name,

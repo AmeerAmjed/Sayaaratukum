@@ -15,7 +15,7 @@ import 'package:sayaaratukum/screens/auth/welcom/welcome.dart';
 import 'package:sayaaratukum/screens/main.dart';
 import 'package:sayaaratukum/screens/my_%20subscribe_store/my_subscribe_store.dart';
 import 'package:sayaaratukum/screens/profile/profile.dart';
-import 'package:sayaaratukum/screens/search/car/search_car.dart';
+import 'package:sayaaratukum/screens/search/car_by_brand/search_car_by_brand.dart';
 import 'package:sayaaratukum/screens/view_all/brand/view_all_brand.dart';
 
 import '../binding/public/search_car_by_brand.dart';
@@ -60,8 +60,8 @@ List<GetPage> routes() => [
         page: () => const ViewAllBrand(),
       ),
       GetPage(
-        name: RouteScreen.searchCar,
-        page: () => const SearchCar(),
+        name: RouteScreen.searchCarByBrand,
+        page: () => const SearchCarByBrand(),
         binding: SearchCarByBrandIdBinding(),
       ),
       GetPage(

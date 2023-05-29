@@ -3,15 +3,15 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/public/search_car.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/screens/search/car/components/item_search_car.dart';
+import 'package:sayaaratukum/screens/search/car_by_brand/components/item_search_car.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
 import 'package:sayaaratukum/widgets/empty.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
-class SearchCar extends GetView<SearchCarController> {
-  const SearchCar({Key? key}) : super(key: key);
+class SearchCarByBrand extends GetView<SearchCarByBrandController> {
+  const SearchCarByBrand({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

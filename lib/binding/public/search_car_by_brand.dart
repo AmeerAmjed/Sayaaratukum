@@ -6,6 +6,6 @@ class SearchCarByBrandIdBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<SearchServices>(() => SearchServices());
-    Get.lazyPut<SearchCarController>(() => SearchCarController());
+    Get.lazyPut<SearchCarByBrandController>(() => SearchCarByBrandController());
   }
 }
