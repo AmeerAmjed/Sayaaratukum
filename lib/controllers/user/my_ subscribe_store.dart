@@ -4,13 +4,13 @@ import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
 import 'package:sayaaratukum/models/store.dart';
 import 'package:sayaaratukum/screens/details/store/store_details.dart';
-import 'package:sayaaratukum/services/remote/public/store.dart';
+import 'package:sayaaratukum/services/remote/user/my_%20subscribe_store.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/store_type.dart';
 
-class StoresController extends BaseController
+class MySubscribeStoreController extends BaseController
     with StateMixin<List<StoreModel>>, PaginationController, ScrollMixin {
-  static StoresController get instance => Get.find();
+  static MySubscribeStoreController get instance => Get.find();
 
   var stores = <StoreModel>[].obs.toList(growable: true);
   RxBool isLoadingMore = false.obs;
@@ -27,18 +27,21 @@ class StoresController extends BaseController
     stores.clear();
     loadingData();
     try {
-      await StoreServices.instance
-          .getStoresByType(storeTypeId.value,
-              page: page, limit: limitRepositories)
+      await MySubscribeStoreServices.instance
+          .getMySubscribe(
+        storeTypeId.value,
+        page: page,
+        limit: limitRepositories,
+      )
           .then((response) {
         if (response.isOk) {
           List<StoreModel> result = StoreModel.listFromJson(
-            response.body[Constants.bodyData],
+            response.body[data],
           );
 
           var responseData = response.body[data];
           final bool emptyRepositories =
-          (responseData == null || responseData.isEmpty);
+              (responseData == null || responseData.isEmpty);
           if (!getFirstData && emptyRepositories) {
             change(null, status: RxStatus.empty());
           } else if (getFirstData && emptyRepositories) {
@@ -54,7 +57,7 @@ class StoresController extends BaseController
       });
     } on Response catch (response) {
       change(null, status: RxStatus.error());
-      print("getAllBrand ${response.statusCode}");
+      print("getAllStore ${response.statusCode}");
     }
   }
 
@@ -91,7 +94,6 @@ class StoresController extends BaseController
     isLoadingMore.value = state;
     update();
   }
-
 
   filterStores(StoreType type) {
     switch (type) {

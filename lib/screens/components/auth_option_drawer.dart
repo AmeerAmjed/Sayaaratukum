@@ -39,6 +39,11 @@ class AuthOptionDrawer extends StatelessWidget {
           icon: Iconsax.heart,
           onTap: () {},
         ),
+        ListTitleIcon(
+          title: L10n.mySubscribed.tr,
+          icon: Iconsax.star,
+          onTap: () => Get.toNamed(RouteScreen.mySubscribeStore),
+        ),
         const VerticalSpace16(),
       ],
     );

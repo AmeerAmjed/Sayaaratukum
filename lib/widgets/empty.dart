@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
@@ -32,7 +33,7 @@ class Empty extends StatelessWidget {
 
   Widget screen() {
     return Container(
-      color: Colors.red,
+      // color: Colors.red,
       height: height,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,6 +49,7 @@ class Empty extends StatelessWidget {
             child: Text(
               title,
               textAlign: TextAlign.center,
+              style: Get.textTheme.labelLarge,
             ),
           ),
           const VerticalSpace8(),
@@ -55,7 +57,7 @@ class Empty extends StatelessWidget {
             Center(
               child: Text(
                 description!,
-                // style: ThemeApp.primaryTextStyle,
+                style: Get.textTheme.labelSmall,
               ),
             ),
           const Spacer(flex: 2)
