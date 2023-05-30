@@ -12,17 +12,46 @@ bottomSheet({
   Get.bottomSheet(
     isDismissible: true,
     barrierColor: Colors.black26,
+    isScrollControlled: true,
     Container(
       height: height,
       width: double.infinity,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(10.0),
-          topRight: Radius.circular(10.0),
+          topLeft: Radius.circular(16.0),
+          topRight: Radius.circular(16.0),
         ),
       ),
-      child: widget,
+      child: Column(
+        // mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          _dividerWidget(),
+          widget,
+          Spacer(),
+          if (buttonAction != null) buttonAction,
+          const VerticalSpace16(),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget _dividerWidget() {
+  return FractionallySizedBox(
+    widthFactor: 0.2,
+    child: Container(
+      margin: const EdgeInsets.symmetric(
+        vertical: 12.0,
+      ),
+      child: Container(
+        height: 5.0,
+        decoration: const BoxDecoration(
+          color: Color(0xffd0d4dd),
+          borderRadius: BorderRadius.all(Radius.circular(2.5)),
+        ),
+      ),
     ),
   );
 }

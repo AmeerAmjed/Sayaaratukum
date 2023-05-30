@@ -33,6 +33,7 @@ class ColorSystem {
   static const Color actionButtonSnackBar = Color(0xff0296E5);
   static const Color arrow = Color(0xff666666);
 
+  static const Color colorOptional = Color(0xa1939292);
 
 
 }

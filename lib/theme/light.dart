@@ -91,6 +91,10 @@ class LightThemeApp{
         ),
       ),
     ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      modalBackgroundColor: onPrimary,
+      backgroundColor: onPrimary,
+    ),
   );
 
   static const Color _background = Color(0xffF2F2F2);

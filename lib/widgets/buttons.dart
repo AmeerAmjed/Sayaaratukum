@@ -58,11 +58,14 @@ class Buttons extends StatelessWidget {
           backgroundColor: MaterialStateProperty.all(
             fullBackground
                 ? (background ??
-                ((disableWithShowLoading || onPressed == null)
+                    ((disableWithShowLoading || onPressed == null)
                         ? Theme.of(context).primaryColor.withOpacity(0.8)
                         : Theme.of(context).primaryColor))
                 : Colors.transparent,
           ),
+          overlayColor: background == Colors.transparent
+              ? MaterialStateProperty.all<Color>(Colors.black.withOpacity(0.07))
+              : null,
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: const BorderRadius.all(
@@ -113,6 +116,7 @@ class Buttons extends StatelessWidget {
                             ),
                             child: Icon(
                               iconRow,
+                              size: iconSize,
                               color: colorOnButton,
                             ),
                           ),
