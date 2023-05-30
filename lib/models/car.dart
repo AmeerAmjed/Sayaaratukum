@@ -20,8 +20,8 @@ class CarModel extends BaseModel {
   final SubModel enginePowerType;
   final String ownerType;
   final OwnerCarModel owner;
-  final String city;
-  final String gov;
+  final String? city;
+  final String? gov;
   final String? closerPoint;
   final String gearbox;
   final String mileage;
@@ -65,10 +65,10 @@ class CarModel extends BaseModel {
       registerNumber: json['registerNumber'],
       engine: json['engine'],
       yearModel: json['year_model'],
-      mileage: json['mileage'],
+      mileage: json['mileage'] ?? "0",
       gearbox: json['gearbox'],
       ownerType: json['carable_type'],
-      gov: json['gov'],
+      gov: json['gov'] ,
       city: json['city'],
       closerPoint: json['location'],
       isPublished: json['is_published'],
