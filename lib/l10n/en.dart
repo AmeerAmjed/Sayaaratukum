@@ -148,6 +148,7 @@ class EnTranslations {
         L10n.filterBy : 'Filter By',
         L10n.cleanFilter : 'Clean All',
         L10n.showResult : 'Show Result',
+        L10n.noResult : 'No Result',
 
 
 

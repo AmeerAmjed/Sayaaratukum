@@ -24,4 +24,27 @@ class SearchServices extends BaseService {
       return Future.error(e);
     }
   }
+
+  Future<Response> searchCar(
+    Map<String, dynamic> body, {
+    required int page,
+    required int limit,
+  }) async {
+    String arg = Uri(queryParameters: body).query;
+
+    print("encodedString $body");
+    print("encodedString $arg");
+    try {
+      String url = pagination(ApiEndpoint.cars, page: page, limit: limit);
+      Response response = await get("$url&$arg");
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error SearchServices searchCar $e");
+      return Future.error(e);
+    }
+  }
 }

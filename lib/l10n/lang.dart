@@ -164,6 +164,7 @@ class L10n {
   static const cleanFilter = 'cleanFilter';
 
   static const showResult = 'showResult';
+  static const noResult = 'noResult';
 
 
 

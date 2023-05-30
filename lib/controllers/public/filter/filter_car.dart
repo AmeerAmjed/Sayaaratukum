@@ -24,7 +24,7 @@ class FilterCarController extends BaseController
   var brands = <BrandModel>[].obs.toList(growable: true);
   var enginePowers = <EnginePowerModel>[].obs.toList(growable: true);
 
-  Map<String, dynamic> filterCarField = {};
+  Map<String, String> filterCarField = {};
 
   late GlobalKey<FormFieldState> brandFormKey;
   late GlobalKey<FormFieldState> modelBrandFormKey;
@@ -42,6 +42,9 @@ class FilterCarController extends BaseController
 
   int idEnginePower = 0;
   double engineCapacity = 0;
+
+  late TextEditingController search;
+  RxBool isTextEmpty = true.obs;
 
   @override
   void onInit() {
@@ -63,22 +66,21 @@ class FilterCarController extends BaseController
     fromYear = TextEditingController();
     toYear = TextEditingController();
 
+    search = TextEditingController();
+
     getAllEnginePower();
-    // String? id = Get.parameters[Constants.brandIdKey];
-    // nameBrand = Get.parameters[Constants.nameBrandKey];
-    // if (id != null) {
-    //   searchCarByBrandId(id);
-    // } else {}
-    // loadingData();
+
   }
 
-  Map<String, dynamic> getValueField() {
-    filterCarField.addAllIf(idBrandSelected != 0, {"brand": idBrandSelected});
+  Map<String, String> getValueField() {
     filterCarField
-        .addAllIf(idModelBrandSelected != 0, {"model": idModelBrandSelected});
+        .addAllIf(idBrandSelected != 0, {"brand": "$idBrandSelected"});
+    filterCarField.addAllIf(
+        idModelBrandSelected != 0, {"model": "$idModelBrandSelected"});
 
     filterCarField.addAllIf(fromYear.text != "", {"min_year": fromYear.text});
     filterCarField.addAllIf(toYear.text != "", {"max_year": toYear.text});
+    filterCarField.addAllIf(search.text != "", {"search": search.text});
 
     return filterCarField;
   }
@@ -251,5 +253,30 @@ class FilterCarController extends BaseController
 
     idEnginePower = 0;
     engineCapacity = 0;
+  }
+
+  //region search box
+
+  searchByText(String text) {
+    if (text.trim().isNotEmpty) ;
+  }
+
+  void onTextChanged(String text) {
+    isTextEmpty.value = text.isEmpty;
+    update();
+  }
+
+  void clearSearch() {
+    search.clear();
+    isTextEmpty.value = true;
+    update();
+  }
+
+  //endregion
+
+  @override
+  void dispose() {
+    search.dispose();
+    super.dispose();
   }
 }

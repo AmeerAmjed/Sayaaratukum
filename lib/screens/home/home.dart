@@ -5,15 +5,12 @@ import 'package:sayaaratukum/controllers/public/cars.dart';
 import 'package:sayaaratukum/controllers/public/home.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/route/page.dart';
-import 'package:sayaaratukum/screens/home/components/search.dart';
 import 'package:sayaaratukum/screens/home/components/title_with_view_all.dart';
 import 'package:sayaaratukum/screens/home/widget/ads.dart';
 import 'package:sayaaratukum/screens/home/widget/brands.dart';
 import 'package:sayaaratukum/screens/home/widget/cars.dart';
-import 'package:sayaaratukum/screens/home/widget/filter_car.dart';
 import 'package:sayaaratukum/screens/profile/components/add_button.dart';
-import 'package:sayaaratukum/widgets/bottom_sheet.dart';
-import 'package:sayaaratukum/widgets/buttons.dart';
+import 'package:sayaaratukum/screens/search/car/components/search_car_bar.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
@@ -34,19 +31,12 @@ class HomeScreen extends GetView<HomeController> {
               const VerticalSpace16(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: SearchBox(
-                  hintText: L10n.searchCar.tr,
-                  onSubmitted: (text) {},
-                  onPressedFilter: () {
-                    bottomSheet(
-                      widget: const FilterCar(),
-                      height: Get.mediaQuery.size.height * 0.9,
-                      buttonAction: Buttons(
-                        width: double.maxFinite,
-                        label: L10n.showResult.tr,
-                        onPressed: () {},
-                      ),
-                    );
+                child: SearchCarBar(
+                  onSubmittedSearch: (value) {
+                    controller.navigateTo(RouteScreen.searchCar);
+                  },
+                  onPressedApplyFilter: () {
+                    controller.navigateTo(RouteScreen.searchCar);
                   },
                 ),
               ),
