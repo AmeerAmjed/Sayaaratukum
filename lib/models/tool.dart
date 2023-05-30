@@ -2,6 +2,7 @@ import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/models/category.dart';
 import 'package:sayaaratukum/models/models_brand.dart';
 import 'package:sayaaratukum/models/store.dart';
+import 'package:sayaaratukum/models/store_tool.dart';
 
 import 'model.dart';
 
@@ -29,7 +30,7 @@ class ToolModel extends BaseModel {
   final String? color;
   final String status;
   final String? description;
-  final StoreModel store;
+  final StoreToolModel store;
   // final CategoryModel category;
   // final BrandModel brand;
   // final ModelsBrandModel modelSelected;
@@ -44,7 +45,7 @@ class ToolModel extends BaseModel {
       color: json['color'],
       status: json['status'],
       description: json['description'],
-      store: StoreModel.fromJson(json['store']),
+      store: StoreToolModel.fromJson(json['store']),
       // category: CategoryModel.fromJson(json['category']),
       // brand: BrandModel.fromJson(json['brand']),
       // modelSelected: ModelsBrandModel.fromJson(json['brand_model']),
