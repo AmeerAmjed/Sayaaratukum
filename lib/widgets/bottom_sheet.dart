@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaaratukum/widgets/vertical_space.dart';
 
-bottomSheet({required Widget widget, double height = 250.0}) {
+import 'buttons.dart';
+
+bottomSheet({
+  required Widget widget,
+  Buttons? buttonAction,
+  double height = 250.0,
+}) {
   Get.bottomSheet(
     isDismissible: true,
     barrierColor: Colors.black26,
