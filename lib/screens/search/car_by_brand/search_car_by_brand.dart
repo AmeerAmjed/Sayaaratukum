@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:sayaaratukum/controllers/public/search_car.dart';
+import 'package:sayaaratukum/controllers/public/search_car_by_brand.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/search/car_by_brand/components/item_search_car.dart';
 import 'package:sayaaratukum/util/constant.dart';
