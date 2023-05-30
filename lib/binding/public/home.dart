@@ -4,7 +4,7 @@ import 'package:sayaaratukum/controllers/public/brand.dart';
 import 'package:sayaaratukum/controllers/public/cars.dart';
 import 'package:sayaaratukum/controllers/public/engine_powers.dart';
 import 'package:sayaaratukum/controllers/public/home.dart';
-import 'package:sayaaratukum/controllers/public/search_car.dart';
+import 'package:sayaaratukum/controllers/public/filter/filter_car.dart';
 import 'package:sayaaratukum/controllers/public/search_car_by_brand.dart';
 import 'package:sayaaratukum/controllers/user/favorite.dart';
 import 'package:sayaaratukum/services/remote/public/ads.dart';
@@ -35,7 +35,7 @@ class HomeBinding extends Bindings {
     Get.put<FavoriteController>(FavoriteController(), permanent: true);
     // Get.put<SearchCarController>(SearchCarController(), permanent: true);
 
-    Get.put<SearchCarController>(SearchCarController(), permanent: true);
+    Get.put<FilterCarController>(FilterCarController(), permanent: true);
 
     // Get.lazyPut<SearchServices>(() => SearchServices());
   }

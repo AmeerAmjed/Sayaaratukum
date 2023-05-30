@@ -72,6 +72,8 @@ class EnTranslations {
         L10n.numberRegisterCar : 'Number Register Car',
         L10n.propulsionSystem : 'Propulsion System',
         L10n.year : 'Year',
+        L10n.fromYear : 'From Year',
+        L10n.toYear : 'To Year',
 
         L10n.yearBrand : 'Year is Required!',
 
@@ -95,6 +97,8 @@ class EnTranslations {
         L10n.locationCar : 'Location Car',
         L10n.imagesCar : 'Images & Price',
         L10n.price : 'Price',
+        L10n.minPrice : 'Min Price',
+        L10n.maxPrice : 'Max Price',
         L10n.addImagesCar : 'Add ten images to the car',
         L10n.addImageTool : 'Add tool image',
         L10n.available : 'Available',
@@ -138,6 +142,12 @@ class EnTranslations {
 
         L10n.emptySubscribed : 'Not Subscribed to any store yet',
         L10n.noteEmptySubscribed : 'Start Subscribed in store all store Subscribed will see here',
+
+
+
+        L10n.filterBy : 'Filter By',
+        L10n.cleanFilter : 'Clean All',
+        L10n.showResult : 'Show Result',
 
 
 

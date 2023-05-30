@@ -10,7 +10,10 @@ import 'package:sayaaratukum/screens/home/components/title_with_view_all.dart';
 import 'package:sayaaratukum/screens/home/widget/ads.dart';
 import 'package:sayaaratukum/screens/home/widget/brands.dart';
 import 'package:sayaaratukum/screens/home/widget/cars.dart';
+import 'package:sayaaratukum/screens/home/widget/filter_car.dart';
 import 'package:sayaaratukum/screens/profile/components/add_button.dart';
+import 'package:sayaaratukum/widgets/bottom_sheet.dart';
+import 'package:sayaaratukum/widgets/buttons.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
@@ -34,7 +37,17 @@ class HomeScreen extends GetView<HomeController> {
                 child: SearchBox(
                   hintText: L10n.searchCar.tr,
                   onSubmitted: (text) {},
-                  onPressedFilter: () {},
+                  onPressedFilter: () {
+                    bottomSheet(
+                      widget: const FilterCar(),
+                      height: Get.mediaQuery.size.height * 0.9,
+                      buttonAction: Buttons(
+                        width: double.maxFinite,
+                        label: L10n.showResult.tr,
+                        onPressed: () {},
+                      ),
+                    );
+                  },
                 ),
               ),
               const VerticalSpace8(),

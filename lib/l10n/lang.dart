@@ -88,6 +88,8 @@ class L10n {
   static const propulsionSystem = 'propulsionSystem';
 
   static const year = 'year';
+  static const fromYear = 'fromYear';
+  static const toYear = 'toYear';
   static const yearBrand = 'yearBrand';
   static const recolor = 'recolor';
 
@@ -113,6 +115,8 @@ class L10n {
   static const imagesCar = 'imagesCar';
   static const imagesTool = 'imagesTool';
   static const price = 'price';
+  static const minPrice = 'minPrice';
+  static const maxPrice = 'maxPrice';
   static const addImagesCar = 'addImagesCar';
   static const addImageTool = 'addImageTool';
   static const available = 'available';
@@ -154,6 +158,12 @@ class L10n {
 
   static const emptySubscribed = 'emptySubscribed';
   static const noteEmptySubscribed = 'noteEmptySubscribed';
+
+
+  static const filterBy = 'filterBy';
+  static const cleanFilter = 'cleanFilter';
+
+  static const showResult = 'showResult';
 
 
 
