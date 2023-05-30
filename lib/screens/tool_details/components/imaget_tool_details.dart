@@ -16,6 +16,7 @@ class ImageToolDetails extends StatelessWidget {
       height: 250,
       child: Card(
         child: ImageLoading(
+          fitImage: BoxFit.contain,
           imageUrl: imageUrl,
         ),
       ),
