@@ -6,8 +6,11 @@ import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/main_tab.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/components/drawer.dart';
+import 'package:sayaaratukum/screens/components/image_user.dart';
+import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/main_tab_page.dart';
 import 'package:sayaaratukum/widgets/box.dart';
+import 'package:sayaaratukum/widgets/default_image.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
 
 import '../widgets/appbars.dart';
@@ -26,14 +29,9 @@ class MainTab extends GetView<MainTabController> {
           onTap: () {
             controller.scaffoldKey.currentState?.openDrawer();
           },
-          child: Box(
+          child: const Box(
             size: 48.0,
-            child: Application.instance.user?.value != null
-                ? const ImageLoading(
-                    imageUrl:
-                        "https://avatars.githubusercontent.com/u/45900975?v=4",
-                  )
-                : const Icon(Iconsax.user),
+            child: ImageUser()
           ),
         ),
         actions: const [

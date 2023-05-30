@@ -10,11 +10,12 @@ class UserModel extends BaseModel {
     required this.fullName,
     required this.firstName,
     required this.lastName,
+    required this.avatar,
+    required this.role,
+    required this.roleType,
     // required this.isPhoneNumberVerified,
     // required this.isEmailVerified,
     // required this.isActive,
-    required this.avatar,
-    required this.role,
   });
 
   final int id;
@@ -22,28 +23,47 @@ class UserModel extends BaseModel {
   final String firstName;
   final String? lastName;
   final String? email;
-  // final bool isPhoneNumberVerified;
   final String? phoneNumber;
-  // final bool isEmailVerified;
-
-  // final bool isActive;
   final String avatar;
   final RoleModel? role;
+  final String roleType;
+
+  // final bool isPhoneNumberVerified;
+  // final bool isEmailVerified;
+  // final bool isActive;
 
   factory UserModel.fromJson(Map<String, dynamic> data) {
     bool isActiveUser(int active) => active == 1;
+
+    print("data $data");
+    String getRoleType() {
+      if (data['role']['id'] == 2) {
+        try {
+          if (data['store']["type"]['name'] == "cars") {
+            return "cars";
+          } else {
+            return "tools";
+          }
+        } catch (e) {
+          return "user";
+        }
+      }
+      return "user";
+    }
+
     return UserModel(
       id: data['id'],
       fullName: data['fullname'],
       firstName: data['first_name'],
       lastName: data['last_name'],
       email: data['email'],
-      // isEmailVerified: data['is_email_verified'],
       phoneNumber: data['phone_number'],
-      // isPhoneNumberVerified: data['is_phone_number_verified'],
       avatar: data['avatar'] ?? Constants.websiteLink,
-      // isActive: isActiveUser(data['is_actived']),
       role: data['role'] != null ? RoleModel.fromJson(data['role']) : null,
+      roleType: getRoleType(),
+      // isActive: isActiveUser(data['is_actived']),
+      // isEmailVerified: data['is_email_verified'],
+      // isPhoneNumberVerified: data['is_phone_number_verified'],
     );
   }
 
@@ -55,29 +75,31 @@ class UserModel extends BaseModel {
       firstName: data['firstName'],
       lastName: data['lastName'],
       email: data['email'],
-      // isEmailVerified: data['isEmailVerified'],
       phoneNumber: data['phoneNumber'],
-      // isPhoneNumberVerified: data['isPhoneNumberVerified'],
       avatar: data['avatar'],
-      // isActive: isActiveUser(data['isActive']),
       role: RoleModel.local(data['role']),
+      roleType: data['roleType'],
+      // isEmailVerified: data['isEmailVerified'],
+      // isPhoneNumberVerified: data['isPhoneNumberVerified'],
+      // isActive: isActiveUser(data['isActive']),
     );
   }
 
   Map<String, dynamic> toJson() {
-    int isActiveUser(bool active) => active ? 1 : 0;
+    // int isActiveUser(bool active) => active ? 1 : 0;
     return {
       'id': id,
       'fullName': fullName,
       'firstName': firstName,
       'lastName': lastName,
       'email': email,
-      // 'isEmailVerified': isEmailVerified,
       'phoneNumber': phoneNumber,
-      // 'isPhoneNumberVerified': isPhoneNumberVerified,
       'avatar': avatar,
+      'role': role?.toJson(),
+      'roleType': roleType,
+      // 'isEmailVerified': isEmailVerified,
       // 'isActive': isActiveUser(isActive),
-      'role': role?.toJson()
+      // 'isPhoneNumberVerified': isPhoneNumberVerified,
     };
   }
 }
