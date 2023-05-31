@@ -6,6 +6,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
@@ -33,7 +34,7 @@ class AddCarController extends BaseController {
     ImageWithPriceForm()
   ];
   final yesNo = <String>["yes", "no"];
-  final typeGearBox = <String>["RadioGroup", "no"];
+  final typeGearBox = <String>["auto", "manual"];
 
   bool get isLastPage => onPageIndex.value == totalPageAddCar - 1;
   late PageController pageController;
@@ -41,6 +42,7 @@ class AddCarController extends BaseController {
   late TextEditingController numberRegisterCar;
   late TextEditingController yearModel;
   late TextEditingController drivingMiles;
+  var provinces = "".obs;
   late TextEditingController region;
   late TextEditingController nearPoint;
   late TextEditingController price;
@@ -57,7 +59,7 @@ class AddCarController extends BaseController {
   var isDamage = "".obs;
   var madeTo = "".obs;
   var color = "".obs;
-  var engineCapacity = .0.obs;
+  var engineCapacity = 0.obs;
   var imagesCar = <String>[].obs.toList(growable: true);
 
   @override
@@ -71,42 +73,44 @@ class AddCarController extends BaseController {
   }
 
   addCar() async {
-    var info = AddCarModel(
-      // name: name.text,
-      // idBrand: idBrandSelected,
-      // idModelBrand: idModelBrandSelected,
-      // idEnginePower: idEnginePower,
-      // yearModel
-      // price: price.text,
-      // color: color,
-      name: 'asdfasdfasf',
-      price: 0,
-      color: 'b',
-      engine: 12,
-      yearModel: 222,
-      idBrand: 1,
-      idModelBrand: 195,
-      idEnginePower: 2,
-      userType: 'user',
-      userId: 1,
-      city: 'kut',
-      gov: 'wasite',
-      closerPoint: 'asdfasdf',
-      gearbox: 'auto',
-      mileage: 22,
-      images: imagesCar,
-    );
-
-    try {
-      await AddCarService.instance.addCar(info).then((response) {
-        // print("response ${response.statusCode} ${response.body}");
-        // if (response.isOk) {
-        //
-        // }
-      });
-    } on Response catch (response) {
-      print("response ${response.statusCode} ${response.body}");
+    if (getInfo() != null) {
+      print(getInfo()!.gearbox);
+      print(getInfo()!.isDamage);
+      try {
+        await AddCarService.instance.addCar(getInfo()!).then((response) {
+          print("response ${response.statusCode} ${response.body}");
+          if (response.isOk) {}
+        });
+      } on Response catch (response) {
+        print("response ${response.statusCode} ${response.body}");
+      }
     }
+  }
+
+  AddCarModel? getInfo() {
+    var userInfo = Application.instance.user?.value;
+    if (userInfo != null) {
+      return AddCarModel(
+        price: price.text,
+        color: color.value,
+        engineCapacity: 12,
+        yearModel: yearModel.text,
+        idBrand: idBrandSelected,
+        idModelBrand: idModelBrandSelected,
+        idEnginePower: idEnginePower,
+        userType: userInfo.role!.title,
+        userId: userInfo.id,
+        city: region.text,
+        gov: provinces.value,
+        nearPoint: nearPoint.text,
+        gearbox: gearBox.value,
+        mileage: drivingMiles.text,
+        images: imagesCar,
+        isDamage: isDamage.value == "yes" ? 1 : 0,
+        numberRegisterCar: numberRegisterCar.text,
+      );
+    }
+    return null;
   }
 
   Future<void> getAllEnginePower() async {
@@ -306,7 +310,7 @@ class AddCarController extends BaseController {
 
   onChangeEngineCapacity(String? size) {
     if (size != null) {
-      engineCapacity.value = double.parse(size);
+      engineCapacity.value = int.tryParse(size)!;
     }
   }
 
@@ -338,6 +342,12 @@ class AddCarController extends BaseController {
     }
   }
 
+  onChangeProvinces(String? provinces) {
+    if (provinces != null) {
+      this.provinces.value = provinces;
+    }
+  }
+
   bool checkValidationForm1() {
     if (idBrandSelected == 0) {
       onError("${L10n.brand.tr} ${L10n.isRequired.tr}");
@@ -361,10 +371,12 @@ class AddCarController extends BaseController {
     } else if (color.value == "") {
       onError("${L10n.color.tr} ${L10n.isRequired.tr}");
       return false;
-    } else if (numberRegisterCar.text == "") {
-      onError("${L10n.numberRegisterCar.tr} ${L10n.isRequired.tr}");
-      return false;
-    } else if (yearModel.text == "") {
+    }
+    // else if (numberRegisterCar.text == "") {
+    //   onError("${L10n.numberRegisterCar.tr} ${L10n.isRequired.tr}");
+    //   return false;
+    // }
+    else if (yearModel.text == "") {
       onError("${L10n.year.tr} ${L10n.isRequired.tr}");
       return false;
     } else if (drivingMiles.text == "") {
@@ -376,16 +388,44 @@ class AddCarController extends BaseController {
     } else if (isDamage.value == "") {
       onError("${L10n.isDamage.tr} ${L10n.isRequired.tr}");
       return false;
-    } else if (reColor.value == "") {
-      onError("${L10n.check.tr} ${L10n.recolor.tr} ${L10n.isRequired.tr}");
-      return false;
-    } else if (shakeCheck.value == "") {
-      onError("${L10n.option.tr} ${L10n.shakeCheck.tr} ${L10n.isRequired.tr}");
-      return false;
-    } else if (gearBox.value == "") {
+    }
+    //
+    // else if (reColor.value == "") {
+    //   onError("${L10n.check.tr} ${L10n.recolor.tr} ${L10n.isRequired.tr}");
+    //   return false;
+    // }
+    // else if (shakeCheck.value == "") {
+    //   onError("${L10n.option.tr} ${L10n.shakeCheck.tr} ${L10n.isRequired.tr}");
+    //   return false;
+    // }
+    else if (gearBox.value == "") {
       onError("${L10n.option.tr} ${L10n.gearBox.tr} ${L10n.isRequired.tr}");
       return false;
     }
+    return true;
+  }
+
+  bool checkValidationForm2() {
+    print("provinces.value ${provinces.value}");
+    if (provinces.value == "") {
+      onError("${L10n.governorate.tr} ${L10n.isRequired.tr}");
+
+      return false;
+    }
+
+    return true;
+  }
+
+  bool checkValidationForm3() {
+    if (price.text == "") {
+      onError("${L10n.price.tr} ${L10n.isRequired.tr}");
+      return false;
+    }
+    if (imagesCar.isEmpty) {
+      onError("${L10n.imagesCar.tr} ${L10n.isRequired.tr}");
+      return false;
+    }
+
     return true;
   }
 }

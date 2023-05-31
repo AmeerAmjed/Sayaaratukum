@@ -14,7 +14,7 @@ class StoreModel extends BaseModel {
     required this.address,
     required this.expiresAt,
     required this.whatsappNumberPhone,
-    required this.owner,
+    // required this.owner,
     required this.type,
   });
 
@@ -26,7 +26,7 @@ class StoreModel extends BaseModel {
   final String address;
   final String? expiresAt;
   final String whatsappNumberPhone;
-  final UserModel owner;
+  // final UserModel owner;
   final SubModel type;
 
   factory StoreModel.fromJson(Map<String, dynamic> json) {
@@ -39,7 +39,7 @@ class StoreModel extends BaseModel {
       expiresAt: json['expires_at'],
       description: json['description'],
       whatsappNumberPhone: json['whatsapp_number'],
-      owner: UserModel.fromJson(json['owner']),
+      // owner: UserModel.fromJson(json['owner']),
       type: SubModel.fromJson(json['type']),
     );
   }

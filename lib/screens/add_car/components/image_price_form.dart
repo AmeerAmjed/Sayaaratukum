@@ -136,12 +136,6 @@ class ImageWithPriceForm extends GetView<AddCarController> {
                                             controller.imagesCar[index],
                                           );
                                         },
-                                      ),
-                                      Center(
-                                        child: Text(
-                                          index.toString(),
-                                          style: TextStyle(fontSize: 44),
-                                        ),
                                       )
                                     ],
                                   ),

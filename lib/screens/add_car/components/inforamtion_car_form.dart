@@ -59,8 +59,7 @@ class InformationCarForm extends GetView<AddCarController> {
               left: Constants.spacing16,
             ),
             onChanged: controller.onChangeEngineCapacity,
-            items: HardCode.engineSizes.map((e) => e.toString()).toList()
-              ..sort(),
+            items: HardCode.engineSizes,
           ),
           rightWidget: GetBuilder<AddCarController>(builder: (con) {
             return DropdownList(
@@ -141,7 +140,7 @@ class InformationCarForm extends GetView<AddCarController> {
           ),
           keyboardType: TextInputType.number,
         ),
-
+        const VerticalSpace8(),
         GetBuilder<AddCarController>(builder: (co) {
           return RadioGroup(
             label: L10n.gearBox.tr,
@@ -154,7 +153,6 @@ class InformationCarForm extends GetView<AddCarController> {
             onChanged: controller.onChangeGearBox,
           );
         }),
-
         GetBuilder<AddCarController>(builder: (co) {
           return RadioGroup(
             label: L10n.isDamage.tr,
@@ -167,30 +165,30 @@ class InformationCarForm extends GetView<AddCarController> {
             onChanged: controller.onChangeIsDamage,
           );
         }),
-        GetBuilder<AddCarController>(builder: (co) {
-          return RadioGroup(
-            label: L10n.shakeCheck.tr,
-            spacingTitle: 10,
-            titleOption1: L10n.yes.tr,
-            valueOption1: controller.yesNo.first,
-            titleOption2: L10n.no.tr,
-            valueOption2: controller.yesNo.last,
-            value: controller.shakeCheck.value,
-            onChanged: controller.onChangeShakeCheck,
-          );
-        }),
-        GetBuilder<AddCarController>(builder: (co) {
-          return RadioGroup(
-            label: L10n.recolor.tr,
-            spacingTitle: 48,
-            titleOption1: L10n.yes.tr,
-            valueOption1: controller.yesNo.first,
-            titleOption2: L10n.no.tr,
-            valueOption2: controller.yesNo.last,
-            value: controller.reColor.value,
-            onChanged: controller.onChangeReColor,
-          );
-        }),
+        // GetBuilder<AddCarController>(builder: (co) {
+        //   return RadioGroup(
+        //     label: L10n.shakeCheck.tr,
+        //     spacingTitle: 10,
+        //     titleOption1: L10n.yes.tr,
+        //     valueOption1: controller.yesNo.first,
+        //     titleOption2: L10n.no.tr,
+        //     valueOption2: controller.yesNo.last,
+        //     value: controller.shakeCheck.value,
+        //     onChanged: controller.onChangeShakeCheck,
+        //   );
+        // }),
+        // GetBuilder<AddCarController>(builder: (co) {
+        //   return RadioGroup(
+        //     label: L10n.recolor.tr,
+        //     spacingTitle: 48,
+        //     titleOption1: L10n.yes.tr,
+        //     valueOption1: controller.yesNo.first,
+        //     titleOption2: L10n.no.tr,
+        //     valueOption2: controller.yesNo.last,
+        //     value: controller.reColor.value,
+        //     onChanged: controller.onChangeReColor,
+        //   );
+        // }),
       ],
     );
   }

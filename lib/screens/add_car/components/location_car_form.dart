@@ -21,7 +21,7 @@ class LocationCarForm extends GetView<AddCarController> {
         const VerticalSpace8(),
         DropdownList(
           label: L10n.governorate.tr,
-          onChanged: controller.onChangeBrand,
+          onChanged: controller.onChangeProvinces,
           items: HardCode.provinces,
         ),
         const VerticalSpace8(),
@@ -33,7 +33,7 @@ class LocationCarForm extends GetView<AddCarController> {
         ),
         const VerticalSpace8(),
         InputAuth(
-          controller: controller.region,
+          controller: controller.nearPoint,
           label: L10n.nearPoint.tr,
           keyboardType: TextInputType.text,
         ),

@@ -90,6 +90,14 @@ class AddCarScreen extends GetView<AddCarController> {
                                 if (con.checkValidationForm1()) {
                                   controller.forward();
                                 }
+                              } else if (con.onPageIndex.value == 1) {
+                                if (con.checkValidationForm2()) {
+                                  controller.forward();
+                                }
+                              } else if (con.onPageIndex.value == 2) {
+                                if (con.checkValidationForm3()) {
+                                  controller.addCar();
+                                }
                               }
                             },
                             padding: EdgeInsets.zero,
