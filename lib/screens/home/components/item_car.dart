@@ -6,6 +6,7 @@ import 'package:sayaaratukum/screens/home/widget/cars.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/price.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
+import 'package:sayaaratukum/widgets/state_car.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class ItemCar extends StatelessWidget {
@@ -85,26 +86,7 @@ class ItemCar extends StatelessWidget {
                     style: Get.textTheme.titleMedium,
                     maxLines: 1,
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 4,
-                    ),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    decoration: BoxDecoration(
-                      color: Get.theme.backgroundColor,
-                      borderRadius: BorderRadius.circular(
-                        Constants.radiusSmall,
-                      ),
-                    ),
-                    child: Text(
-                      L10n.available.tr,
-                      style: Get.textTheme.labelMedium?.copyWith(
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      maxLines: 1,
-                    ),
-                  ),
+                  if (car.isAvailable) const StateCar()
                 ],
               ),
             ),

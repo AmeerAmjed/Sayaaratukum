@@ -43,66 +43,82 @@ class BottomInfoStore extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              Container(
-                height: 38.0,
-                width: 38.0,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Get.theme.cardColor,
-                ),
-                child: imageUrl == Constants.websiteLink
-                    ? DefaultImage(name: nameStore, sizeAlphabet: 20)
-                    : ImageLoading(
-                        imageUrl: imageUrl,
-                      ),
-              ),
-              const HorizontalSpace8(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    nameStore,
-                    style: Get.textTheme.displayMedium,
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 38.0,
+                  width: 38.0,
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Get.theme.cardColor,
                   ),
-                  RowItemStores(
-                    text: address,
-                    style: Get.textTheme.labelSmall!,
-                    icon: Iconsax.location,
-                    color: Get.textTheme.displayMedium?.color?.withOpacity(0.5),
-                    iconSize: 12,
-                    paddingHIcon: 2,
-                  )
-                ],
-              )
-            ],
+                  child: imageUrl == Constants.websiteLink
+                      ? DefaultImage(name: nameStore, sizeAlphabet: 20)
+                      : ImageLoading(
+                          imageUrl: imageUrl,
+                        ),
+                ),
+                const HorizontalSpace8(),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        nameStore,
+                        style: Get.textTheme.displayMedium,
+                      ),
+                      Container(
+                        color: Colors.transparent,
+                        child: Expanded(
+                          child: RowItemStores(
+                            text: address,
+                            style: Get.textTheme.labelSmall!,
+                            icon: Iconsax.location,
+                            color: Get.textTheme.displayMedium?.color
+                                ?.withOpacity(0.5),
+                            iconSize: 12,
+                            paddingHIcon: 2,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
-          Row(
-            children: [
-              Buttons(
-                width: 40,
-                height: 40,
-                padding: EdgeInsets.zero,
-                background: Get.theme.scaffoldBackgroundColor,
-                icon: Iconsax.call,
-                colorOnButton: Get.theme.primaryColor,
-                onPressed: () {},
-              ),
-              const HorizontalSpace4(),
-              Buttons(
-                width: 150,
-                height: 40,
-                padding: EdgeInsets.zero,
-                background: ColorSystem.whatsApp,
-                iconRow: Icons.whatsapp,
-                label: L10n.chatToBuy.tr,
-                onPressed: () {},
-              )
-            ],
+          Expanded(
+            child: Row(
+              children: [
+                Buttons(
+                  width: 40,
+                  height: 40,
+                  padding: EdgeInsets.zero,
+                  background: Get.theme.scaffoldBackgroundColor,
+                  icon: Iconsax.call,
+                  colorOnButton: Get.theme.primaryColor,
+                  onPressed: () {},
+                ),
+                const HorizontalSpace4(),
+                Expanded(
+                  child: Buttons(
+                    width: 150,
+                    height: 40,
+                    padding: EdgeInsets.zero,
+                    background: ColorSystem.whatsApp,
+                    iconRow: Icons.whatsapp,
+                    label: L10n.chatToBuy.tr,
+                    onPressed: () {},
+                  ),
+                )
+              ],
+            ),
           )
         ],
       ),

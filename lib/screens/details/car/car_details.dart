@@ -13,6 +13,7 @@ import 'package:sayaaratukum/widgets/bottom_info_store.dart';
 import 'package:sayaaratukum/widgets/box.dart';
 import 'package:sayaaratukum/widgets/image_full_screen.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
+import 'package:sayaaratukum/widgets/state_car.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class CarDetails extends GetView<CarDetailsController> {
@@ -48,6 +49,7 @@ class CarDetails extends GetView<CarDetailsController> {
                       },
                       child: Box(
                         child: ImageLoading(
+                          fitImage: BoxFit.contain,
                           imageUrl: car.images[index],
                         ),
                       ),
@@ -94,7 +96,7 @@ class CarDetails extends GetView<CarDetailsController> {
                           return ButtonSlideImage(
                             icon: Icons.arrow_forward_ios_rounded,
                             onPressed:
-                                con.onPageIndex.value != car.images.length
+                            con.onPageIndex.value < car.images.length - 1
                                     ? (con.forward)
                                     : null,
                           );
@@ -107,13 +109,23 @@ class CarDetails extends GetView<CarDetailsController> {
             ),
           ),
           const VerticalSpace8(),
-          Text(
-            car.name,
-            style: Get.textTheme.labelLarge?.copyWith(
-              overflow: TextOverflow.ellipsis,
-              fontWeight: FontWeight.w500,
-            ),
-            maxLines: 1,
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  car.name,
+                  style: Get.textTheme.labelLarge?.copyWith(
+                    overflow: TextOverflow.ellipsis,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  maxLines: 1,
+                ),
+              ),
+              if (car.isAvailable)
+                const StateCar(
+                  background: Colors.white,
+                )
+            ],
           ),
           const VerticalSpace8(),
           Text(

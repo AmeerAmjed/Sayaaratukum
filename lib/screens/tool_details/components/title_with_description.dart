@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaaratukum/theme/color.dart';
 
 class TitleWithDescription extends StatelessWidget {
   const TitleWithDescription({
@@ -13,12 +14,15 @@ class TitleWithDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
           title,
-          style: Get.textTheme.labelSmall,
+          style: Get.textTheme.labelSmall?.copyWith(
+            color: ColorSystem.colorOptional,
+          ),
         ),
         Text(
           description,

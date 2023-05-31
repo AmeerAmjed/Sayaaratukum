@@ -38,14 +38,18 @@ class RowItemStores extends StatelessWidget {
               color: color ?? style.color,
             ),
           ),
-          Text(
-            text,
-            style: style.copyWith(
-              fontSize: fontSize,
-              color: color ??
-                  (style.color)!.withOpacity(
-                    0.8,
-                  ),
+          Expanded(
+            child: Text(
+              text,
+              style: style.copyWith(
+                overflow: TextOverflow.ellipsis,
+                fontSize: fontSize,
+                color: color ??
+                    (style.color)!.withOpacity(
+                      0.8,
+                    ),
+              ),
+              maxLines: 1,
             ),
           ),
         ],
