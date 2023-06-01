@@ -25,7 +25,7 @@ class ItemFavorite extends StatelessWidget {
             children: [
               Card(
                 child: ImageLoading(
-                  imageUrl: item.product.images.first,
+                  imageUrl: item.product!.images.first,
                 ),
               ),
               buttonFavorite
@@ -36,7 +36,7 @@ class ItemFavorite extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 4),
           child: Text(
-            currency(item.product.price),
+            currency(item.product!.price),
             style: Get.textTheme.titleMedium,
             maxLines: 1,
           ),
@@ -45,7 +45,7 @@ class ItemFavorite extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 4, bottom: 8),
           child: Text(
-            item.product.name,
+            item.product!.name,
             style: Get.textTheme.labelMedium?.copyWith(
               overflow: TextOverflow.ellipsis,
             ),
