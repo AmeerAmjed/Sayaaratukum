@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 
 import 'model.dart';
@@ -30,9 +32,9 @@ class FormAddToolModel extends BaseModel {
   });
 
   Future<FormData> getFormData() async {
-    return FormData({
+    var data = FormData({
       'name': name,
-      'price': price.toString(),
+      'pirce': price.toString(),
       'color': color,
       'brand_id': idBrand.toString(),
       'brand_model_id': idModelBrand.toString(),
@@ -42,5 +44,17 @@ class FormAddToolModel extends BaseModel {
       'description': description,
       'category_id': idCategory.toString(),
     });
+
+    var imageTool = MapEntry(
+      "image",
+      MultipartFile(
+        File(image),
+        filename:
+            "${DateTime.now().millisecondsSinceEpoch}.${image.split('.').last}",
+      ),
+    );
+    data.files.add(imageTool);
+
+    return data;
   }
 }
