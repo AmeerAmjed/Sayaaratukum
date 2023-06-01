@@ -107,7 +107,7 @@ class Buttons extends StatelessWidget {
                       )
                     : Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -120,12 +120,15 @@ class Buttons extends StatelessWidget {
                               color: colorOnButton,
                             ),
                           ),
-                          Text(
-                            label!,
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayMedium
-                                ?.copyWith(color: colorOnButton),
+                          Expanded(
+                            child: Text(
+                              label!,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displayMedium
+                                  ?.copyWith(color: colorOnButton),
+                              maxLines: 1,
+                            ),
                           )
                         ],
                       )

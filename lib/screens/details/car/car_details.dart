@@ -31,7 +31,7 @@ class CarDetails extends GetView<CarDetailsController> {
         title: Text(car.name),
       ),
       body: ListView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: [
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.4,
@@ -56,55 +56,77 @@ class CarDetails extends GetView<CarDetailsController> {
                     );
                   },
                 ),
-                IndicatorImageCar(
-                  children: List.generate(
-                    car.images.length,
-                    (index) => Obx(() {
-                      return Container(
-                        padding: const EdgeInsets.all(8.0),
-                        margin: const EdgeInsets.all(4),
-                        height: 6.0,
-                        width:
-                            controller.onPageIndex.value == index ? 27.0 : 15.0,
-                        decoration: BoxDecoration(
-                          color: controller.onPageIndex.value == index
-                              ? Get.theme.primaryColor
-                              : Get.theme.primaryColor.withOpacity(0.3),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GetBuilder<CarDetailsController>(builder: (con) {
-                          return ButtonSlideImage(
-                            icon: Icons.arrow_back_ios_new_rounded,
-                            onPressed: con.onPageIndex.value != 0
-                                ? (con.backward)
-                                : null,
-                          );
-                        }),
-                        GetBuilder<CarDetailsController>(builder: (con) {
-                          return ButtonSlideImage(
-                            icon: Icons.arrow_forward_ios_rounded,
-                            onPressed:
-                            con.onPageIndex.value < car.images.length - 1
-                                    ? (con.forward)
-                                    : null,
-                          );
-                        }),
-                      ],
+                if (car.images.length > 1)
+                  IndicatorImageCar(
+                    children: List.generate(
+                      car.images.length,
+                      (index) => Obx(() {
+                        return Container(
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.all(4),
+                          height: 6.0,
+                          width: controller.onPageIndex.value == index
+                              ? 27.0
+                              : 15.0,
+                          decoration: BoxDecoration(
+                            color: controller.onPageIndex.value == index
+                                ? Get.theme.primaryColor
+                                : Get.theme.primaryColor.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        );
+                      }),
                     ),
                   ),
-                ),
+                if (car.images.length > 1)
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GetBuilder<CarDetailsController>(
+                              builder: (controller) {
+                            return IconButton(
+                              onPressed: controller.onPageIndex.value != 0
+                                  ? (controller.backward)
+                                  : null,
+                              icon: const Icon(
+                                Icons.arrow_back_ios_new_rounded,
+                              ),
+                            );
+                            return ButtonSlideImage(
+                              icon: Icons.arrow_back_ios_new_rounded,
+                              onPressed: controller.onPageIndex.value > 0
+                                  ? (controller.backward)
+                                  : null,
+                            );
+                          }),
+                          GetBuilder<CarDetailsController>(builder: (con) {
+                            return IconButton(
+                              splashColor: Colors.red,
+                              hoverColor:  Colors.red,
+                              onPressed: con.onPageIndex.value < car.images.length - 1
+                                  ? (con.forward)
+                                  : null,
+                              icon: const Icon(
+                                Icons.arrow_forward_ios_rounded,
+                              ),
+                            );
+                            return ButtonSlideImage(
+                              icon: Icons.arrow_forward_ios_rounded,
+                              onPressed:
+                                  con.onPageIndex.value < car.images.length - 1
+                                      ? (con.forward)
+                                      : null,
+                            );
+                          }),
+                        ],
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),
@@ -151,8 +173,8 @@ class CarDetails extends GetView<CarDetailsController> {
       bottomNavigationBar: BottomInfoStore(
         nameStore: car.owner.name,
         address: "${car.gov}, ${car.city} ${car.closerPoint ?? ""} ",
-        whatsappNumberPhone: car.owner.phoneNumber.toString(),
-        numberPhone: car.owner.phoneNumber.toString(),
+        whatsappNumberPhone: car.owner.phoneNumber,
+        numberPhone: car.owner.phoneNumber,
         imageUrl: car.owner.avatar,
       ),
     );

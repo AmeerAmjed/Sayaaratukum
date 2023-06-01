@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaaratukum/theme/color.dart';
+import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class TitleWithDescription extends StatelessWidget {
   const TitleWithDescription({
@@ -18,6 +19,7 @@ class TitleWithDescription extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
+        const VerticalSpace8(),
         Text(
           title,
           style: Get.textTheme.labelSmall?.copyWith(

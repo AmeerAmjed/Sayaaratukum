@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaaratukum/theme/color.dart';
 
 customSnackBar(
   String message, {
-  double marginBottom = 100.0,
+  double marginBottom = .0,
   Color? backgroundColor,
-  Duration duration = const Duration(minutes: 1),
+  Duration duration = const Duration(seconds: 2),
   Widget? mainButton,
 }) {
   Get.rawSnackbar(
@@ -16,7 +17,7 @@ customSnackBar(
     snackStyle: SnackStyle.FLOATING,
     borderRadius: 4,
     snackPosition: SnackPosition.BOTTOM,
-    backgroundColor: backgroundColor ?? Get.theme.secondaryHeaderColor,
+    backgroundColor: backgroundColor ?? ColorSystem.snackBar,
     maxWidth: Get.width,
     mainButton: mainButton,
   );

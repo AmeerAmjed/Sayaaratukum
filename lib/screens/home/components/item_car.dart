@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/car.dart';
 import 'package:sayaaratukum/screens/home/widget/cars.dart';
-import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/converter.dart';
 import 'package:sayaaratukum/util/price.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
 import 'package:sayaaratukum/widgets/state_car.dart';
@@ -64,7 +63,7 @@ class ItemCar extends StatelessWidget {
                   Container(
                     color: Colors.white10,
                     child: Text(
-                      "${car.yearModel}, ${car.mileage}",
+                      "${car.yearModel}, ${convertMetersToKilometers(car.mileage)}",
                       style: Get.textTheme.labelMedium?.copyWith(
                         overflow: TextOverflow.ellipsis,
                       ),

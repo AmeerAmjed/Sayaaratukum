@@ -5,14 +5,14 @@ class OwnerCarModel extends BaseModel {
   final int id;
   final String name;
   final String typeOwner;
-  final String phoneNumber;
+  final String? phoneNumber;
   final String avatar;
 
   OwnerCarModel({
     required this.id,
     required this.name,
     required this.typeOwner,
-    required this.phoneNumber,
+    this.phoneNumber,
     required this.avatar,
   });
 
@@ -23,9 +23,9 @@ class OwnerCarModel extends BaseModel {
       name:
           isStoreOwner ? json['carable']['name'] : json['carable']['fullname'],
       typeOwner: json['carable_type'],
-      phoneNumber: isStoreOwner
+      phoneNumber: (isStoreOwner
           ? json['carable']['whatsapp_number']
-          : (json['carable']['phone_number'] ?? json['carable']['email']),
+          : (json['carable']['phone_number'])),
       avatar:
           isStoreOwner ? json['carable']['image'] : json['carable']['avatar'],
     );

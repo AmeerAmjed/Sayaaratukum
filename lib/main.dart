@@ -23,7 +23,7 @@ class Root extends GetView<Application> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Moo',
       debugShowCheckedModeBanner: false,
       theme: ThemeApp.light,
       // darkTheme: ThemeApp.dark,
@@ -38,10 +38,6 @@ class Root extends GetView<Application> {
       initialBinding: (controller.isSkipAuth.value || controller.isLogin)
           ? MainTabBinding()
           : MainTabBinding(),
-      //
-      // initialRoute: RouteScreen.welcome,
-      // initialBinding: MainTabBinding(),
-      // home: const WelcomeScreen(),
     );
   }
 }

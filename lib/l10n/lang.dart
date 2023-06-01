@@ -92,6 +92,7 @@ class L10n {
   static const toYear = 'toYear';
   static const yearBrand = 'yearBrand';
   static const recolor = 'recolor';
+  static const km = 'km';
 
   static const yes = 'yes';
   static const no = 'no';
@@ -165,6 +166,10 @@ class L10n {
 
   static const showResult = 'showResult';
   static const noResult = 'noResult';
+
+  static const whatsappNotInstall = 'whatsappNotInstall';
+  static const numberPhoneNotAdd = 'numberPhoneNotAdd';
+  static const whatsappNumberPhoneNotAdd = 'whatsappNumberPhoneNotAdd';
 
 
 

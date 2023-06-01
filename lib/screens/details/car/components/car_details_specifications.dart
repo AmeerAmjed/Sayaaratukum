@@ -5,7 +5,7 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/car.dart';
 import 'package:sayaaratukum/screens/tool_details/components/title_with_description.dart';
 import 'package:sayaaratukum/util/constant.dart';
-import 'package:sayaaratukum/widgets/vertical_space.dart';
+import 'package:sayaaratukum/util/converter.dart';
 
 class CarDetailsSpecifications extends StatelessWidget {
   const CarDetailsSpecifications({
@@ -32,60 +32,66 @@ class CarDetailsSpecifications extends StatelessWidget {
                   // color: Colors.deepOrange,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       TitleWithDescription(
                         title: L10n.brand.tr,
                         description: car.brand.name,
                       ),
-                      const VerticalSpace8(),
                       TitleWithDescription(
                         title: L10n.enginePower.tr,
                         description: car.enginePowerType.name,
                       ),
-                      const VerticalSpace8(),
                       TitleWithDescription(
                         title: L10n.color.tr,
                         description: car.color,
                       ),
-                      const VerticalSpace8(),
                       TitleWithDescription(
                         title: L10n.gearBox.tr,
                         description: car.gearbox,
                       ),
+                      if (car.isDamage != null)
+                        TitleWithDescription(
+                          title: L10n.isDamage.tr,
+                          description: car.isDamage!,
+                        ),
+                      if (car.registerNumber != null)
+                        TitleWithDescription(
+                          title: L10n.numberRegisterCar.tr,
+                          description: car.registerNumber ?? "",
+                        ),
                     ],
                   ),
                 ),
               ),
               // Spacer(),
               Expanded(
-                child: Container(
-                  // color: Colors.deepOrange,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    TitleWithDescription(
+                      title: L10n.model.tr,
+                      description: car.modelBrand.name,
+                    ),
+                    TitleWithDescription(
+                      title: L10n.engineCapacity.tr,
+                      description: car.engine,
+                    ),
+                    TitleWithDescription(
+                      title: L10n.year.tr,
+                      description: car.yearModel,
+                    ),
+                    TitleWithDescription(
+                      title: L10n.drivingMiles.tr,
+                      description: convertMetersToKilometers(car.mileage),
+                    ),
+                    if (car.inComingType != null)
                       TitleWithDescription(
-                        title: L10n.model.tr,
-                        description: car.modelBrand.name,
+                        title: L10n.madeTo.tr,
+                        description: car.inComingType ?? "",
                       ),
-                      const VerticalSpace8(),
-                      TitleWithDescription(
-                        title: L10n.engineCapacity.tr,
-                        description: car.engine,
-                      ),
-                      const VerticalSpace8(),
-                      TitleWithDescription(
-                        title: L10n.year.tr,
-                        description: car.yearModel,
-                      ),
-                      const VerticalSpace8(),
-                      TitleWithDescription(
-                        title: L10n.drivingMiles.tr,
-                        description: car.mileage,
-                      ),
-                    ],
-                  ),
+                  ],
                 ),
               )
               // Row(

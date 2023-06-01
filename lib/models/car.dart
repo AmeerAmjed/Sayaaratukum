@@ -15,7 +15,9 @@ class CarModel extends BaseModel {
   final String? notes;
   final String? registerNumber;
   final String? isDamage;
+  final String? inComingType;
   final int isPublished;
+  final bool isFavorite;
   final String engine;
   final String yearModel;
   final SubModel brand;
@@ -35,6 +37,7 @@ class CarModel extends BaseModel {
     required this.isAvailable,
     this.closerPoint,
     this.registerNumber,
+    this.inComingType,
     required this.id,
     required this.name,
     required this.price,
@@ -42,6 +45,7 @@ class CarModel extends BaseModel {
     required this.engine,
     required this.yearModel,
     required this.isPublished,
+    required this.isFavorite,
     required this.isDamage,
     required this.brand,
     required this.modelBrand,
@@ -65,9 +69,10 @@ class CarModel extends BaseModel {
       name: json['name'],
       price: json['price'],
       color: json['color'],
-      //
       isAvailable: (json['state'] == "2") ? true : false,
       registerNumber: json['registerNumber'],
+      inComingType: json['incoming_type'],
+      isFavorite: json['is_favorite'],
       isDamage: json['is_harm'] != null
           ? (json['is_harm'] == 0 ? L10n.no.tr : L10n.year.tr)
           : null,

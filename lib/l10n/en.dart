@@ -78,6 +78,7 @@ class EnTranslations {
         L10n.yearBrand : 'Year is Required!',
 
         L10n.recolor : 'Recolor',
+        L10n.km : 'Km',
         L10n.no : 'No',
         L10n.yes : 'Yes',
         L10n.automatic : 'Automatic',
@@ -149,6 +150,10 @@ class EnTranslations {
         L10n.cleanFilter : 'Clean All',
         L10n.showResult : 'Show Result',
         L10n.noResult : 'No Result',
+
+        L10n.whatsappNotInstall : 'The WhatsApp application is not installed on the device. Install the application and try again.',
+        L10n.numberPhoneNotAdd : 'NumberPhone Not Add.',
+        L10n.whatsappNumberPhoneNotAdd : 'Whatsapp NumberPhone Not Add ',
 
 
 
