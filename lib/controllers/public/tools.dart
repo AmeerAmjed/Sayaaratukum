@@ -6,9 +6,10 @@ import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
 import 'package:sayaaratukum/models/tool.dart';
-import 'package:sayaaratukum/screens/tool_details/tool_details.dart';
 import 'package:sayaaratukum/services/remote/public/tools.dart';
 import 'package:sayaaratukum/util/constant.dart';
+
+import '../../screens/details/tool/tool_details.dart';
 
 class ToolsController extends BaseController
     with StateMixin<List<ToolModel>>, PaginationController, ScrollMixin {

@@ -70,6 +70,7 @@ class L10n {
   static const make = 'make';
   static const model = 'model';
   static const status = 'status';
+  static const serialNumber = 'serialNumber';
   static const color = 'Color';
   static const madeTo = 'madeTo';
 

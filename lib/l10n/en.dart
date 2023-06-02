@@ -56,6 +56,7 @@ class EnTranslations {
         L10n.make : 'Make',
         L10n.model : 'Model',
         L10n.status : 'Status',
+        L10n.serialNumber : 'Serial Number',
         L10n.color : 'Color',
         L10n.madeTo : 'Made To',
 
