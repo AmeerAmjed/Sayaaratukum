@@ -29,4 +29,6 @@ class RouteScreen {
   static const String searchCar = '/searchCar';
   static const String mySubscribeStore = '/mySubscribeStore';
 
+  static const storeCarDetails  = '/storeCarDetails';
+
 }

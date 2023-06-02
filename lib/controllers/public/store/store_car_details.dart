@@ -7,15 +7,19 @@ import 'package:sayaaratukum/binding/public/car_details.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
 import 'package:sayaaratukum/models/car.dart';
+import 'package:sayaaratukum/models/store.dart';
 import 'package:sayaaratukum/screens/details/car/car_details.dart';
 import 'package:sayaaratukum/services/remote/public/cars.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
 class StoreCarDetailsController extends BaseController
-    with StateMixin<List<CarModel>>, PaginationController, ScrollMixin {
+    with StateMixin, PaginationController, ScrollMixin {
   static StoreCarDetailsController get instance => Get.find();
 
-  var cars = <CarModel>[].obs.toList(growable: true);
+  RxStatus combinedStatus = RxStatus.loading();
+  RxList<StoreModel> infoStore = <StoreModel>[].obs;
+  RxList<CarModel> cars = <CarModel>[].obs;
+
   RxBool isLoadingMore = false.obs;
   var idStore = "0".obs;
 

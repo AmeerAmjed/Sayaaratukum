@@ -170,12 +170,19 @@ class CarDetails extends GetView<CarDetailsController> {
             )
         ],
       ),
-      bottomNavigationBar: BottomInfoStore(
-        nameStore: car.owner.name,
-        address: "${car.gov}, ${car.city} ${car.closerPoint ?? ""} ",
-        whatsappNumberPhone: car.owner.phoneNumber,
-        numberPhone: car.owner.phoneNumber,
-        imageUrl: car.owner.avatar,
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          if(car.ownerType == "store"){
+            controller.navToStoreCar(car.owner.id.toString());
+          }
+        },
+        child: BottomInfoStore(
+          nameStore: car.owner.name,
+          address: "${car.gov}, ${car.city} ${car.closerPoint ?? ""} ",
+          whatsappNumberPhone: car.owner.phoneNumber,
+          numberPhone: car.owner.phoneNumber,
+          imageUrl: car.owner.avatar,
+        ),
       ),
     );
   }

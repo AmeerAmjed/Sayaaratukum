@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
-import 'package:sayaaratukum/binding/public/store_car_details.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
 import 'package:sayaaratukum/models/store.dart';
-import 'package:sayaaratukum/screens/details/store/store_details.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/remote/public/store.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/store_type.dart';
@@ -60,15 +59,21 @@ class StoresController extends BaseController
 
   onClickStoreCar(StoreModel storeCars) {
     if (storeTypeId.value.toTypeStore() == StoreType.cars) {
-      Get.to(
-        () => StoreCarDetails(
-          storeCars: storeCars,
-        ),
+      Get.toNamed(
+        RouteScreen.storeCarDetails,
         arguments: {
           Constants.idStoreKey: storeCars.id.toString(),
         },
-        binding: StoreCarDetailsBinding(),
       );
+      // Get.to(
+      //   () => StoreCarDetails(
+      //     storeCars: storeCars,
+      //   ),
+      //   arguments: {
+      //     Constants.idStoreKey: storeCars.id.toString(),
+      //   },
+      //   binding: StoreCarDetailsBinding(),
+      // );
     }
   }
 

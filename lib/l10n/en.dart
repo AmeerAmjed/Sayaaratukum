@@ -156,6 +156,8 @@ class EnTranslations {
         L10n.numberPhoneNotAdd : 'NumberPhone Not Add.',
         L10n.whatsappNumberPhoneNotAdd : 'Whatsapp NumberPhone Not Add ',
 
+        L10n.storeExpires : 'Store is expires ',
+
 
 
         "USA" : 'USA',

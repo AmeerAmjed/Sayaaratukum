@@ -25,4 +25,18 @@ class StoreServices extends BaseService {
       return Future.error(e);
     }
   }
+
+  Future<Response> getStoresById(String id) async {
+    try {
+      Response response = await get("${ApiEndpoint.stores}/$id");
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error StoreServices getStoresById $e");
+      return Future.error(e);
+    }
+  }
 }

@@ -5,7 +5,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/public/cars.dart';
-import 'package:sayaaratukum/controllers/public/store_car_details.dart';
+import 'package:sayaaratukum/controllers/public/store/store_car_details.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/home/components/item_car.dart';

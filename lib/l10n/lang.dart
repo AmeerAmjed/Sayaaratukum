@@ -172,6 +172,8 @@ class L10n {
   static const numberPhoneNotAdd = 'numberPhoneNotAdd';
   static const whatsappNumberPhoneNotAdd = 'whatsappNumberPhoneNotAdd';
 
+  static const storeExpires = 'storeExpires';
+
 
 
 }

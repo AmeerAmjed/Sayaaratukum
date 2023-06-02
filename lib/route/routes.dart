@@ -3,6 +3,7 @@ import 'package:sayaaratukum/binding/auth/login.dart';
 import 'package:sayaaratukum/binding/auth/register.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
 import 'package:sayaaratukum/binding/public/search/search_car.dart';
+import 'package:sayaaratukum/binding/public/store_car_details.dart';
 import 'package:sayaaratukum/binding/user/add_car.dart';
 import 'package:sayaaratukum/binding/user/add_tool.dart';
 import 'package:sayaaratukum/binding/user/my_subscribe_store.dart';
@@ -13,6 +14,7 @@ import 'package:sayaaratukum/screens/add_tool/add_tool.dart';
 import 'package:sayaaratukum/screens/auth/login/login.dart';
 import 'package:sayaaratukum/screens/auth/register/register.dart';
 import 'package:sayaaratukum/screens/auth/welcom/welcome.dart';
+import 'package:sayaaratukum/screens/details/store/store_details.dart';
 import 'package:sayaaratukum/screens/main.dart';
 import 'package:sayaaratukum/screens/my_%20subscribe_store/my_subscribe_store.dart';
 import 'package:sayaaratukum/screens/profile/profile.dart';
@@ -75,5 +77,20 @@ List<GetPage> routes() => [
         name: RouteScreen.mySubscribeStore,
         page: () => const MySubscribeStore(),
         binding: MySubscribeStoreBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.storeCarDetails,
+        page: () => const StoreCarDetails(),
+        binding: StoreCarDetailsBinding(),
       )
+
+  // Get.to(
+  //   () => StoreCarDetails(
+  //     storeCars: storeCars,
+  //   ),
+  //   arguments: {
+  //     Constants.idStoreKey: storeCars.id.toString(),
+  //   },
+  //   binding: StoreCarDetailsBinding(),
+  // );
     ];

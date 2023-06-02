@@ -62,17 +62,17 @@ class MySubscribeStoreController extends BaseController
   }
 
   onClickStoreCar(StoreModel storeCars) {
-    if (storeTypeId.value.toTypeStore() == StoreType.cars) {
-      Get.to(
-        () => StoreCarDetails(
-          storeCars: storeCars,
-        ),
-        arguments: {
-          Constants.idStoreKey: storeCars.id.toString(),
-        },
-        binding: StoreCarDetailsBinding(),
-      );
-    }
+    // if (storeTypeId.value.toTypeStore() == StoreType.cars) {
+    //   Get.to(
+    //     () => StoreCarDetails(
+    //       storeCars: storeCars,
+    //     ),
+    //     arguments: {
+    //       Constants.idStoreKey: storeCars.id.toString(),
+    //     },
+    //     binding: StoreCarDetailsBinding(),
+    //   );
+    // }
   }
 
   @override
