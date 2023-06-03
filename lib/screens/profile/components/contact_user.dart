@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/open_link.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';
-import 'package:sayaaratukum/widgets/custom_snackbar.dart';
 
 class ContactUser extends StatelessWidget {
   const ContactUser({
@@ -30,11 +28,7 @@ class ContactUser extends StatelessWidget {
               label: numberPhone,
               iconRow: Icons.call,
               onPressed: () {
-                if (numberPhone != null) {
-                  OpenLink.dial(phoneNumber: numberPhone!);
-                } else {
-                  customSnackBar(L10n.numberPhoneNotAdd.tr);
-                }
+                callNow(numberPhone);
               },
               background: Get.theme.cardColor,
               colorOnButton: Get.textTheme.labelLarge?.color,
@@ -48,7 +42,9 @@ class ContactUser extends StatelessWidget {
               height: 40,
               label: numberPhoneWhatUp,
               iconRow: Icons.whatsapp,
-              onPressed: () {},
+              onPressed: () {
+                chatNow(numberPhoneWhatUp);
+              },
               background: const Color(0xFF2ABD6E),
               padding: const EdgeInsets.symmetric(
                 horizontal: Constants.spacing4,

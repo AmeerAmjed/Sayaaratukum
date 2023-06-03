@@ -4,6 +4,22 @@ import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/widgets/custom_snackbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+callNow(String? numberPhone) {
+  if (numberPhone != null) {
+    OpenLink.dial(phoneNumber: numberPhone!);
+  } else {
+    customSnackBar(L10n.numberPhoneNotAdd.tr);
+  }
+}
+
+chatNow(String? whatsappNumberPhone) {
+  if (whatsappNumberPhone != null) {
+    OpenLink.launchWhatsapp(phoneNumber: whatsappNumberPhone);
+  } else {
+    customSnackBar(L10n.whatsappNumberPhoneNotAdd.tr);
+  }
+}
+
 class OpenLink {
   // static url(String url) async {
   //   final Uri urlWebSite = Uri.parse(url);

@@ -7,7 +7,6 @@ import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/open_link.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';
-import 'package:sayaaratukum/widgets/custom_snackbar.dart';
 import 'package:sayaaratukum/widgets/default_image.dart';
 import 'package:sayaaratukum/widgets/horizontal_space.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
@@ -97,11 +96,7 @@ class BottomInfoStore extends StatelessWidget {
                   icon: Iconsax.call,
                   colorOnButton: Get.theme.primaryColor,
                   onPressed: () {
-                    if (numberPhone != null) {
-                      OpenLink.dial(phoneNumber: numberPhone!);
-                    } else {
-                      customSnackBar(L10n.numberPhoneNotAdd.tr);
-                    }
+                    callNow(numberPhone);
                   },
                 ),
                 const HorizontalSpace4(),
@@ -114,12 +109,7 @@ class BottomInfoStore extends StatelessWidget {
                     iconRow: Icons.whatsapp,
                     label: L10n.chatToBuy.tr,
                     onPressed: () {
-                      if (numberPhone != null) {
-                        OpenLink.launchWhatsapp(
-                            phoneNumber: whatsappNumberPhone!);
-                      } else {
-                        customSnackBar(L10n.whatsappNumberPhoneNotAdd.tr);
-                      }
+                      chatNow(numberPhone);
                     },
                   ),
                 )

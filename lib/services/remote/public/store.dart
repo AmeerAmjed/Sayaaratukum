@@ -39,4 +39,18 @@ class StoreServices extends BaseService {
       return Future.error(e);
     }
   }
+
+  Future<Response> subscription(String id) async {
+    try {
+      Response response = await post("${ApiEndpoint.storeSubscription}/$id", {});
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error StoreServices subscription $e");
+      return Future.error(e);
+    }
+  }
 }

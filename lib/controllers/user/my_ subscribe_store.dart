@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
-import 'package:sayaaratukum/binding/public/store_car_details.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
 import 'package:sayaaratukum/models/store.dart';
-import 'package:sayaaratukum/screens/details/store/store_details.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/remote/user/my_%20subscribe_store.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/store_type.dart';
@@ -19,6 +18,10 @@ class MySubscribeStoreController extends BaseController
   @override
   void onInit() {
     super.onInit();
+    init();
+  }
+
+  init() {
     loadingData();
     getAllStore(storeTypeId.value);
   }
@@ -62,17 +65,23 @@ class MySubscribeStoreController extends BaseController
   }
 
   onClickStoreCar(StoreModel storeCars) {
-    // if (storeTypeId.value.toTypeStore() == StoreType.cars) {
-    //   Get.to(
-    //     () => StoreCarDetails(
-    //       storeCars: storeCars,
-    //     ),
-    //     arguments: {
-    //       Constants.idStoreKey: storeCars.id.toString(),
-    //     },
-    //     binding: StoreCarDetailsBinding(),
-    //   );
-    // }
+    if (storeTypeId.value.toTypeStore() == StoreType.cars) {
+      Get.toNamed(
+        RouteScreen.storeCarDetails,
+        arguments: {
+          Constants.idStoreKey: storeCars.id.toString(),
+        },
+      );
+      // Get.to(
+      //   () => StoreCarDetails(
+      //     storeCars: storeCars,
+      //   ),
+      //   arguments: {
+      //     Constants.idStoreKey: storeCars.id.toString(),
+      //   },
+      //   binding: StoreCarDetailsBinding(),
+      // );
+    }
   }
 
   @override

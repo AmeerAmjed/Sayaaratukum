@@ -139,8 +139,10 @@ class EnTranslations {
         L10n.option : 'Option',
 
         L10n.subscribe : 'Subscribe',
+        L10n.subscribed : 'Subscribed',
         L10n.mySubscribed : 'My Subscribed',
         L10n.cars : 'Cars',
+        L10n.now : 'Now',
 
         L10n.emptySubscribed : 'Not Subscribed to any store yet',
         L10n.noteEmptySubscribed : 'Start Subscribed in store all store Subscribed will see here',

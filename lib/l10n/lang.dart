@@ -154,8 +154,10 @@ class L10n {
   static const option = 'option';
 
   static const subscribe = 'subscribe';
+  static const subscribed = 'subscribed';
   static const mySubscribed = 'mySubscribed';
   static const cars = 'cars';
+  static const now = 'now';
 
 
   static const emptySubscribed = 'emptySubscribed';

@@ -60,6 +60,8 @@ class _InfoHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         AvatarWithCoverUser(
           name: store.name,
@@ -74,14 +76,28 @@ class _InfoHeader extends StatelessWidget {
           numberPhone: store.whatsappNumberPhone,
           numberPhoneWhatUp: store.whatsappNumberPhone,
         ),
-        Buttons(
-          height: 40,
-          width: double.maxFinite,
-          label: L10n.subscribe.tr,
-          onPressed: () {},
-        )
+        GetBuilder<InfoStoreCarDetails>(builder: (controller) {
+          return Buttons(
+            height: 40,
+            colorLoading: controller.disableSubmit.value == true
+                ? Get.theme.primaryColor
+                : Get.theme.backgroundColor,
+            disable: controller.disableSubmit.value,
+            disableWithShowLoading: controller.disableSubmit.value,
+            fullBackground: store.isSubscribed,
+            colorOnButton: store.isSubscribed
+                ? Get.theme.backgroundColor
+                : Get.theme.primaryColor,
+            width: double.maxFinite,
+            label: store.isSubscribed
+                ? L10n.subscribed.tr
+                : "${L10n.subscribe.tr} ${L10n.now.tr}",
+            onPressed: () {
+              controller.subscriptionStore(store);
+            },
+          );
+        }),
       ],
     );
-    ;
   }
 }

@@ -5,6 +5,7 @@ import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/binding/public/car_details.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
+import 'package:sayaaratukum/controllers/user/my_%20subscribe_store.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/car.dart';
 import 'package:sayaaratukum/models/store.dart';
@@ -16,7 +17,7 @@ class InfoStoreCarDetails extends BaseController
     with StateMixin<StoreModel>, PaginationController {
   static InfoStoreCarDetails get instance => Get.find();
 
-  RxBool isLoadingMore = false.obs;
+  RxBool disableSubmit = false.obs;
   var idStore = "0".obs;
 
   @override
@@ -49,8 +50,35 @@ class InfoStoreCarDetails extends BaseController
     }
   }
 
+  Future<void> subscriptionStore(StoreModel store) async {
+    loading(true);
+    try {
+      await StoreServices.instance
+          .subscription(store.id.toString())
+          .then((response) {
+        if (response.isOk) {
+          loading(false);
+          updateMySubscribeStoreController();
+          store.isSubscribed = !store.isSubscribed;
+          change(store, status: RxStatus.success());
+        }
+      });
+    } on Response catch (response) {
+      try {
+        showMessage(response.body['message']);
+      } catch (e) {}
+
+      loading(false);
+    }
+  }
+
   loadingData() {
     change(null, status: RxStatus.loading());
+  }
+
+  loading(bool state) {
+    disableSubmit.value = state;
+    update();
   }
 
   navigateToDetails(CarModel car) {
@@ -58,5 +86,11 @@ class InfoStoreCarDetails extends BaseController
       () => CarDetails(car: car),
       binding: CarDetailsBinding(),
     );
+  }
+
+  void updateMySubscribeStoreController() {
+    try {
+      MySubscribeStoreController.instance.init();
+    } catch (error) {}
   }
 }
