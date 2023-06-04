@@ -44,7 +44,7 @@ class Brands extends StatelessWidget {
                 },
                 child: BrandItem(
                   item: state[index],
-                  width: 72,
+                  width: 52,
                 ),
               );
             },
