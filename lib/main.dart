@@ -37,7 +37,7 @@ class Root extends GetView<Application> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Moo',
+      title: L10n.nameApp.tr,
       debugShowCheckedModeBanner: false,
       theme: ThemeApp.light,
       // darkTheme: ThemeApp.dark,

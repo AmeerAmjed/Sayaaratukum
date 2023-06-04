@@ -11,6 +11,7 @@ class AppTranslations extends Translations {
 }
 
 class L10n {
+  static const String nameApp = "nameApp";
   static const String viewAll = "viewAll";
   static const String brands = "Brands";
   static const String brand = "brand";
