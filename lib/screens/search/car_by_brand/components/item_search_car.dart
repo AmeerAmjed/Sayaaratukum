@@ -47,10 +47,10 @@ class ItemSearchCar extends StatelessWidget {
                       ),
                     ),
                   ),
-                  FavouriteCar(
-                    onPressed: onPressedFavouriteCar,
-                    colorBackground: Colors.transparent,
-                  )
+                  // FavouriteCar(
+                  //   onPressed: onPressedFavouriteCar,
+                  //   colorBackground: Colors.transparent,
+                  // )
                 ],
               ),
               Column(

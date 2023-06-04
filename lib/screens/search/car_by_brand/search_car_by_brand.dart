@@ -37,7 +37,7 @@ class SearchCarByBrand extends GetView<SearchCarByBrandController> {
               ? state!.length + 1
               : state!.length,
           separatorBuilder: (context, index) => const Space(
-            width: Constants.spacing,
+            height: Constants.spacing8,
           ),
           itemBuilder: (context, index) {
             if (index >= state.length && controller.isLoadingMore.value) {

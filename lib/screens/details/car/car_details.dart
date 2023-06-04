@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/public/car_details.dart';
@@ -7,7 +8,9 @@ import 'package:sayaaratukum/screens/details/car/components/car_details_specific
 import 'package:sayaaratukum/screens/details/car/components/indication.dart';
 import 'package:sayaaratukum/screens/details/tool/components/tool_details_note.dart';
 import 'package:sayaaratukum/screens/home/components/title_with_view_all.dart';
+import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/price.dart';
+import 'package:sayaaratukum/util/share.dart';
 import 'package:sayaaratukum/widgets/bottom_info_store.dart';
 import 'package:sayaaratukum/widgets/box.dart';
 import 'package:sayaaratukum/widgets/error.dart';
@@ -43,6 +46,16 @@ class CarDetails extends GetView<CarDetailsController> {
       return Scaffold(
         appBar: AppBar(
           title: Text(car!.name),
+          actions: [
+            IconButton(
+              onPressed: () {
+                onClickShare(context, "${Constants.baseUrl}car/${car.id}");
+              },
+              icon: const Icon(
+                CupertinoIcons.share,
+              ),
+            )
+          ],
         ),
         body: ListView(
           padding: const EdgeInsets.all(16),
@@ -74,7 +87,7 @@ class CarDetails extends GetView<CarDetailsController> {
                     IndicatorImageCar(
                       children: List.generate(
                         car.images.length,
-                        (index) => Obx(() {
+                            (index) => Obx(() {
                           return Container(
                             padding: const EdgeInsets.all(8.0),
                             margin: const EdgeInsets.all(4),
@@ -103,27 +116,27 @@ class CarDetails extends GetView<CarDetailsController> {
                           children: [
                             GetBuilder<CarDetailsController>(
                                 builder: (controller) {
-                              return IconButton(
-                                onPressed: controller.onPageIndex.value != 0
-                                    ? (controller.backward)
-                                    : null,
-                                icon: const Icon(
-                                  Icons.arrow_back_ios_new_rounded,
-                                ),
-                              );
-                              return ButtonSlideImage(
-                                icon: Icons.arrow_back_ios_new_rounded,
-                                onPressed: controller.onPageIndex.value > 0
-                                    ? (controller.backward)
-                                    : null,
-                              );
-                            }),
+                                  return IconButton(
+                                    onPressed: controller.onPageIndex.value != 0
+                                        ? (controller.backward)
+                                        : null,
+                                    icon: const Icon(
+                                      Icons.arrow_back_ios_new_rounded,
+                                    ),
+                                  );
+                                  return ButtonSlideImage(
+                                    icon: Icons.arrow_back_ios_new_rounded,
+                                    onPressed: controller.onPageIndex.value > 0
+                                        ? (controller.backward)
+                                        : null,
+                                  );
+                                }),
                             GetBuilder<CarDetailsController>(builder: (con) {
                               return IconButton(
                                 splashColor: Colors.red,
                                 hoverColor: Colors.red,
                                 onPressed: con.onPageIndex.value <
-                                        car.images.length - 1
+                                    car.images.length - 1
                                     ? (con.forward)
                                     : null,
                                 icon: const Icon(
@@ -133,7 +146,7 @@ class CarDetails extends GetView<CarDetailsController> {
                               return ButtonSlideImage(
                                 icon: Icons.arrow_forward_ios_rounded,
                                 onPressed: con.onPageIndex.value <
-                                        car.images.length - 1
+                                    car.images.length - 1
                                     ? (con.forward)
                                     : null,
                               );

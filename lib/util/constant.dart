@@ -1,5 +1,6 @@
 class Constants {
   static const String websiteLink = "https://api.saiaratcom.com/";
+  static const String baseUrl = "https://saiaratcom.com/";
   static const double zero = .0;
 
   static const double spacing = 2.0;

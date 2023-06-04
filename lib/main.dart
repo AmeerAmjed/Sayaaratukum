@@ -8,13 +8,27 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/route/routes.dart';
 import 'package:sayaaratukum/theme/theme.dart';
+import 'package:uni_links/uni_links.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
   Get.put<Application>(Application(), permanent: true);
-
+  initUniLinks();
   runApp(const Root());
+}
+
+Future<void> initUniLinks() async {
+  try {
+    await getInitialUri();
+  } on Exception {}
+
+  uriLinkStream.listen((Uri? uri) {
+    print("ameer $uri");
+    // Use the uri and warn the user, if it is not correct
+  }, onError: (err) {
+    // Handle exception by warning the user their action did not succeed
+  });
 }
 
 class Root extends GetView<Application> {
