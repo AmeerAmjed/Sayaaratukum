@@ -20,6 +20,10 @@ class CarsController extends BaseController
   var cars = <CarModel>[].obs.toList(growable: true);
   RxBool isLoadingMore = false.obs;
 
+  final int limitRepositories = 20;
+  int page = 1;
+  bool getFirstData = false;
+  bool lastPage = false;
 
   @override
   void onInit() {

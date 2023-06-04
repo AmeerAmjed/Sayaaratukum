@@ -17,6 +17,11 @@ class AdsController extends BaseController
   var ads = <AdsModel>[].obs.toList(growable: true);
   RxBool isLoadingMore = false.obs;
 
+  final int limitRepositories = 20;
+  int page = 1;
+  bool getFirstData = false;
+  bool lastPage = false;
+
   @override
   void onInit() {
     super.onInit();

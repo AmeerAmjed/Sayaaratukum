@@ -12,11 +12,16 @@ import 'package:sayaaratukum/util/constant.dart';
 import '../../screens/details/tool/tool_details.dart';
 
 class ToolsController extends BaseController
-    with StateMixin<List<ToolModel>>, PaginationController, ScrollMixin {
+    with StateMixin<List<ToolModel>>,  ScrollMixin {
   static ToolsController get instance => Get.find();
 
   var brands = <ToolModel>[].obs.toList(growable: true);
   RxBool isLoadingMore = false.obs;
+
+  final int limitRepositories = 20;
+  int page = 1;
+  bool getFirstData = false;
+  bool lastPage = false;
 
   @override
   void onInit() {

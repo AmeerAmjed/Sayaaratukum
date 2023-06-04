@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/public/stores.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/stores/components/filtter_store.dart';
 import 'package:sayaaratukum/screens/stores/components/item_stores.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/widgets/empty.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
 import '../../util/store_type.dart';
@@ -41,7 +44,12 @@ class StoresScreen extends GetView<StoresController> {
               )
             ];
           },
-          body: controller.obx(onLoading: const Loading(), (state) {
+          body: controller.obx(
+              onLoading: const Loading(),
+              onEmpty: Empty(
+                title: L10n.empty.tr,
+                icon: Iconsax.clipboard_close,
+              ), (state) {
             return GetBuilder<StoresController>(builder: (controller) {
               return ListView.separated(
                 controller: controller.scroll,

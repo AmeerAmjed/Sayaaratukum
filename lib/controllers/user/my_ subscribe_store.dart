@@ -15,6 +15,11 @@ class MySubscribeStoreController extends BaseController
   RxBool isLoadingMore = false.obs;
   RxInt storeTypeId = 1.obs;
 
+  final int limitRepositories = 20;
+  int page = 1;
+  bool getFirstData = false;
+  bool lastPage = false;
+
   @override
   void onInit() {
     super.onInit();

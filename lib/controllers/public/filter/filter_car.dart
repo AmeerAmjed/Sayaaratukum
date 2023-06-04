@@ -44,6 +44,11 @@ class FilterCarController extends BaseController
   late TextEditingController search;
   RxBool isTextEmpty = true.obs;
 
+  final int limitRepositories = 20;
+  int page = 1;
+  bool getFirstData = false;
+  bool lastPage = false;
+
   @override
   void onInit() {
     brands = BrandController.instance.brands;

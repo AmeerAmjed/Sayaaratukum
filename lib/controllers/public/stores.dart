@@ -15,6 +15,11 @@ class StoresController extends BaseController
   RxBool isLoadingMore = false.obs;
   RxInt storeTypeId = 1.obs;
 
+  final int limitRepositories = 20;
+  int page = 1;
+  bool getFirstData = false;
+  bool lastPage = false;
+
   @override
   void onInit() {
     super.onInit();
@@ -22,9 +27,21 @@ class StoresController extends BaseController
     getAllStore(storeTypeId.value);
   }
 
+  resetPagination() {
+    page = 1;
+    getFirstData = false;
+    lastPage = false;
+  }
+
+  getStoreType(int typeId) {
+    resetPagination();
+    getAllStore(typeId);
+  }
+
   Future<void> getAllStore(int typeId) async {
     stores.clear();
     loadingData();
+
     try {
       await StoreServices.instance
           .getStoresByType(storeTypeId.value,
@@ -37,7 +54,9 @@ class StoresController extends BaseController
 
           var responseData = response.body[data];
           final bool emptyRepositories =
-          (responseData == null || responseData.isEmpty);
+              (responseData == null || responseData.isEmpty);
+          // final bool emptyRepositories = response.body?.isEmpty ?? true;
+          print("emptyRepositories $emptyRepositories ${response.body}");
           if (!getFirstData && emptyRepositories) {
             change(null, status: RxStatus.empty());
           } else if (getFirstData && emptyRepositories) {
@@ -103,14 +122,14 @@ class StoresController extends BaseController
       case StoreType.cars:
         {
           storeTypeId.value = 1;
-          getAllStore(storeTypeId.value);
+          getStoreType(storeTypeId.value);
           break;
         }
 
       case StoreType.tools:
         {
           storeTypeId.value = 2;
-          getAllStore(storeTypeId.value);
+          getStoreType(storeTypeId.value);
           break;
         }
     }
