@@ -55,11 +55,12 @@ class HomeScreen extends GetView<HomeController> {
               Ads(
                 width: width,
               ),
-              const VerticalSpace12(),
+              const VerticalSpace16(),
               TitleWithViewAll(
                 title: L10n.recommended.tr,
                 // onPressed: () {},
               ),
+              const VerticalSpace4(),
               const ItemsCar(),
             ],
           ),
