@@ -17,7 +17,8 @@ class CarModel extends BaseModel {
   final String? isDamage;
   final String? inComingType;
   final int isPublished;
-  final bool isFavorite;
+   bool isFavorite;
+  bool isLoadingFavorite;
   final String engine;
   final String yearModel;
   final SubModel brand;
@@ -33,6 +34,7 @@ class CarModel extends BaseModel {
   final List<String> images;
 
   CarModel({
+    this.isLoadingFavorite = false,
     this.notes,
     required this.isAvailable,
     this.closerPoint,

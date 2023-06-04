@@ -6,16 +6,18 @@ import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/binding/public/car_details.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
+import 'package:sayaaratukum/controllers/user/favorite.dart';
 import 'package:sayaaratukum/models/car.dart';
 import 'package:sayaaratukum/screens/details/car/car_details.dart';
 import 'package:sayaaratukum/services/remote/public/cars.dart';
+import 'package:sayaaratukum/services/remote/user/favorite.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
 class CarsController extends BaseController
     with StateMixin<List<CarModel>>, PaginationController, ScrollMixin {
   static CarsController get instance => Get.find();
 
-  var brands = <CarModel>[].obs.toList(growable: true);
+  var cars = <CarModel>[].obs.toList(growable: true);
   RxBool isLoadingMore = false.obs;
 
   @override
@@ -43,9 +45,9 @@ class CarsController extends BaseController
             loadingMore(false);
           } else {
             getFirstData = true;
-            brands.addAll(result);
+            cars.addAll(result);
             loadingMore(false);
-            change(brands, status: RxStatus.success());
+            change(cars, status: RxStatus.success());
           }
         }
       });
@@ -55,13 +57,57 @@ class CarsController extends BaseController
     }
   }
 
+  favoriteCar(CarModel car) async {
+    changeStateLoadingItem(car.id, true);
+    try {
+      await FavoriteService.instance.toggleFavorite(car.id).then((response) {
+        FavoriteController.instance.init();
+        print("response $response");
+        if (response.isOk) {
+          if (response.status.code == 201) {
+            changeStateLoadingItem(car.id, false, stateFav: true);
+          } else if (response.status.code == 204) {
+            changeStateLoadingItem(car.id, false, stateFav: false);
+          }
+        }
+      });
+    } on Response catch (response) {
+      changeStateLoadingItem(
+        car.id,
+        false,
+      );
+      change(null, status: RxStatus.error());
+      // loading(false);
+      print("getFavorite ${response.statusCode} ${response.body} ");
+    }
+  }
+
+  changeStateLoadingItem(int id, bool state, {bool? stateFav}) {
+    cars.firstWhere((item) {
+      if (item.id == id) {
+        item.isLoadingFavorite = state;
+        if (stateFav != null) {
+          item.isFavorite = stateFav;
+        }
+
+        return true;
+      }
+      return false;
+    });
+    update();
+  }
+
+  // updateCarInfo(int id, cars){
+  //
+  // }
+
   @override
   Future<void> onEndScroll() async {
     print(" loadingggg more");
     if (!lastPage) {
       page += 1;
       loadingMore(true);
-      change(brands, status: RxStatus.loadingMore());
+      change(cars, status: RxStatus.loadingMore());
       await getCars();
       Get.back();
     }

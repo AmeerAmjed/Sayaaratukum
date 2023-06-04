@@ -7,10 +7,10 @@ import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/public/cars.dart';
 import 'package:sayaaratukum/controllers/public/store/store_car_details.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/home/components/item_car.dart';
-import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/widgets/button_favourite_car.dart';
+import 'package:sayaaratukum/widgets/custom_snackbar_login.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
@@ -52,25 +52,18 @@ class ItemCarsStore extends GetView<StoreCarDetailsController> {
               },
               child: ItemCar(
                 car: state[index],
-                onPressedFavouriteCar: () {
-                  if (Application.instance.isLogin) {
-                  } else {
-                    controller.showMessage(
-                      L10n.loginToAddFavorites.tr,
-                      action: TextButton(
-                        onPressed: () {
-                          Get.toNamed(RouteScreen.login);
-                        },
-                        child: Text(
-                          L10n.login.tr,
-                          style: TextStyle(
-                            color: ColorSystem.primaryColor[600],
-                          ),
-                        ),
-                      ),
+                buttonFavouriteCar: GetBuilder<CarsController>(
+                  builder: (controller) {
+                    return FavouriteCar(
+                      onPressed: () {
+                        if (Application.instance.isLogin) {
+                        } else {
+                          snackBarToLogin();
+                        }
+                      },
                     );
-                  }
-                },
+                  },
+                ),
               ),
             );
           },

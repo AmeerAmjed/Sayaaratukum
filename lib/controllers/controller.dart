@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/widgets/custom_snackbar.dart';
+
+import '../l10n/lang.dart';
 
 abstract class BaseController extends GetxController with ValidatorInput {
 
@@ -31,8 +34,7 @@ abstract class BaseController extends GetxController with ValidatorInput {
     );
   }
 
-  showMessage(
-    String message, {
+  showMessage(String message, {
     Duration duration = const Duration(seconds: 1),
     Widget? action,
   }) {

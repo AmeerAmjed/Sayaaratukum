@@ -7,6 +7,7 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/favorite/components/item_favorite.dart';
 import 'package:sayaaratukum/screens/home/widget/cars.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/widgets/button_favourite_car.dart';
 import 'package:sayaaratukum/widgets/empty.dart';
 import 'package:sayaaratukum/widgets/error.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
@@ -62,7 +63,7 @@ class FavoriteScreen extends GetView<FavoriteController> {
                     item: state[index],
                     buttonFavorite: FavouriteCar(
                       onPressed: () {
-                        controller.favorite(state[index].id);
+                        controller.favorite(state[index].product?.id ?? 0);
                       },
                       disableWithShowLoading: state[index].isLoading,
                       disable: con.disableSubmit.value,

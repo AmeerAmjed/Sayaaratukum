@@ -33,6 +33,7 @@ class FavoriteController extends BaseController
   }
 
   Future<void> getFavorite() async {
+    favorites.clear();
     try {
       await FavoriteService.instance.getAllFavorite().then((response) {
         print("ameer response $response");
@@ -88,7 +89,7 @@ class FavoriteController extends BaseController
 
   changeStateLoadingItem(int id, bool state) {
     favorites.firstWhere((item) {
-      if (item.id == id) {
+      if (item.product?.id == id) {
         item.isLoading = state;
         return true;
       }
