@@ -48,7 +48,7 @@ class Ads extends GetView<AdsController> {
               }
               return InkWell(
                 onTap: () {
-                  // TopAdsController.to.onClickItem(state[index].id);
+                  controller.onAdsClicked(state[index]);
                 },
                 child: AdsItem(
                   item: state[index],

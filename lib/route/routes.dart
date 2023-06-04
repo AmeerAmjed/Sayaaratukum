@@ -1,6 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:sayaaratukum/binding/auth/login.dart';
 import 'package:sayaaratukum/binding/auth/register.dart';
+import 'package:sayaaratukum/binding/public/car_details.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
 import 'package:sayaaratukum/binding/public/search/search_car.dart';
 import 'package:sayaaratukum/binding/public/store_car_details.dart';
@@ -14,6 +15,7 @@ import 'package:sayaaratukum/screens/add_tool/add_tool.dart';
 import 'package:sayaaratukum/screens/auth/login/login.dart';
 import 'package:sayaaratukum/screens/auth/register/register.dart';
 import 'package:sayaaratukum/screens/auth/welcom/welcome.dart';
+import 'package:sayaaratukum/screens/details/car/car_details.dart';
 import 'package:sayaaratukum/screens/details/store/store_details.dart';
 import 'package:sayaaratukum/screens/main.dart';
 import 'package:sayaaratukum/screens/my_%20subscribe_store/my_subscribe_store.dart';
@@ -82,6 +84,11 @@ List<GetPage> routes() => [
         name: RouteScreen.storeCarDetails,
         page: () => const StoreCarDetails(),
         binding: StoreCarDetailsBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.carDetails,
+        page: () => const CarDetails(),
+        binding: CarDetailsBinding(),
       )
 
   // Get.to(

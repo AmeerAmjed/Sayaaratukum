@@ -65,7 +65,7 @@ class SearchCar extends GetView<SearchCarsController> {
             return ItemSearchCar(
               car: state[index],
               onPressedItem: () {
-                controller.onClickItemCar(state[index]);
+                controller.carDetails(state[index].id);
               },
               onPressedFavouriteCar: () {},
             );

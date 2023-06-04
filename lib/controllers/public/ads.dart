@@ -8,6 +8,7 @@ import 'package:sayaaratukum/models/ads.dart';
 import 'package:sayaaratukum/services/remote/public/ads.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/error_handler.dart';
+import 'package:sayaaratukum/util/store_type.dart';
 
 class AdsController extends BaseController
     with StateMixin<List<AdsModel>>, PaginationController, ScrollMixin {
@@ -76,6 +77,12 @@ class AdsController extends BaseController
   loadingMore(bool state) {
     isLoadingMore.value = state;
     update();
+  }
+
+  onAdsClicked(AdsModel ads) {
+    if (ads.typeAds == TypeAds.car) {
+      carDetails(ads.idItem);
+    }
   }
 
   @override

@@ -104,10 +104,4 @@ class SearchCarsController extends BaseController
     if (text.trim().isNotEmpty) init();
   }
 
-  onClickItemCar(CarModel car) {
-    Get.to(
-      () => CarDetails(car: car),
-      binding: CarDetailsBinding(),
-    );
-  }
 }

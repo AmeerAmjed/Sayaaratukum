@@ -48,7 +48,7 @@ class ItemCarsStore extends GetView<StoreCarDetailsController> {
             }
             return InkWell(
               onTap: () {
-                controller.navigateToDetails(state[index]);
+                controller.carDetails(state[index].id);
               },
               child: ItemCar(
                 car: state[index],

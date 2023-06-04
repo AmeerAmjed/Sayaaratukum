@@ -69,13 +69,6 @@ class SearchCarByBrandController extends BaseController
     }
   }
 
-  onClickItemCar(CarModel car) {
-    Get.to(
-      () => CarDetails(car: car),
-      binding: CarDetailsBinding(),
-    );
-  }
-
   @override
   Future<void> onEndScroll() async {
     if (!lastPage) {

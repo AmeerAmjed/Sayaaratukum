@@ -20,8 +20,10 @@ class CarsController extends BaseController
   var cars = <CarModel>[].obs.toList(growable: true);
   RxBool isLoadingMore = false.obs;
 
+
   @override
   void onInit() {
+    String? id = Get.parameters[Constants.brandIdKey];
     super.onInit();
     loadingData();
     getCars();
@@ -135,10 +137,4 @@ class CarsController extends BaseController
     getCars();
   }
 
-  navigateToDetails(CarModel car) {
-    Get.to(
-      () => CarDetails(car: car),
-      binding: CarDetailsBinding(),
-    );
-  }
 }

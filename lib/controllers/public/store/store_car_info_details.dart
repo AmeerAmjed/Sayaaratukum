@@ -81,12 +81,6 @@ class InfoStoreCarDetails extends BaseController
     update();
   }
 
-  navigateToDetails(CarModel car) {
-    Get.to(
-      () => CarDetails(car: car),
-      binding: CarDetailsBinding(),
-    );
-  }
 
   void updateMySubscribeStoreController() {
     try {

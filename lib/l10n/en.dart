@@ -159,6 +159,7 @@ class EnTranslations {
         L10n.whatsappNumberPhoneNotAdd : 'Whatsapp NumberPhone Not Add ',
 
         L10n.storeExpires : 'Store is expires ',
+        L10n.notFound : 'Not Found ',
 
 
 

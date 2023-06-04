@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
-import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/theme/color.dart';
+import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/custom_snackbar.dart';
-
-import '../l10n/lang.dart';
 
 abstract class BaseController extends GetxController with ValidatorInput {
 
@@ -20,6 +19,15 @@ abstract class BaseController extends GetxController with ValidatorInput {
     } catch (err) {
       print("error navigateTo $toPage");
     }
+  }
+
+  carDetails(int id) {
+    Get.toNamed(
+      RouteScreen.carDetails,
+      arguments: {
+        Constants.idCarKey: id.toString(),
+      },
+    );
   }
 
   onError(

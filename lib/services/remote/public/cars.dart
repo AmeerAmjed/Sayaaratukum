@@ -42,4 +42,18 @@ class CarsServices extends BaseService {
       return Future.error(e);
     }
   }
+
+  Future<Response> getCarsById(String id) async {
+    try {
+      Response response = await get("${ApiEndpoint.cars}/$id");
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error CarsServices getCarsById $e");
+      return Future.error(e);
+    }
+  }
 }
