@@ -19,7 +19,7 @@ class OwnerCarModel extends BaseModel {
   factory OwnerCarModel.fromJson(Map<String, dynamic> json) {
     var isStoreOwner = json['carable_type'] == OwnerType.store.name;
     return OwnerCarModel(
-      id: json['id'],
+      id: json['carable']['id'],
       name:
           isStoreOwner ? json['carable']['name'] : json['carable']['fullname'],
       typeOwner: json['carable_type'],
