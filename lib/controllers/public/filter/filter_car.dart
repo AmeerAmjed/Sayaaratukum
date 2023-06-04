@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:sayaaratukum/binding/public/car_details.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
@@ -11,7 +10,6 @@ import 'package:sayaaratukum/controllers/public/engine_powers.dart';
 import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/models/car.dart';
 import 'package:sayaaratukum/models/engine_power_type.dart';
-import 'package:sayaaratukum/screens/details/car/car_details.dart';
 import 'package:sayaaratukum/util/error_handler.dart';
 
 class FilterCarController extends BaseController
@@ -73,6 +71,7 @@ class FilterCarController extends BaseController
   }
 
   Map<String, String> getValueField() {
+    filterCarField = {};
     filterCarField
         .addAllIf(idBrandSelected != 0, {"brand": "$idBrandSelected"});
     filterCarField.addAllIf(
@@ -261,6 +260,7 @@ class FilterCarController extends BaseController
 
   void clearSearch() {
     search.clear();
+    search.text = "";
     isTextEmpty.value = true;
     update();
   }
