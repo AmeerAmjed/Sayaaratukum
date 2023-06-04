@@ -23,4 +23,18 @@ class ToolsServices extends BaseService {
       return Future.error(e);
     }
   }
+
+  Future<Response> getToolById(String id) async {
+    try {
+      Response response = await get("${ApiEndpoint.tool}/$id");
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error ToolsServices getToolById $e");
+      return Future.error(e);
+    }
+  }
 }

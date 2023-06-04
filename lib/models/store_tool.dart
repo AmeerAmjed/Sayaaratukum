@@ -12,6 +12,7 @@ class StoreToolModel extends BaseModel {
     required this.avatar,
     required this.address,
     required this.expiresAt,
+    required this.isSubscribed,
     required this.whatsappNumberPhone,
     required this.type,
   });
@@ -23,6 +24,7 @@ class StoreToolModel extends BaseModel {
   final String? description;
   final String address;
   final String? expiresAt;
+  bool isSubscribed;
   final String whatsappNumberPhone;
   final SubModel type;
 
@@ -30,6 +32,7 @@ class StoreToolModel extends BaseModel {
     return StoreToolModel(
       id: json['id'],
       name: json['name'],
+      isSubscribed: json['is_subscribed'],
       avatar: json['image'] ?? Constants.websiteLink,
       cover: json['img_cover'] ?? Constants.websiteLink,
       address: json['address'],

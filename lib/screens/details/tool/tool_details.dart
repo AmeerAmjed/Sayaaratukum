@@ -1,76 +1,99 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaaratukum/controllers/public/details/tool_details.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/models/tool.dart';
 import 'package:sayaaratukum/screens/details/tool/components/imaget_tool_details.dart';
 import 'package:sayaaratukum/screens/details/tool/components/tool_details_note.dart';
 import 'package:sayaaratukum/screens/details/tool/components/tool_details_specifications.dart';
 import 'package:sayaaratukum/screens/home/components/title_with_view_all.dart';
 import 'package:sayaaratukum/util/price.dart';
 import 'package:sayaaratukum/widgets/bottom_info_store.dart';
-import 'package:sayaaratukum/widgets/box.dart';
-import 'package:sayaaratukum/widgets/image_full_screen.dart';
+import 'package:sayaaratukum/widgets/error.dart';
+import 'package:sayaaratukum/widgets/loading.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
-import '../../../widgets/image_loading.dart';
-
-class ToolDetails extends StatelessWidget {
+class ToolDetails extends GetView<ToolDetailsController> {
   const ToolDetails({
     Key? key,
-    required this.tool,
   }) : super(key: key);
-
-  final ToolModel tool;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(tool.name),
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          ImageToolDetails(
-            imageUrl: tool.imageUrl,
-          ),
-          const VerticalSpace8(),
-          Text(
-            tool.name,
-            style: Get.textTheme.labelLarge?.copyWith(
-              overflow: TextOverflow.ellipsis,
-              fontWeight: FontWeight.w500,
+    return controller.obx(
+        onLoading: Scaffold(
+          appBar: AppBar(),
+          body: const Loading(),
+        ), onError: (error) {
+      return Scaffold(
+        appBar: AppBar(),
+        body: ErrorScreen(
+          textError: error ?? "",
+          onPressed: () {
+            controller.getCarById();
+          },
+        ),
+      );
+    }, (tool) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(tool!.name),
+        ),
+        body: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            ImageToolDetails(
+              imageUrl: tool.imageUrl,
             ),
-            maxLines: 1,
+            const VerticalSpace8(),
+            Text(
+              tool.name,
+              style: Get.textTheme.labelLarge?.copyWith(
+                overflow: TextOverflow.ellipsis,
+                fontWeight: FontWeight.w500,
+              ),
+              maxLines: 1,
+            ),
+            const VerticalSpace8(),
+            Text(
+              currency(tool.price),
+              style: Get.textTheme.titleMedium,
+              maxLines: 1,
+            ),
+            const VerticalSpace16(),
+            TitleWithViewAll(
+              title: L10n.specifications.tr,
+              paddingH: .0,
+            ),
+            const VerticalSpace4(),
+            ToolDetailsSpecifications(
+              tool: tool,
+            ),
+            if (tool.description != null)
+              ToolDetailsNote(
+                description: tool.description!,
+              )
+          ],
+        ),
+        bottomNavigationBar: InkWell(
+          onTap: () {
+            // navToStoreCar(String id) {
+            //   Get.toNamed(
+            //     RouteScreen.storeCarDetails,
+            //     arguments: {
+            //       Constants.idStoreKey: id,
+            //     },
+            //   );
+            // }
+          },
+          child: BottomInfoStore(
+            nameStore: tool.store.name,
+            address: tool.store.address,
+            whatsappNumberPhone: tool.store.whatsappNumberPhone,
+            numberPhone: tool.store.whatsappNumberPhone,
+            imageUrl: tool.store.avatar,
           ),
-          const VerticalSpace8(),
-          Text(
-            currency(tool.price),
-            style: Get.textTheme.titleMedium,
-            maxLines: 1,
-          ),
-          const VerticalSpace16(),
-          TitleWithViewAll(
-            title: L10n.specifications.tr,
-            paddingH: .0,
-          ),
-          const VerticalSpace4(),
-          ToolDetailsSpecifications(
-            tool: tool,
-          ),
-          if (tool.description != null)
-            ToolDetailsNote(
-              description: tool.description!,
-            )
-        ],
-      ),
-      bottomNavigationBar: BottomInfoStore(
-        nameStore: tool.store.name,
-        address: tool.store.address,
-        whatsappNumberPhone: tool.store.whatsappNumberPhone,
-        numberPhone: tool.store.whatsappNumberPhone,
-        imageUrl: tool.store.avatar,
-      ),
-    );
+        ),
+      );
+    });
   }
 }

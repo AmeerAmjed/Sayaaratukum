@@ -4,12 +4,10 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
-import 'package:sayaaratukum/controllers/pagination.dart';
 import 'package:sayaaratukum/models/tool.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/remote/public/tools.dart';
 import 'package:sayaaratukum/util/constant.dart';
-
-import '../../screens/details/tool/tool_details.dart';
 
 class ToolsController extends BaseController
     with StateMixin<List<ToolModel>>,  ScrollMixin {
@@ -93,6 +91,11 @@ class ToolsController extends BaseController
   }
 
   navigateToDetails(ToolModel tool) {
-    Get.to(() => ToolDetails(tool: tool));
+    Get.toNamed(
+      RouteScreen.toolDetails,
+      arguments: {
+        Constants.idToolKey: tool.id.toString(),
+      },
+    );
   }
 }

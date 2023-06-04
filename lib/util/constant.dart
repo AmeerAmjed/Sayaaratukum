@@ -58,7 +58,9 @@ class Constants {
   static const String brandIdKey = 'brandIdKey';
   static const String nameBrandKey = 'nameBrandKey';
   static const String idStoreKey = 'idStoreKey';
+  static const String idToolStoreKey = 'idToolStoreKey';
   static const String idCarKey = 'idCarKey';
+  static const String idToolKey = 'idToolKey';
 
   static const String bodyData = 'data';
   static const String bodyMessage = 'message';
