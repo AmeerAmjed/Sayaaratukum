@@ -179,6 +179,7 @@ class L10n {
   static const storeExpires = 'storeExpires';
 
   static const notFound = 'notFound';
+  static const profile = 'profile';
 
 
 

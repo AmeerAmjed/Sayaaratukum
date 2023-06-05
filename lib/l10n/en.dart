@@ -162,6 +162,7 @@ class EnTranslations {
 
         L10n.storeExpires : 'Store is expires ',
         L10n.notFound : 'Not Found ',
+        L10n.profile : 'Profile',
 
 
 
