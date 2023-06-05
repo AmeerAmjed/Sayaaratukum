@@ -5,7 +5,6 @@ import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/user/favorite.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/favorite/components/item_favorite.dart';
-import 'package:sayaaratukum/screens/home/widget/cars.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/button_favourite_car.dart';
 import 'package:sayaaratukum/widgets/empty.dart';
@@ -57,7 +56,7 @@ class FavoriteScreen extends GetView<FavoriteController> {
               itemCount: state!.length,
               itemBuilder: (_, index) {
                 return InkWell(onTap: () {
-                  // controller.onClickItem(state[index].id.toString());
+                  controller.carDetails(state[index].product?.id ?? 0);
                 }, child: GetBuilder<FavoriteController>(builder: (con) {
                   return ItemFavorite(
                     item: state[index],

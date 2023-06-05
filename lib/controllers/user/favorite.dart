@@ -69,6 +69,7 @@ class FavoriteController extends BaseController
             update();
           } else if (response.status.code == 204) {
             removeItemFavorite(id);
+            getFavorite();
             showMessage(L10n.successRemoveFavorite.tr);
           }
           loading(false);
