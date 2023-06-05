@@ -81,6 +81,8 @@ class AddCarScreen extends GetView<AddCarController> {
                         return Expanded(
                           flex: 2,
                           child: Buttons(
+                            disableWithShowLoading:
+                            controller.disableSubmit.value,
                             label: controller.isLastPage
                                 ? L10n.publish.tr
                                 : L10n.next.tr,

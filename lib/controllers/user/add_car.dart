@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:image_picker/image_picker.dart';
@@ -24,6 +26,7 @@ import '../../screens/add_car/components/image_price_form.dart';
 
 class AddCarController extends BaseController {
   var onPageIndex = 0.obs;
+  RxBool disableSubmit = false.obs;
 
   final int totalPageAddCar = 3;
   var brands = <BrandModel>[].obs.toList(growable: true);
@@ -73,22 +76,27 @@ class AddCarController extends BaseController {
   }
 
   addCar() async {
+    loading(true);
     if (getInfo() != null) {
-      print(getInfo()!.gearbox);
-      print(getInfo()!.isDamage);
       try {
         await AddCarService.instance.addCar(getInfo()!).then((response) {
           print("response ${response.statusCode} ${response.body}");
           if (response.isOk) {}
+          showMessage("Success add car");
+          loading(false);
         });
       } on Response catch (response) {
         print("response ${response.statusCode} ${response.body}");
+        showMessage(response.body[message]);
+        loading(false);
       }
     }
   }
 
   AddCarModel? getInfo() {
+
     var userInfo = Application.instance.user?.value;
+    print(" userInfo.role!.title, ${userInfo?.role!.title}");
     if (userInfo != null) {
       return AddCarModel(
         price: price.text,
@@ -322,6 +330,11 @@ class AddCarController extends BaseController {
       }
       return false;
     });
+  }
+
+  loading(bool state) {
+    disableSubmit.value = state;
+    update();
   }
 
   onChangeColorCar(String? color) {

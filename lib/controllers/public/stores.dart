@@ -93,6 +93,13 @@ class StoresController extends BaseController
       //   },
       //   binding: StoreCarDetailsBinding(),
       // );
+    } else {
+      Get.toNamed(
+        RouteScreen.storeToolDetails,
+        arguments: {
+          Constants.idToolStoreKey: storeCars.id.toString(),
+        },
+      );
     }
   }
 
