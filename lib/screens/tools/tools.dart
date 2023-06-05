@@ -71,8 +71,7 @@ class ToolsScreen extends GetView<ToolsController> {
                   }
                   return InkWell(
                     onTap: () {
-                      controller.navigateToDetails(state[index]);
-                      // TopAdsController.to.onClickItem(state[index].id);
+                      controller.toolDetails(state[index].id);
                     },
                     child: ToolItem(
                       item: state[index],

@@ -11,6 +11,7 @@ class ToolModel extends BaseModel {
     this.description,
     this.serialNumber,
     required this.id,
+    required this.idStore,
     required this.name,
     required this.imageUrl,
     required this.currency,
@@ -24,6 +25,7 @@ class ToolModel extends BaseModel {
   });
 
   final int id;
+  final int idStore;
   final String name;
   final String imageUrl;
   final String? currency;
@@ -40,6 +42,7 @@ class ToolModel extends BaseModel {
   factory ToolModel.fromJson(Map<String, dynamic> json) {
     return ToolModel(
       id: json['id'],
+      idStore: json['store']['id'],
       name: json['name'],
       imageUrl: json['image'],
       currency: json['currency'],

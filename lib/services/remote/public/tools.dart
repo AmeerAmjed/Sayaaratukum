@@ -37,4 +37,24 @@ class ToolsServices extends BaseService {
       return Future.error(e);
     }
   }
+
+  Future<Response> getToolsInStore(
+    String id, {
+    required int page,
+    required int limit,
+  }) async {
+    try {
+      String urlTools = pagination(ApiEndpoint.tool, page: page, limit: limit);
+
+      Response response = await get("$urlTools&store=$id");
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error ToolsServices getToolsInStore $e");
+      return Future.error(e);
+    }
+  }
 }

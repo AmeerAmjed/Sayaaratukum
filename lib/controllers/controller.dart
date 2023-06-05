@@ -30,6 +30,15 @@ abstract class BaseController extends GetxController with ValidatorInput {
     );
   }
 
+  toolDetails(int id) {
+    Get.toNamed(
+      RouteScreen.toolDetails,
+      arguments: {
+        Constants.idToolKey: id.toString(),
+      },
+    );
+  }
+
   onError(
     String message, {
     Duration duration = const Duration(seconds: 1),

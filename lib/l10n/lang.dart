@@ -158,6 +158,7 @@ class L10n {
   static const subscribed = 'subscribed';
   static const mySubscribed = 'mySubscribed';
   static const cars = 'cars';
+  static const tools = 'tools';
   static const now = 'now';
 
 

@@ -4,17 +4,22 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
+import 'package:sayaaratukum/models/car.dart';
+import 'package:sayaaratukum/models/store.dart';
 import 'package:sayaaratukum/models/tool.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/remote/public/tools.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
-class ToolsController extends BaseController
-    with StateMixin<List<ToolModel>>,  ScrollMixin {
-  static ToolsController get instance => Get.find();
+class StoreToolDetailsController extends BaseController
+    with StateMixin, ScrollMixin {
+  static StoreToolDetailsController get instance => Get.find();
 
-  var brands = <ToolModel>[].obs.toList(growable: true);
+  RxStatus combinedStatus = RxStatus.loading();
+  RxList<ToolModel> tools = <ToolModel>[].obs;
+
   RxBool isLoadingMore = false.obs;
+  var idStore = "0".obs;
 
   final int limitRepositories = 20;
   int page = 1;
@@ -24,19 +29,22 @@ class ToolsController extends BaseController
   @override
   void onInit() {
     super.onInit();
+    idStore.value = Get.arguments[Constants.idToolStoreKey] ?? "0";
+
     loadingData();
-    getTools();
+    getCars();
   }
 
-  Future<void> getTools() async {
+  Future<void> getCars() async {
     try {
       await ToolsServices.instance
-          .getAllTools(page: page, limit: limitRepositories)
+          .getToolsInStore(idStore.value, page: page, limit: limitRepositories)
           .then((response) {
         if (response.isOk) {
           List<ToolModel> result = ToolModel.listFromJson(
-            response.body[Constants.bodyData],
+            response.body[data],
           );
+
           var responseData = response.body[data];
           final bool emptyRepositories =
               (responseData == null || responseData.isEmpty);
@@ -47,9 +55,9 @@ class ToolsController extends BaseController
             loadingMore(false);
           } else {
             getFirstData = true;
-            brands.addAll(result);
+            tools.addAll(result);
             loadingMore(false);
-            change(brands, status: RxStatus.success());
+            change(tools, status: RxStatus.success());
           }
         }
       });
@@ -64,8 +72,8 @@ class ToolsController extends BaseController
     if (!lastPage) {
       page += 1;
       loadingMore(true);
-      change(brands, status: RxStatus.loadingMore());
-      await getTools();
+      change(tools, status: RxStatus.loadingMore());
+      await getCars();
       Get.back();
     }
   }
@@ -84,11 +92,20 @@ class ToolsController extends BaseController
   }
 
   @override
-  Future<void> onTopScroll() async {}
-
-  Future<void> onRefresh() async {
-    getTools();
+  Future<void> onTopScroll() async {
+    print(" state more");
   }
 
+  Future<void> onRefresh() async {
+    getCars();
+  }
 
+  navigateToDetails(int id) {
+    Get.toNamed(
+      RouteScreen.carDetails,
+      arguments: {
+        Constants.idCarKey: id.toString(),
+      },
+    );
+  }
 }

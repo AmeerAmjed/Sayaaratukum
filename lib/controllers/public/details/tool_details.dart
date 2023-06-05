@@ -36,11 +36,12 @@ class ToolDetailsController extends BaseController with StateMixin<ToolModel> {
     }
   }
 
-  navToStoreCar(String id) {
+  navToStoreTool(String id) {
+    print("id $id");
     Get.toNamed(
-      RouteScreen.storeCarDetails,
+      RouteScreen.storeToolDetails,
       arguments: {
-        Constants.idStoreKey: id,
+        Constants.idToolStoreKey: id,
       },
     );
   }

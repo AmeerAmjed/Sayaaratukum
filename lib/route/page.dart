@@ -31,6 +31,7 @@ class RouteScreen {
 
   static const storeCarDetails  = '/storeCarDetails';
   static const carDetails  = '/carDetails';
+  static const storeToolDetails  = '/storeToolDetails';
   static const toolDetails  = '/toolDetails';
 
 }

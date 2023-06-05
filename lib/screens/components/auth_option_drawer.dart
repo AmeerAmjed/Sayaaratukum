@@ -23,11 +23,6 @@ class AuthOptionDrawer extends StatelessWidget {
           onTap: () => Get.toNamed(RouteScreen.profile),
         ),
         ListTitleIcon(
-          title: L10n.favorite.tr,
-          icon: Iconsax.heart,
-          onTap: () {},
-        ),
-        ListTitleIcon(
           title: L10n.mySubscribed.tr,
           icon: Iconsax.star,
           onTap: () => Get.toNamed(RouteScreen.mySubscribeStore),

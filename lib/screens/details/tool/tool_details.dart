@@ -76,14 +76,7 @@ class ToolDetails extends GetView<ToolDetailsController> {
         ),
         bottomNavigationBar: InkWell(
           onTap: () {
-            // navToStoreCar(String id) {
-            //   Get.toNamed(
-            //     RouteScreen.storeCarDetails,
-            //     arguments: {
-            //       Constants.idStoreKey: id,
-            //     },
-            //   );
-            // }
+            controller.navToStoreTool(tool.idStore.toString());
           },
           child: BottomInfoStore(
             nameStore: tool.store.name,

@@ -5,6 +5,7 @@ import 'package:sayaaratukum/binding/public/car_details.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
 import 'package:sayaaratukum/binding/public/search/search_car.dart';
 import 'package:sayaaratukum/binding/public/store_car_details.dart';
+import 'package:sayaaratukum/binding/public/store_tool_details.dart';
 import 'package:sayaaratukum/binding/public/tool_details.dart';
 import 'package:sayaaratukum/binding/user/add_car.dart';
 import 'package:sayaaratukum/binding/user/add_tool.dart';
@@ -18,6 +19,7 @@ import 'package:sayaaratukum/screens/auth/register/register.dart';
 import 'package:sayaaratukum/screens/auth/welcom/welcome.dart';
 import 'package:sayaaratukum/screens/details/car/car_details.dart';
 import 'package:sayaaratukum/screens/details/store/store_details.dart';
+import 'package:sayaaratukum/screens/details/store_tool/store_tool.dart';
 import 'package:sayaaratukum/screens/details/tool/tool_details.dart';
 import 'package:sayaaratukum/screens/main.dart';
 import 'package:sayaaratukum/screens/my_%20subscribe_store/my_subscribe_store.dart';
@@ -96,6 +98,11 @@ List<GetPage> routes() => [
         name: RouteScreen.toolDetails,
         page: () => const ToolDetails(),
         binding: ToolDetailsBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.storeToolDetails,
+        page: () => const StoreToolDetails(),
+        binding: StoreToolDetailsBinding(),
       )
 
   // Get.to(
