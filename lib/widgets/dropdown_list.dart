@@ -76,10 +76,12 @@ class DropdownList extends StatelessWidget {
             .map(
               (e) => DropdownMenuItem(
             value: e,
-            child: Text(e),
-          ),
-        )
-            .toList(),
+                child: Text(
+                  e,
+                  style: Get.textTheme.labelMedium,
+                ),
+              ),
+        ).toList(),
       ),
     );
   }

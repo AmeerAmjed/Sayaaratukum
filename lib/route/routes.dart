@@ -4,6 +4,7 @@ import 'package:sayaaratukum/binding/auth/register.dart';
 import 'package:sayaaratukum/binding/public/car_details.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
 import 'package:sayaaratukum/binding/public/search/search_car.dart';
+import 'package:sayaaratukum/binding/public/search/search_tool.dart';
 import 'package:sayaaratukum/binding/public/store_car_details.dart';
 import 'package:sayaaratukum/binding/public/store_tool_details.dart';
 import 'package:sayaaratukum/binding/public/tool_details.dart';
@@ -26,6 +27,7 @@ import 'package:sayaaratukum/screens/my_%20subscribe_store/my_subscribe_store.da
 import 'package:sayaaratukum/screens/profile/profile.dart';
 import 'package:sayaaratukum/screens/search/car/search_car.dart';
 import 'package:sayaaratukum/screens/search/car_by_brand/search_car_by_brand.dart';
+import 'package:sayaaratukum/screens/search/tool/search_tool.dart';
 import 'package:sayaaratukum/screens/view_all/brand/view_all_brand.dart';
 
 import '../binding/public/search/search_car_by_brand.dart';
@@ -78,6 +80,11 @@ List<GetPage> routes() => [
         name: RouteScreen.searchCar,
         page: () => const SearchCar(),
         binding: SearchCarBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.searchTool,
+        page: () => const SearchTool(),
+        binding: SearchToolBinding(),
       ),
       GetPage(
         name: RouteScreen.mySubscribeStore,

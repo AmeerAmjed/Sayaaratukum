@@ -2,7 +2,9 @@ import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/controllers/public/ads.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
 import 'package:sayaaratukum/controllers/public/cars.dart';
+import 'package:sayaaratukum/controllers/public/category_tool.dart';
 import 'package:sayaaratukum/controllers/public/engine_powers.dart';
+import 'package:sayaaratukum/controllers/public/filter/filter_tool.dart';
 import 'package:sayaaratukum/controllers/public/home.dart';
 import 'package:sayaaratukum/controllers/public/filter/filter_car.dart';
 import 'package:sayaaratukum/controllers/public/search_car_by_brand.dart';
@@ -36,6 +38,7 @@ class HomeBinding extends Bindings {
     // Get.put<SearchCarController>(SearchCarController(), permanent: true);
 
     Get.put<FilterCarController>(FilterCarController(), permanent: true);
+    Get.put<FilterToolController>(FilterToolController(), permanent: true);
 
     // Get.lazyPut<SearchServices>(() => SearchServices());
   }

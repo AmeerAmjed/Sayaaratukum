@@ -6,7 +6,7 @@ import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/public/tools.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/route/page.dart';
-import 'package:sayaaratukum/screens/home/components/search.dart';
+import 'package:sayaaratukum/screens/tools/components/search_tool_bar.dart';
 import 'package:sayaaratukum/screens/profile/components/add_button.dart';
 import 'package:sayaaratukum/screens/tools/components/tool_item.dart';
 import 'package:sayaaratukum/util/constant.dart';
@@ -27,11 +27,19 @@ class ToolsScreen extends GetView<ToolsController> {
               padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
-                  SearchBox(
-                    hintText: L10n.searchCar.tr,
-                    onSubmitted: (text) {},
-                    onPressedFilter: () {},
-                  ),
+                  SearchToolBar(
+                    onSubmittedSearch: (value) {
+                      controller.navigateTo(RouteScreen.searchTool);
+                    },
+                    onPressedApplyFilter: () {
+                      controller.navigateTo(RouteScreen.searchTool);
+                    },
+                  )
+                  // SearchBox(
+                  //   hintText: L10n.searchCar.tr,
+                  //   onSubmitted: (text) {},
+                  //   onPressedFilter: () {},
+                  // ),
                 ]),
               ),
             )
