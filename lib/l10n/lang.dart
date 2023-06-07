@@ -180,6 +180,9 @@ class L10n {
 
   static const notFound = 'notFound';
   static const profile = 'profile';
+  static const updateProfile = 'updateProfile';
+  static const successfullyUpdateProfile = 'successfullyUpdateProfile';
+  static const save = 'save';
 
 
 

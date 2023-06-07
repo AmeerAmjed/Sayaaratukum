@@ -55,6 +55,12 @@ class Application extends BaseController with LocalStorage {
     update();
   }
 
+  updateUserInfo(UserModel user) async {
+    this.user?.value = user;
+    await save<UserModel>(Constants.userKey, user);
+    update();
+  }
+
   void skipAuth() async {
     isSkipAuth.value = true;
     await save<bool>(Constants.skipAuthKey, true);

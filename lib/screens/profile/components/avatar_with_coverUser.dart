@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/widgets/default_image.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
 
 class AvatarWithCoverUser extends StatelessWidget {
@@ -20,7 +21,6 @@ class AvatarWithCoverUser extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          // background image and bottom contents
           Column(
             children: <Widget>[
               Container(
@@ -46,7 +46,6 @@ class AvatarWithCoverUser extends StatelessWidget {
           Positioned(
             left: 16,
             top: 100.0,
-            // (background container size) - (circle height / 2)
             child: Container(
               height: 100.0,
               width: 100.0,
@@ -67,14 +66,9 @@ class AvatarWithCoverUser extends StatelessWidget {
                   color: Get.theme.cardColor,
                 ),
                 child: cover == Constants.websiteLink
-                    ? Center(
-                        child: Text(
-                          name.substring(0, 1),
-                          style: Get.textTheme.titleLarge?.copyWith(
-                            color: Get.theme.primaryColor,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                    ? DefaultImage(
+                        name: name,
+                        sizeAlphabet: 45,
                       )
                     : ImageLoading(
                         imageUrl: avatar,

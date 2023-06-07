@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sayaaratukum/util/constant.dart';
-import 'package:sayaaratukum/widgets/space.dart';
 
 class InputAuth extends StatelessWidget {
   const InputAuth({
@@ -19,6 +18,7 @@ class InputAuth extends StatelessWidget {
     this.readOnly = false,
     this.maxLines = 1,
     this.onTap,
+    this.onFieldSubmitted,
     this.visibilityPassword = false,
     this.suffixIcon,
     this.contentPadding = Constants.spacing16,
@@ -47,6 +47,7 @@ class InputAuth extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final String? Function(String?)? validator;
   final Function(String?)? onChanged;
+  final Function(String)? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +60,7 @@ class InputAuth extends StatelessWidget {
         controller: controller,
         readOnly: readOnly,
         maxLines: maxLines,
+        onFieldSubmitted: onFieldSubmitted,
         onTap: onTap,
         style: Get.textTheme.labelMedium?.copyWith(
           fontSize: 15,

@@ -160,6 +160,9 @@ class ArTranslations {
         L10n.storeExpires: 'انتهت صلاحية المتجر',
         L10n.notFound: 'غير موجود',
         L10n.profile: 'الملف الشخصي',
+        L10n.updateProfile : 'تعديل الملف الشخصي',
+        L10n.successfullyUpdateProfile : 'تم التعديل بنجاح',
+        L10n.save : 'حفظ',
 
 
 
