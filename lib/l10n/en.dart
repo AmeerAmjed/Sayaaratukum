@@ -37,6 +37,8 @@ class EnTranslations {
         L10n.createAccount : 'Create Account',
         L10n.forgotPassword : 'Forgot password?',
         L10n.emailOrNumberPhone : 'Email Or NumberPhone',
+        L10n.password : 'Password',
+        L10n.passwordConfirmation : 'Password confirmation',
         L10n.isRequired : 'Is required',
         L10n.emailIsInvalid : 'Email is invalid',
         L10n.passwordShort : 'Short password must be more than 8 digits',
@@ -164,7 +166,9 @@ class EnTranslations {
         L10n.notFound : 'Not Found ',
         L10n.profile : 'Profile',
         L10n.updateProfile : 'Update profile',
+        L10n.updatePassword : 'Update password',
         L10n.successfullyUpdateProfile : 'Successfully account updated',
+        L10n.successfullyUpdatePassword : 'Successfully password updated',
         L10n.save : 'Save',
 
 

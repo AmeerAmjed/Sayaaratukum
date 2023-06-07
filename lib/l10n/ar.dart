@@ -36,6 +36,8 @@ class ArTranslations {
         L10n.forgotPassword : 'نسيت كلمة المرور؟',
         L10n.emailOrNumberPhone : 'البريد الإلكتروني أو رقم الهاتف',
         L10n.isRequired: 'مطلوب',
+        L10n.password : 'كلمه السر',
+        L10n.passwordConfirmation : 'تاكيد كلمه السر',
         L10n.emailIsInvalid: 'البريد الإلكتروني غير صالح',
         L10n.passwordShort: 'يجب أن تكون كلمة المرور القصيرة أكثر من 8 أحرف',
         L10n.passwordLong: 'يجب أن تكون كلمة المرور الطويلة أقل من 50 حرفًا',
@@ -161,6 +163,7 @@ class ArTranslations {
         L10n.notFound: 'غير موجود',
         L10n.profile: 'الملف الشخصي',
         L10n.updateProfile : 'تعديل الملف الشخصي',
+        L10n.updatePassword : 'تغير كلمه السر',
         L10n.successfullyUpdateProfile : 'تم التعديل بنجاح',
         L10n.save : 'حفظ',
 

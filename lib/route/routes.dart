@@ -12,7 +12,8 @@ import 'package:sayaaratukum/binding/user/add_car.dart';
 import 'package:sayaaratukum/binding/user/add_tool.dart';
 import 'package:sayaaratukum/binding/user/my_subscribe_store.dart';
 import 'package:sayaaratukum/binding/user/profile.dart';
-import 'package:sayaaratukum/binding/user/update_profile.dart';
+import 'package:sayaaratukum/binding/user/update/password.dart';
+import 'package:sayaaratukum/binding/user/update/profile.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/add_car/AddCar.dart';
 import 'package:sayaaratukum/screens/add_tool/add_tool.dart';
@@ -23,6 +24,7 @@ import 'package:sayaaratukum/screens/details/car/car_details.dart';
 import 'package:sayaaratukum/screens/details/store/store_details.dart';
 import 'package:sayaaratukum/screens/details/store_tool/store_tool.dart';
 import 'package:sayaaratukum/screens/details/tool/tool_details.dart';
+import 'package:sayaaratukum/screens/edite/password/password.dart';
 import 'package:sayaaratukum/screens/edite/profile/profile.dart';
 import 'package:sayaaratukum/screens/main.dart';
 import 'package:sayaaratukum/screens/my_%20subscribe_store/my_subscribe_store.dart';
@@ -117,5 +119,10 @@ List<GetPage> routes() => [
         name: RouteScreen.updateProfile,
         page: () => const UpdateProfile(),
         binding: UpdateProfileBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.updatePassword,
+        page: () => const UpdatePassword(),
+        binding: UpdatePasswordBinding(),
       )
     ];

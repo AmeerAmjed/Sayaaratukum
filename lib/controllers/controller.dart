@@ -75,26 +75,4 @@ mixin ValidatorInput {
     return null;
   }
 
-  static String? checkValidateNumberPhone(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'رقم الهاتف مطلوب *';
-    } else if (value.length != 11) {
-      return 'رقم الهاتف غير صحيح يجب ان يكون 11 رقم !';
-    }
-    //  else if (!keyNumberPhoneIraq.contains(value.substring(0, 3))) {
-    //   return 'رقم الهاتف غير صالح !';
-    // }
-    return null;
-  }
-
-  static String? checkValidatePassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'كلمة السر مطلوبة *';
-    } else if (value.length <= 5) {
-      return 'كلمة السر قصيرة يجب ان تكون اكثر من 6';
-    } else if (value.length >= 25) {
-      return 'كلمة السر طويلة يجب ان تكون اقل من 25';
-    }
-    return null;
-  }
 }

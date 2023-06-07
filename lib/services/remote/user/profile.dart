@@ -23,4 +23,25 @@ class ProfileService extends BaseService {
       return Future.error(e);
     }
   }
+
+  Future<Response> updatePassword(
+    String password,
+    String passwordConfirmation,
+  ) async {
+    var passwords = {
+      "password": password,
+      "password_confirmation": passwordConfirmation,
+    };
+    try {
+      Response response = await put(ApiEndpoint.updatePassword, passwords);
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error ProfileService updatePassword $e");
+      return Future.error(e);
+    }
+  }
 }

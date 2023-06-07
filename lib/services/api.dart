@@ -21,6 +21,7 @@ class ApiEndpoint {
   static const String mySubscribeStore = '/me/stores-subscribed';
   static const String storeSubscription = '/me/store-subscription';
   static const String updateProfile = '/me/update?_method=put';
+  static const String updatePassword = '/me/password-update';
 
 
 }

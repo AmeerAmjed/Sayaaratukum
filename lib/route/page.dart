@@ -36,5 +36,6 @@ class RouteScreen {
   static const toolDetails  = '/toolDetails';
 
   static const updateProfile  = '/updateProfile';
+  static const updatePassword  = '/updatePassword';
 
 }

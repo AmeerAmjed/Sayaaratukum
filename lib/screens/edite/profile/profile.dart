@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
-import 'package:sayaaratukum/controllers/user/update_profile.dart';
+import 'package:sayaaratukum/controllers/user/update/profile.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/edite/profile/components/avatar_user.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';

@@ -39,6 +39,7 @@ class L10n {
   static const alreadyHaveAccount = 'alreadyHaveAccount';
   static const forgotPassword = 'forgotPassword';
   static const password = 'password';
+  static const passwordConfirmation = 'passwordConfirmation';
   static const emailOrNumberPhone = 'emailOrNumberPhone';
   static const phoneNumber = 'phoneNumber';
   static const firstName = 'firstName';
@@ -181,7 +182,9 @@ class L10n {
   static const notFound = 'notFound';
   static const profile = 'profile';
   static const updateProfile = 'updateProfile';
+  static const updatePassword = 'updatePassword';
   static const successfullyUpdateProfile = 'successfullyUpdateProfile';
+  static const successfullyUpdatePassword = 'successfullyUpdatePassword';
   static const save = 'save';
 
 
