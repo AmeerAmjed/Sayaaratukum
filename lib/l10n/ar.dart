@@ -165,6 +165,10 @@ class ArTranslations {
         L10n.updateProfile : 'تعديل الملف الشخصي',
         L10n.updatePassword : 'تغير كلمه السر',
         L10n.successfullyUpdateProfile : 'تم التعديل بنجاح',
+        L10n.updateEmail : 'تغير البريد الاكتروني',
+        L10n.successfullyUpdateEmail : 'تم تحديث البريد الاكتروني بنجاح',
+        L10n.updatePhoneNumber : 'تعديل رقم الهاتف',
+        L10n.successfullyUpdatePhoneNumber : 'تم التعديل بنجاح',
         L10n.save : 'حفظ',
 
 

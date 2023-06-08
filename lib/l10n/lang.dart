@@ -187,6 +187,8 @@ class L10n {
   static const successfullyUpdatePassword = 'successfullyUpdatePassword';
   static const updateEmail = 'updateEmail';
   static const successfullyUpdateEmail = 'successfullyUpdateEmail';
+  static const updatePhoneNumber = 'updatePhoneNumber';
+  static const successfullyUpdatePhoneNumber = 'successfullyUpdatePhoneNumber';
   static const save = 'save';
 
 

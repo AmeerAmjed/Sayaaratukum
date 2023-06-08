@@ -23,7 +23,7 @@ class UserModel extends BaseModel {
   final String firstName;
   final String? lastName;
   final String? email;
-  final String? phoneNumber;
+   String? phoneNumber;
   final String avatar;
   final RoleModel? role;
   final String roleType;

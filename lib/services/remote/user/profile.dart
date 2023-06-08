@@ -62,4 +62,24 @@ class ProfileService extends BaseService {
       return Future.error(e);
     }
   }
+
+  Future<Response> updatePhoneNumber(
+    String phoneNumber,
+  ) async {
+    var phoneNumberUser = {
+      "phone_number": phoneNumber,
+    };
+    try {
+      Response response =
+          await put(ApiEndpoint.updatePhoneNumber, phoneNumberUser);
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error ProfileService updatePhoneNumber $e");
+      return Future.error(e);
+    }
+  }
 }
