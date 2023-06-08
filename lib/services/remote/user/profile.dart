@@ -44,4 +44,22 @@ class ProfileService extends BaseService {
       return Future.error(e);
     }
   }
+  Future<Response> updateEmail(
+    String email,
+  ) async {
+    var emailUser = {
+      "email": email,
+    };
+    try {
+      Response response = await put(ApiEndpoint.updateEmail, emailUser);
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error ProfileService updateEmail $e");
+      return Future.error(e);
+    }
+  }
 }

@@ -169,6 +169,8 @@ class EnTranslations {
         L10n.updatePassword : 'Update password',
         L10n.successfullyUpdateProfile : 'Successfully account updated',
         L10n.successfullyUpdatePassword : 'Successfully password updated',
+        L10n.updateEmail : 'Update email',
+        L10n.successfullyUpdateEmail : 'Successfully Email updated',
         L10n.save : 'Save',
 
 

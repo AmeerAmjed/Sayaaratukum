@@ -24,6 +24,9 @@ class Profile extends GetView<Application> {
         case L10n.updatePassword:
           controller.navigateTo(RouteScreen.updatePassword);
           break;
+        case L10n.updateEmail:
+          controller.navigateTo(RouteScreen.updateEmail);
+          break;
       }
     }
 
@@ -37,6 +40,7 @@ class Profile extends GetView<Application> {
               return {
                 L10n.updateProfile,
                 L10n.updatePassword,
+                L10n.updateEmail,
               }.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
