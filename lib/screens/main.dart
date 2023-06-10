@@ -5,13 +5,13 @@ import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/main_tab.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/components/drawer.dart';
 import 'package:sayaaratukum/screens/components/image_user.dart';
-import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/main_tab_page.dart';
 import 'package:sayaaratukum/widgets/box.dart';
-import 'package:sayaaratukum/widgets/default_image.dart';
-import 'package:sayaaratukum/widgets/image_loading.dart';
+import 'package:sayaaratukum/widgets/buttons.dart';
+import 'package:sayaaratukum/widgets/custom_snackbar_login.dart';
 
 import '../widgets/appbars.dart';
 
@@ -25,14 +25,47 @@ class MainTab extends GetView<MainTabController> {
       key: controller.scaffoldKey,
       // appBar: AppBar(),
       appBar: AppBars(
-        widget: InkWell(
-          onTap: () {
-            controller.scaffoldKey.currentState?.openDrawer();
-          },
-          child: const Box(
-            size: 48.0,
-            child: ImageUser()
-          ),
+        leadingWidth: 400,
+        widget: Row(
+          children: [
+            Container(
+              height: 50,
+              width: 50,
+              child: InkWell(
+                onTap: () {
+                  controller.scaffoldKey.currentState?.openDrawer();
+                },
+                child: const Box(size: 48.0, child: ImageUser()),
+              ),
+            ),
+            Expanded(
+              child: GetBuilder<Application>(
+                builder: (c) {
+                  return Application.instance.isLogin
+                      ? Buttons(
+                          height: 35,
+                          label: Application.instance.isStoreTool()
+                              ? L10n.buyTool.tr
+                              : L10n.buyYourCar.tr,
+                          onPressed: () {
+                            if (Application.instance.isStoreTool()) {
+                              Get.toNamed(RouteScreen.addTool);
+                            } else {
+                              Get.toNamed(RouteScreen.addCar);
+                            }
+                          },
+                        )
+                      : Buttons(
+                          height: 35,
+                          label: L10n.buyYourCar.tr,
+                          onPressed: () {
+                            snackBarToLogin();
+                          },
+                        );
+                },
+              ),
+            )
+          ],
         ),
         actions: const [
           FittedBox(

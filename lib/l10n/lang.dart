@@ -190,6 +190,8 @@ class L10n {
   static const updatePhoneNumber = 'updatePhoneNumber';
   static const successfullyUpdatePhoneNumber = 'successfullyUpdatePhoneNumber';
   static const save = 'save';
+  static const buyYourCar = 'buyYourCar';
+  static const buyTool = 'buyTool';
 
 
 

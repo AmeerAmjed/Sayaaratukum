@@ -6,6 +6,7 @@ class AppBars extends StatelessWidget with PreferredSizeWidget {
   const AppBars({
     Key? key,
     this.leading,
+    this.leadingWidth,
     this.actions,
     this.title,
     this.widget,
@@ -16,6 +17,7 @@ class AppBars extends StatelessWidget with PreferredSizeWidget {
   final List<Widget>? actions;
   final String? title;
   final bool hiddenBackButton;
+  final double? leadingWidth;
   final Widget? widget;
 
   @override
@@ -23,9 +25,9 @@ class AppBars extends StatelessWidget with PreferredSizeWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: AppBar(
+        leadingWidth: leadingWidth,
         leading: widget ?? (hiddenBackButton ? const Space() : null),
-        title: title
-            != null
+        title: title != null
             ? Text(
                 title!,
                 // style: ThemeApp.secondaryXTextStyle,

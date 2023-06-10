@@ -91,17 +91,17 @@ class ToolsScreen extends GetView<ToolsController> {
           }),
         ),
       ),
-      floatingActionButton: GetBuilder<Application>(
-        builder: (c) {
-          return Application.instance.isLogin
-              ? Application.instance.isUserStore
-                  ? AddButton(
-                      onPressed: () => Get.toNamed(RouteScreen.addTool),
-                    )
-                  : const Space()
-              : const Space();
-        },
-      ),
+      // floatingActionButton: GetBuilder<Application>(
+      //   builder: (c) {
+      //     return Application.instance.isLogin
+      //         ? Application.instance.isUserStore
+      //             ? AddButton(
+      //                 onPressed: () => Get.toNamed(RouteScreen.addTool),
+      //               )
+      //             : const Space()
+      //         : const Space();
+      //   },
+      // ),
     );
   }
 }

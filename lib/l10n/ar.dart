@@ -170,8 +170,8 @@ class ArTranslations {
         L10n.updatePhoneNumber : 'تعديل رقم الهاتف',
         L10n.successfullyUpdatePhoneNumber : 'تم التعديل بنجاح',
         L10n.save : 'حفظ',
-
-
+        L10n.buyYourCar : 'بيع سيارتك',
+        L10n.buyTool : 'بيع الادوات الاحتياطيه',
 
 
         "USA" : 'USA',

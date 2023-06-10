@@ -174,6 +174,8 @@ class EnTranslations {
         L10n.updatePhoneNumber : 'Update phone number',
         L10n.successfullyUpdatePhoneNumber : 'Successfully phone number updated',
         L10n.save : 'Save',
+        L10n.buyYourCar : 'Buy your car',
+        L10n.buyTool : 'Buy Tool',
 
 
 

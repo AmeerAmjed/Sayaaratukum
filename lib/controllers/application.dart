@@ -45,6 +45,15 @@ class Application extends BaseController with LocalStorage {
     if (userInfo != null) user?.value = UserModel.local(userInfo);
   }
 
+  bool isStoreTool() {
+    if (user?.value?.role?.title == "store") {
+      if (user?.value?.roleType == "tools") {
+        return true;
+      }
+    }
+    return false;
+  }
+
   void login(UserModel user, String token) async {
     isLogged.value = true;
     this.token.value = token;

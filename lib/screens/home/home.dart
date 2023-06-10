@@ -66,15 +66,15 @@ class HomeScreen extends GetView<HomeController> {
           ),
         ),
       ),
-      floatingActionButton: GetBuilder<Application>(
-        builder: (c) {
-          return Application.instance.isLogin
-              ? AddButton(
-                  onPressed: () => Get.toNamed(RouteScreen.addCar),
-                )
-              : const Space();
-        },
-      ),
+      // floatingActionButton: GetBuilder<Application>(
+      //   builder: (c) {
+      //     return Application.instance.isLogin
+      //         ? AddButton(
+      //             onPressed: () => Get.toNamed(RouteScreen.addCar),
+      //           )
+      //         : const Space();
+      //   },
+      // ),
     );
   }
 }
