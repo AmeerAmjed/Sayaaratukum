@@ -3,7 +3,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/models/category_tool.dart';
-import 'package:sayaaratukum/services/remote/public/category_tool.dart';
+import 'package:sayaaratukum/services/remote/public/tools.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
 class CategoryToolController extends BaseController {
@@ -18,7 +18,7 @@ class CategoryToolController extends BaseController {
 
   Future<void> getCategories() async {
     try {
-      await CategoryToolService.instance.getCategories().then((response) {
+      await ToolsServices.instance.getCategories().then((response) {
         if (response.isOk) {
           List<CategoryToolModel> resultCategory =
               CategoryToolModel.listFromJson(

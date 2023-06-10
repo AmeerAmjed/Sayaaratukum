@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaaratukum/binding/public/category_tool.dart';
 import 'package:sayaaratukum/binding/public/favorite.dart';
 import 'package:sayaaratukum/binding/public/home.dart';
 import 'package:sayaaratukum/binding/public/stores.dart';
@@ -60,7 +59,7 @@ class MainTabController extends BaseController {
       return GetPageRoute(
         settings: settings,
         page: () => const ToolsScreen(),
-        bindings: [ToolsBinding(), CategoryToolBinding()],
+        binding: ToolsBinding(),
         transition: Transition.native,
         transitionDuration: const Duration(milliseconds: 0),
       );

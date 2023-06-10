@@ -10,7 +10,6 @@ class MainTabBinding extends Bindings {
 
     Get.put<MainTabController>(MainTabController(), permanent: true);
     Get.put<EnginePowerTypeServices>(EnginePowerTypeServices(), permanent: true);
-    Get.lazyPut<CategoryToolController>(() => CategoryToolController());
 
   }
 }

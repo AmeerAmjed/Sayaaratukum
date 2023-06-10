@@ -57,4 +57,18 @@ class ToolsServices extends BaseService {
       return Future.error(e);
     }
   }
+
+  Future<Response> getCategories() async {
+    try {
+      Response response = await get(ApiEndpoint.category);
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error ToolsServices getCategories $e");
+      return Future.error(e);
+    }
+  }
 }
