@@ -7,6 +7,7 @@ import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/profile/components/avatar_with_coverUser.dart';
 import 'package:sayaaratukum/screens/profile/components/contact_user.dart';
 import 'package:sayaaratukum/screens/profile/components/full_name_with_bio.dart';
+import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
 class Profile extends GetView<Application> {
@@ -60,6 +61,13 @@ class Profile extends GetView<Application> {
       ),
       body: ListView(
         children: [
+          // if(controller.user.value.)
+          Container(
+            color: ColorSystem.colorDanger,
+            alignment: Alignment.center,
+            height: 50,
+            child: Text(L10n.verifyEmail.tr),
+          ),
           AvatarWithCoverUser(
             name: controller.user?.value?.fullName ?? "",
             avatar: controller.user?.value?.avatar ?? "",

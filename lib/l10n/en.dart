@@ -185,6 +185,7 @@ class EnTranslations {
         L10n.language : 'Language',
         L10n.arabic : 'عربي',
         L10n.english : 'english',
+        L10n.verifyEmail :  'Please verify your email',
 
 
 

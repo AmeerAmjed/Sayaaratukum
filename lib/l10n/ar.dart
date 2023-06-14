@@ -183,6 +183,8 @@ class ArTranslations {
         L10n.notifications : 'الاشعارات',
         L10n.language : 'اللغة',
 
+        L10n.verifyEmail :  'Please verify your email',
+
         "USA" : 'USA',
         "Europe" : 'Europe',
         "Gulf" : 'Gulf',

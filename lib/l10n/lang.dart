@@ -202,6 +202,7 @@ class L10n {
 
   static const arabic = 'arabic';
   static const english = 'english';
+  static const verifyEmail = 'verifyEmail';
 
 
 
