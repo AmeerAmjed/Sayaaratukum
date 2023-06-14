@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaaratukum/util/constant.dart';
-import 'package:sayaaratukum/widgets/space.dart';
 
 class DropdownList extends StatelessWidget {
   const DropdownList({
@@ -16,12 +15,12 @@ class DropdownList extends StatelessWidget {
     this.validator,
     this.value,
     this.background,
-    this.suffixIcon = const Space(),
+    this.suffixIcon,
   }) : super(key: key);
 
   final Key? keyDropdownList;
   final List<String> items;
-  final Widget suffixIcon;
+  final Widget? suffixIcon;
   final String label;
   final EdgeInsetsGeometry? margin;
   final String? hintText;
@@ -42,7 +41,9 @@ class DropdownList extends StatelessWidget {
       child: DropdownButtonFormField(
         key: keyDropdownList,
         isExpanded: true,
-        iconSize: 24,
+        isDense: true,
+        itemHeight: 48,
+        // iconSize: 24,
         value: value,
         validator: validator,
         onTap: onTap,
@@ -52,16 +53,8 @@ class DropdownList extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(4)),
             borderSide: BorderSide(width: 1, color: Colors.grey),
           ),
-          contentPadding: const EdgeInsets.only(
-            left: 16.0,
-          ),
-
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
           border: const OutlineInputBorder(),
-          // prefixIcon: Icon(
-          //   Icons.location_on_rounded,
-          //   color: Colors.grey,
-          // ),
-
           filled: true,
           fillColor: background ?? Theme.of(context).cardColor,
           hintText: hintText,
