@@ -64,6 +64,7 @@ class FavoriteScreen extends GetView<FavoriteController> {
                       onPressed: () {
                         controller.favorite(state[index].product?.id ?? 0);
                       },
+                      isFavourite: state[index].product?.isFavorite ?? false,
                       disableWithShowLoading: state[index].isLoading,
                       disable: con.disableSubmit.value,
                     ),
