@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/user/favorite.dart';
+import 'package:sayaaratukum/models/tool.dart';
 import 'package:sayaaratukum/models/user.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/local/storage.dart';
@@ -13,6 +14,8 @@ class Application extends BaseController with LocalStorage {
   RxBool isLogged = false.obs;
   RxBool isNotificationActive = true.obs;
   Rxn<UserModel?>? user = Rxn<UserModel?>();
+  Rxn<ToolModel?>? tool = Rxn<ToolModel?>();
+
   Rxn<String> token = Rxn<String>(null);
 
   RxString langCode = 'en'.obs;
@@ -49,6 +52,17 @@ class Application extends BaseController with LocalStorage {
     if (user?.value?.role?.title == "store") {
       if (user?.value?.roleType == "tools") {
         return true;
+      }
+    }
+    return false;
+  }
+
+  bool isOwnerStoreTool(int storeId) {
+    if (user?.value != null) {
+      if (isUserStore) {
+        if (user!.value!.myStoreId == storeId) {
+          return true;
+        }
       }
     }
     return false;

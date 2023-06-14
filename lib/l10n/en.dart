@@ -144,6 +144,7 @@ class EnTranslations {
         L10n.subscribe : 'Subscribe',
         L10n.subscribed : 'Subscribed',
         L10n.mySubscribed : 'My Subscribed',
+        L10n.myStore : 'My Store',
         L10n.cars : 'Cars',
         L10n.tools : 'Tools',
         L10n.now : 'Now',

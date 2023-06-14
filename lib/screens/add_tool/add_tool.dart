@@ -40,6 +40,7 @@ class AddTool extends GetView<AddToolController> {
                 ),
                 label: L10n.brand.tr,
                 onChanged: controller.onChangeBrand,
+                value: controller.brandsValue,
                 items: controller.brands.map((e) => e.title).toList(),
               ),
               rightWidget: GetBuilder<AddToolController>(builder: (co) {
@@ -47,6 +48,7 @@ class AddTool extends GetView<AddToolController> {
                   keyDropdownList: controller.keyManagerModelBrand,
                   label: L10n.model.tr,
                   onChanged: controller.onChangeModelBrand,
+                  value: controller.modelBrandValue,
                   items: co.getModelByBrandId(),
                   margin: const EdgeInsets.only(
                     right: 16,
@@ -60,15 +62,10 @@ class AddTool extends GetView<AddToolController> {
                 label: L10n.category.tr,
                 onChanged: controller.onChangeCategory,
                 items: co.getCategoryListString(),
+                value: co.categoryValue.value,
                 onTap: controller.tryGetCategoriesWhenFailed,
               );
             }),
-            // const VerticalSpace8(),
-            // InputAuth(
-            //   controller: controller.color,
-            //   label: L10n.color.tr,
-            //   keyboardType: TextInputType.text,
-            // ),
             const VerticalSpace8(),
             InputAuth(
               controller: controller.price,
@@ -112,8 +109,14 @@ class AddTool extends GetView<AddToolController> {
             fullBackground: true,
             width: double.infinity,
             onPressed: () {
-              if (controller.checkValidationForm()) {
-                controller.addTool();
+              if (controller.isUpdate.value) {
+                if (controller.checkValidationForm()) {
+                  controller.updateTool();
+                }
+              } else {
+                if (controller.checkValidationFormAddTool()) {
+                  controller.addTool();
+                }
               }
             },
             disableWithShowLoading: controller.disableSubmit.value,

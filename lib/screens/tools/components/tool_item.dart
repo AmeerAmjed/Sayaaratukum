@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/models/tool.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/util/price.dart';
+import 'package:sayaaratukum/widgets/edite_samll_button.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
@@ -22,10 +25,21 @@ class ToolItem extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
-          child: Card(
-            child: ImageLoading(
-              imageUrl: item.imageUrl,
-            ),
+          child: Stack(
+            children: [
+              Card(
+                child: ImageLoading(
+                  imageUrl: item.imageUrl,
+                ),
+              ),
+              if (Application.instance.isOwnerStoreTool(item.idStore))
+                EditeSmallButton(
+                  onPressed: () {
+                    Application.instance.tool?.value = item;
+                    Get.toNamed(RouteScreen.addTool);
+                  },
+                )
+            ],
           ),
         ),
         const VerticalSpace4(),

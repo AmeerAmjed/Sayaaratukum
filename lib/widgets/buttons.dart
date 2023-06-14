@@ -100,6 +100,7 @@ class Buttons extends StatelessWidget {
                 : iconRow == null
                     ? Text(
                         label!,
+                        maxLines: 1,
                         style:
                             Theme.of(context).textTheme.displayMedium?.copyWith(
                                   color: colorOnButton,

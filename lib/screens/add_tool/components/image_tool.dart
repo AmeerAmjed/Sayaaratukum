@@ -11,6 +11,7 @@ import 'package:sayaaratukum/screens/add_car/components/widget/box_add_car_image
 import 'package:sayaaratukum/screens/add_car/components/widget/hint_add_car_images.dart';
 import 'package:sayaaratukum/widgets/box.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';
+import 'package:sayaaratukum/widgets/image_loading.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class ImageTool extends StatelessWidget {
@@ -19,6 +20,20 @@ class ImageTool extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<AddToolController>(builder: (controller) {
+      if (controller.imageTool != null) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: SizedBox(
+            height: 150,
+            width: MediaQuery.of(context).size.width,
+            child: Card(
+              child: ImageLoading(
+                imageUrl: controller.imageTool ?? "",
+              ),
+            ),
+          ),
+        );
+      }
       return BoxAddCarImages(
         child: controller.imagesTool.isEmpty
             ? Card(
@@ -31,51 +46,51 @@ class ImageTool extends StatelessWidget {
                 ),
               )
             : Card(
-                margin: EdgeInsets.zero,
-                child: Column(
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Text(L10n.imagesTool.tr),
-                        ),
-                        Box(
-                          size: 40,
-                          child: Buttons(
-                            width: 40,
-                            height: 20,
-                            padding: EdgeInsets.zero,
-                            onPressed: () {
-                              controller.selectToolImage();
-                            },
-                            icon: Iconsax.gallery_add,
-                          ),
-                        )
-                      ],
+          margin: EdgeInsets.zero,
+          child: Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(L10n.imagesTool.tr),
+                  ),
+                  Box(
+                    size: 40,
+                    child: Buttons(
+                      width: 40,
+                      height: 20,
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        controller.selectToolImage();
+                      },
+                      icon: Iconsax.gallery_add,
                     ),
-                    Expanded(
-                      child: SizedBox(
-                        height: 100,
-                        width: MediaQuery.of(context).size.width,
-                        child: GetBuilder<AddToolController>(
-                            builder: (controller) {
-                          return Card(
-                            child: Image.file(
-                              File(
-                                controller.imagesTool.value,
-                              ),
+                  )
+                ],
+              ),
+              Expanded(
+                child: SizedBox(
+                  height: 100,
+                  width: MediaQuery.of(context).size.width,
+                  child: GetBuilder<AddToolController>(
+                      builder: (controller) {
+                        return Card(
+                          child: Image.file(
+                            File(
+                              controller.imagesTool.value,
                             ),
-                          );
-                        }),
-                      ),
-                    ),
-                    const VerticalSpace4(),
-                  ],
+                          ),
+                        );
+                      }),
                 ),
               ),
+              const VerticalSpace4(),
+            ],
+          ),
+        ),
       );
     });
   }

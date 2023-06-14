@@ -141,6 +141,7 @@ class ArTranslations {
         L10n.subscribe: 'اشتراك',
         L10n.subscribed: 'مشترك',
         L10n.mySubscribed: 'مشترك لدي',
+        L10n.myStore: 'متجري',
         L10n.cars: 'السيارات',
         L10n.tools: 'الأدوات',
         L10n.now: 'الآن',

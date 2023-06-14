@@ -10,6 +10,7 @@ class AppBars extends StatelessWidget with PreferredSizeWidget {
     this.actions,
     this.title,
     this.widget,
+    this.widgetAction,
     this.hiddenBackButton = false,
   }) : super(key: key);
 
@@ -19,12 +20,14 @@ class AppBars extends StatelessWidget with PreferredSizeWidget {
   final bool hiddenBackButton;
   final double? leadingWidth;
   final Widget? widget;
+  final Widget? widgetAction;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: AppBar(
+        centerTitle: false,
         leadingWidth: leadingWidth,
         leading: widget ?? (hiddenBackButton ? const Space() : null),
         title: title != null
@@ -32,7 +35,7 @@ class AppBars extends StatelessWidget with PreferredSizeWidget {
                 title!,
                 // style: ThemeApp.secondaryXTextStyle,
               )
-            : null,
+            : (widgetAction),
         actions: actions,
       ),
     );

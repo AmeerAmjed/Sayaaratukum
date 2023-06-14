@@ -23,4 +23,20 @@ class AddToolService extends BaseService {
     }
   }
 
+  Future<Response> update(int id, FormAddToolModel tool) async {
+    try {
+      Response response = await post(
+        "${ApiEndpoint.addTool}/$id?_method=put",
+        await tool.getFormDataToUpdate(),
+      );
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error AddToolService update $e");
+      return Future.error(e);
+    }
+  }
 }

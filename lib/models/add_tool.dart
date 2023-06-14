@@ -57,4 +57,21 @@ class FormAddToolModel extends BaseModel {
 
     return data;
   }
+
+  Future<FormData> getFormDataToUpdate() async {
+    var data = FormData({
+      'name': name,
+      'pirce': price.toString(),
+      'color': color,
+      'brand_id': idBrand.toString(),
+      'brand_model_id': idModelBrand.toString(),
+      'store_id': idStore.toString(),
+      'status': status,
+      'currency': currency,
+      'description': description,
+      'category_id': idCategory.toString(),
+    });
+
+    return data;
+  }
 }

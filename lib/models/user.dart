@@ -13,17 +13,19 @@ class UserModel extends BaseModel {
     required this.avatar,
     required this.role,
     required this.roleType,
+    required this.myStoreId,
     // required this.isPhoneNumberVerified,
     // required this.isEmailVerified,
     // required this.isActive,
   });
 
   final int id;
+  final int myStoreId;
   final String fullName;
   final String firstName;
   final String? lastName;
   final String? email;
-   String? phoneNumber;
+  String? phoneNumber;
   final String avatar;
   final RoleModel? role;
   final String roleType;
@@ -34,7 +36,7 @@ class UserModel extends BaseModel {
 
   factory UserModel.fromJson(Map<String, dynamic> data) {
     bool isActiveUser(int active) => active == 1;
-
+    var myStoreId = -1;
     print("data $data");
     String getRoleType() {
       if (data['role']['id'] == 2) {
@@ -51,8 +53,13 @@ class UserModel extends BaseModel {
       return "user";
     }
 
+    try {
+      myStoreId = data['store']['id'];
+    } catch (eer) {}
+
     return UserModel(
       id: data['id'],
+      myStoreId: myStoreId,
       fullName: data['fullname'],
       firstName: data['first_name'],
       lastName: data['last_name'],
@@ -71,6 +78,7 @@ class UserModel extends BaseModel {
     bool isActiveUser(String active) => active == "1";
     return UserModel(
       id: data['id'],
+      myStoreId: data['myStoreId'],
       fullName: data['fullName'],
       firstName: data['firstName'],
       lastName: data['lastName'],
@@ -89,6 +97,7 @@ class UserModel extends BaseModel {
     // int isActiveUser(bool active) => active ? 1 : 0;
     return {
       'id': id,
+      'myStoreId': myStoreId,
       'fullName': fullName,
       'firstName': firstName,
       'lastName': lastName,

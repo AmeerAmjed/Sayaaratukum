@@ -25,47 +25,42 @@ class MainTab extends GetView<MainTabController> {
       key: controller.scaffoldKey,
       // appBar: AppBar(),
       appBar: AppBars(
-        leadingWidth: 400,
-        widget: Row(
-          children: [
-            Container(
-              height: 50,
-              width: 50,
-              child: InkWell(
-                onTap: () {
-                  controller.scaffoldKey.currentState?.openDrawer();
-                },
-                child: const Box(size: 48.0, child: ImageUser()),
-              ),
-            ),
-            Expanded(
-              child: GetBuilder<Application>(
-                builder: (c) {
-                  return Application.instance.isLogin
-                      ? Buttons(
-                          height: 35,
-                          label: Application.instance.isStoreTool()
-                              ? L10n.buyTool.tr
-                              : L10n.buyYourCar.tr,
-                          onPressed: () {
-                            if (Application.instance.isStoreTool()) {
-                              Get.toNamed(RouteScreen.addTool);
-                            } else {
-                              Get.toNamed(RouteScreen.addCar);
-                            }
-                          },
-                        )
-                      : Buttons(
-                          height: 35,
-                          label: L10n.buyYourCar.tr,
-                          onPressed: () {
-                            snackBarToLogin();
-                          },
-                        );
-                },
-              ),
-            )
-          ],
+        // leadingWidth: 50,
+        widget: Container(
+          height: 50,
+          width: 50,
+          child: InkWell(
+            onTap: () {
+              controller.scaffoldKey.currentState?.openDrawer();
+            },
+            child: const Box(size: 48.0, child: ImageUser()),
+          ),
+        ),
+        widgetAction: GetBuilder<Application>(
+          builder: (c) {
+            return Application.instance.isLogin
+                ? Buttons(
+                    height: 35,
+                    width: 150,
+                    label: Application.instance.isStoreTool()
+                        ? L10n.buyTool.tr
+                        : L10n.buyYourCar.tr,
+                    onPressed: () {
+                      if (Application.instance.isStoreTool()) {
+                        Get.toNamed(RouteScreen.addTool);
+                      } else {
+                        Get.toNamed(RouteScreen.addCar);
+                      }
+                    },
+                  )
+                : Buttons(
+                    height: 35,
+                    label: L10n.buyYourCar.tr,
+                    onPressed: () {
+                      snackBarToLogin();
+                    },
+                  );
+          },
         ),
         actions: const [
           FittedBox(

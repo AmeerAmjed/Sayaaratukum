@@ -1,10 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
 import 'package:sayaaratukum/controllers/public/category_tool.dart';
@@ -12,6 +14,7 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/add_tool.dart';
 import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/models/category_tool.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/remote/user/add_tool.dart';
 
 class AddToolController extends BaseController {
@@ -32,12 +35,52 @@ class AddToolController extends BaseController {
   var statusSelected = "".obs;
   var imagesTool = "".obs;
 
+  // use when edite
+  int? idTool;
+  String? brandsValue;
+  String? modelBrandValue;
+  String? imageTool;
+  Rxn<String> categoryValue = Rxn<String>();
+  RxBool isUpdate = false.obs;
+
   @override
   void onInit() {
     brands = BrandController.instance.brands;
-    initInput();
+
+    if (Get.previousRoute == RouteScreen.storeToolDetails) {
+      editeTool();
+    } else {
+      initInput();
+    }
+
     getCategories();
     super.onInit();
+  }
+
+  editeTool() {
+    formKey = GlobalKey<FormState>();
+    isUpdate.value = true;
+    keyManagerModelBrand = GlobalKey<FormFieldState>();
+    var tool = Application.instance.tool?.value;
+    if (tool != null) {
+      name = TextEditingController(text: tool.name);
+      color = TextEditingController(text: tool.color);
+      price = TextEditingController(text: tool.price.toString());
+      description = TextEditingController(text: tool.description);
+      idTool = tool.id;
+      idBrandSelected = tool.brand.id;
+      brandsValue = tool.brand.title;
+      idModelBrandSelected = tool.model.id;
+      modelBrandValue = tool.model.name;
+      idCategorySelected = tool.category.id;
+      categoryValue.value = tool.category.name;
+      statusSelected.value = tool.status;
+      imageTool = tool.imageUrl;
+      update();
+      // var imagesTool = "".obs;
+    } else {
+      initInput();
+    }
   }
 
   initInput() {
@@ -57,6 +100,28 @@ class AddToolController extends BaseController {
         loading(false);
 
         print("response ${response.statusCode} ${response.body}");
+        if (response.isOk) {
+          showMessage(L10n.successAddTool.tr);
+        }
+      });
+    } on Response catch (response) {
+      loading(false);
+
+      onError(response.body[message]);
+      print("response ${response.statusCode} ${response.body}");
+    }
+  }
+
+  updateTool() async {
+    loading(true);
+
+    try {
+      await AddToolService.instance
+          .update(idTool!, getFormData())
+          .then((response) {
+        loading(false);
+
+        print("response ${response.body}");
         if (response.isOk) {
           showMessage(L10n.successAddTool.tr);
         }
@@ -194,10 +259,6 @@ class AddToolController extends BaseController {
       onError("${L10n.price.tr} ${L10n.isRequired.tr}");
 
       return false;
-    } else if (imagesTool.value == "") {
-      onError("${L10n.imagesTool.tr} ${L10n.isRequired.tr}");
-
-      return false;
     } else if (statusSelected.value == "") {
       onError("${L10n.statusTool.tr} ${L10n.isRequired.tr}");
 
@@ -206,7 +267,19 @@ class AddToolController extends BaseController {
     return true;
   }
 
+  bool checkValidationFormAddTool() {
+    if (checkValidationForm()) {
+      return checkValidationForm();
+    } else if (imagesTool.value == "") {
+      onError("${L10n.imagesTool.tr} ${L10n.isRequired.tr}");
+
+      return false;
+    }
+    return true;
+  }
+
   RxBool disableSubmit = false.obs;
+
   loading(bool state) {
     disableSubmit.value = state;
     update();

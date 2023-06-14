@@ -30,6 +30,25 @@ abstract class BaseController extends GetxController with ValidatorInput {
     );
   }
 
+  storeTools(String id) {
+    Get.toNamed(
+      RouteScreen.storeToolDetails,
+      arguments: {
+        Constants.idToolStoreKey: id,
+      },
+    );
+  } 
+  
+  storeCars(String id) {
+    Get.toNamed(
+      RouteScreen.storeCarDetails,
+      arguments: {
+        Constants.idStoreKey: id,
+      },
+    );
+  }
+  
+
   toolDetails(int id) {
     Get.toNamed(
       RouteScreen.toolDetails,

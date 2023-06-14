@@ -18,22 +18,25 @@ class StoreToolDetails extends GetView<StoreToolDetailsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AppBars(),
-      body: SizedBox(
-        height: double.maxFinite,
-        child: SingleChildScrollView(
-          controller: controller.scroll,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const HeaderInfoToolStore(),
-              const VerticalSpace24(),
-              TitleWithViewAll(
-                title: L10n.tools.tr,
-              ),
-              const VerticalSpace16(),
-              const ItemToolsStore()
-            ],
+      body: RefreshIndicator(
+        onRefresh: controller.onRefresh,
+        child: SizedBox(
+          height: double.maxFinite,
+          child: SingleChildScrollView(
+            controller: controller.scroll,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const HeaderInfoToolStore(),
+                const VerticalSpace24(),
+                TitleWithViewAll(
+                  title: L10n.tools.tr,
+                ),
+                const VerticalSpace16(),
+                const ItemToolsStore()
+              ],
+            ),
           ),
         ),
       ),
