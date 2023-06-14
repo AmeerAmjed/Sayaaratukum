@@ -115,7 +115,7 @@ class CarsController extends BaseController
       loadingMore(true);
       change(cars, status: RxStatus.loadingMore());
       await getCars();
-      Get.back();
+      // Get.back();
     }
   }
 

@@ -78,7 +78,7 @@ class SearchToolController extends BaseController
       loadingMore(true);
       change(tools, status: RxStatus.loadingMore());
       await getCars(filter);
-      Get.back();
+      // Get.back();
     }
   }
 

@@ -73,7 +73,7 @@ class StoreToolDetailsController extends BaseController
       loadingMore(true);
       change(tools, status: RxStatus.loadingMore());
       await getCars();
-      Get.back();
+      // Get.back();
     }
   }
 

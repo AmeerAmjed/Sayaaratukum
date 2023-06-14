@@ -81,7 +81,7 @@ class SearchCarByBrandController extends BaseController
       loadingMore(true);
       change(cars, status: RxStatus.loadingMore());
       await searchCarByBrandId(idBrand);
-      Get.back();
+      // Get.back();
     }
   }
 

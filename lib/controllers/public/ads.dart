@@ -71,7 +71,7 @@ class AdsController extends BaseController
       loadingMore(true);
       change(ads, status: RxStatus.loadingMore());
       await getAds();
-      Get.back();
+      // Get.back();
     }
   }
 

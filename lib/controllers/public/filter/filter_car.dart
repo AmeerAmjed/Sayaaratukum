@@ -139,7 +139,7 @@ class FilterCarController extends BaseController
       loadingMore(true);
       change(cars, status: RxStatus.loadingMore());
       await searchCar();
-      Get.back();
+      // Get.back();
     }
   }
 

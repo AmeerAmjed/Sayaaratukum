@@ -66,7 +66,7 @@ class ToolsController extends BaseController
       loadingMore(true);
       change(brands, status: RxStatus.loadingMore());
       await getTools();
-      Get.back();
+      // Get.back();
     }
   }
 

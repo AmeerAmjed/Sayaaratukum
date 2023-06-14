@@ -91,7 +91,7 @@ class StoresController extends BaseController
       loadingMore(true);
       change(stores, status: RxStatus.loadingMore());
       await getAllStore(storeTypeId.value);
-      Get.back();
+      // Get.back();
     }
   }
 

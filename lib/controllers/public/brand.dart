@@ -75,7 +75,7 @@ class BrandController extends BaseController
       loadingMore(true);
       change(brands, status: RxStatus.loadingMore());
       await getAllBrand();
-      Get.back();
+      // Get.back();
     }
   }
 
