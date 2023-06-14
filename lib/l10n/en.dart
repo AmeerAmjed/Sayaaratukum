@@ -181,6 +181,7 @@ class EnTranslations {
         L10n.faceBook : 'facebook',
         L10n.twitter : 'Twitter',
         L10n.instagram : 'Instagram',
+        L10n.notifications : 'Notifications',
 
 
 

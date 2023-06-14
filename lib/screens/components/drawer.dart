@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -29,6 +30,21 @@ class DrawerApp extends GetView<Application> {
               ? const AuthOptionDrawer()
               : const TryAuth(),
           const VerticalSpace8(),
+          ListTitleIcon(
+            icon: Iconsax.notification,
+            trailing: GetBuilder<Application>(
+              builder: (state) {
+                return CupertinoSwitch(
+                  activeColor: Get.theme.primaryColor,
+                  value: state.isNotificationActive.value,
+                  onChanged: (switchState) {
+                    state.setNotificationState = switchState;
+                  },
+                );
+              },
+            ),
+            title: L10n.notifications,
+          ),
           ListTitleIcon(
             title: L10n.setting.tr,
             icon: Iconsax.setting_24,

@@ -197,6 +197,7 @@ class L10n {
   static const faceBook = 'faceBook';
   static const twitter = 'twitter';
   static const instagram = 'instagram';
+  static const notifications = 'notifications';
 
 
 

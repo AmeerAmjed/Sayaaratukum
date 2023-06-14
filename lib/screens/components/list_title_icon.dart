@@ -5,10 +5,7 @@ class ListTitleIcon extends StatelessWidget {
   const ListTitleIcon({
     Key? key,
     this.color = Colors.black,
-    this.trailing = const Icon(
-      Icons.arrow_forward_ios,
-      color: Colors.black,
-    ),
+    this.trailing,
     required this.title,
     required this.icon,
     this.onTap,
@@ -17,7 +14,7 @@ class ListTitleIcon extends StatelessWidget {
   final String title;
   final IconData icon;
   final Color color;
-  final Widget trailing;
+  final Widget? trailing;
   final VoidCallback? onTap;
 
   @override
@@ -40,7 +37,15 @@ class ListTitleIcon extends StatelessWidget {
                       color: color,
                     ),
               ),
-            )
+            ),
+            const Spacer(),
+            if (trailing != null)
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                ),
+                child: trailing!,
+              )
           ],
         ),
       ),

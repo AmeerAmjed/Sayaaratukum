@@ -178,6 +178,8 @@ class ArTranslations {
         L10n.twitter : 'تويتو',
         L10n.instagram : 'انستة',
 
+        L10n.notifications : 'الاشعارات',
+
         "USA" : 'USA',
         "Europe" : 'Europe',
         "Gulf" : 'Gulf',
