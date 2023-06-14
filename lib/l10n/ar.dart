@@ -46,7 +46,7 @@ class ArTranslations {
         L10n.passwordNotMatch: 'كلمة المرور غير متطابقة',
 
         L10n.searchCar: 'ابحث عن سيارتك',
-        L10n.searchTool: 'ابحث عن أداة',
+        L10n.searchTool: 'ابحث عن قطع غيار',
 
         L10n.showrooms: 'صالات العرض',
         L10n.adsDeals: 'عروض خاصة بالنسبة لك',
@@ -64,7 +64,7 @@ class ArTranslations {
         L10n.showMore: 'عرض المزيد',
         L10n.showLess: 'عرض أقل',
         L10n.addCar: 'إضافة سيارة',
-        L10n.addTool: 'إضافة أداة',
+        L10n.addTool: 'إضافة قطع غيار',
 
         L10n.back: 'رجوع',
         L10n.next: 'التالي',
@@ -104,7 +104,7 @@ class ArTranslations {
         L10n.minPrice: 'أدنى سعر',
         L10n.maxPrice: 'أعلى سعر',
         L10n.addImagesCar: 'إضافة عشر صور للسيارة',
-        L10n.addImageTool: 'إضافة صورة الأداة',
+        L10n.addImageTool: 'إضافة صورة لقطعه غيار',
         L10n.available: 'متاح',
 
         L10n.failedCreateAccount: 'فشل إنشاء الحساب',
@@ -112,7 +112,7 @@ class ArTranslations {
         L10n.statusTool: 'حالة الأداة',
         L10n.name: 'الاسم',
         L10n.category: 'الفئة',
-        L10n.imagesTool: 'صورة الأداة',
+        L10n.imagesTool: 'صورة لقطعه غيار',
         L10n.description: 'الوصف',
         L10n.newTool: 'جديد',
         L10n.usedTool: 'مستعمل',
