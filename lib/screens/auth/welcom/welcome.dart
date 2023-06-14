@@ -64,7 +64,7 @@ class WelcomeScreen extends StatelessWidget {
               label: L10n.letStart.tr,
               width: double.infinity,
               onPressed: () {
-                Get.offAndToNamed(RouteScreen.login);
+                Get.offAndToNamed(RouteScreen.mainTab);
               },
             ),
           ),

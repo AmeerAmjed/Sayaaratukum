@@ -55,7 +55,8 @@ class MainTab extends GetView<MainTabController> {
                   )
                 : Buttons(
                     height: 35,
-                    label: L10n.buyYourCar.tr,
+              width: 150,
+              label: L10n.buyYourCar.tr,
                     onPressed: () {
                       snackBarToLogin();
                     },
