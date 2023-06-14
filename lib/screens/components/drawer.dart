@@ -5,6 +5,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/components/auth_option_drawer.dart';
+import 'package:sayaaratukum/screens/components/language.dart';
 import 'package:sayaaratukum/screens/components/list_title_icon.dart';
 import 'package:sayaaratukum/screens/components/social_media.dart';
 import 'package:sayaaratukum/screens/components/try_auth.dart';
@@ -43,7 +44,18 @@ class DrawerApp extends GetView<Application> {
                 );
               },
             ),
-            title: L10n.notifications,
+            title: L10n.notifications.tr,
+          ),
+          ListTitleIcon(
+            icon: Iconsax.global,
+            title: L10n.language,
+            trailing: Text(
+              controller.getLangCode.toUpperCase(),
+            ),
+            horizontalTrailingPadding: 30,
+            onTap: () {
+              language();
+            },
           ),
           ListTitleIcon(
             title: L10n.setting.tr,

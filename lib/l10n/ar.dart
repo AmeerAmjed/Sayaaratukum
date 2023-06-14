@@ -179,6 +179,7 @@ class ArTranslations {
         L10n.instagram : 'انستة',
 
         L10n.notifications : 'الاشعارات',
+        L10n.language : 'اللغة',
 
         "USA" : 'USA',
         "Europe" : 'Europe',

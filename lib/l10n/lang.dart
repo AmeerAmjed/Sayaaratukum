@@ -198,6 +198,10 @@ class L10n {
   static const twitter = 'twitter';
   static const instagram = 'instagram';
   static const notifications = 'notifications';
+  static const language = 'language';
+
+  static const arabic = 'arabic';
+  static const english = 'english';
 
 
 

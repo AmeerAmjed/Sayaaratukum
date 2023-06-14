@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/horizontal_space.dart';
 
@@ -8,6 +9,7 @@ class ButtonActionBottomSheet extends StatelessWidget {
     required this.title,
     this.icon,
     this.localIcon,
+    this.textIcon,
     this.paddingVertical = Constants.spacingXMedium,
     required this.onPressed,
   }) : super(key: key);
@@ -15,6 +17,7 @@ class ButtonActionBottomSheet extends StatelessWidget {
   final String title;
   final IconData? icon;
   final String? localIcon;
+  final String? textIcon;
   final double paddingVertical;
   final VoidCallback onPressed;
 
@@ -30,6 +33,11 @@ class ButtonActionBottomSheet extends StatelessWidget {
       onPressed: onPressed,
       child: Row(
         children: [
+          if (textIcon != null)
+            Text(
+              textIcon!,
+              style: Get.textTheme.labelMedium,
+            ),
           if (localIcon != null)
             SizedBox(width: 30, child: Image.asset(localIcon!)),
           if (icon != null)

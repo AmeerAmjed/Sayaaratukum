@@ -5,6 +5,7 @@ class ListTitleIcon extends StatelessWidget {
   const ListTitleIcon({
     Key? key,
     this.color = Colors.black,
+    this.horizontalTrailingPadding = 8,
     this.trailing,
     required this.title,
     required this.icon,
@@ -15,6 +16,7 @@ class ListTitleIcon extends StatelessWidget {
   final IconData icon;
   final Color color;
   final Widget? trailing;
+  final double horizontalTrailingPadding;
   final VoidCallback? onTap;
 
   @override
@@ -41,8 +43,8 @@ class ListTitleIcon extends StatelessWidget {
             const Spacer(),
             if (trailing != null)
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8.0,
+                padding: EdgeInsets.symmetric(
+                  horizontal: horizontalTrailingPadding,
                 ),
                 child: trailing!,
               )

@@ -182,6 +182,9 @@ class EnTranslations {
         L10n.twitter : 'Twitter',
         L10n.instagram : 'Instagram',
         L10n.notifications : 'Notifications',
+        L10n.language : 'Language',
+        L10n.arabic : 'عربي',
+        L10n.english : 'english',
 
 
 
