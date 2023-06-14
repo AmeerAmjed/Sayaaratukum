@@ -194,6 +194,10 @@ class L10n {
   static const buyYourCar = 'buyYourCar';
   static const buyTool = 'buyTool';
 
+  static const faceBook = 'faceBook';
+  static const twitter = 'twitter';
+  static const instagram = 'instagram';
+
 
 
 }

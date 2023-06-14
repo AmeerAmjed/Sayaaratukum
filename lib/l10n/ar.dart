@@ -174,6 +174,9 @@ class ArTranslations {
         L10n.buyYourCar : 'بيع سيارتك',
         L10n.buyTool : 'بيع الادوات الاحتياطيه',
 
+        L10n.faceBook : 'فيس',
+        L10n.twitter : 'تويتو',
+        L10n.instagram : 'انستة',
 
         "USA" : 'USA',
         "Europe" : 'Europe',

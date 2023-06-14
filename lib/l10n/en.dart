@@ -178,6 +178,10 @@ class EnTranslations {
         L10n.buyYourCar : 'Buy your car',
         L10n.buyTool : 'Buy Tool',
 
+        L10n.faceBook : 'facebook',
+        L10n.twitter : 'Twitter',
+        L10n.instagram : 'Instagram',
+
 
 
         "USA" : 'USA',

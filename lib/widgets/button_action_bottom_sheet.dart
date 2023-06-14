@@ -6,37 +6,44 @@ class ButtonActionBottomSheet extends StatelessWidget {
   const ButtonActionBottomSheet({
     Key? key,
     required this.title,
-    required this.icon,
+    this.icon,
+    this.localIcon,
+    this.paddingVertical = Constants.spacingXMedium,
     required this.onPressed,
   }) : super(key: key);
 
   final String title;
-  final IconData icon;
+  final IconData? icon;
+  final String? localIcon;
+  final double paddingVertical;
   final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        padding: const EdgeInsets.all(
-          Constants.spacingXMedium,
+        padding: EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: paddingVertical,
         ),
       ),
       onPressed: onPressed,
       child: Row(
         children: [
-          Icon(
-            icon,
-            color: Colors.black.withOpacity(0.1),
-          ),
+          if (localIcon != null)
+            SizedBox(width: 30, child: Image.asset(localIcon!)),
+          if (icon != null)
+            Icon(
+              icon,
+              color: Colors.black.withOpacity(0.1),
+            ),
           const HorizontalSpace8(),
           Text(
             title,
             style: const TextStyle(
-              fontFamily: 'Tajawal',
               color: Colors.black,
               // fontSize: Constants.spacingMedium,
-              fontWeight: FontWeight.w800,
+              // fontWeight: FontWeight.w800,
             ),
           )
         ],
