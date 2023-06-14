@@ -8,7 +8,6 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/add_car/components/radio_group.dart';
 import 'package:sayaaratukum/screens/add_car/components/row_two_widget.dart';
 import 'package:sayaaratukum/screens/add_car/components/year_brand.dart';
-import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/hard_code.dart';
 import 'package:sayaaratukum/widgets/dropdown_list.dart';
 import 'package:sayaaratukum/widgets/input.dart';
@@ -34,9 +33,9 @@ class InformationCarForm extends GetView<AddCarController> {
         RowTwoWidget(
           leftWidget: DropdownList(
             margin: const EdgeInsets.only(
-              left: 16,
+              left: 2,
             ),
-            label: L10n.brand.tr,
+            label: L10n.brands.tr,
             onChanged: controller.onChangeBrand,
             items: controller.brands.map((e) => e.title).toList(),
           ),
@@ -47,7 +46,7 @@ class InformationCarForm extends GetView<AddCarController> {
               onChanged:  controller.onChangeModelBrand,
               items: co.getModelByBrandId(),
               margin: const EdgeInsets.only(
-                right: 16,
+                right: 2,
               ),
             );
           }),
@@ -56,7 +55,7 @@ class InformationCarForm extends GetView<AddCarController> {
           leftWidget: DropdownList(
             label: L10n.engineCapacity.tr,
             margin: const EdgeInsets.only(
-              left: Constants.spacing16,
+              left: 2,
             ),
             onChanged: controller.onChangeEngineCapacity,
             items: HardCode.engineSizes,
@@ -65,7 +64,7 @@ class InformationCarForm extends GetView<AddCarController> {
             return DropdownList(
               label: L10n.enginePower.tr,
               margin: const EdgeInsets.only(
-                right: Constants.spacing16,
+                right: 2,
               ),
               onChanged: controller.onChangeEnginePower,
               items: con.enginePowers.map((e) => e.name).toList(),

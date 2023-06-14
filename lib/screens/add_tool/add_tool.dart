@@ -33,31 +33,28 @@ class AddTool extends GetView<AddToolController> {
               keyboardType: TextInputType.name,
             ),
             const VerticalSpace4(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: RowTwoWidget(
-                leftWidget: DropdownList(
-                  margin: const EdgeInsets.only(
-                    left: 2,
-                  ),
-                  label: L10n.brand.tr,
-                  onChanged: controller.onChangeBrand,
-                  value: controller.brandsValue,
-                  items: controller.brands.map((e) => e.title).toList(),
+            RowTwoWidget(
+              leftWidget: DropdownList(
+                margin: const EdgeInsets.only(
+                  left: 2,
                 ),
-                rightWidget: GetBuilder<AddToolController>(builder: (co) {
-                  return DropdownList(
-                    keyDropdownList: controller.keyManagerModelBrand,
-                    label: L10n.model.tr,
-                    onChanged: controller.onChangeModelBrand,
-                    value: controller.modelBrandValue,
-                    items: co.getModelByBrandId(),
-                    margin: const EdgeInsets.only(
-                      right: 2,
-                    ),
-                  );
-                }),
+                label: L10n.brands.tr,
+                onChanged: controller.onChangeBrand,
+                value: controller.brandsValue,
+                items: controller.brands.map((e) => e.title).toList(),
               ),
+              rightWidget: GetBuilder<AddToolController>(builder: (co) {
+                return DropdownList(
+                  keyDropdownList: controller.keyManagerModelBrand,
+                  label: L10n.model.tr,
+                  onChanged: controller.onChangeModelBrand,
+                  value: controller.modelBrandValue,
+                  items: co.getModelByBrandId(),
+                  margin: const EdgeInsets.only(
+                    right: 2,
+                  ),
+                );
+              }),
             ),
             const VerticalSpace4(),
             GetBuilder<AddToolController>(builder: (co) {

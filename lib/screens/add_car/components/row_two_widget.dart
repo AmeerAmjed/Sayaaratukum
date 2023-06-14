@@ -14,24 +14,27 @@ class RowTwoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        const VerticalSpace4(),
-        Row(
-          children: [
-            Expanded(
-              child: leftWidget,
-            ),
-            const HorizontalSpace8(),
-            Expanded(
-              child: rightWidget,
-            ),
-          ],
-        ),
-        const VerticalSpace4(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const VerticalSpace4(),
+          Row(
+            children: [
+              Expanded(
+                child: leftWidget,
+              ),
+              const HorizontalSpace8(),
+              Expanded(
+                child: rightWidget,
+              ),
+            ],
+          ),
+          const VerticalSpace4(),
+        ],
+      ),
     );
   }
 }

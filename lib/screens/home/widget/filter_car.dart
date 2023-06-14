@@ -7,7 +7,6 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/add_car/components/row_two_widget.dart';
 import 'package:sayaaratukum/screens/add_car/components/year_brand.dart';
 import 'package:sayaaratukum/theme/color.dart';
-import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/currency_input_formatter.dart';
 import 'package:sayaaratukum/util/hard_code.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';
@@ -39,7 +38,7 @@ class FilterCar extends GetView<FilterCarController> {
             Buttons(
               height: 40,
               width: 150,
-              iconSize: 16,
+              iconSize: 2,
               colorOnButton: ColorSystem.colorOptional,
               background: Colors.transparent,
               label: L10n.cleanFilter.tr,
@@ -53,9 +52,9 @@ class FilterCar extends GetView<FilterCarController> {
           leftWidget: DropdownList(
             keyDropdownList: controller.brandFormKey,
             margin: const EdgeInsets.only(
-              left: 16,
+              left: 2,
             ),
-            label: L10n.brand.tr,
+            label: L10n.brands.tr,
             onChanged: controller.onChangeBrand,
             items: controller.brands.map((e) => e.title).toList(),
           ),
@@ -66,7 +65,7 @@ class FilterCar extends GetView<FilterCarController> {
               onChanged: controller.onChangeModelBrand,
               items: co.getModelByBrandId(),
               margin: const EdgeInsets.only(
-                right: 16,
+                right: 2,
               ),
             );
           }),
@@ -77,7 +76,7 @@ class FilterCar extends GetView<FilterCarController> {
               keyDropdownList: controller.enginePowerKey,
               label: L10n.enginePower.tr,
               margin: const EdgeInsets.only(
-                left: Constants.spacing16,
+                left: 2,
               ),
               onChanged: controller.onChangeEnginePower,
               items: con.enginePowers.map((e) => e.name).toList(),
@@ -87,7 +86,7 @@ class FilterCar extends GetView<FilterCarController> {
             keyDropdownList: controller.engineCapacityKey,
             label: L10n.engineCapacity.tr,
             margin: const EdgeInsets.only(
-              right: Constants.spacing16,
+              right: 2,
             ),
             onChanged: controller.onChangeEngineCapacity,
             items: HardCode.engineSizes.map((e) => e.toString()).toList()
@@ -104,7 +103,7 @@ class FilterCar extends GetView<FilterCarController> {
             ],
             keyboardType: TextInputType.number,
             margin: const EdgeInsets.only(
-              left: 16,
+              left: 2,
             ),
             // prefixIcon: Iconsax.icon,
             // suffixIcon: IconButton(
@@ -123,7 +122,7 @@ class FilterCar extends GetView<FilterCarController> {
             ],
             keyboardType: TextInputType.number,
             margin: const EdgeInsets.only(
-              right: 16,
+              right: 2,
             ),
           ),
         ),
@@ -140,7 +139,7 @@ class FilterCar extends GetView<FilterCarController> {
               );
             },
             margin: const EdgeInsets.only(
-              left: 16,
+              left: 2,
             ),
           ),
           rightWidget: InputAuth(
@@ -155,7 +154,7 @@ class FilterCar extends GetView<FilterCarController> {
               );
             },
             margin: const EdgeInsets.only(
-              right: 16,
+              right: 2,
             ),
           ),
         ),

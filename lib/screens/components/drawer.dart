@@ -48,7 +48,7 @@ class DrawerApp extends GetView<Application> {
           ),
           ListTitleIcon(
             icon: Iconsax.global,
-            title: L10n.language,
+            title: L10n.language.tr,
             trailing: Text(
               controller.getLangCode.toUpperCase(),
             ),

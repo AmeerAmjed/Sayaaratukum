@@ -5,7 +5,9 @@ class ArTranslations {
         L10n.viewAll: 'مشاهدة الكل',
         L10n.brands: 'ماركات',
 
+
         L10n.home: 'الرئيسيه',
+        L10n.recommended: 'سيارات ينصح بها',
         L10n.spareParts: 'مواد احتياطيه',
         L10n.stores: 'متاجر',
         L10n.favorite: 'المفضلات',
@@ -140,7 +142,7 @@ class ArTranslations {
 
         L10n.subscribe: 'اشتراك',
         L10n.subscribed: 'مشترك',
-        L10n.mySubscribed: 'مشترك لدي',
+        L10n.mySubscribed: ' اشتراكاتي',
         L10n.myStore: 'متجري',
         L10n.cars: 'السيارات',
         L10n.tools: 'الأدوات',
@@ -172,7 +174,7 @@ class ArTranslations {
         L10n.successfullyUpdatePhoneNumber : 'تم التعديل بنجاح',
         L10n.save : 'حفظ',
         L10n.buyYourCar : 'بيع سيارتك',
-        L10n.buyTool : 'بيع الادوات الاحتياطيه',
+        L10n.buyTool : 'بيع قطع غيار',
 
         L10n.faceBook : 'فيس',
         L10n.twitter : 'تويتو',
