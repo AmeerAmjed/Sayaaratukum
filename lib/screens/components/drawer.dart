@@ -6,6 +6,8 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/components/auth_option_drawer.dart';
 import 'package:sayaaratukum/screens/components/list_title_icon.dart';
 import 'package:sayaaratukum/screens/components/try_auth.dart';
+import 'package:sayaaratukum/util/link.dart';
+import 'package:sayaaratukum/util/open_link.dart';
 import 'package:sayaaratukum/widgets/CustomDialog.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
@@ -34,7 +36,9 @@ class DrawerApp extends GetView<Application> {
           ListTitleIcon(
             title: L10n.privacy.tr,
             icon: Iconsax.security_safe,
-            onTap: () {},
+            onTap: () {
+              OpenLink.url(Links.privacy);
+            },
           ),
           ListTitleIcon(
             title: L10n.socialMedia.tr,

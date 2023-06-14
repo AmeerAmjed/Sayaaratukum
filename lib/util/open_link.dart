@@ -21,18 +21,19 @@ chatNow(String? whatsappNumberPhone) {
 }
 
 class OpenLink {
-  // static url(String url) async {
-  //   final Uri urlWebSite = Uri.parse(url);
-  //
-  //   try {
-  //     await launchUrl(
-  //       urlWebSite,
-  //       mode: LaunchMode.externalApplication,
-  //     );
-  //   } on Exception catch (_) {
-  //     print('Could not launch $urlWebSite');
-  //   }
-  // }
+  static url(String url) async {
+    final Uri urlWebSite = Uri.parse(url);
+
+    try {
+      await launchUrl(
+        urlWebSite,
+        mode: LaunchMode.externalApplication,
+      );
+    } on Exception catch (_) {
+      print('Could not launch $urlWebSite');
+    }
+  }
+
   static Future<void> dial({
     required String phoneNumber,
   }) async {
@@ -40,6 +41,7 @@ class OpenLink {
       final regex = RegExp(r'^\+\d{1,3}\s?\d+$');
       return regex.hasMatch(number);
     }
+
     final Uri dialNumberUri = Uri(
       scheme: 'tel',
       path: phoneNumber,
