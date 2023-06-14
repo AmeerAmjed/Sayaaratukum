@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/user/favorite.dart';
@@ -6,6 +8,7 @@ import 'package:sayaaratukum/models/user.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/local/storage.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/lang_code.dart';
 
 class Application extends BaseController with LocalStorage {
   static Application get instance => Get.find();
@@ -95,14 +98,15 @@ class Application extends BaseController with LocalStorage {
     await save<String>(Constants.tokenKey, token);
   }
 
-  set setLangCode(String newLangCode) {
-    langCode.value = newLangCode;
+  set setLangCode(LangCode newLangCode) {
+    Get.updateLocale(Locale(newLangCode.name));
+    print("object ${newLangCode.name}");
+    langCode.value = newLangCode.name;
     update();
-    save(Constants.langCodeKey, newLangCode);
+    save<String>(Constants.langCodeKey, newLangCode.name);
   }
 
   set setNotificationState(bool state) {
-
     isNotificationActive.value = state;
     update();
     String convertToString(bool value) {

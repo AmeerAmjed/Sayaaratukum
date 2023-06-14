@@ -8,6 +8,7 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/route/routes.dart';
 import 'package:sayaaratukum/theme/theme.dart';
+import 'package:sayaaratukum/util/lang_code.dart';
 import 'package:uni_links/uni_links.dart';
 
 Future<void> main() async {
@@ -41,12 +42,11 @@ class Root extends GetView<Application> {
       debugShowCheckedModeBanner: false,
       theme: ThemeApp.light,
       // darkTheme: ThemeApp.dark,
-      locale: Get.deviceLocale,
-      fallbackLocale: const Locale('en', ''),
+      locale: Locale(controller.getLangCode, ''),
+      fallbackLocale: Locale(LangCode.en.name, ''),
       translations: AppTranslations(),
       getPages: routes(),
-      initialRoute:
-      (controller.isSkipAuth.value || controller.isLogin)
+      initialRoute: (controller.isSkipAuth.value || controller.isLogin)
           ? RouteScreen.mainTab
           : RouteScreen.welcome,
       initialBinding: (controller.isSkipAuth.value || controller.isLogin)
