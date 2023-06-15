@@ -168,7 +168,7 @@ class EnTranslations {
         L10n.profile : 'Profile',
         L10n.updateProfile : 'Update profile',
         L10n.updatePassword : 'Update password',
-        L10n.successfullyUpdateProfile : 'Successfully account updated',
+        L10n.successfullyUpdateProfile : 'Successfully profile updated',
         L10n.successfullyUpdatePassword : 'Successfully password updated',
         L10n.updateEmail : 'Update email',
         L10n.successfullyUpdateEmail : 'Successfully Email updated',
@@ -186,6 +186,9 @@ class EnTranslations {
         L10n.arabic : 'عربي',
         L10n.english : 'english',
         L10n.verifyEmail :  'Please verify your email',
+
+        L10n.address :  'Address',
+        L10n.bio :  'Bio',
 
 
 

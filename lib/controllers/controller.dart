@@ -47,7 +47,15 @@ abstract class BaseController extends GetxController with ValidatorInput {
       },
     );
   }
-  
+
+  navigateToUpdateStoreProfile(int id) {
+    Get.toNamed(
+      RouteScreen.updateStoreProfile,
+      arguments: {
+        Constants.idStoreUpdateStoreProfile: id.toString(),
+      },
+    );
+  }
 
   toolDetails(int id) {
     Get.toNamed(

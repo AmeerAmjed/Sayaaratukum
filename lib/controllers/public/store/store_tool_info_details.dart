@@ -20,17 +20,19 @@ class InfoStoreToolDetails extends BaseController
   @override
   void onInit() {
     super.onInit();
-    idStore.value = Get.arguments[Constants.idToolStoreKey] ?? "0";
-
     loadingData();
-    getInfoStoreCar();
+    init();
   }
 
-  Future<void> getInfoStoreCar() async {
+  init() {
+    loadingData();
+    idStore.value = Get.arguments[Constants.idToolStoreKey] ?? "0";
+    getInfoStoreCar(idStore.value);
+  }
+
+  Future<void> getInfoStoreCar(String id) async {
     try {
-      await StoreServices.instance
-          .getStoresById(idStore.value)
-          .then((response) {
+      await StoreServices.instance.getStoresById(id).then((response) {
         if (response.isOk) {
           StoreToolModel result = StoreToolModel.fromJson(
             response.body[data],

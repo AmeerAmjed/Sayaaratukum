@@ -203,7 +203,6 @@ class L10n {
   static const arabic = 'arabic';
   static const english = 'english';
   static const verifyEmail = 'verifyEmail';
-
-
-
+  static const address = 'address';
+  static const bio = 'bio';
 }

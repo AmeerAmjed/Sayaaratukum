@@ -185,6 +185,9 @@ class ArTranslations {
 
         L10n.verifyEmail :  'Please verify your email',
 
+        L10n.address :  'العنوان',
+        L10n.bio: 'السيرة الذاتية',
+
         "USA" : 'USA',
         "Europe" : 'Europe',
         "Gulf" : 'Gulf',

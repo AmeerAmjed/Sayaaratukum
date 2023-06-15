@@ -39,5 +39,6 @@ class RouteScreen {
   static const updatePassword  = '/updatePassword';
   static const updateEmail  = '/updateEmail';
   static const updatePhoneNumber  = '/updatePhoneNumber';
+  static const updateStoreProfile  = '/updateStoreProfile';
 
 }

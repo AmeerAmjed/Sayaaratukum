@@ -70,6 +70,7 @@ class InputAuth extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           alignLabelWithHint: true,
+
           fillColor: background ?? Theme.of(context).cardColor,
           // hintText: hintText,
           hintStyle: Get.textTheme.labelMedium,

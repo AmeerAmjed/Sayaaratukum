@@ -41,12 +41,12 @@ class Profile extends GetView<Application> {
           PopupMenuButton<String>(
             onSelected: handleClick,
             itemBuilder: (BuildContext context) {
-              return {
+              return [
                 L10n.updateProfile,
                 L10n.updatePhoneNumber,
                 L10n.updateEmail,
                 L10n.updatePassword,
-              }.map((String choice) {
+              ].map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
                   child: Text(

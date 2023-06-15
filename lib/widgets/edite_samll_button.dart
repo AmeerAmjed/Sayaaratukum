@@ -8,10 +8,12 @@ import 'package:sayaaratukum/widgets/buttons.dart';
 class EditeSmallButton extends StatelessWidget {
   const EditeSmallButton({
     super.key,
+    this.icon,
     required this.onPressed,
   });
 
   final VoidCallback onPressed;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class EditeSmallButton extends StatelessWidget {
             iconSize: 20,
             padding: EdgeInsets.zero,
             onPressed: onPressed,
-            icon: Iconsax.edit,
+            icon: icon ?? Iconsax.edit,
             sizeLoading: 15,
           ),
         ),

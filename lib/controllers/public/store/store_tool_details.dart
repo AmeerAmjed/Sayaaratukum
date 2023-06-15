@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
+import 'package:sayaaratukum/controllers/public/store/store_tool_info_details.dart';
 import 'package:sayaaratukum/models/tool.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/remote/public/tools.dart';
@@ -97,6 +98,9 @@ class StoreToolDetailsController extends BaseController
 
   Future<void> onRefresh() async {
     loadingData();
+    try {
+      InfoStoreToolDetails.instance.init();
+    } catch (er) {}
     getCars();
   }
 

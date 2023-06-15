@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/public/store/store_car_details.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/home/components/title_with_view_all.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
+import 'package:sayaaratukum/widgets/popup_menu.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 import 'components/header_info_store.dart';
@@ -17,8 +19,20 @@ class StoreCarDetails extends GetView<StoreCarDetailsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBars(
-      ),
+      // appBar: AppBars(
+      //   actions: <Widget>[
+      //     PopupMenu(
+      //       titles: const [L10n.profile],
+      //       onSelected: (value) {
+      //         switch (value) {
+      //           case L10n.profile:
+      //             controller.navigateTo(RouteScreen.updateStoreProfile);
+      //             break;
+      //         }
+      //       },
+      //     ),
+      //   ],
+      // ),
       body: SizedBox(
         height: double.maxFinite,
         child: SingleChildScrollView(

@@ -16,6 +16,7 @@ import 'package:sayaaratukum/binding/user/update/email.dart';
 import 'package:sayaaratukum/binding/user/update/password.dart';
 import 'package:sayaaratukum/binding/user/update/phone_number.dart';
 import 'package:sayaaratukum/binding/user/update/profile.dart';
+import 'package:sayaaratukum/binding/user/update/store.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/add_car/AddCar.dart';
 import 'package:sayaaratukum/screens/add_tool/add_tool.dart';
@@ -30,6 +31,7 @@ import 'package:sayaaratukum/screens/edite/email/email.dart';
 import 'package:sayaaratukum/screens/edite/password/password.dart';
 import 'package:sayaaratukum/screens/edite/phone_number/phone_number.dart';
 import 'package:sayaaratukum/screens/edite/profile/profile.dart';
+import 'package:sayaaratukum/screens/edite/store/store.dart';
 import 'package:sayaaratukum/screens/main.dart';
 import 'package:sayaaratukum/screens/my_%20subscribe_store/my_subscribe_store.dart';
 import 'package:sayaaratukum/screens/profile/profile.dart';
@@ -138,5 +140,10 @@ List<GetPage> routes() => [
         name: RouteScreen.updatePhoneNumber,
         page: () => const UpdatePhoneNumber(),
         binding: UpdatePhoneNumberBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.updateStoreProfile,
+        page: () => const UpdateStoreProfile(),
+        binding: UpdateStoreProfileBinding(),
       )
     ];
