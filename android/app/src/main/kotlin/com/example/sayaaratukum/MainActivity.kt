@@ -1,4 +1,4 @@
-package com.example.sayaaratukum
+package com.saiaratcom.cars
 
 import io.flutter.embedding.android.FlutterActivity
 
