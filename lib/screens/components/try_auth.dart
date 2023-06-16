@@ -5,6 +5,8 @@ import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';
 
+import '../../controllers/main_tab.dart';
+
 class TryAuth extends StatelessWidget {
   const TryAuth({
     Key? key,
@@ -30,7 +32,10 @@ class TryAuth extends StatelessWidget {
               Expanded(
                 child: Buttons(
                   label: L10n.login.tr,
-                  onPressed: () => Get.toNamed(RouteScreen.login),
+                  onPressed: () {
+                    MainTabController.instance.resetRoute();
+                    Get.toNamed(RouteScreen.login);
+                  },
                 ),
               ),
               const VerticalDivider(
@@ -42,7 +47,10 @@ class TryAuth extends StatelessWidget {
               Expanded(
                 child: Buttons(
                   label: L10n.register.tr,
-                  onPressed: () => Get.toNamed(RouteScreen.register),
+                  onPressed: () {
+                    MainTabController.instance.resetRoute();
+                    Get.toNamed(RouteScreen.register);
+                  },
                 ),
               ),
             ],

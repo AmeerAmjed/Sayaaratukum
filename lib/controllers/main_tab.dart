@@ -32,6 +32,10 @@ class MainTabController extends BaseController {
     scaffoldKey = GlobalKey<ScaffoldState>();
   }
 
+  resetRoute() {
+    changePage(0);
+  }
+
   void changePage(int index) {
     currentIndex.value = index;
     if (currentIndex.value != lastPosition) {
