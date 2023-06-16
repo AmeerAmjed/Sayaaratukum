@@ -109,4 +109,10 @@ class StoreCarDetailsController extends BaseController
       },
     );
   }
+
+  @override
+  void dispose() {
+    idStore.value = "0";
+    super.dispose();
+  }
 }

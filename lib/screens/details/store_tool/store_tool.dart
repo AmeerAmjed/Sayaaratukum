@@ -7,6 +7,7 @@ import 'package:sayaaratukum/screens/details/store_tool/components/items_cars_st
 import 'package:sayaaratukum/screens/home/components/title_with_view_all.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
 import 'package:sayaaratukum/widgets/popup_menu.dart';
+import 'package:sayaaratukum/widgets/space.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 import 'components/header_info_store.dart';
@@ -21,20 +22,30 @@ class StoreToolDetails extends GetView<StoreToolDetailsController> {
     return Scaffold(
       appBar: AppBars(
         actions: <Widget>[
-          PopupMenu(
-            titles: const [L10n.updateProfile],
-            onSelected: (value) {
-              switch (value) {
-                case L10n.updateProfile:
-                  {
-                    controller.navigateToUpdateStoreProfile(
-                      Application.instance.user?.value?.myStoreId ?? 0,
-                    );
-                    break;
-                  }
+          GetBuilder<StoreToolDetailsController>(builder: (state) {
+            var user = Application.instance.user?.value;
+            var idStore = state.idStore.value;
+            if (user != null) {
+              if (idStore != "0" && user.myStoreId.toString() == idStore) {
+                return PopupMenu(
+                  titles: const [L10n.updateProfile],
+                  onSelected: (value) {
+                    switch (value) {
+                      case L10n.updateProfile:
+                        {
+                          controller.navigateToUpdateStoreProfile(
+                            Application.instance.user?.value?.myStoreId ?? 0,
+                          );
+                          break;
+                        }
+                    }
+                  },
+                );
               }
-            },
-          ),
+            }
+
+            return const Space();
+          }),
         ],
       ),
       body: RefreshIndicator(
