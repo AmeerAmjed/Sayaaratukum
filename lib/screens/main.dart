@@ -47,7 +47,7 @@ class MainTab extends GetView<MainTabController> {
                         : L10n.buyYourCar.tr,
                     onPressed: () {
                       if (Application.instance.isStoreTool()) {
-                        Get.toNamed(RouteScreen.addTool);
+                        Application.instance.navToAddTool();
                       } else {
                         Get.toNamed(RouteScreen.addCar);
                       }

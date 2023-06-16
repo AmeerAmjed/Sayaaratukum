@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/models/tool.dart';
-import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/util/price.dart';
 import 'package:sayaaratukum/widgets/edite_samll_button.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
@@ -36,7 +35,7 @@ class ToolItem extends StatelessWidget {
                 EditeSmallButton(
                   onPressed: () {
                     Application.instance.tool?.value = item;
-                    Get.toNamed(RouteScreen.addTool);
+                    Application.instance.navToAddTool(idUpdateTool: item.id);
                   },
                 )
             ],

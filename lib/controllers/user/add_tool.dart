@@ -14,8 +14,8 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/add_tool.dart';
 import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/models/category_tool.dart';
-import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/remote/user/add_tool.dart';
+import 'package:sayaaratukum/util/constant.dart';
 
 class AddToolController extends BaseController {
   var brands = <BrandModel>[].obs.toList(growable: true);
@@ -46,8 +46,14 @@ class AddToolController extends BaseController {
   @override
   void onInit() {
     brands = BrandController.instance.brands;
+    idTool = Get.arguments[Constants.idUpdateTool] ?? 0;
+    try {
+      idTool = Get.arguments[Constants.idUpdateTool] ?? 0;
+    } catch ( er) {
+      idTool = null;
+    }
 
-    if (Get.previousRoute == RouteScreen.storeToolDetails) {
+    if (idTool != null && idTool != 0) {
       editeTool();
     } else {
       initInput();
