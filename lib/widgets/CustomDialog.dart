@@ -10,6 +10,7 @@ showCustomDialog(
   bool isDanger = false,
   String? labelButtonAction,
   VoidCallback? onPressedAction,
+  VoidCallback? onCancel,
   String? titleCancel,
 }) {
   Get.dialog(
@@ -57,7 +58,7 @@ showCustomDialog(
                             background: Colors.white,
                             colorOnButton: Colors.grey,
                             onPressed: () {
-                              Get.back();
+                              onCancel ?? Get.back();
                             },
                           ),
                         ),

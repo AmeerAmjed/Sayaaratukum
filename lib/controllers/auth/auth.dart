@@ -4,6 +4,7 @@ import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/widgets/CustomDialog.dart';
 
 class AuthController extends BaseController {
 
@@ -16,6 +17,20 @@ class AuthController extends BaseController {
     '078',
     '079'
   ];
+
+  showValidateEmail() {
+    showCustomDialog(
+      L10n.validateEmail.tr,
+      message: L10n.confirmEmail.tr,
+      labelButtonAction: L10n.ok.tr,
+      onPressedAction: navToMainScreen,
+      onCancel: navToMainScreen,
+    );
+  }
+
+  navToMainScreen() {
+    Get.offAllNamed(RouteScreen.mainTab);
+  }
 
   skipAuth() {
     Application.instance.skipAuth();

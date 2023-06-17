@@ -187,6 +187,9 @@ class ArTranslations {
 
         L10n.address :  'العنوان',
         L10n.bio: 'السيرة الذاتية',
+        L10n.validateEmail :  'تاكيد البريد الالكتروني',
+        L10n.confirmEmail :  'من فضلك اكد ايميلك الالكتروني',
+        L10n.ok :  'تمام',
 
         "USA" : 'USA',
         "Europe" : 'Europe',

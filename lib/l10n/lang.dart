@@ -205,4 +205,7 @@ class L10n {
   static const verifyEmail = 'verifyEmail';
   static const address = 'address';
   static const bio = 'bio';
+  static const validateEmail = 'validateEmail';
+  static const confirmEmail = 'confirmEmail';
+  static const ok = 'ok';
 }

@@ -3,10 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sayaaratukum/controllers/application.dart';
-import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/register.dart';
 import 'package:sayaaratukum/models/user.dart';
 import 'package:sayaaratukum/services/local/storage.dart';
@@ -53,11 +51,14 @@ class RegisterController extends AuthController with LocalStorage {
       await RegisterServices.instance.register(getUserInfo()).then((response) {
         loading(false);
         if (response.isOk) {
-          print(" body ${response.body}");
           var user = UserModel.fromJson(response.body['data']);
           var token = response.body['access_token'];
           Application.instance.login(user, token);
-          // Get.offAllNamed(RoutePageApp.setUp);
+          if (!user.isEmailVerified && user.email != null) {
+            showValidateEmail();
+          } else {
+            navToMainScreen();
+          }
         } else {
           print(" body ${response.body} ${response.statusCode}");
           getError(response);

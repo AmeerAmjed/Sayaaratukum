@@ -6,7 +6,6 @@ import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/models/user.dart';
-import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/local/storage.dart';
 import 'package:sayaaratukum/services/remote/auth/login.dart';
 
@@ -43,8 +42,13 @@ class LoginController extends AuthController with LocalStorage {
             var user = UserModel.fromJson(body[data]);
             var tokenUser = body[bodyToken];
             Application.instance.login(user, tokenUser);
+
+            if (!user.isEmailVerified && user.email != null) {
+              showValidateEmail();
+            } else {
+              navToMainScreen();
+            }
           }
-          Get.offAllNamed(RouteScreen.mainTab);
         }
       });
     } on Response catch (response) {

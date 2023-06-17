@@ -62,12 +62,12 @@ class Profile extends GetView<Application> {
       body: ListView(
         children: [
           // if(controller.user.value.)
-          Container(
-            color: ColorSystem.colorDanger,
-            alignment: Alignment.center,
-            height: 50,
-            child: Text(L10n.verifyEmail.tr),
-          ),
+          // Container(
+          //   color: ColorSystem.colorDanger,
+          //   alignment: Alignment.center,
+          //   height: 50,
+          //   child: Text(L10n.verifyEmail.tr),
+          // ),
           AvatarWithCoverUser(
             name: controller.user?.value?.fullName ?? "",
             avatar: controller.user?.value?.avatar ?? "",

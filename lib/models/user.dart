@@ -15,7 +15,7 @@ class UserModel extends BaseModel {
     required this.roleType,
     required this.myStoreId,
     // required this.isPhoneNumberVerified,
-    // required this.isEmailVerified,
+    required this.isEmailVerified,
     // required this.isActive,
   });
 
@@ -31,7 +31,7 @@ class UserModel extends BaseModel {
   final String roleType;
 
   // final bool isPhoneNumberVerified;
-  // final bool isEmailVerified;
+  final bool isEmailVerified;
   // final bool isActive;
 
   factory UserModel.fromJson(Map<String, dynamic> data) {
@@ -69,7 +69,7 @@ class UserModel extends BaseModel {
       role: data['role'] != null ? RoleModel.fromJson(data['role']) : null,
       roleType: getRoleType(),
       // isActive: isActiveUser(data['is_actived']),
-      // isEmailVerified: data['is_email_verified'],
+      isEmailVerified: data['is_email_verified'],
       // isPhoneNumberVerified: data['is_phone_number_verified'],
     );
   }
@@ -87,7 +87,7 @@ class UserModel extends BaseModel {
       avatar: data['avatar'],
       role: RoleModel.local(data['role']),
       roleType: data['roleType'],
-      // isEmailVerified: data['isEmailVerified'],
+      isEmailVerified: data['isEmailVerified'],
       // isPhoneNumberVerified: data['isPhoneNumberVerified'],
       // isActive: isActiveUser(data['isActive']),
     );
@@ -106,7 +106,7 @@ class UserModel extends BaseModel {
       'avatar': avatar,
       'role': role?.toJson(),
       'roleType': roleType,
-      // 'isEmailVerified': isEmailVerified,
+      'isEmailVerified': isEmailVerified,
       // 'isActive': isActiveUser(isActive),
       // 'isPhoneNumberVerified': isPhoneNumberVerified,
     };

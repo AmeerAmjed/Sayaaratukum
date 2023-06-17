@@ -189,6 +189,9 @@ class EnTranslations {
 
         L10n.address :  'Address',
         L10n.bio :  'Bio',
+        L10n.validateEmail :  'Validate Email',
+        L10n.confirmEmail :  'Please confirm your email address',
+        L10n.ok :  'ok',
 
 
 
