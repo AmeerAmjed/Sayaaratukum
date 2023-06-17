@@ -1,45 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaaratukum/controllers/application.dart';
+import 'package:sayaaratukum/controllers/user/profile.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/profile/components/avatar_with_coverUser.dart';
 import 'package:sayaaratukum/screens/profile/components/contact_user.dart';
 import 'package:sayaaratukum/screens/profile/components/full_name_with_bio.dart';
 import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/widgets/vertical_space.dart';
 
-class Profile extends GetView<Application> {
+class Profile extends GetView<ProfileController> {
   const Profile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    void handleClick(String value) {
-      switch (value) {
-        case L10n.updateProfile:
-          controller.navigateTo(RouteScreen.updateProfile);
-          break;
-        case L10n.updatePassword:
-          controller.navigateTo(RouteScreen.updatePassword);
-          break;
-        case L10n.updateEmail:
-          controller.navigateTo(RouteScreen.updateEmail);
-          break;
-        case L10n.updatePhoneNumber:
-          controller.navigateTo(RouteScreen.updatePhoneNumber);
-          break;
-      }
-    }
 
     return Scaffold(
       appBar: AppBar(
         title: Text(L10n.profile.tr),
         actions: <Widget>[
           PopupMenuButton<String>(
-            onSelected: handleClick,
+            onSelected: controller.handleClick,
             itemBuilder: (BuildContext context) {
               return [
                 L10n.updateProfile,
@@ -59,29 +43,41 @@ class Profile extends GetView<Application> {
           ),
         ],
       ),
-      body: ListView(
-        children: [
-          // if(controller.user.value.)
-          // Container(
-          //   color: ColorSystem.colorDanger,
-          //   alignment: Alignment.center,
-          //   height: 50,
-          //   child: Text(L10n.verifyEmail.tr),
-          // ),
-          AvatarWithCoverUser(
-            name: controller.user?.value?.fullName ?? "",
-            avatar: controller.user?.value?.avatar ?? "",
-            cover: Constants.websiteLink,
-          ),
-          FullNameWithBio(
-            fullName: controller.user?.value?.fullName ?? "",
-            bio: "",
-          ),
-          ContactUser(
-            numberPhone: controller.user?.value?.phoneNumber ?? "",
-            numberPhoneWhatUp: controller.user?.value?.phoneNumber ?? "",
-          )
-        ],
+      body: RefreshIndicator(
+        onRefresh: () async {
+          print("loading");
+          await controller.updateProfile();
+        },
+        child: ListView(
+          children: [
+            // if(controller.user.value.)
+            Container(
+              color: ColorSystem.colorDanger,
+              alignment: Alignment.center,
+              height: 50,
+              child: Text(
+                L10n.confirmEmail.tr,
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            const VerticalSpace8(),
+            AvatarWithCoverUser(
+              name: controller.user.value?.fullName ?? "",
+              avatar: controller.user.value?.avatar ?? "",
+              cover: Constants.websiteLink,
+            ),
+            FullNameWithBio(
+              fullName: controller.user.value?.fullName ?? "",
+              bio: "",
+            ),
+            ContactUser(
+              numberPhone: controller.user.value?.phoneNumber ?? "",
+              numberPhoneWhatUp: controller.user.value?.phoneNumber ?? "",
+            )
+          ],
+        ),
       ),
       // floatingActionButton: AddButton(
       //   onPressed: () {

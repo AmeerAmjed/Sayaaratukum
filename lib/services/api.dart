@@ -24,6 +24,7 @@ class ApiEndpoint {
   static const String updatePassword = '/me/password-update';
   static const String updateEmail = '/me/email-update';
   static const String updatePhoneNumber = '/me/phone-number-update';
+  static const String myProfile = '/me';
 
 
 }

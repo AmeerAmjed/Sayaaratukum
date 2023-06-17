@@ -6,6 +6,20 @@ import 'package:sayaaratukum/services/remote/service.dart';
 class ProfileService extends BaseService {
   static ProfileService get instance => Get.find();
 
+  Future<Response> getMyProfile() async {
+    try {
+      Response response = await get(ApiEndpoint.myProfile);
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error ProfileService getMyProfile $e");
+      return Future.error(e);
+    }
+  }
+
   Future<Response> updateProfile(String firstName, String lastName) async {
     var userInfo = {
       "first_name": firstName,
