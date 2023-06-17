@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
+import 'package:sayaaratukum/controllers/main_tab.dart';
 import 'package:sayaaratukum/controllers/user/favorite.dart';
 import 'package:sayaaratukum/models/tool.dart';
 import 'package:sayaaratukum/models/user.dart';
@@ -120,6 +121,7 @@ class Application extends BaseController with LocalStorage {
     isLogged.value = false;
     token.value = null;
     user?.value = null;
+    MainTabController.instance.resetRoute();
     await removeData(Constants.tokenKey);
     await removeData(Constants.userKey);
     Get.offAllNamed(RouteScreen.login);
