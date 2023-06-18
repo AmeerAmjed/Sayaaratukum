@@ -5,10 +5,12 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
+import 'package:sayaaratukum/controllers/user/favorite.dart';
 import 'package:sayaaratukum/models/car.dart';
 import 'package:sayaaratukum/models/store.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/remote/public/cars.dart';
+import 'package:sayaaratukum/services/remote/user/favorite.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
 class StoreCarDetailsController extends BaseController
@@ -66,6 +68,46 @@ class StoreCarDetailsController extends BaseController
       change(null, status: RxStatus.error());
       print("getAllBrand ${response.statusCode}");
     }
+  }
+
+  favoriteCar(CarModel car) async {
+    changeStateLoadingItem(car.id, true);
+    try {
+      await FavoriteService.instance.toggleFavorite(car.id).then((response) {
+        FavoriteController.instance.init();
+        print("response $response");
+        if (response.isOk) {
+          if (response.status.code == 201) {
+            changeStateLoadingItem(car.id, false, stateFav: true);
+          } else if (response.status.code == 204) {
+            changeStateLoadingItem(car.id, false, stateFav: false);
+          }
+        }
+      });
+    } on Response catch (response) {
+      changeStateLoadingItem(
+        car.id,
+        false,
+      );
+      change(null, status: RxStatus.error());
+      // loading(false);
+      print("getFavorite ${response.statusCode} ${response.body} ");
+    }
+  }
+
+  changeStateLoadingItem(int id, bool state, {bool? stateFav}) {
+    cars.firstWhere((item) {
+      if (item.id == id) {
+        item.isLoadingFavorite = state;
+        if (stateFav != null) {
+          item.isFavorite = stateFav;
+        }
+
+        return true;
+      }
+      return false;
+    });
+    update();
   }
 
   @override

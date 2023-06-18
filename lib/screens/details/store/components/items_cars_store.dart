@@ -52,11 +52,14 @@ class ItemCarsStore extends GetView<StoreCarDetailsController> {
               },
               child: ItemCar(
                 car: state[index],
-                buttonFavouriteCar: GetBuilder<CarsController>(
+                buttonFavouriteCar: GetBuilder<StoreCarDetailsController>(
                   builder: (controller) {
                     return FavouriteCar(
+                      isFavourite: state[index].isFavorite,
+                      disableWithShowLoading: state[index].isLoadingFavorite,
                       onPressed: () {
                         if (Application.instance.isLogin) {
+                          controller.favoriteCar(state[index]);
                         } else {
                           snackBarToLogin();
                         }
