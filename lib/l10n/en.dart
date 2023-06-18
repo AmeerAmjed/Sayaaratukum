@@ -193,6 +193,7 @@ class EnTranslations {
         L10n.confirmEmail :  'Please confirm your email address',
         L10n.ok :  'ok',
         L10n.cc :  'CC',
+        L10n.or :  'Or',
 
 
 

@@ -209,4 +209,5 @@ class L10n {
   static const confirmEmail = 'confirmEmail';
   static const ok = 'ok';
   static const cc = 'cc';
+  static const or = 'or';
 }

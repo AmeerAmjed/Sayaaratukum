@@ -191,6 +191,7 @@ class ArTranslations {
         L10n.confirmEmail :  'من فضلك اكد ايميلك الالكتروني',
         L10n.ok :  'تمام',
         L10n.cc :  'سي سي',
+        L10n.or :  'او',
 
 
         //income to

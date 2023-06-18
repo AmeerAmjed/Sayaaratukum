@@ -68,4 +68,16 @@ class AuthController extends BaseController {
 
     return null;
   }
+
+  String? checkValidateEmailAndPhoneNumber(
+    String? email,
+    String? phoneNumber,
+  ) {
+    if ((email == null || email.isEmpty) &&
+        (phoneNumber == null || phoneNumber.isEmpty)) {
+      return "${L10n.email.tr} ${L10n.or.tr} ${L10n.phoneNumber.tr} ${L10n.isRequired.tr} ";
+    }
+
+    return null;
+  }
 }

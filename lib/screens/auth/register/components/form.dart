@@ -7,7 +7,6 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/add_car/components/row_two_widget.dart';
 import 'package:sayaaratukum/screens/auth/components/footer_auth.dart';
-import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/buttons.dart';
 import 'package:sayaaratukum/widgets/input.dart';
 import 'package:sayaaratukum/widgets/padding_start.dart';
@@ -49,7 +48,7 @@ class FormRegister extends GetView<RegisterController> {
                           validator: (name) =>
                               controller.checkValidateIsRequired(name),
                           margin: const EdgeInsets.only(
-                            left: Constants.spacing16,
+                            left: 2,
                           ),
                         ),
                         rightWidget: InputAuth(
@@ -61,7 +60,7 @@ class FormRegister extends GetView<RegisterController> {
                           validator: (lastName) =>
                               controller.checkValidateIsRequired(lastName),
                           margin: const EdgeInsets.only(
-                            right: Constants.spacing16,
+                            right: 2,
                           ),
                         ),
                       ),
@@ -72,10 +71,11 @@ class FormRegister extends GetView<RegisterController> {
                         prefixIcon: Iconsax.mobile,
                         controller: controller.phoneNumber,
                         keyboardType: TextInputType.number,
-                        validator: (phoneNumber) =>
-                            controller.checkValidateIsRequired(
-                          phoneNumber,
-                        ),
+                        // validator: (phoneNumber) =>
+                        //     controller.checkValidateEmailAndPhoneNumber(
+                        //   controller.email.text,
+                        //   phoneNumber,
+                        // ),
                       ),
                       const VerticalSpace8(),
                       InputAuth(
@@ -84,8 +84,9 @@ class FormRegister extends GetView<RegisterController> {
                         prefixIcon: Iconsax.sms,
                         controller: controller.email,
                         keyboardType: TextInputType.emailAddress,
-                        validator: (email) =>
-                            controller.checkValidateEmail(email),
+                        // validator: (email) =>
+                        //     controller.checkValidateEmailAndPhoneNumber(
+                        //         email, controller.phoneNumber.text),
                       ),
                       const VerticalSpace8(),
                       Obx(
@@ -122,9 +123,17 @@ class FormRegister extends GetView<RegisterController> {
                           fullBackground: true,
                           width: double.infinity,
                           onPressed: () {
-                            controller.register();
                             if (controller.formKey.currentState!.validate()) {
-                              controller.register();
+                              var checkValidate =
+                                  controller.checkValidateEmailAndPhoneNumber(
+                                controller.email.text,
+                                controller.phoneNumber.text,
+                              );
+                              if (checkValidate != null) {
+                                controller.showMessage(checkValidate);
+                              } else {
+                                controller.register();
+                              }
                             }
                           },
                           disableWithShowLoading: controller.disableSubmit.value,
