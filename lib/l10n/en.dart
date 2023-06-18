@@ -10,7 +10,7 @@ class EnTranslations {
 
         L10n.home: 'Home',
         L10n.spareParts: 'Tools',
-        L10n.stores: 'Stores',
+        L10n.stores: 'Popular Showroom',
         L10n.favorite: 'Favorite',
 
 
@@ -59,7 +59,7 @@ class EnTranslations {
         L10n.make : 'Make',
         L10n.model : 'Model',
         L10n.status : 'Status',
-        L10n.serialNumber : 'Serial Number',
+        L10n.serialNumber : 'Part Number',
         L10n.color : 'Color',
         L10n.madeTo : 'Made To',
 
@@ -163,12 +163,12 @@ class EnTranslations {
         L10n.numberPhoneNotAdd : 'NumberPhone Not Add.',
         L10n.whatsappNumberPhoneNotAdd : 'Whatsapp NumberPhone Not Add ',
 
-        L10n.storeExpires : 'Store is expires ',
+        L10n.storeExpires : 'Store is expired ',
         L10n.notFound : 'Not Found ',
         L10n.profile : 'Profile',
         L10n.updateProfile : 'Update profile',
         L10n.updatePassword : 'Update password',
-        L10n.successfullyUpdateProfile : 'Successfully profile updated',
+        L10n.successfullyUpdateProfile : 'Successfully account updated',
         L10n.successfullyUpdatePassword : 'Successfully password updated',
         L10n.updateEmail : 'Update email',
         L10n.successfullyUpdateEmail : 'Successfully Email updated',

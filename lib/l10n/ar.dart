@@ -2,14 +2,14 @@ import 'package:sayaaratukum/l10n/lang.dart';
 
 class ArTranslations {
   static Map<String, String> get map => {
-        L10n.viewAll: 'مشاهدة الكل',
-        L10n.brands: 'ماركات',
+        L10n.viewAll: 'عرض الكل',
+        L10n.brands: 'ماركات مشهورة',
 
 
         L10n.home: 'الرئيسيه',
         L10n.recommended: 'سيارات ينصح بها',
-        L10n.spareParts: 'مواد احتياطيه',
-        L10n.stores: 'متاجر',
+        L10n.spareParts: 'قطع غيار',
+        L10n.stores: 'المعارض المشهورة',
         L10n.favorite: 'المفضلات',
 
 
@@ -48,7 +48,7 @@ class ArTranslations {
         L10n.searchCar: 'ابحث عن سيارتك',
         L10n.searchTool: 'ابحث عن قطع غيار',
 
-        L10n.showrooms: 'صالات العرض',
+        L10n.showrooms: 'المعارض',
         L10n.adsDeals: 'عروض خاصة بالنسبة لك',
         L10n.specifications: 'المواصفات',
         L10n.note: 'ملاحظة',
@@ -64,7 +64,7 @@ class ArTranslations {
         L10n.showMore: 'عرض المزيد',
         L10n.showLess: 'عرض أقل',
         L10n.addCar: 'إضافة سيارة',
-        L10n.addTool: 'إضافة قطع غيار',
+        L10n.addTool: 'إضافة قطعة غيار',
 
         L10n.back: 'رجوع',
         L10n.next: 'التالي',
@@ -84,7 +84,7 @@ class ArTranslations {
         L10n.no: 'لا',
         L10n.yes: 'نعم',
         L10n.automatic: 'أوتوماتيك',
-        L10n.manual: 'يدوي',
+        L10n.manual: 'عادي',
         L10n.shakeCheck: 'فحص الهزات',
         L10n.gearBox: 'صندوق التروس',
         L10n.isDamage: 'ضرر السيارة',
@@ -92,7 +92,7 @@ class ArTranslations {
 
         L10n.governorate: 'المحافظة',
         L10n.region: 'المنطقة',
-        L10n.nearPoint: 'نقطة قرب',
+        L10n.nearPoint: 'اقرب نقطة',
         L10n.engineCapacity: 'سعة المحرك',
         L10n.enginePower: 'قوة المحرك',
         L10n.drivingMiles: 'عدد الأميال المقطوعة',
@@ -104,12 +104,12 @@ class ArTranslations {
         L10n.minPrice: 'أدنى سعر',
         L10n.maxPrice: 'أعلى سعر',
         L10n.addImagesCar: 'إضافة عشر صور للسيارة',
-        L10n.addImageTool: 'إضافة صورة لقطعه غيار',
+        L10n.addImageTool: 'إضافة صورة لقطعه الغيار',
         L10n.available: 'متاح',
 
         L10n.failedCreateAccount: 'فشل إنشاء الحساب',
 
-        L10n.statusTool: 'حالة الأداة',
+        L10n.statusTool: 'حالة قطعة الغيار',
         L10n.name: 'الاسم',
         L10n.category: 'الفئة',
         L10n.imagesTool: 'صورة لقطعه غيار',
@@ -145,7 +145,7 @@ class ArTranslations {
         L10n.mySubscribed: ' اشتراكاتي',
         L10n.myStore: 'متجري',
         L10n.cars: 'السيارات',
-        L10n.tools: 'الأدوات',
+        L10n.tools: 'قطع الغيار',
         L10n.now: 'الآن',
 
 
@@ -176,9 +176,9 @@ class ArTranslations {
         L10n.buyYourCar : 'بيع سيارتك',
         L10n.buyTool : 'بيع قطع غيار',
 
-        L10n.faceBook : 'فيس',
+        L10n.faceBook : 'فيس بوك',
         L10n.twitter : 'تويتو',
-        L10n.instagram : 'انستة',
+        L10n.instagram : 'انستا',
 
         L10n.notifications : 'الاشعارات',
         L10n.language : 'اللغة',

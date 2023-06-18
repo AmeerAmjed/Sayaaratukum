@@ -57,11 +57,11 @@ class DrawerApp extends GetView<Application> {
               language();
             },
           ),
-          ListTitleIcon(
-            title: L10n.setting.tr,
-            icon: Iconsax.setting_24,
-            onTap: () {},
-          ),
+          // ListTitleIcon(
+          //   title: L10n.setting.tr,
+          //   icon: Iconsax.setting_24,
+          //   onTap: () {},
+          // ),
           ListTitleIcon(
             title: L10n.privacy.tr,
             icon: Iconsax.security_safe,
