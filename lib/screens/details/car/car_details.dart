@@ -113,44 +113,44 @@ class CarDetails extends GetView<CarDetailsController> {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            GetBuilder<CarDetailsController>(
-                                builder: (controller) {
-                                  return IconButton(
-                                    onPressed: controller.onPageIndex.value != 0
-                                        ? (controller.backward)
-                                        : null,
-                                    icon: const Icon(
-                                      Icons.arrow_back_ios_new_rounded,
-                                    ),
-                                  );
-                                  return ButtonSlideImage(
-                                    icon: Icons.arrow_back_ios_new_rounded,
-                                    onPressed: controller.onPageIndex.value > 0
-                                        ? (controller.backward)
-                                        : null,
-                                  );
-                                }),
-                            GetBuilder<CarDetailsController>(builder: (con) {
-                              return IconButton(
-                                splashColor: Colors.red,
-                                hoverColor: Colors.red,
-                                onPressed: con.onPageIndex.value <
-                                    car.images.length - 1
-                                    ? (con.forward)
-                                    : null,
-                                icon: const Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                ),
-                              );
-                              return ButtonSlideImage(
-                                icon: Icons.arrow_forward_ios_rounded,
-                                onPressed: con.onPageIndex.value <
-                                    car.images.length - 1
-                                    ? (con.forward)
-                                    : null,
-                              );
-                            }),
+                          children: const [
+                            // GetBuilder<CarDetailsController>(
+                            //     builder: (controller) {
+                            //       return IconButton(
+                            //         onPressed: controller.onPageIndex.value != 0
+                            //             ? (controller.backward)
+                            //             : null,
+                            //         icon: const Icon(
+                            //           Icons.arrow_back_ios_new_rounded,
+                            //         ),
+                            //       );
+                            //       return ButtonSlideImage(
+                            //         icon: Icons.arrow_back_ios_new_rounded,
+                            //         onPressed: controller.onPageIndex.value > 0
+                            //             ? (controller.backward)
+                            //             : null,
+                            //       );
+                            //     }),
+                            // GetBuilder<CarDetailsController>(builder: (con) {
+                            //   return IconButton(
+                            //     splashColor: Colors.red,
+                            //     hoverColor: Colors.red,
+                            //     onPressed: con.onPageIndex.value <
+                            //         car.images.length - 1
+                            //         ? (con.forward)
+                            //         : null,
+                            //     icon: const Icon(
+                            //       Icons.arrow_forward_ios_rounded,
+                            //     ),
+                            //   );
+                            //   return ButtonSlideImage(
+                            //     icon: Icons.arrow_forward_ios_rounded,
+                            //     onPressed: con.onPageIndex.value <
+                            //         car.images.length - 1
+                            //         ? (con.forward)
+                            //         : null,
+                            //   );
+                            // }),
                           ],
                         ),
                       ),

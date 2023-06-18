@@ -76,7 +76,7 @@ class CarDetailsSpecifications extends StatelessWidget {
                     ),
                     TitleWithDescription(
                       title: L10n.engineCapacity.tr,
-                      description: car.engine,
+                      description: car.engine + L10n.cc.tr,
                     ),
                     TitleWithDescription(
                       title: L10n.year.tr,

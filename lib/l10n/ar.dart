@@ -190,6 +190,7 @@ class ArTranslations {
         L10n.validateEmail :  'تاكيد البريد الالكتروني',
         L10n.confirmEmail :  'من فضلك اكد ايميلك الالكتروني',
         L10n.ok :  'تمام',
+        L10n.cc :  'سي سي',
 
 
         //income to
