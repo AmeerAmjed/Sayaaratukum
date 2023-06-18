@@ -48,7 +48,7 @@ class FilterTool extends GetView<FilterToolController> {
           leftWidget: DropdownList(
             keyDropdownList: controller.brandFormKey,
             margin: const EdgeInsets.only(
-              left: 16,
+              left: 2,
             ),
             label: L10n.brand.tr,
             onChanged: controller.onChangeBrand,
@@ -61,7 +61,7 @@ class FilterTool extends GetView<FilterToolController> {
               onChanged: controller.onChangeModelBrand,
               items: co.getModelByBrandId(),
               margin: const EdgeInsets.only(
-                right: 16,
+                right: 2,
               ),
             );
           }),
