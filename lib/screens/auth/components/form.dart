@@ -38,9 +38,9 @@ class FormLogin extends GetView<LoginController> {
                       const Spacer(),
                       InputAuth(
                         label: L10n.emailOrNumberPhone.tr,
-                        hintText: "07## ### ####",
+                        hintText: "",
                         controller: controller.emailOrNumberPhone,
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         validator: (emailOrNumberPhone) =>
                             controller.checkValidateIsRequired(
                           emailOrNumberPhone,
