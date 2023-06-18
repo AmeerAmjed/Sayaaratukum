@@ -6,6 +6,7 @@ import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/public/tools.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/route/page.dart';
+import 'package:sayaaratukum/screens/components/add.dart';
 import 'package:sayaaratukum/screens/tools/components/search_tool_bar.dart';
 import 'package:sayaaratukum/screens/profile/components/add_button.dart';
 import 'package:sayaaratukum/screens/tools/components/tool_item.dart';
@@ -91,17 +92,7 @@ class ToolsScreen extends GetView<ToolsController> {
           }),
         ),
       ),
-      // floatingActionButton: GetBuilder<Application>(
-      //   builder: (c) {
-      //     return Application.instance.isLogin
-      //         ? Application.instance.isUserStore
-      //             ? AddButton(
-      //                 onPressed: () => Get.toNamed(RouteScreen.addTool),
-      //               )
-      //             : const Space()
-      //         : const Space();
-      //   },
-      // ),
+      floatingActionButton: const AddItemToBuy(),
     );
   }
 }

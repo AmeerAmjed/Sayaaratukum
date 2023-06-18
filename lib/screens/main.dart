@@ -36,33 +36,33 @@ class MainTab extends GetView<MainTabController> {
             child: const Box(size: 48.0, child: ImageUser()),
           ),
         ),
-        widgetAction: GetBuilder<Application>(
-          builder: (c) {
-            return Application.instance.isLogin
-                ? Buttons(
-                    height: 35,
-                    width: 150,
-                    label: Application.instance.isStoreTool()
-                        ? L10n.buyTool.tr
-                        : L10n.buyYourCar.tr,
-                    onPressed: () {
-                      if (Application.instance.isStoreTool()) {
-                        Application.instance.navToAddTool();
-                      } else {
-                        Get.toNamed(RouteScreen.addCar);
-                      }
-                    },
-                  )
-                : Buttons(
-                    height: 35,
-              width: 150,
-              label: L10n.buyYourCar.tr,
-                    onPressed: () {
-                      snackBarToLogin();
-                    },
-                  );
-          },
-        ),
+        // widgetAction: GetBuilder<Application>(
+        //   builder: (c) {
+        //     return Application.instance.isLogin
+        //         ? Buttons(
+        //             height: 35,
+        //             width: 150,
+        //             label: Application.instance.isStoreTool()
+        //                 ? L10n.buyTool.tr
+        //                 : L10n.buyYourCar.tr,
+        //             onPressed: () {
+        //               if (Application.instance.isStoreTool()) {
+        //                 Application.instance.navToAddTool();
+        //               } else {
+        //                 Get.toNamed(RouteScreen.addCar);
+        //               }
+        //             },
+        //           )
+        //         : Buttons(
+        //             height: 35,
+        //       width: 150,
+        //       label: L10n.buyYourCar.tr,
+        //             onPressed: () {
+        //               snackBarToLogin();
+        //             },
+        //           );
+        //   },
+        // ),
         actions: const [
           FittedBox(
             child: Box(

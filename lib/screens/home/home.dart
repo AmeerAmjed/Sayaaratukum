@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/public/cars.dart';
 import 'package:sayaaratukum/controllers/public/home.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/route/page.dart';
+import 'package:sayaaratukum/screens/components/add.dart';
 import 'package:sayaaratukum/screens/home/components/title_with_view_all.dart';
 import 'package:sayaaratukum/screens/home/widget/ads.dart';
 import 'package:sayaaratukum/screens/home/widget/brands.dart';
@@ -66,15 +68,7 @@ class HomeScreen extends GetView<HomeController> {
           ),
         ),
       ),
-      // floatingActionButton: GetBuilder<Application>(
-      //   builder: (c) {
-      //     return Application.instance.isLogin
-      //         ? AddButton(
-      //             onPressed: () => Get.toNamed(RouteScreen.addCar),
-      //           )
-      //         : const Space();
-      //   },
-      // ),
+      floatingActionButton: const AddItemToBuy(),
     );
   }
 }
