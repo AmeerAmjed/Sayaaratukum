@@ -5,7 +5,8 @@ import 'package:sayaaratukum/services/remote/public/store.dart';
 class StoresBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<StoreServices>(() => StoreServices());
+    Get.put<StoreServices>(StoreServices(), permanent: true);
+
     Get.put<StoresController>(StoresController(), permanent: true);
   }
 }

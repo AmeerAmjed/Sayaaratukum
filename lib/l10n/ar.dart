@@ -9,7 +9,7 @@ class ArTranslations {
         L10n.home: 'الرئيسيه',
         L10n.recommended: 'سيارات ينصح بها',
         L10n.spareParts: 'قطع غيار',
-        L10n.stores: 'المعارض المشهورة',
+        L10n.stores: 'المتاجر',
         L10n.favorite: 'المفضلات',
 
 
