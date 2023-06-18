@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/user/profile.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/profile/components/avatar_with_coverUser.dart';
@@ -8,6 +9,7 @@ import 'package:sayaaratukum/screens/profile/components/contact_user.dart';
 import 'package:sayaaratukum/screens/profile/components/full_name_with_bio.dart';
 import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/widgets/space.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class Profile extends GetView<ProfileController> {
@@ -45,23 +47,29 @@ class Profile extends GetView<ProfileController> {
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          print("loading");
           await controller.updateProfile();
         },
         child: ListView(
           children: [
-            // if(controller.user.value.)
-            Container(
-              color: ColorSystem.colorDanger,
-              alignment: Alignment.center,
-              height: 50,
-              child: Text(
-                L10n.confirmEmail.tr,
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            GetBuilder<Application>(builder: (state) {
+              if (state.user?.value?.isEmailVerified == false ) {
+                return Container(
+                  color: ColorSystem.colorDanger,
+                  alignment: Alignment.center,
+                  height: 50,
+                  child: Text(
+                    L10n.confirmEmail.tr,
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                );
+              }
+
+              return const Space();
+            }),
+
+
             const VerticalSpace8(),
             AvatarWithCoverUser(
               name: controller.user.value?.fullName ?? "",

@@ -23,22 +23,16 @@ class ProfileController extends BaseController {
   }
 
   updateProfile() async {
-    print("loading");
     try {
-      print("loading");
       await ProfileService.instance.getMyProfile().then((response) async {
         var body = await response.body;
         if (response.isOk) {
-          if (body[statusResponse] == success) {
-            print("gettttt");
-            showMessage(L10n.successfullyUpdateProfile.tr);
-            var user = UserModel.fromJson(body[data]);
-            Application.instance.updateUserInfo(user);
-          }
+          showMessage(L10n.successfullyUpdateProfile.tr);
+          var user = UserModel.fromJson(body[data]);
+          Application.instance.updateUserInfo(user);
         }
       });
     } on Response catch (response) {
-      print("gettttt");
       onError(response.body[message]);
     }
   }
