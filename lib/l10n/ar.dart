@@ -191,12 +191,11 @@ class ArTranslations {
         L10n.confirmEmail :  'من فضلك اكد ايميلك الالكتروني',
         L10n.ok :  'تمام',
 
-        "USA" : 'USA',
-        "Europe" : 'Europe',
-        "Gulf" : 'Gulf',
 
+        //income to
         "USA" : 'امريكي',
         "Europe" : 'اوربي',
         "Gulf" : 'خليجي',
+        "CA" : 'كندي',
   };
 }

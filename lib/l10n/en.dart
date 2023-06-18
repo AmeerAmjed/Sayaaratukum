@@ -195,10 +195,11 @@ class EnTranslations {
 
 
 
+        //income to
         "USA" : 'USA',
         "Europe" : 'Europe',
         "Gulf" : 'Gulf',
-
+        "CA" : 'CA',
 
 
 

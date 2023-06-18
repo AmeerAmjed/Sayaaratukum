@@ -131,6 +131,9 @@ class HardCode {
     },
     {
       "ar": "Gulf".tr,
+    },
+    {
+      "ca": "CA".tr,
     }
   ];
 
