@@ -65,7 +65,7 @@ class AvatarWithCoverUser extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: Get.theme.cardColor,
                 ),
-                child: cover == Constants.websiteLink
+                child: avatar == Constants.websiteLink
                     ? DefaultImage(
                         name: name,
                         sizeAlphabet: 45,
