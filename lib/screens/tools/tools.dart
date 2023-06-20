@@ -2,24 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/public/tools.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/components/add.dart';
 import 'package:sayaaratukum/screens/tools/components/search_tool_bar.dart';
-import 'package:sayaaratukum/screens/profile/components/add_button.dart';
 import 'package:sayaaratukum/screens/tools/components/tool_item.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/empty.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
-import 'package:sayaaratukum/widgets/space.dart';
 
 class ToolsScreen extends GetView<ToolsController> {
   const ToolsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    const duration = Duration(milliseconds: 300);
+
     return Scaffold(
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -72,7 +71,7 @@ class ToolsScreen extends GetView<ToolsController> {
                 ),
                 itemBuilder: (context, index) {
                   var isLastItem =
-                      controller.stateLastItem(index, state.length);
+                  controller.stateLastItem(index, state.length);
                   if (isLastItem) {
                     return const Center(
                       child: Loading(),
@@ -92,7 +91,17 @@ class ToolsScreen extends GetView<ToolsController> {
           }),
         ),
       ),
-      floatingActionButton: const AddItemToBuy(),
+      floatingActionButton: Obx(() {
+        return AnimatedSlide(
+          duration: duration,
+          offset: controller.showFab.value ? Offset.zero : const Offset(0, 2),
+          child: AnimatedOpacity(
+            duration: duration,
+            opacity: controller.showFab.value ? 1 : 0,
+            child: const AddItemToBuy(),
+          ),
+        );
+      }),
     );
   }
 }
