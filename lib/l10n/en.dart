@@ -194,6 +194,7 @@ class EnTranslations {
         L10n.ok :  'ok',
         L10n.cc :  'CC',
         L10n.or :  'Or',
+        L10n.notification :  'Notification',
 
 
 

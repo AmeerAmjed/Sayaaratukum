@@ -11,6 +11,7 @@ import 'package:sayaaratukum/binding/public/tool_details.dart';
 import 'package:sayaaratukum/binding/user/add_car.dart';
 import 'package:sayaaratukum/binding/user/add_tool.dart';
 import 'package:sayaaratukum/binding/user/my_subscribe_store.dart';
+import 'package:sayaaratukum/binding/user/notification.dart';
 import 'package:sayaaratukum/binding/user/profile.dart';
 import 'package:sayaaratukum/binding/user/update/email.dart';
 import 'package:sayaaratukum/binding/user/update/password.dart';
@@ -34,6 +35,7 @@ import 'package:sayaaratukum/screens/edite/profile/profile.dart';
 import 'package:sayaaratukum/screens/edite/store/store.dart';
 import 'package:sayaaratukum/screens/main.dart';
 import 'package:sayaaratukum/screens/my_%20subscribe_store/my_subscribe_store.dart';
+import 'package:sayaaratukum/screens/notification/notification.dart';
 import 'package:sayaaratukum/screens/profile/profile.dart';
 import 'package:sayaaratukum/screens/search/car/search_car.dart';
 import 'package:sayaaratukum/screens/search/car_by_brand/search_car_by_brand.dart';
@@ -145,5 +147,10 @@ List<GetPage> routes() => [
         name: RouteScreen.updateStoreProfile,
         page: () => const UpdateStoreProfile(),
         binding: UpdateStoreProfileBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.notification,
+        page: () => const Notification(),
+        binding: NotificationBinding(),
       )
     ];

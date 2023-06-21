@@ -10,7 +10,6 @@ import 'package:sayaaratukum/screens/components/drawer.dart';
 import 'package:sayaaratukum/screens/components/image_user.dart';
 import 'package:sayaaratukum/util/main_tab_page.dart';
 import 'package:sayaaratukum/widgets/box.dart';
-import 'package:sayaaratukum/widgets/buttons.dart';
 import 'package:sayaaratukum/widgets/custom_snackbar_login.dart';
 
 import '../widgets/appbars.dart';
@@ -63,15 +62,23 @@ class MainTab extends GetView<MainTabController> {
         //           );
         //   },
         // ),
-        actions: const [
+        actions: [
           FittedBox(
             child: Box(
-              size: 38,
-              child: Icon(
-                Iconsax.notification,
-                size: 18,
-              ),
-            ),
+                size: 38,
+                child: Center(
+                  child: IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      if (Application.instance.isLogin) {
+                        controller.navigateTo(RouteScreen.notification);
+                      } else {
+                        snackBarToLogin();
+                      }
+                    },
+                    icon: const Icon(Iconsax.notification, size: 18),
+                  ),
+                )),
           )
         ],
       ),

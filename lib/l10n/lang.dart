@@ -210,4 +210,5 @@ class L10n {
   static const ok = 'ok';
   static const cc = 'cc';
   static const or = 'or';
+  static const notification = 'Notification';
 }

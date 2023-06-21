@@ -192,6 +192,8 @@ class ArTranslations {
         L10n.ok :  'تمام',
         L10n.cc :  'سي سي',
         L10n.or :  'او',
+        L10n.notification :  'الاشعارات',
+
 
 
         //income to
