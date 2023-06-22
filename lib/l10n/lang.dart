@@ -160,6 +160,8 @@ class L10n {
   static const mySubscribed = 'mySubscribed';
   static const myStore = 'myStore';
   static const cars = 'cars';
+  static const car = 'car';
+  static const tool = 'tool';
   static const tools = 'tools';
   static const now = 'now';
 
@@ -211,4 +213,6 @@ class L10n {
   static const cc = 'cc';
   static const or = 'or';
   static const notification = 'Notification';
+  static const thisIs = 'thisIs';
+  static const ist = 'ist';
 }

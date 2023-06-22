@@ -146,6 +146,8 @@ class EnTranslations {
         L10n.mySubscribed : 'My Subscribed',
         L10n.myStore : 'My Store',
         L10n.cars : 'Cars',
+        L10n.car : 'car',
+        L10n.tool : 'tool',
         L10n.tools : 'Tools',
         L10n.now : 'Now',
 
@@ -195,6 +197,8 @@ class EnTranslations {
         L10n.cc :  'CC',
         L10n.or :  'Or',
         L10n.notification :  'Notification',
+        L10n.thisIs :  'This',
+        L10n.ist :  'Is',
 
 
 

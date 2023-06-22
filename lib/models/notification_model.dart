@@ -3,15 +3,19 @@ import 'model.dart';
 class NotificationModel extends BaseModel {
   final int id;
   final String state;
-  final Object product;
+  final ItemNotificationModel? product;
   final String? type;
   final bool isRead;
+  final String nameStore;
+  final String imageUrlItem;
 
   NotificationModel({
     required this.id,
     required this.state,
-    required this.product,
+    this.product,
     this.type,
+    required this.imageUrlItem,
+    required this.nameStore,
     required this.isRead,
   });
 
@@ -19,9 +23,15 @@ class NotificationModel extends BaseModel {
     return NotificationModel(
       id: json['id'],
       state: json['state'],
-      product: json['product'],
+      product: ItemNotificationModel.fromJson(json['product']),
       type: json['type'],
-      isRead: json['isRead'],
+      imageUrlItem: json['type'] == "car"
+          ? json['product']['images'][0]['path']
+          : json['product']['image'],
+      nameStore: json['type'] == "car"
+          ? json['product']['carable']['name'] ?? json['product']['carable']['fullname']
+          : json['product']['store']['name'] ?? "",
+      isRead: json['is_read'] == 0 ? false : true,
     );
   }
 
@@ -31,4 +41,21 @@ class NotificationModel extends BaseModel {
           (x) => NotificationModel.fromJson(x),
         ),
       ).toList();
+}
+
+class ItemNotificationModel extends BaseModel {
+  ItemNotificationModel({
+    required this.id,
+    required this.name,
+  });
+
+  final int id;
+  final String name;
+
+  factory ItemNotificationModel.fromJson(Map<String, dynamic> data) {
+    return ItemNotificationModel(
+      id: data['id'],
+      name: data['name'],
+    );
+  }
 }

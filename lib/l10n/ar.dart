@@ -145,6 +145,8 @@ class ArTranslations {
         L10n.mySubscribed: ' اشتراكاتي',
         L10n.myStore: 'متجري',
         L10n.cars: 'السيارات',
+        L10n.car : 'السيارة',
+        L10n.tool : 'قطعة الغيار',
         L10n.tools: 'قطع الغيار',
         L10n.now: 'الآن',
 
@@ -193,6 +195,8 @@ class ArTranslations {
         L10n.cc :  'سي سي',
         L10n.or :  'او',
         L10n.notification :  'الاشعارات',
+        L10n.thisIs :  'هذا',
+        L10n.ist :  'تم',
 
 
 
