@@ -8,7 +8,7 @@ class NotificationServices extends BaseService {
 
   Future<Response> getAllNotification() async {
     try {
-      Response response = await get(ApiEndpoint.notifies);
+      Response response = await get(ApiEndpoint.notification);
 
       if (response.status.hasError) {
         return Future.error(response);
@@ -17,6 +17,20 @@ class NotificationServices extends BaseService {
       }
     } catch (e) {
       print("error NotificationServices getAllNotification $e");
+      return Future.error(e);
+    }
+  }
+
+  Future<Response> setNotificationsSeen() async {
+    try {
+      Response response = await post(ApiEndpoint.notificationsSeen, {});
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error NotificationServices setNotificationsSeen $e");
       return Future.error(e);
     }
   }

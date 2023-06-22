@@ -55,5 +55,14 @@ class NotificationController extends BaseController
     }
   }
 
-
+  setAllNotificationSeen() async {
+    try {
+      await NotificationServices.instance
+          .setNotificationsSeen()
+          .then((data) {});
+    } on Exception catch (response) {
+      print("err setAllNotificationSeen $response");
+      change(null, status: RxStatus.error());
+    }
+  }
 }

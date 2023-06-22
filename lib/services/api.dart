@@ -25,7 +25,8 @@ class ApiEndpoint {
   static const String updateEmail = '/me/email-update';
   static const String updatePhoneNumber = '/me/phone-number-update';
   static const String myProfile = '/me';
-  static const String notifies = '/me/notifies';
+  static const String notification = '/me/notifies';
+  static const String notificationsSeen = '/me/notifies/make-read';
 
 
 }
