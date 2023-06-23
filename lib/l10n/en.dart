@@ -191,28 +191,23 @@ class EnTranslations {
         L10n.english : 'english',
         L10n.verifyEmail :  'Please verify your email',
 
-        L10n.address :  'Address',
-        L10n.bio :  'Bio',
-        L10n.validateEmail :  'Validate Email',
-        L10n.confirmEmail :  'Please confirm your email address',
-        L10n.ok :  'ok',
-        L10n.cc :  'CC',
-        L10n.or :  'Or',
-        L10n.notification :  'Notification',
-        L10n.thisIs :  'This',
-        L10n.ist :  'is',
-
-
+        L10n.address: 'Address',
+        L10n.bio: 'Bio',
+        L10n.validateEmail: 'Validate Email',
+        L10n.confirmEmail: 'Please confirm your email address',
+        L10n.ok: 'ok',
+        L10n.cc: 'CC',
+        L10n.or: 'Or',
+        L10n.notification: 'Notification',
+        L10n.thisIs: 'This',
+        L10n.ist: 'is',
+        L10n.allNotificationIsRead: 'Make all read',
 
         //income to
-        "USA" : 'USA',
-        "Europe" : 'Europe',
-        "Gulf" : 'Gulf',
-        "CA" : 'CA',
-
-
-
-
-  };
+        "USA": 'USA',
+        "Europe": 'Europe',
+        "Gulf": 'Gulf',
+        "CA": 'CA',
+      };
 }
 

@@ -217,4 +217,5 @@ class L10n {
   static const notification = 'Notification';
   static const thisIs = 'thisIs';
   static const ist = 'ist';
+  static const allNotificationIsRead = 'allNotificationIsRead';
 }

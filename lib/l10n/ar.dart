@@ -199,6 +199,8 @@ class ArTranslations {
         L10n.notification :  'الاشعارات',
         L10n.thisIs :  'هذا',
         L10n.ist :  'تم',
+        L10n.allNotificationIsRead :  'جعل الكل مقروءة',
+
 
 
 
