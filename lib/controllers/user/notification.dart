@@ -21,10 +21,10 @@ class NotificationController extends BaseController
     super.onInit();
   }
 
-  init() {
+  Future<void> init() async {
     if (Application.instance.isLogin) {
       // resetValue();
-      getNotification();
+      await getNotification();
     } else {
       // resetValue();
       change(null, status: RxStatus.error());
@@ -38,11 +38,11 @@ class NotificationController extends BaseController
         List<NotificationModel> notifications = NotificationModel.listFromJson(
           response.body[data],
         );
-        this.notifications.value = notifications;
+        this.notifications.value = notifications.reversed.toList();
         if (notifications.isEmpty) {
           change(null, status: RxStatus.empty());
         } else {
-          change(notifications, status: RxStatus.success());
+          change(this.notifications, status: RxStatus.success());
         }
       });
     } on Exception catch (response) {

@@ -19,96 +19,92 @@ class ItemNotification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String title =
-        "${L10n.thisIs.tr} ${item.type.toString().tr} ${item.product?.name} ${L10n.ist.tr} ${item.state.toString().tr}";
-    return Card(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
+    return Container(
+      padding: const EdgeInsets.all(4),
       margin: EdgeInsets.zero,
-      color: Colors.white,
-      child: Container(
-        padding: EdgeInsets.zero,
-        margin: EdgeInsets.zero,
-        child: InkWell(
-          onTap: onPressedItem,
-          child: Row(
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(2),
-                    width: 100,
-                    height: 100,
-                    child: Card(
-                      color: Get.theme.scaffoldBackgroundColor,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: ImageLoading(
-                        imageUrl: item.imageUrlItem,
-                      ),
+      color: item.isRead
+          ? Colors.transparent
+          : Get.theme.primaryColor.withOpacity(0.15),
+      child: InkWell(
+        onTap: onPressedItem,
+        child: Row(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  margin: const EdgeInsets.all(2),
+                  width: 100,
+                  height: 100,
+                  child: Card(
+                    color: Get.theme.scaffoldBackgroundColor,
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: ImageLoading(
+                      imageUrl: item.imageUrlItem,
                     ),
                   ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    item.nameStore,
-                    style: Get.textTheme.labelMedium?.copyWith(
-                      overflow: TextOverflow.ellipsis,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                    ),
-                    maxLines: 1,
+                ),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  item.nameStore,
+                  style: Get.textTheme.labelMedium?.copyWith(
+                    overflow: TextOverflow.ellipsis,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
                   ),
-                  const VerticalSpace4(),
-                  // Container(
-                  //   color: Colors.white10,
-                  //   child: Text(
-                  //    ,
-                  //     style: Get.textTheme.labelMedium?.copyWith(
-                  //       overflow: TextOverflow.ellipsis,
-                  //       fontWeight: FontWeight.w500,
-                  //     ),
-                  //     maxLines: 1,
-                  //   ),
-                  // ),
-                  RichText(
-                    text: TextSpan(
-                      style: const TextStyle(
-                        fontSize: 14.0,
-                        color: Colors.black,
-                      ),
-                      children: <TextSpan>[
-                        TextSpan(text: "${item.type.toString().tr} "),
-                        TextSpan(
-                          text: item.product?.name ?? "",
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w600,
-                          ),
+                  maxLines: 1,
+                ),
+                const VerticalSpace4(),
+                // Container(
+                //   color: Colors.white10,
+                //   child: Text(
+                //    ,
+                //     style: Get.textTheme.labelMedium?.copyWith(
+                //       overflow: TextOverflow.ellipsis,
+                //       fontWeight: FontWeight.w500,
+                //     ),
+                //     maxLines: 1,
+                //   ),
+                // ),
+                RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: "${item.type.toString().tr} "),
+                      TextSpan(
+                        text: item.product?.name ?? "",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
                         ),
-                        TextSpan(
-                          text: " ${L10n.ist.tr} ${item.state.tr}",
-                        ),
-                      ],
-                    ),
+                      ),
+                      TextSpan(
+                        text: " ${L10n.ist.tr} ${item.state.tr}",
+                      ),
+                    ],
                   ),
-                  // Text(
-                  //  ,
-                  //   style: Get.textTheme.titleMedium,
-                  //   maxLines: 1,
-                  // ),
-                ],
-              ),
-              const Spacer(),
-              const Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: ColorSystem.arrow,
-                size: 14,
-              ),
-              const HorizontalSpace12(),
-            ],
-          ),
+                ),
+                // Text(
+                //  ,
+                //   style: Get.textTheme.titleMedium,
+                //   maxLines: 1,
+                // ),
+              ],
+            ),
+            const Spacer(),
+            const Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: ColorSystem.arrow,
+              size: 14,
+            ),
+            const HorizontalSpace12(),
+          ],
         ),
       ),
     );
