@@ -35,7 +35,7 @@ class AddItemToBuy extends StatelessWidget {
                 label: L10n.buyYourCar.tr,
                 icon: Iconsax.car,
                 onPressed: () {
-                  snackBarToLogin();
+                  snackBarToLogin(L10n.loginToBuy.tr,);
                 },
               );
       },

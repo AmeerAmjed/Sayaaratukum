@@ -5,9 +5,9 @@ import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/widgets/custom_snackbar.dart';
 
-snackBarToLogin() {
+snackBarToLogin(String message) {
   customSnackBar(
-    L10n.loginToAddFavorites.tr,
+    message,
     mainButton: TextButton(
       onPressed: () {
         Get.toNamed(RouteScreen.login);

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/public/cars.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/home/components/item_car.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/button_favourite_car.dart';
@@ -49,7 +50,7 @@ class ItemsCar extends GetView<CarsController> {
                         if (Application.instance.isLogin) {
                           controller.favoriteCar(state[index]);
                         } else {
-                          snackBarToLogin();
+                          snackBarToLogin(L10n.loginToAddFavorites.tr);
                         }
                       },
                     );

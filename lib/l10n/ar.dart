@@ -121,6 +121,8 @@ class ArTranslations {
         L10n.successAddTool: 'تمت إضافة الأداة بنجاح',
 
         L10n.loginToAddFavorites: 'تسجيل الدخول لإضافة العناصر كمفضلة.',
+        L10n.loginToShowNotification : 'سجل الدخول لمشاهده الاشعارات.',
+        L10n.loginToBuy : 'سجل الدخول لبيع سيارتك/قطع غيارك',
 
         L10n.empty: 'فارغ',
         L10n.emptyFavorite: 'ابدأ بإضافة العناصر كمفضلة لرؤيتها هنا',

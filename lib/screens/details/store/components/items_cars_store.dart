@@ -61,7 +61,7 @@ class ItemCarsStore extends GetView<StoreCarDetailsController> {
                         if (Application.instance.isLogin) {
                           controller.favoriteCar(state[index]);
                         } else {
-                          snackBarToLogin();
+                          snackBarToLogin(L10n.loginToAddFavorites.tr);
                         }
                       },
                     );

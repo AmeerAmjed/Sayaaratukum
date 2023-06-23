@@ -139,6 +139,8 @@ class L10n {
   static const success = 'success';
   static const successAddTool = 'successAddTool';
   static const loginToAddFavorites = 'loginToAddFavorites';
+  static const loginToShowNotification = 'loginToAddNotification';
+  static const loginToBuy = 'loginToBuy';
 
   static const cancel = 'cancel';
   static const empty = 'empty';

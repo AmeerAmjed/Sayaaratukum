@@ -122,6 +122,8 @@ class EnTranslations {
         L10n.successAddTool : 'Success Add Tool',
 
         L10n.loginToAddFavorites : 'Login to add favorites.',
+        L10n.loginToShowNotification : 'Login to show Notification.',
+        L10n.loginToBuy : 'Login to to buy your car/tool.',
 
         L10n.empty : 'Empty',
         L10n.emptyFavorite : 'Start adding items as favorite to see them here',
@@ -146,8 +148,8 @@ class EnTranslations {
         L10n.mySubscribed : 'My Subscribed',
         L10n.myStore : 'My Store',
         L10n.cars : 'Cars',
-        L10n.car : 'car',
-        L10n.tool : 'tool',
+        L10n.car : 'Car',
+        L10n.tool : 'Tool',
         L10n.tools : 'Tools',
         L10n.now : 'Now',
 
@@ -198,7 +200,7 @@ class EnTranslations {
         L10n.or :  'Or',
         L10n.notification :  'Notification',
         L10n.thisIs :  'This',
-        L10n.ist :  'Is',
+        L10n.ist :  'is',
 
 
 

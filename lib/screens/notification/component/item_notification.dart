@@ -5,6 +5,7 @@ import 'package:sayaaratukum/models/notification_model.dart';
 import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/widgets/horizontal_space.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
+import 'package:sayaaratukum/widgets/vertical_space.dart';
 
 class ItemNotification extends StatelessWidget {
   const ItemNotification({
@@ -60,21 +61,43 @@ class ItemNotification extends StatelessWidget {
                     ),
                     maxLines: 1,
                   ),
-                  Container(
-                    color: Colors.white10,
-                    child: Text(
-                      item.product?.name ?? "",
-                      style: Get.textTheme.labelMedium?.copyWith(
-                        overflow: TextOverflow.ellipsis,
+                  const VerticalSpace4(),
+                  // Container(
+                  //   color: Colors.white10,
+                  //   child: Text(
+                  //    ,
+                  //     style: Get.textTheme.labelMedium?.copyWith(
+                  //       overflow: TextOverflow.ellipsis,
+                  //       fontWeight: FontWeight.w500,
+                  //     ),
+                  //     maxLines: 1,
+                  //   ),
+                  // ),
+                  RichText(
+                    text: TextSpan(
+                      style: const TextStyle(
+                        fontSize: 14.0,
+                        color: Colors.black,
                       ),
-                      maxLines: 1,
+                      children: <TextSpan>[
+                        TextSpan(text: "${item.type.toString().tr} "),
+                        TextSpan(
+                          text: item.product?.name ?? "",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        TextSpan(
+                          text: " ${L10n.ist.tr} ${item.state.tr}",
+                        ),
+                      ],
                     ),
                   ),
-                  Text(
-                    "${L10n.ist.tr} ${item.state.tr}",
-                    // style: Get.textTheme.titleMedium,
-                    maxLines: 1,
-                  ),
+                  // Text(
+                  //  ,
+                  //   style: Get.textTheme.titleMedium,
+                  //   maxLines: 1,
+                  // ),
                 ],
               ),
               const Spacer(),

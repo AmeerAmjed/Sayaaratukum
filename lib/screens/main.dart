@@ -73,7 +73,7 @@ class MainTab extends GetView<MainTabController> {
                       if (Application.instance.isLogin) {
                         controller.navigateTo(RouteScreen.notification);
                       } else {
-                        snackBarToLogin();
+                        snackBarToLogin(L10n.loginToShowNotification.tr);
                       }
                     },
                     icon: const Icon(Iconsax.notification, size: 18),
