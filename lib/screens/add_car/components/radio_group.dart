@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sayaaratukum/widgets/space.dart';
 
 class RadioGroup extends StatelessWidget {
   const RadioGroup({
@@ -31,39 +30,50 @@ class RadioGroup extends StatelessWidget {
     );
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Row(
-        children: [
-          Text(label),
-          Space(width: spacingTitle),
-          Expanded(
-            child: RadioListTile(
-              title: Text(
-                titleOption1,
-                style: styleTextOption,
-              ),
-              value: valueOption1,
-              contentPadding: const EdgeInsets.all(0),
-              dense: true,
-              groupValue: value,
-              onChanged: onChanged,
+      child: Container(
+        height: 80,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              label,
+              style: Get.textTheme.labelMedium,
             ),
-          ),
-          Expanded(
-            child: RadioListTile(
-              enableFeedback: false,
-              title: Text(
-                titleOption2,
-                style: styleTextOption,
-              ),
-              value: valueOption2,
-              contentPadding: const EdgeInsets.all(0),
-              dense: true,
-              groupValue: value,
-              onChanged: onChanged,
-            ),
-          ),
-          // const Spacer(flex: 2)
-        ],
+            Row(
+              children: [
+                Flexible(
+                  child: RadioListTile(
+                    title: Text(
+                      titleOption1,
+                      style: styleTextOption,
+                      maxLines: 1,
+                    ),
+                    value: valueOption1,
+                    contentPadding: const EdgeInsets.all(0),
+                    dense: true,
+                    groupValue: value,
+                    onChanged: onChanged,
+                  ),
+                ),
+                Flexible(
+                  child: RadioListTile(
+                    enableFeedback: false,
+                    title: Text(
+                      titleOption2,
+                      style: styleTextOption,
+                    ),
+                    value: valueOption2,
+                    contentPadding: const EdgeInsets.all(0),
+                    dense: true,
+                    groupValue: value,
+                    onChanged: onChanged,
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

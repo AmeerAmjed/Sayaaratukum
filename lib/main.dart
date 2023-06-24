@@ -52,6 +52,7 @@ class Root extends GetView<Application> {
       fallbackLocale: Locale(LangCode.en.name, ''),
       translations: AppTranslations(),
       getPages: routes(),
+      defaultTransition: Transition.cupertino,
       initialRoute: (controller.isSkipAuth.value || controller.isLogin)
           ? RouteScreen.mainTab
           : RouteScreen.welcome,

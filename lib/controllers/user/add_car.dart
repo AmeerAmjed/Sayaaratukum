@@ -14,9 +14,11 @@ import 'package:sayaaratukum/controllers/public/brand.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/add_car.dart';
 import 'package:sayaaratukum/models/brand.dart';
+import 'package:sayaaratukum/models/car.dart';
 import 'package:sayaaratukum/models/engine_power_type.dart';
 import 'package:sayaaratukum/screens/add_car/components/inforamtion_car_form.dart';
 import 'package:sayaaratukum/screens/add_car/components/location_car_form.dart';
+import 'package:sayaaratukum/services/remote/public/cars.dart';
 import 'package:sayaaratukum/services/remote/user/add_car.dart';
 import 'package:sayaaratukum/services/remote/user/engine_power_type.dart';
 import 'package:sayaaratukum/util/constant.dart';
@@ -24,7 +26,7 @@ import 'package:sayaaratukum/util/hard_code.dart';
 
 import '../../screens/add_car/components/image_price_form.dart';
 
-class AddCarController extends BaseController {
+class AddCarController extends BaseController with StateMixin {
   var onPageIndex = 0.obs;
   RxBool disableSubmit = false.obs;
 
@@ -65,15 +67,58 @@ class AddCarController extends BaseController {
   var engineCapacity = 0.obs;
   var imagesCar = <String>[].obs.toList(growable: true);
 
+  //
+  int? idCar;
+  CarModel? car;
+
   @override
   void onInit() {
     brands = BrandController.instance.brands;
     pageController = PageController(initialPage: onPageIndex.value);
 
+    try {
+      idCar = Get.arguments[Constants.idUpdateCarKey] ?? 0;
+    } catch (er) {
+      idCar = null;
+    }
+
+    if (idCar != null && idCar != 0) {
+      change(null, status: RxStatus.loading());
+      getCarById(idCar!);
+    } else {
+      change(null, status: RxStatus.success());
+
+      initInput();
+    }
+
     initInput();
     getAllEnginePower();
     super.onInit();
   }
+
+  //region Get Car TO Update
+  getCarById(int idCar) async {
+    try {
+      await CarsServices.instance
+          .getCarsById(idCar.toString())
+          .then((response) {
+        if (response.isOk) {
+          CarModel result = CarModel.fromJson(
+            response.body[data],
+          );
+          car = result;
+          // change(result, status: RxStatus.success());
+        } else {
+          change(null, status: RxStatus.error(L10n.notFound.tr));
+        }
+      });
+    } on Response catch (response) {
+      change(null, status: RxStatus.error(L10n.notFound.tr));
+      print("CarsServices getCarTOUpdate${response.statusCode}");
+    }
+  }
+
+  //endregion
 
   addCar() async {
     loading(true);

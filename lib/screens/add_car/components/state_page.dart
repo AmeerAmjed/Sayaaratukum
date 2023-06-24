@@ -24,7 +24,7 @@ class ProgressState extends StatelessWidget {
           3,
           (index) => Container(
             alignment: Alignment.center,
-            width: 120,
+            width: 100,
             child: ticks(
               context: context,
               myOrderState: myOrderState,
@@ -105,6 +105,8 @@ class ProgressState extends StatelessWidget {
           padding: const EdgeInsets.only(top: 8.0),
           child: Text(
             labelState[index],
+            textAlign: TextAlign.center,
+            maxLines: 1,
             style: TextStyle(
               color: myOrderState >= orderState.id ? Colors.green : Colors.grey,
             ),

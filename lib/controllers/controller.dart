@@ -75,6 +75,15 @@ abstract class BaseController extends GetxController with ValidatorInput {
     );
   }
 
+  navToAddCar({int? id = 0}) {
+    Get.toNamed(
+      RouteScreen.addCar,
+      arguments: {
+        Constants.idUpdateCarKey: id,
+      },
+    );
+  }
+
   onError(
     String message, {
     Duration duration = const Duration(seconds: 1),

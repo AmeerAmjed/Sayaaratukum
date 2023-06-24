@@ -82,7 +82,6 @@ onClickUserCar(int id, BaseController controller) {
           icon: Iconsax.car,
           onPressed: () {
             controller.carDetails(id);
-            Get.back();
           },
           paddingVertical: 4,
         ),
@@ -90,8 +89,8 @@ onClickUserCar(int id, BaseController controller) {
           title: L10n.updateCar.tr,
           icon: Iconsax.edit,
           onPressed: () {
-            controller.carDetails(id);
-            Get.back();
+            controller.navToAddCar(id: id);
+            // Get.back();
           },
           paddingVertical: 4,
         ),
