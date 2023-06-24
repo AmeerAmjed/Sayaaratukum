@@ -2,16 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/main_tab.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/components/drawer.dart';
 import 'package:sayaaratukum/screens/components/image_user.dart';
 import 'package:sayaaratukum/screens/components/my_notification.dart';
 import 'package:sayaaratukum/util/main_tab_page.dart';
 import 'package:sayaaratukum/widgets/box.dart';
-import 'package:sayaaratukum/widgets/custom_snackbar_login.dart';
 
 import '../widgets/appbars.dart';
 
@@ -23,10 +20,8 @@ class MainTab extends GetView<MainTabController> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       key: controller.scaffoldKey,
-      // appBar: AppBar(),
       appBar: AppBars(
-        // leadingWidth: 50,
-        widget: Container(
+        widget: SizedBox(
           height: 50,
           width: 50,
           child: InkWell(
@@ -36,54 +31,10 @@ class MainTab extends GetView<MainTabController> {
             child: const Box(size: 48.0, child: ImageUser()),
           ),
         ),
-        // widgetAction: GetBuilder<Application>(
-        //   builder: (c) {
-        //     return Application.instance.isLogin
-        //         ? Buttons(
-        //             height: 35,
-        //             width: 150,
-        //             label: Application.instance.isStoreTool()
-        //                 ? L10n.buyTool.tr
-        //                 : L10n.buyYourCar.tr,
-        //             onPressed: () {
-        //               if (Application.instance.isStoreTool()) {
-        //                 Application.instance.navToAddTool();
-        //               } else {
-        //                 Get.toNamed(RouteScreen.addCar);
-        //               }
-        //             },
-        //           )
-        //         : Buttons(
-        //             height: 35,
-        //       width: 150,
-        //       label: L10n.buyYourCar.tr,
-        //             onPressed: () {
-        //               snackBarToLogin();
-        //             },
-        //           );
-        //   },
-        // ),
-        actions: [
+        actions: const [
           FittedBox(
             child: MyNotification(),
           )
-          // FittedBox(
-          //   child: Box(
-          //       size: 38,
-          //       child: Center(
-          //         child: IconButton(
-          //           padding: EdgeInsets.zero,
-          //           onPressed: () {
-          //             if (Application.instance.isLogin) {
-          //               controller.navigateTo(RouteScreen.notification);
-          //             } else {
-          //               snackBarToLogin(L10n.loginToShowNotification.tr);
-          //             }
-          //           },
-          //           icon: const Icon(CupertinoIcons.bell, size: 18),
-          //         ),
-          //       )),
-          // )
         ],
       ),
       drawer: DrawerApp(width: size.width ),
