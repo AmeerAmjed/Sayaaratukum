@@ -33,7 +33,7 @@ class DropdownList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
+      // clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
         color: background ?? Theme.of(context).cardColor,
       ),

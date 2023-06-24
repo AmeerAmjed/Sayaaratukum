@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 
@@ -53,7 +54,7 @@ class ProgressState extends StatelessWidget {
           children: [
             Expanded(
               child: orderState.id == 1
-                  ? line('#fffff')
+                  ? line(null)
                   : orderState.id <= myOrderState + 1
                       ? line('#27AE60')
                       : line('#EBEBEB'),
@@ -69,13 +70,14 @@ class ProgressState extends StatelessWidget {
                       ? Colors.green
                       : Colors.grey,
                 ),
-                color:
-                    orderState.id <= myOrderState ? Colors.green : Colors.white,
+                color: orderState.id <= myOrderState
+                    ? Colors.green
+                    : Get.theme.cardColor,
               ),
               child: myOrderState >= orderState.id // isChecked
-                  ? const Icon(
+                  ? Icon(
                       Icons.check,
-                      color: Colors.white,
+                      color: Get.theme.cardColor,
                       size: 16,
                     )
                   : Text(
@@ -92,7 +94,7 @@ class ProgressState extends StatelessWidget {
             // if (orderState.id != 3)
             Expanded(
               child: orderState.id == 3
-                  ? line('#fffff')
+                  ? line(null)
                   : orderState.id < myOrderState + 1
                       ? line('#27AE60')
                       : line('#EBEBEB'),
@@ -112,9 +114,9 @@ class ProgressState extends StatelessWidget {
     );
   }
 
-  Widget line(String color) {
+  Widget line(String? color) {
     return Container(
-      color: Color(color.getHexValue()),
+      color: color != null ? Color(color.getHexValue()) : Colors.transparent,
       height: 2.0,
       width: 30,
     );

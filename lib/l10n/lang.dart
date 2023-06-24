@@ -165,6 +165,8 @@ class L10n {
   static const myStore = 'myStore';
   static const cars = 'cars';
   static const car = 'car';
+  static const deleteCar = 'deleteCar';
+  static const updateCar = 'updateCar';
   static const tool = 'tool';
   static const tools = 'tools';
   static const now = 'now';

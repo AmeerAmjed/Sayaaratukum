@@ -151,6 +151,8 @@ class ArTranslations {
         L10n.myStore: 'متجري',
         L10n.cars: 'السيارات',
         L10n.car : 'السيارة',
+        L10n.updateCar : 'تحديث معلومات السيارة',
+        L10n.deleteCar : 'حذف السيارة',
         L10n.tool : 'قطعة الغيار',
         L10n.tools: 'قطع الغيار',
         L10n.now: 'الآن',

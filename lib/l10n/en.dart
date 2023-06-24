@@ -151,6 +151,8 @@ class EnTranslations {
         L10n.myStore : 'My Store',
         L10n.cars : 'Cars',
         L10n.car : 'Car',
+        L10n.updateCar : 'Update car',
+        L10n.deleteCar : 'Delete car',
         L10n.tool : 'Tool',
         L10n.tools : 'Tools',
         L10n.now : 'Now',

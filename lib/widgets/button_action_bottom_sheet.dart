@@ -43,7 +43,7 @@ class ButtonActionBottomSheet extends StatelessWidget {
           if (icon != null)
             Icon(
               icon,
-              color: Colors.black.withOpacity(0.1),
+              color: Get.textTheme.labelMedium?.color?.withOpacity(0.3),
             ),
           const HorizontalSpace8(),
           Text(

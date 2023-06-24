@@ -65,7 +65,7 @@ class ItemSearchCar extends StatelessWidget {
                     maxLines: 1,
                   ),
                   Text(
-                    "${car.yearModel},${convertMetersToKilometers(car.mileage)}",
+                    "${car.yearModel}, ${convertMetersToKilometers(car.mileage)}",
                     style: Get.textTheme.labelMedium?.copyWith(
                       overflow: TextOverflow.ellipsis,
                     ),
