@@ -1,4 +1,3 @@
-import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/owner_car.dart';
 import 'package:sayaaratukum/models/store_type.dart';
@@ -76,7 +75,7 @@ class CarModel extends BaseModel {
       inComingType: json['incoming_type'],
       isFavorite: json['is_favorite'],
       isDamage: json['is_harm'] != null
-          ? (json['is_harm'] == 0 ? L10n.no.tr : L10n.year.tr)
+          ? (json['is_harm'] == 0 ? L10n.no : L10n.year)
           : null,
       engine: json['engine'],
       yearModel: json['year_model'],

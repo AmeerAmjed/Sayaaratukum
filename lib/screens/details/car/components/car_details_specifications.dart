@@ -53,7 +53,7 @@ class CarDetailsSpecifications extends StatelessWidget {
                       if (car.isDamage != null)
                         TitleWithDescription(
                           title: L10n.isDamage.tr,
-                          description: car.isDamage!,
+                          description: car.isDamage!.tr,
                         ),
                       if (car.registerNumber != null)
                         TitleWithDescription(

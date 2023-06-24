@@ -23,6 +23,7 @@ class LocationCarForm extends GetView<AddCarController> {
           label: L10n.governorate.tr,
           onChanged: controller.onChangeProvinces,
           items: HardCode.provinces,
+          value: controller.provinces.value,
         ),
         const VerticalSpace8(),
         InputAuth(

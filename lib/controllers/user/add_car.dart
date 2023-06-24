@@ -68,6 +68,7 @@ class AddCarController extends BaseController with StateMixin {
   var imagesCar = <String>[].obs.toList(growable: true);
 
   //
+  var isUpdated = false.obs;
   int? idCar;
   CarModel? car;
 
@@ -84,10 +85,13 @@ class AddCarController extends BaseController with StateMixin {
 
     if (idCar != null && idCar != 0) {
       change(null, status: RxStatus.loading());
+      isUpdated.value = true;
+      update();
       getCarById(idCar!);
     } else {
       change(null, status: RxStatus.success());
-
+      isUpdated.value = false;
+      update();
       initInput();
     }
 
@@ -107,7 +111,8 @@ class AddCarController extends BaseController with StateMixin {
             response.body[data],
           );
           car = result;
-          // change(result, status: RxStatus.success());
+          change(result, status: RxStatus.success());
+          setValueCar(result);
         } else {
           change(null, status: RxStatus.error(L10n.notFound.tr));
         }
@@ -116,6 +121,44 @@ class AddCarController extends BaseController with StateMixin {
       change(null, status: RxStatus.error(L10n.notFound.tr));
       print("CarsServices getCarTOUpdate${response.statusCode}");
     }
+  }
+
+  setValueCar(CarModel car) {
+    price.text = car.price.toString();
+    color.value = car.color;
+    engineCapacity.value = 12;
+
+    idBrandSelected = car.brand.id;
+    idModelBrandSelected = car.modelBrand.id;
+    idEnginePower = car.enginePowerType.id;
+    yearModel.text = car.yearModel;
+    drivingMiles.text = car.mileage;
+    numberRegisterCar.text = car.registerNumber ?? "";
+    madeTo.value = car.inComingType ?? "";
+    gearBox.value = car.gearbox;
+    isDamage.value = car.isDamage ?? "";
+    provinces.value = car.gov ?? "";
+    region.text = car.city ?? "";
+    nearPoint.text = car.closerPoint ?? "";
+    note.text = car.notes ?? "";
+
+    // price: price.text,
+    // color: color.value,
+    // engineCapacity: 12,
+    // yearModel: yearModel.text,
+    // idBrand: idBrandSelected,
+    // idModelBrand: idModelBrandSelected,
+    // idEnginePower: idEnginePower,
+    // userType: userInfo.role!.title,
+    // userId: userInfo.id,
+    // city: region.text,
+    // gov: provinces.value,
+    // nearPoint: nearPoint.text,
+    // gearbox: gearBox.value,
+    // mileage: drivingMiles.text,
+    // images: imagesCar,
+    // isDamage: isDamage.value == "yes" ? 1 : 0,
+    // numberRegisterCar: numberRegisterCar.text,
   }
 
   //endregion
@@ -267,6 +310,8 @@ class AddCarController extends BaseController with StateMixin {
   //region Brand,Model Car
   onChangeBrand(String? brand) {
     keyManagerModelBrand.currentState?.reset();
+    idModelBrandSelected = 0;
+    update();
     if (brand != null) {
       brands.firstWhere((element) {
         if (element.title == brand) {

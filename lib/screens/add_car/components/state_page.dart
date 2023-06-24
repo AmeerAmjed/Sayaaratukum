@@ -68,16 +68,16 @@ class ProgressState extends StatelessWidget {
                 border: Border.all(
                   color: orderState.id <= myOrderState + 1
                       ? Colors.green
-                      : Colors.grey,
+                      : Get.theme.cardColor,
                 ),
                 color: orderState.id <= myOrderState
                     ? Colors.green
                     : Get.theme.cardColor,
               ),
               child: myOrderState >= orderState.id // isChecked
-                  ? Icon(
+                  ? const Icon(
                       Icons.check,
-                      color: Get.theme.cardColor,
+                      color: Colors.white,
                       size: 16,
                     )
                   : Text(

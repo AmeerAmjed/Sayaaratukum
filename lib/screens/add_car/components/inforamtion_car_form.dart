@@ -37,13 +37,19 @@ class InformationCarForm extends GetView<AddCarController> {
             ),
             label: L10n.brands.tr,
             onChanged: controller.onChangeBrand,
+            value: controller.isUpdated.value
+                ? controller.brands
+                    .where((e) => e.id == controller.idBrandSelected)
+                    .first
+                    .title
+                : null,
             items: controller.brands.map((e) => e.title).toList(),
           ),
           rightWidget: GetBuilder<AddCarController>(builder: (co) {
             return DropdownList(
               keyDropdownList: controller.keyManagerModelBrand,
               label: L10n.model.tr,
-              onChanged:  controller.onChangeModelBrand,
+              onChanged: controller.onChangeModelBrand,
               items: co.getModelByBrandId(),
               margin: const EdgeInsets.only(
                 right: 2,
@@ -76,12 +82,15 @@ class InformationCarForm extends GetView<AddCarController> {
           label: L10n.madeTo.tr,
           onChanged: controller.onChangeMadeTo,
           items: HardCode.madeTo.map((map) => map.values.first).toList(),
+          value:
+              controller.madeTo.value.isEmpty ? null : controller.madeTo.value,
         ),
         const VerticalSpace8(),
         DropdownList(
           label: L10n.color.tr,
           onChanged: controller.onChangeColorCar,
           items: HardCode.carColors,
+          value: controller.color.value,
         ),
         const VerticalSpace8(),
         InputAuth(
