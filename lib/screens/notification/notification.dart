@@ -23,7 +23,7 @@ class Notification extends GetView<NotificationController> {
                 size: 32,
                 width: 120,
                 child: InkWell(
-                  onTap: () {},
+                  onTap: controller.setAllNotificationSeen,
                   child: Container(
                     padding: const EdgeInsets.only(top: 4),
                     margin: EdgeInsets.zero,
@@ -51,25 +51,26 @@ class Notification extends GetView<NotificationController> {
           child: ListView.separated(
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
-            itemCount: controller.isLoadingMore.value
-                ? state!.length + 1
-                : state!.length,
+            itemCount: controller.notifications.length,
             separatorBuilder: (context, index) => Divider(
               height: 1,
               thickness: 2,
               color: Get.theme.primaryColor.withOpacity(0.1),
             ),
             itemBuilder: (context, index) {
-              if (index >= state.length && controller.isLoadingMore.value) {
-                return const Loading();
-              }
-
-              return ItemNotification(
-                item: state[index],
-                onPressedItem: () {
-                  controller.carDetails(state[index].id);
-                },
-              );
+              return GetBuilder<NotificationController>(builder: (c) {
+                return ItemNotification(
+                  item: controller.notifications[index],
+                  onPressedItem: () {
+                    var id = controller.notifications[index].product!.id;
+                    if (controller.notifications[index].type == "tool") {
+                      controller.toolDetails(id);
+                    } else {
+                      controller.carDetails(id);
+                    }
+                  },
+                );
+              });
             },
           ),
         );

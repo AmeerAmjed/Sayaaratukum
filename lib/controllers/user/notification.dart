@@ -13,8 +13,6 @@ class NotificationController extends BaseController
   var notificationsNotShow = 0.obs;
   var notifications = <NotificationModel>[].obs;
 
-  RxBool isLoadingMore = false.obs;
-
   @override
   void onInit() {
     init();
@@ -45,7 +43,7 @@ class NotificationController extends BaseController
           change(this.notifications, status: RxStatus.success());
         }
       });
-    } on Exception catch (response) {
+    } on Response catch (response) {
       print("err NotificationController $response");
       change(null, status: RxStatus.error());
     }
@@ -53,21 +51,19 @@ class NotificationController extends BaseController
 
   setAllNotificationSeen() async {
     try {
-      await NotificationServices.instance
-          .setNotificationsSeen()
-          .then((data) {});
-    } on Exception catch (response) {
+      await NotificationServices.instance.setNotificationsSeen().then((data) {
+        updateNotificationSeen();
+      });
+    } on Response catch (response) {
       print("err setAllNotificationSeen $response");
-      change(null, status: RxStatus.error());
     }
   }
 
-  loadingMore(bool state) {
-    isLoadingMore.value = state;
-    update();
-  }
+  updateNotificationSeen() {
+    for (var element in notifications) {
+      element.isRead = true;
+    }
 
-  bool stateLastItem(int index, int length) {
-    return index >= length && isLoadingMore.value;
+    update();
   }
 }

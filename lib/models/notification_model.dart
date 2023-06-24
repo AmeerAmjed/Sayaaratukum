@@ -5,7 +5,7 @@ class NotificationModel extends BaseModel {
   final String state;
   final ItemNotificationModel? product;
   final String? type;
-  final bool isRead;
+  bool isRead;
   final String nameStore;
   final String imageUrlItem;
 
