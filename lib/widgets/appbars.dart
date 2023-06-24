@@ -28,6 +28,7 @@ class AppBars extends StatelessWidget with PreferredSizeWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: AppBar(
         centerTitle: false,
+        titleSpacing: 0,
         leadingWidth: leadingWidth,
         leading: widget ?? (hiddenBackButton ? const Space() : null),
         title: title != null
