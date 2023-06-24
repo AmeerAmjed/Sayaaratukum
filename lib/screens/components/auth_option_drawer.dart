@@ -36,6 +36,12 @@ class AuthOptionDrawer extends GetView<Application> {
               }
             },
           ),
+
+        ListTitleIcon(
+          title: L10n.myCars.tr,
+          icon: Iconsax.car,
+          onTap: () => Get.toNamed(RouteScreen.userCars),
+        ),
         ListTitleIcon(
           title: L10n.mySubscribed.tr,
           icon: Iconsax.star,

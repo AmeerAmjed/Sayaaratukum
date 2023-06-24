@@ -146,6 +146,8 @@ class EnTranslations {
         L10n.subscribe : 'Subscribe',
         L10n.subscribed : 'Subscribed',
         L10n.mySubscribed : 'My Subscribed',
+        L10n.myCars : 'My cars',
+        L10n.notAddCarYet : 'Not Add Car Yet, can add your car to see here',
         L10n.myStore : 'My Store',
         L10n.cars : 'Cars',
         L10n.car : 'Car',

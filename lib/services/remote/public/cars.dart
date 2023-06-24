@@ -43,6 +43,25 @@ class CarsServices extends BaseService {
     }
   }
 
+  Future<Response> getCarsByUserId(
+    int userId, {
+    required int page,
+    required int limit,
+  }) async {
+    try {
+      String url = pagination(ApiEndpoint.cars, page: page, limit: limit);
+      Response response = await get("$url&type=user&creator=$userId");
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error CarsServices getCarsByUserId $e");
+      return Future.error(e);
+    }
+  }
+
   Future<Response> getCarsById(String id) async {
     try {
       Response response = await get("${ApiEndpoint.cars}/$id");

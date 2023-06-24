@@ -160,6 +160,8 @@ class L10n {
   static const subscribe = 'subscribe';
   static const subscribed = 'subscribed';
   static const mySubscribed = 'mySubscribed';
+  static const myCars = 'myCar';
+  static const notAddCarYet = 'notAddCarYet';
   static const myStore = 'myStore';
   static const cars = 'cars';
   static const car = 'car';

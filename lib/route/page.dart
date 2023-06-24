@@ -41,5 +41,6 @@ class RouteScreen {
   static const updatePhoneNumber  = '/updatePhoneNumber';
   static const updateStoreProfile  = '/updateStoreProfile';
   static const notification  = '/notification';
+  static const userCars  = '/userCars';
 
 }
