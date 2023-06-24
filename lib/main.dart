@@ -47,7 +47,7 @@ class Root extends GetView<Application> {
       title: L10n.nameApp.tr,
       debugShowCheckedModeBanner: false,
       theme: ThemeApp.light,
-      // darkTheme: ThemeApp.dark,
+      darkTheme: ThemeApp.dark,
       locale: Locale(controller.getLangCode, ''),
       fallbackLocale: Locale(LangCode.en.name, ''),
       translations: AppTranslations(),

@@ -12,16 +12,17 @@ class DarkThemeApp {
     drawerTheme: const DrawerThemeData(
       backgroundColor: _background,
     ),
-    cardColor: Colors.grey[200],
+    cardColor:_backgroundCard ,
     errorColor: const Color(0xffEB5757),
     appBarTheme: AppBarTheme(
       elevation: .0,
+      scrolledUnderElevation: 1.5,
       iconTheme: const IconThemeData(
-        color: ColorSystem.primaryColor,
+        color: onBackground,
       ),
       titleTextStyle: const TextStyle(
-        color: ColorSystem.primaryColor,
-        fontSize: 14
+        color: onBackground,
+        fontSize: 20,
       ),
       backgroundColor: _background,
       systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
@@ -29,36 +30,72 @@ class DarkThemeApp {
         statusBarIconBrightness: Brightness.light,
       ),
     ),
-
-    cardTheme: const CardTheme(
-      color: _backgroundBottomNavigationBar,
-      // elevation: .0,
-      // margin: EdgeInsets.all(10),
-      // shape: ShapeBorder()
+    visualDensity: VisualDensity.adaptivePlatformDensity,
+    primaryColor: primaryColor,
+    primarySwatch: primaryColor,
+    secondaryHeaderColor: ColorSystem.primaryColor.shade200,
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: _background,
+      unselectedItemColor: Color(0x86747474),
     ),
-    textTheme: TextTheme(
-      labelLarge: const TextStyle(
-        color: Colors.black,
-        fontSize: Constants.fontSizeSecondary,
-        fontWeight: FontWeight.w700,
-      ),
-      labelMedium: const TextStyle(
-        color: Colors.black,
-        fontSize: Constants.fontSizePrimary,
-        fontWeight: FontWeight.normal,
-      ),
-      // caption: TextStyle(
+    textTheme: const TextTheme(
+        titleLarge: TextStyle(
+          color: textPrimay87,
+          fontSize: Constants.fontSize38,
+          fontWeight: FontWeight.w700,
+        ),
+        titleMedium: TextStyle(
+          color: green,
+          fontSize: Constants.fontSize18,
+          fontWeight: FontWeight.bold,
+        ),
+        labelLarge: TextStyle(
+          fontFamily: Constants.fontFamily,
+          color: textPrimay87,
+          fontSize: Constants.fontSize16,
+          fontWeight: FontWeight.w700,
+        ),
+        labelMedium: TextStyle(
+          fontFamily: Constants.fontFamily,
+          color: textPrimay87,
+          fontSize: Constants.fontSize14,
+          fontWeight: FontWeight.normal,
+        ),
+        labelSmall: TextStyle(
+          color: textPrimay10,
+          fontFamily: Constants.fontFamily,
+          fontSize: Constants.fontSize10,
+          fontWeight: FontWeight.normal,
+        ),
+
+        // onPrimary
+        displayMedium: TextStyle(
+          color: onPrimary,
+          fontFamily: Constants.fontFamily,
+          fontSize: Constants.fontSize14,
+          fontWeight: FontWeight.w500,
+        )
+      // overline: TextStyle(
       //   color: Colors.grey.shade400,
       //   fontSize: Constants.fontSizeCaption,
       //   fontWeight: FontWeight.normal,
       // ),
+
     ),
-    visualDensity: VisualDensity.adaptivePlatformDensity,
-    primaryColor: primaryColor,
-    primarySwatch: primaryColor,
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: _backgroundBottomNavigationBar,
-      unselectedItemColor: _unselectedItemColorBottomNavigationBar,
+    cardTheme: const CardTheme(
+      color: _backgroundBottomNavigationBar,
+
+      elevation: .0,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(4.0),
+        ),
+      ),
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      modalBackgroundColor: onPrimary,
+      backgroundColor: onPrimary,
     ),
   );
 
@@ -69,7 +106,13 @@ class DarkThemeApp {
   static const Color _unselectedItemColorBottomNavigationBar =
       Color(0x77747474);
 
-// static const Color _background = Color(0xff1E1E1E);
+  static const Color onPrimary = Color(0xdeffffff);
+
+  static const Color textPrimay87 = Color(0xdeffffff);
+  static const Color textPrimay10 = Color(0xdeffffff);
+  static const Color green = Color(0xde2CB67D);
+
+static const Color onBackground = Color(0xdeffffff);
   static const MaterialColor primaryColor = MaterialColor(
     0xFF4d5c94,
     <int, Color>{

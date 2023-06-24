@@ -72,10 +72,7 @@ class ItemNotification extends StatelessWidget {
                 // ),
                 RichText(
                   text: TextSpan(
-                    style: const TextStyle(
-                      fontSize: 14.0,
-                      color: Colors.black,
-                    ),
+                    style: Get.textTheme.labelMedium,
                     children: <TextSpan>[
                       TextSpan(text: "${item.type.toString().tr} "),
                       TextSpan(
@@ -90,11 +87,6 @@ class ItemNotification extends StatelessWidget {
                     ],
                   ),
                 ),
-                // Text(
-                //  ,
-                //   style: Get.textTheme.titleMedium,
-                //   maxLines: 1,
-                // ),
               ],
             ),
             const Spacer(),

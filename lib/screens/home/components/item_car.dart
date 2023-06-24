@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaaratukum/models/car.dart';
-import 'package:sayaaratukum/screens/home/widget/cars.dart';
 import 'package:sayaaratukum/util/converter.dart';
 import 'package:sayaaratukum/util/price.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
@@ -23,7 +22,7 @@ class ItemCar extends StatelessWidget {
     return Card(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       margin: EdgeInsets.zero,
-      color: Colors.white,
+      // color: ,
       child: Container(
         height: 280,
         padding: EdgeInsets.zero,
@@ -58,15 +57,12 @@ class ItemCar extends StatelessWidget {
                     ),
                     maxLines: 1,
                   ),
-                  Container(
-                    color: Colors.white10,
-                    child: Text(
-                      "${car.yearModel}, ${convertMetersToKilometers(car.mileage)}",
-                      style: Get.textTheme.labelMedium?.copyWith(
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      maxLines: 1,
+                  Text(
+                    "${car.yearModel}, ${convertMetersToKilometers(car.mileage)}",
+                    style: Get.textTheme.labelMedium?.copyWith(
+                      overflow: TextOverflow.ellipsis,
                     ),
+                    maxLines: 1,
                   ),
                 ],
               ),

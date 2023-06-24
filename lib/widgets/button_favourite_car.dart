@@ -29,7 +29,7 @@ class FavouriteCar extends StatelessWidget {
         child: Box(
           size: 40,
           child: Buttons(
-            background: colorBackground ?? Colors.white,
+            background: colorBackground ?? Get.theme.cardColor,
             colorOnButton: Get.theme.primaryColor,
             width: 30,
             height: 30,

@@ -24,7 +24,9 @@ class FilterStores extends StatelessWidget {
     }
 
     Color getColorOnActiveButton(StoreType type) {
-      return typeActive == type ? Get.theme.cardColor : Get.theme.primaryColor;
+      return typeActive == type
+          ? Get.theme.backgroundColor
+          : Get.theme.primaryColor;
     }
 
     return SizedBox(

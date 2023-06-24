@@ -48,11 +48,7 @@ class ButtonActionBottomSheet extends StatelessWidget {
           const HorizontalSpace8(),
           Text(
             title,
-            style: const TextStyle(
-              color: Colors.black,
-              // fontSize: Constants.spacingMedium,
-              // fontWeight: FontWeight.w800,
-            ),
+            style: Get.textTheme.labelMedium,
           )
         ],
       ),

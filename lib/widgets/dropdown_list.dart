@@ -33,7 +33,10 @@ class DropdownList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: background ?? Theme.of(context).cardColor,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      decoration: BoxDecoration(
+        color: background ?? Theme.of(context).cardColor,
+      ),
       margin: margin ??
           const EdgeInsets.symmetric(
             horizontal: Constants.spacing16,
@@ -49,9 +52,9 @@ class DropdownList extends StatelessWidget {
         onTap: onTap,
         icon: const Icon(Icons.keyboard_arrow_down_rounded),
         decoration: InputDecoration(
-          focusedBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(4)),
-            borderSide: BorderSide(width: 1, color: Colors.grey),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(Radius.circular(4)),
+            borderSide: BorderSide(width: 1, color: Get.theme.primaryColor),
           ),
           contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
           border: const OutlineInputBorder(),
@@ -63,7 +66,7 @@ class DropdownList extends StatelessWidget {
           suffixIcon: suffixIcon,
           labelText: label,
         ),
-        dropdownColor: Colors.white,
+        dropdownColor: Get.theme.cardColor,
         borderRadius: const BorderRadius.all(
           Radius.circular(8),
         ),
@@ -71,7 +74,7 @@ class DropdownList extends StatelessWidget {
         items: items
             .map(
               (e) => DropdownMenuItem(
-            value: e,
+                value: e,
                 child: Text(
                   e,
                   style: Get.textTheme.labelMedium,

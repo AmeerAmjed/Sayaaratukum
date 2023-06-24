@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sayaaratukum/widgets/horizontal_space.dart';
 
 class ListTitleIcon extends StatelessWidget {
   const ListTitleIcon({
     Key? key,
-    this.color = Colors.black,
+    this.color,
     this.horizontalTrailingPadding = 8,
     this.trailing,
     required this.title,
@@ -14,7 +15,7 @@ class ListTitleIcon extends StatelessWidget {
 
   final String title;
   final IconData icon;
-  final Color color;
+  final Color? color;
   final Widget? trailing;
   final double horizontalTrailingPadding;
   final VoidCallback? onTap;
@@ -29,7 +30,7 @@ class ListTitleIcon extends StatelessWidget {
         child: Row(
           children: [
             const HorizontalSpace16(),
-            Icon(icon, color: color),
+            Icon(icon, color: color ?? Get.textTheme.labelMedium?.color),
             const HorizontalSpace8(),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),

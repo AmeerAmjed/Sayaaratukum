@@ -36,7 +36,7 @@ class SearchBox extends StatelessWidget {
               controller: controller,
               decoration: InputDecoration(
                 filled: true,
-                fillColor: Get.theme.cardColor,
+                fillColor: Get.theme.cardTheme.color,
                 hintText: hintText,
                 hintStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
                       fontWeight: FontWeight.w600,
@@ -60,8 +60,9 @@ class SearchBox extends StatelessWidget {
                     color: Colors.transparent,
                   ),
                 ),
-                focusedBorder: const OutlineInputBorder(
+                focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
+                    color: Get.theme.primaryColor,
                     width: 1.0,
                   ),
                 ),

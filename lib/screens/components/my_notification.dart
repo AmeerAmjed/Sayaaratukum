@@ -53,11 +53,9 @@ class MyNotification extends GetView<NotificationController> {
                   alignment: Alignment.center,
                   child: Text(
                     controller.notificationsNotShow.value.toString(),
-                    style: TextStyle(
-                      color: Get.theme.backgroundColor,
-                      fontSize: 6.0,
+                    style: Get.theme.textTheme.labelSmall?.copyWith(
+                      fontSize: 6.6,
                     ),
-                    // textAlign: TextAlign.center,
                   ),
                 ),
               );

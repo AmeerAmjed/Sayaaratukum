@@ -22,9 +22,8 @@ class AddButton extends StatelessWidget {
       onPressed: onPressed,
       label: Text(
         label ?? "",
-        style: Get.textTheme.labelLarge?.copyWith(
+        style: Get.textTheme.displayMedium?.copyWith(
           fontWeight: FontWeight.w600,
-          color: Get.theme.backgroundColor,
         ),
       ),
       icon: Icon(icon),

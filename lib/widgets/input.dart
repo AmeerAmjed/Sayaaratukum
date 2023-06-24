@@ -84,7 +84,10 @@ class InputAuth extends StatelessWidget {
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4.0),
-            // borderSide: BorderSide.,
+            borderSide: BorderSide(color: Get.theme.primaryColor),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Get.theme.primaryColor),
           ),
         ),
         textInputAction: textInputAction,

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/public/car_details.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/screens/details/car/components/button_slide_image.dart';
 import 'package:sayaaratukum/screens/details/car/components/car_details_specifications.dart';
 import 'package:sayaaratukum/screens/details/car/components/indication.dart';
 import 'package:sayaaratukum/screens/details/tool/components/tool_details_note.dart';
@@ -171,10 +170,7 @@ class CarDetails extends GetView<CarDetailsController> {
                     maxLines: 1,
                   ),
                 ),
-                if (car.isAvailable)
-                  const StateCar(
-                    background: Colors.white,
-                  )
+                if (car.isAvailable) StateCar(background: Get.theme.cardColor)
               ],
             ),
             const VerticalSpace8(),

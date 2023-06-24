@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaaratukum/models/car.dart';
-import 'package:sayaaratukum/screens/home/widget/cars.dart';
 import 'package:sayaaratukum/theme/color.dart';
+import 'package:sayaaratukum/util/converter.dart';
 import 'package:sayaaratukum/util/price.dart';
-import 'package:sayaaratukum/widgets/button_favourite_car.dart';
 import 'package:sayaaratukum/widgets/horizontal_space.dart';
 import 'package:sayaaratukum/widgets/image_loading.dart';
 
@@ -25,7 +24,6 @@ class ItemSearchCar extends StatelessWidget {
     return Card(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       margin: EdgeInsets.zero,
-      color: Colors.white,
       child: Container(
         padding: EdgeInsets.zero,
         margin: EdgeInsets.zero,
@@ -66,15 +64,12 @@ class ItemSearchCar extends StatelessWidget {
                     ),
                     maxLines: 1,
                   ),
-                  Container(
-                    color: Colors.white10,
-                    child: Text(
-                      "${car.yearModel}, ${car.mileage}",
-                      style: Get.textTheme.labelMedium?.copyWith(
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      maxLines: 1,
+                  Text(
+                    "${car.yearModel},${convertMetersToKilometers(car.mileage)}",
+                    style: Get.textTheme.labelMedium?.copyWith(
+                      overflow: TextOverflow.ellipsis,
                     ),
+                    maxLines: 1,
                   ),
                   Text(
                     currency(car.price),
