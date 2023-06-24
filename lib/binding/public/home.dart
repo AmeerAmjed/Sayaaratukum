@@ -9,6 +9,7 @@ import 'package:sayaaratukum/controllers/public/home.dart';
 import 'package:sayaaratukum/controllers/public/filter/filter_car.dart';
 import 'package:sayaaratukum/controllers/public/search_car_by_brand.dart';
 import 'package:sayaaratukum/controllers/user/favorite.dart';
+import 'package:sayaaratukum/controllers/user/notification.dart';
 import 'package:sayaaratukum/services/remote/public/ads.dart';
 import 'package:sayaaratukum/services/remote/public/brand.dart';
 import 'package:sayaaratukum/services/remote/public/cars.dart';
@@ -16,6 +17,7 @@ import 'package:sayaaratukum/services/remote/public/search.dart';
 import 'package:sayaaratukum/services/remote/public/tools.dart';
 import 'package:sayaaratukum/services/remote/user/engine_power_type.dart';
 import 'package:sayaaratukum/services/remote/user/favorite.dart';
+import 'package:sayaaratukum/services/remote/user/notification.dart';
 
 class HomeBinding extends Bindings {
   @override
@@ -39,5 +41,7 @@ class HomeBinding extends Bindings {
 
     Get.put<FilterCarController>(FilterCarController(), permanent: true);
 
+    Get.lazyPut<NotificationServices>(() => NotificationServices());
+    Get.put<NotificationController>(NotificationController(), permanent: true);
   }
 }

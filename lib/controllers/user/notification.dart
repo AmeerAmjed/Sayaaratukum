@@ -21,12 +21,17 @@ class NotificationController extends BaseController
 
   Future<void> init() async {
     if (Application.instance.isLogin) {
-      // resetValue();
+      resetValue();
       await getNotification();
     } else {
-      // resetValue();
+      resetValue();
       change(null, status: RxStatus.error());
     }
+  }
+
+  resetValue() {
+    notificationsNotShow.value = 0;
+    notifications.value = [];
   }
 
   getNotification() async {
@@ -37,6 +42,8 @@ class NotificationController extends BaseController
           response.body[data],
         );
         this.notifications.value = notifications.reversed.toList();
+        notificationsNotShow.value = getCountNotificationsNotShow();
+        update();
         if (notifications.isEmpty) {
           change(null, status: RxStatus.empty());
         } else {
@@ -59,10 +66,21 @@ class NotificationController extends BaseController
     }
   }
 
+  int getCountNotificationsNotShow() {
+    var count = 0;
+    for (var notification in notifications) {
+      if (!notification.isRead) {
+        count++;
+      }
+    }
+    return count;
+  }
+
   updateNotificationSeen() {
     for (var element in notifications) {
       element.isRead = true;
     }
+    notificationsNotShow.value = 0;
 
     update();
   }
