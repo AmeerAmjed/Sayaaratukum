@@ -25,7 +25,7 @@ class ItemFavorite extends StatelessWidget {
             children: [
               Card(
                 child: ImageLoading(
-                  imageUrl: item.product!.images.first,
+                  imageUrl: item.product!.images.first.imageUrl,
                 ),
               ),
               buttonFavorite

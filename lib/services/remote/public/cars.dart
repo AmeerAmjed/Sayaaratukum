@@ -1,5 +1,10 @@
+import 'dart:io';
+
+import 'package:get/get_connect/http/src/multipart/form_data.dart';
+import 'package:get/get_connect/http/src/multipart/multipart_file.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/instance_manager.dart';
+import 'package:sayaaratukum/models/add_car.dart';
 import 'package:sayaaratukum/services/api.dart';
 import 'package:sayaaratukum/services/remote/service.dart';
 
@@ -24,8 +29,7 @@ class CarsServices extends BaseService {
     }
   }
 
-  Future<Response> getCarsByStore(
-    String idStore, {
+  Future<Response> getCarsByStore(String idStore, {
     required int page,
     required int limit,
   }) async {
@@ -43,8 +47,7 @@ class CarsServices extends BaseService {
     }
   }
 
-  Future<Response> getCarsByUserId(
-    int userId, {
+  Future<Response> getCarsByUserId(int userId, {
     required int page,
     required int limit,
   }) async {
@@ -74,5 +77,69 @@ class CarsServices extends BaseService {
       print("error CarsServices getCarsById $e");
       return Future.error(e);
     }
+  }
+
+  Future<Response> updateCar(AddCarModel car) async {
+    try {
+      Response response = await post(
+        "${ApiEndpoint.addCar}?_method=put",
+        car.getBaseInfo(),
+      );
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error CarsServices updateCar $e");
+      return Future.error(e);
+    }
+  }
+
+  Future<Response> deleteImageCar(String id) async {
+    try {
+      Response response = await delete("${ApiEndpoint.adminImagesCar}/$id");
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error CarsServices deleteImageCar $e");
+      return Future.error(e);
+    }
+  }
+
+  Future<Response> addImageCar(int id, String imagePath) async {
+    try {
+      Response response = await post(
+          ApiEndpoint.adminImagesCar, getFormDataAddImage(id, imagePath));
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error CarsServices addImageCar $e");
+      return Future.error(e);
+    }
+  }
+
+  FormData getFormDataAddImage(int id, String imagePath) {
+    var data = FormData({
+      'car_id': id,
+    });
+
+    var imageTool = MapEntry(
+      "image",
+      MultipartFile(
+        File(imagePath),
+        filename:
+            "${DateTime.now().millisecondsSinceEpoch}.${imagePath.split('.').last}",
+      ),
+    );
+
+    data.files.add(imageTool);
+    return data;
   }
 }

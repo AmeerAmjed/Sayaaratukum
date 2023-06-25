@@ -35,7 +35,7 @@ class ItemCar extends StatelessWidget {
               child: Stack(
                 children: [
                   ImageLoading(
-                    imageUrl: car.images[0],
+                    imageUrl: car.images.first.imageUrl,
                   ),
                   buttonFavouriteCar
                 ],

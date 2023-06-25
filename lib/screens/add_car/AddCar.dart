@@ -53,6 +53,7 @@ class AddCarScreen extends GetView<AddCarController> {
                       return GetBuilder<AddCarController>(
                           builder: (controller) {
                         return SingleChildScrollView(
+                          physics: const BouncingScrollPhysics(),
                           child:
                               controller.stepForm[controller.onPageIndex.value],
                         );

@@ -41,7 +41,7 @@ class ItemSearchCar extends StatelessWidget {
                       color: Get.theme.scaffoldBackgroundColor,
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: ImageLoading(
-                        imageUrl: car.images.first,
+                        imageUrl: car.images.first.imageUrl,
                       ),
                     ),
                   ),

@@ -52,6 +52,25 @@ class AddCarModel extends BaseModel {
   });
 
   Future<FormData> getFormData() async {
+    var data = getBaseInfo();
+
+    for (var i = 0; i < images.length; i++) {
+      var image = MapEntry(
+        "images[$i]",
+        MultipartFile(
+          File(images[i]),
+          filename:
+              "${DateTime.now().millisecondsSinceEpoch}.${images[i].split('.').last}",
+        ),
+      );
+
+      data.files.add(image);
+    }
+
+    return data;
+  }
+
+  FormData getBaseInfo() {
     var data = FormData({
       'price': price.toString(),
       'color': color,
@@ -71,19 +90,6 @@ class AddCarModel extends BaseModel {
       'inComingType': inComingType,
       'state': state,
     });
-
-    for (var i = 0; i < images.length; i++) {
-      var image = MapEntry(
-        "images[$i]",
-        MultipartFile(
-          File(images[i]),
-          filename:
-              "${DateTime.now().millisecondsSinceEpoch}.${images[i].split('.').last}",
-        ),
-      );
-
-      data.files.add(image);
-    }
 
     return data;
   }

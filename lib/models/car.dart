@@ -30,7 +30,7 @@ class CarModel extends BaseModel {
   final String? closerPoint;
   final String gearbox;
   final String mileage;
-  final List<String> images;
+  final List<ImageModel> images;
 
   CarModel({
     this.isLoadingFavorite = false,
@@ -89,20 +89,43 @@ class CarModel extends BaseModel {
       brand: SubModel.fromJson(json['brand']),
       modelBrand: SubModel.fromJson(json['model']),
       enginePowerType: SubModel.fromJson(json['power_type']),
-      images: listImagesFromJson(json['images']),
+      images: ImageModel.listFromJson(json['images']),
       owner: OwnerCarModel.fromJson(json),
     );
   }
 
   static List<CarModel> listFromJson(list) => List<CarModel>.from(
-    list.map(
+        list.map(
           (item) => CarModel.fromJson(item),
-    ),
-  ).toList();
+        ),
+      ).toList();
 
   static List<String> listImagesFromJson(list) => List<String>.from(
-    list.map(
+        list.map(
           (item) => item['path'],
-    ),
-  ).cast<String>().toList();
+        ),
+      ).cast<String>().toList();
+}
+
+class ImageModel extends BaseModel {
+  ImageModel({
+    required this.id,
+    required this.imageUrl,
+  });
+
+  final int id;
+  final String imageUrl;
+
+  factory ImageModel.fromJson(Map<String, dynamic> data) {
+    return ImageModel(
+      id: data['id'],
+      imageUrl: data['path'],
+    );
+  }
+
+  static List<ImageModel> listFromJson(list) => List<ImageModel>.from(
+        list.map(
+          (item) => ImageModel.fromJson(item),
+        ),
+      ).toList();
 }

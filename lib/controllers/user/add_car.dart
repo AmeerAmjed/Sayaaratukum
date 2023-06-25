@@ -64,13 +64,16 @@ class AddCarController extends BaseController with StateMixin {
   var isDamage = "".obs;
   var madeTo = "".obs;
   var color = "".obs;
-  var engineCapacity = 0.obs;
+  var engineCapacity = .0.obs;
   var imagesCar = <String>[].obs.toList(growable: true);
 
   //
   var isUpdated = false.obs;
+  String? modelCar;
   int? idCar;
-  CarModel? car;
+
+  // CarModel? car;
+  Rxn<CarModel> car = Rxn<CarModel>();
 
   @override
   void onInit() {
@@ -110,7 +113,7 @@ class AddCarController extends BaseController with StateMixin {
           CarModel result = CarModel.fromJson(
             response.body[data],
           );
-          car = result;
+          car.value = result;
           change(result, status: RxStatus.success());
           setValueCar(result);
         } else {
@@ -130,7 +133,9 @@ class AddCarController extends BaseController with StateMixin {
 
     idBrandSelected = car.brand.id;
     idModelBrandSelected = car.modelBrand.id;
+    modelCar = car.modelBrand.name;
     idEnginePower = car.enginePowerType.id;
+    engineCapacity.value = 1.5;
     yearModel.text = car.yearModel;
     drivingMiles.text = car.mileage;
     numberRegisterCar.text = car.registerNumber ?? "";
@@ -161,18 +166,70 @@ class AddCarController extends BaseController with StateMixin {
     // numberRegisterCar: numberRegisterCar.text,
   }
 
+  deleteImageCar(String idImage) async {
+    try {
+      await CarsServices.instance.deleteImageCar(idImage).then((response) {
+        if (response.isOk) {
+          // CarModel result = CarModel.fromJson(
+          //   response.body[data],
+          // );
+          // car.value = result;
+          // change(result, status: RxStatus.success());
+          // setValueCar(result);
+        } else {
+          // change(null, status: RxStatus.error(L10n.notFound.tr));
+        }
+      });
+    } on Response catch (response) {
+      change(null, status: RxStatus.error(L10n.notFound.tr));
+      print("CarsServices getCarTOUpdate${response.statusCode}");
+    }
+    // imagesCar.remove(file);
+    // update();
+  }
+
+  addImageCar() async {
+    await ImagePicker().pickMultiImage().then((xFile) async {
+      try {
+        var image = xFile.map((XFile file) => File(file.path)).first;
+        await CarsServices.instance
+            .addImageCar(car.value!.id, image.path)
+            .then((response) {
+          if (response.isOk) {
+            ImageModel result = ImageModel.fromJson(
+              response.body[data],
+            );
+            car.value!.images.add(result);
+            update();
+          }
+        });
+      } on Response catch (response) {
+        print("AddCarController addImageCar${response.statusCode}");
+      }
+    });
+  }
+
   //endregion
 
   addCar() async {
     loading(true);
     if (getInfo() != null) {
       try {
-        await AddCarService.instance.addCar(getInfo()!).then((response) {
-          print("response ${response.statusCode} ${response.body}");
-          if (response.isOk) {}
-          showMessage("Success add car");
-          loading(false);
-        });
+        if (isUpdated.value) {
+          await CarsServices.instance.updateCar(getInfo()!).then((response) {
+            print("response ${response.statusCode} ${response.body}");
+            if (response.isOk) {}
+            showMessage("Upppp  car");
+            loading(false);
+          });
+        } else {
+          await AddCarService.instance.addCar(getInfo()!).then((response) {
+            print("response ${response.statusCode} ${response.body}");
+            if (response.isOk) {}
+            showMessage("Success add car");
+            loading(false);
+          });
+        }
       } on Response catch (response) {
         print("response ${response.statusCode} ${response.body}");
         showMessage(response.body[message]);
@@ -184,7 +241,6 @@ class AddCarController extends BaseController with StateMixin {
   AddCarModel? getInfo() {
 
     var userInfo = Application.instance.user?.value;
-    print(" userInfo.role!.title, ${userInfo?.role!.title}");
     if (userInfo != null) {
       return AddCarModel(
         price: price.text,
@@ -311,6 +367,7 @@ class AddCarController extends BaseController with StateMixin {
   onChangeBrand(String? brand) {
     keyManagerModelBrand.currentState?.reset();
     idModelBrandSelected = 0;
+    modelCar = null;
     update();
     if (brand != null) {
       brands.firstWhere((element) {
@@ -408,7 +465,7 @@ class AddCarController extends BaseController with StateMixin {
 
   onChangeEngineCapacity(String? size) {
     if (size != null) {
-      engineCapacity.value = int.tryParse(size)!;
+      engineCapacity.value = double.tryParse(size)!;
     }
   }
 
@@ -468,10 +525,12 @@ class AddCarController extends BaseController with StateMixin {
       onError("${L10n.enginePower.tr} ${L10n.isRequired.tr}");
 
       return false;
-    } else if (madeTo.value == "") {
-      onError("${L10n.madeTo.tr} ${L10n.isRequired.tr}");
-      return false;
-    } else if (color.value == "") {
+    }
+    // else if (madeTo.value == "") {
+    //   onError("${L10n.madeTo.tr} ${L10n.isRequired.tr}");
+    //   return false;
+    // }
+    else if (color.value == "") {
       onError("${L10n.color.tr} ${L10n.isRequired.tr}");
       return false;
     }
@@ -524,7 +583,7 @@ class AddCarController extends BaseController with StateMixin {
       onError("${L10n.price.tr} ${L10n.isRequired.tr}");
       return false;
     }
-    if (imagesCar.isEmpty) {
+    if (isUpdated.value == false && imagesCar.isEmpty) {
       onError("${L10n.imagesCar.tr} ${L10n.isRequired.tr}");
       return false;
     }

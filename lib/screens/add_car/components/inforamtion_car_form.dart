@@ -51,6 +51,7 @@ class InformationCarForm extends GetView<AddCarController> {
               label: L10n.model.tr,
               onChanged: controller.onChangeModelBrand,
               items: co.getModelByBrandId(),
+              value: controller.modelCar,
               margin: const EdgeInsets.only(
                 right: 2,
               ),
@@ -65,6 +66,7 @@ class InformationCarForm extends GetView<AddCarController> {
             ),
             onChanged: controller.onChangeEngineCapacity,
             items: HardCode.engineSizes,
+            value: controller.engineCapacity.value.toString(),
           ),
           rightWidget: GetBuilder<AddCarController>(builder: (con) {
             return DropdownList(
@@ -74,6 +76,10 @@ class InformationCarForm extends GetView<AddCarController> {
               ),
               onChanged: controller.onChangeEnginePower,
               items: con.enginePowers.map((e) => e.name).toList(),
+              value: con.enginePowers
+                  .where((e) => e.id == controller.idEnginePower)
+                  .first
+                  .name,
             );
           }),
         ),

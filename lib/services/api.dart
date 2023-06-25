@@ -27,6 +27,7 @@ class ApiEndpoint {
   static const String myProfile = '/me';
   static const String notification = '/me/notifies';
   static const String notificationsSeen = '/me/notifies/make-read';
+  static const String adminImagesCar = '/admin/images';
 
 
 }

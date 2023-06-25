@@ -71,12 +71,15 @@ class CarDetails extends GetView<CarDetailsController> {
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
-                          showImageFullScreen(context, car.images[index]);
+                          showImageFullScreen(
+                            context,
+                            car.images[index].imageUrl,
+                          );
                         },
                         child: Box(
                           child: ImageLoading(
                             fitImage: BoxFit.contain,
-                            imageUrl: car.images[index],
+                            imageUrl: car.images[index].imageUrl,
                           ),
                         ),
                       );
