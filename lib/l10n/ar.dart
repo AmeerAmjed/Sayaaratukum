@@ -86,7 +86,7 @@ class ArTranslations {
         L10n.automatic: 'أوتوماتيك',
         L10n.manual: 'عادي',
         L10n.shakeCheck: 'فحص الهزات',
-        L10n.gearBox: 'صندوق التروس',
+        L10n.gearBox: 'نوع الكير',
         L10n.isDamage: 'ضرر السيارة',
 
 
@@ -94,7 +94,7 @@ class ArTranslations {
         L10n.region: 'المنطقة',
         L10n.nearPoint: 'اقرب نقطة',
         L10n.engineCapacity: 'سعة المحرك',
-        L10n.enginePower: 'قوة المحرك',
+        L10n.enginePower: 'نوع الوقود',
         L10n.drivingMiles: 'عدد الأميال المقطوعة',
 
         L10n.informationCar: 'معلومات السيارة',

@@ -9,7 +9,7 @@ class EnTranslations {
         L10n.recommended: 'Recommended',
 
         L10n.home: 'Home',
-        L10n.spareParts: 'Tools',
+        L10n.spareParts: 'Spare parts',
         L10n.stores: 'stores',
         L10n.favorite: 'Favorite',
 
@@ -153,8 +153,8 @@ class EnTranslations {
         L10n.car : 'Car',
         L10n.updateCar : 'Update car',
         L10n.deleteCar : 'Delete car',
-        L10n.tool : 'Tool',
-        L10n.tools : 'Tools',
+        L10n.tool : 'Spare part',
+        L10n.tools : 'Spare parts',
         L10n.now : 'Now',
 
         L10n.emptySubscribed : 'Not Subscribed to any store yet',
