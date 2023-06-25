@@ -48,7 +48,7 @@ class EnTranslations {
         L10n.welcomeBack : 'Welcome Back',
 
         L10n.searchCar : 'Find your car',
-        L10n.searchTool : 'Find tool',
+        L10n.searchTool : 'Find spare part',
 
         L10n.showrooms : 'Showrooms',
         L10n.adsDeals : 'Special Deals for You',

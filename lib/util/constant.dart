@@ -1,3 +1,5 @@
+import 'package:sayaaratukum/util/lang_code.dart';
+
 class Constants {
   static const String websiteLink = "https://api.saiaratcom.com/";
   static const String baseUrl = "https://saiaratcom.com/";

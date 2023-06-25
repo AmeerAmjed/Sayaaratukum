@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sayaaratukum/binding/init.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
 import 'package:sayaaratukum/controllers/application.dart';
@@ -9,7 +10,8 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/pusher.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/route/routes.dart';
-import 'package:sayaaratukum/theme/theme.dart';
+import 'package:sayaaratukum/theme/dark.dart';
+import 'package:sayaaratukum/theme/light.dart';
 import 'package:sayaaratukum/util/lang_code.dart';
 import 'package:uni_links/uni_links.dart';
 
@@ -43,22 +45,28 @@ class Root extends GetView<Application> {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: L10n.nameApp.tr,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeApp.light,
-      darkTheme: ThemeApp.dark,
-      locale: Locale(controller.getLangCode, ''),
-      fallbackLocale: Locale(LangCode.en.name, ''),
-      translations: AppTranslations(),
-      getPages: routes(),
-      defaultTransition: Transition.cupertino,
-      initialRoute: (controller.isSkipAuth.value || controller.isLogin)
-          ? RouteScreen.mainTab
-          : RouteScreen.welcome,
-      initialBinding: (controller.isSkipAuth.value || controller.isLogin)
-          ? MainTabBinding()
-          : MainTabBinding(),
-    );
+    return GetBuilder<Application>(builder: (cont) {
+      var fontFamily = controller.getLangCode == LangCode.ar.name
+          ? GoogleFonts.tajawal().fontFamily
+          : GoogleFonts.poppins().fontFamily;
+
+      return GetMaterialApp(
+        title: L10n.nameApp.tr,
+        debugShowCheckedModeBanner: false,
+        theme: LightThemeApp().light(fontFamily!),
+        darkTheme: DarkThemeApp().dark(fontFamily),
+        locale: Locale(controller.getLangCode, ''),
+        fallbackLocale: Locale(LangCode.en.name, ''),
+        translations: AppTranslations(),
+        getPages: routes(),
+        defaultTransition: Transition.cupertino,
+        initialRoute: (controller.isSkipAuth.value || controller.isLogin)
+            ? RouteScreen.mainTab
+            : RouteScreen.welcome,
+        initialBinding: (controller.isSkipAuth.value || controller.isLogin)
+            ? MainTabBinding()
+            : MainTabBinding(),
+      );
+    });
   }
 }
