@@ -43,6 +43,7 @@ class Empty extends StatelessWidget {
           Icon(
             icon,
             size: 50,
+            color: Get.textTheme.labelMedium?.color,
           ),
           const VerticalSpace24(),
           Center(

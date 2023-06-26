@@ -37,7 +37,7 @@ class MainTab extends GetView<MainTabController> {
           )
         ],
       ),
-      drawer: DrawerApp(width: size.width ),
+      drawer: const DrawerApp(),
       body: Navigator(
         key: Get.nestedKey(1),
         initialRoute: MainTabPage.home,

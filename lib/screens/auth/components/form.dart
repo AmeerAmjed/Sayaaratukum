@@ -81,6 +81,7 @@ class FormLogin extends GetView<LoginController> {
                           // onTap: () => Get.toNamed('/forgotpassword'),
                           child: Text(
                             L10n.forgotPassword.tr,
+                            style: Get.textTheme.labelMedium,
                           ),
                         ),
                       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AuthFooter extends StatelessWidget {
   const AuthFooter({
@@ -14,6 +15,7 @@ class AuthFooter extends StatelessWidget {
     return Text.rich(
       TextSpan(
         text: label,
+        style: Get.textTheme.labelMedium,
         children: [
           TextSpan(
             text: " $action",

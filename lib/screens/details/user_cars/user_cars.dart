@@ -28,14 +28,15 @@ class UserCars extends GetView<UserCarsController> {
           onRefresh: controller.onRefresh,
           child: ListView(
             children: [
-              controller.obx(
-                  onLoading: const Loading(),
-                  onEmpty: Empty(
-                    title: L10n.notAddCarYet.tr,
-                    icon: Iconsax.clipboard_close,
-                  ), (state) {
-                return ListView.separated(
-                  controller: controller.scroll,
+            controller.obx(
+                onLoading: const Loading(),
+                onEmpty: Empty(
+                  title: L10n.notAddCarYet.tr,
+                  height: Get.height,
+                  icon: Iconsax.clipboard_close,
+                ), (state) {
+              return ListView.separated(
+                controller: controller.scroll,
                 scrollDirection: Axis.vertical,
                 padding: const EdgeInsets.symmetric(
                   horizontal: Constants.spacing16,

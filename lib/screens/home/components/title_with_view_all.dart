@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/utils.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/util/constant.dart';
@@ -46,7 +47,9 @@ class TitleWithViewAll extends StatelessWidget {
               ), //ripple color
               child: Text(
                 L10n.viewAll.tr,
-                style: Theme.of(context).textTheme.caption,
+                style: Theme.of(context).textTheme.caption?.copyWith(
+                      color: Get.textTheme.labelMedium?.color,
+                    ),
               ),
             ),
         ],

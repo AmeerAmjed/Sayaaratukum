@@ -44,6 +44,7 @@ showCustomDialog(
                     if (message != null)
                       Text(
                         message,
+                        style: Get.textTheme.labelMedium,
                         textAlign: TextAlign.center,
                       ),
                     const SizedBox(height: 20),

@@ -18,10 +18,7 @@ import 'package:sayaaratukum/widgets/vertical_space.dart';
 class DrawerApp extends GetView<Application> {
   const DrawerApp({
     Key? key,
-    required this.width,
   }) : super(key: key);
-
-  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +57,7 @@ class DrawerApp extends GetView<Application> {
             title: L10n.language.tr,
             trailing: Text(
               controller.getLangCode.toUpperCase(),
+              style: Get.textTheme.labelMedium,
             ),
             horizontalTrailingPadding: 30,
             onTap: () {
