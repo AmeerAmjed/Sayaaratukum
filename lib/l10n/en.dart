@@ -61,7 +61,7 @@ class EnTranslations {
         L10n.status : 'Status',
         L10n.serialNumber : 'Part Number',
         L10n.color : 'Color',
-        L10n.madeTo : 'Made To',
+        L10n.madeTo : 'Incoming type',
 
         L10n.showMore : ' Show More',
         L10n.showLess : ' Show Less',
@@ -206,6 +206,10 @@ class EnTranslations {
         L10n.thisIs: 'This',
         L10n.ist: 'is',
         L10n.allNotificationIsRead: 'Make all read',
+        L10n.vinCheck: 'Vin check',
+        L10n.vinNumber: 'Vin number',
+        L10n.creditCard: 'Prepaid credit card',
+        L10n.creditType: 'Phone carriers type',
 
         //income to
         "USA": 'USA',

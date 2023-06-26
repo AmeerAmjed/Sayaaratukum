@@ -59,7 +59,7 @@ class ArTranslations {
         L10n.status: 'الحالة',
         L10n.serialNumber: 'الرقم التسلسلي',
         L10n.color: 'اللون',
-        L10n.madeTo: 'مصنوع لـ',
+        L10n.madeTo: 'نوع الوارد',
 
         L10n.showMore: 'عرض المزيد',
         L10n.showLess: 'عرض أقل',
@@ -205,9 +205,14 @@ class ArTranslations {
         L10n.thisIs :  'هذا',
         L10n.ist :  'تم',
         L10n.allNotificationIsRead :  'جعل الكل مقروءة',
+        L10n.vinCheck: 'كشف حادث السيارة',
+        L10n.vinNumber: 'رقم الشاصي',
+        L10n.creditCard: 'الرقم التسلسلي للرصيد',
+        L10n.creditType: 'نوع شركة الاتصال',
 
-
-
+        "Asiacell":"اسياسيل",
+        "Zain":"زين",
+        "Korek":"كورك",
 
         //income to
         "USA" : 'امريكي',

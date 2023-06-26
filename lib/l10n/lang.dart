@@ -222,4 +222,8 @@ class L10n {
   static const thisIs = 'thisIs';
   static const ist = 'ist';
   static const allNotificationIsRead = 'allNotificationIsRead';
+  static const vinCheck = 'vinCheck';
+  static const vinNumber = 'vinNumber';
+  static const creditCard = 'creditCard';
+  static const creditType = 'creditType';
 }

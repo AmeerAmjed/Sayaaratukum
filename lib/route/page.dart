@@ -42,5 +42,6 @@ class RouteScreen {
   static const updateStoreProfile  = '/updateStoreProfile';
   static const notification  = '/notification';
   static const userCars  = '/userCars';
+  static const vinCheck  = '/vinCheck';
 
 }

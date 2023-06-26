@@ -229,4 +229,17 @@ class HardCode {
     }
   ];
 
+  static List<Map<String, String>> creditTypes = [
+    {
+      "Asiacell": "Asiacell".tr,
+    },
+    {
+      "Zain": "Zain".tr,
+    },
+    {
+      "Korek": "Korek".tr,
+    },
+
+  ];
+
 }

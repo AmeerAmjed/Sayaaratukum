@@ -35,8 +35,8 @@ class DropdownList extends StatelessWidget {
     return Container(
       // clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
-        color: background ?? Theme.of(context).cardColor,
-      ),
+        // color: background ?? Theme.of(context).cardColor,
+          ),
       margin: margin ??
           const EdgeInsets.symmetric(
             horizontal: Constants.spacing16,

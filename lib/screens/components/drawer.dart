@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/components/auth_option_drawer.dart';
 import 'package:sayaaratukum/screens/components/language.dart';
 import 'package:sayaaratukum/screens/components/list_title_icon.dart';
@@ -30,7 +31,15 @@ class DrawerApp extends GetView<Application> {
           Application.instance.user?.value != null
               ? const AuthOptionDrawer()
               : const TryAuth(),
-          const VerticalSpace8(),
+          const VerticalSpace16(),
+          ListTitleIcon(
+            title: L10n.vinCheck.tr,
+            icon: Iconsax.shield_search,
+            onTap: () {
+              controller.navigateTo(RouteScreen.vinCheck);
+            },
+          ),
+          const VerticalSpace16(),
           ListTitleIcon(
             icon: Iconsax.notification,
             trailing: GetBuilder<Application>(

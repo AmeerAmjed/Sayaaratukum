@@ -8,6 +8,7 @@ import 'package:sayaaratukum/binding/public/search/search_tool.dart';
 import 'package:sayaaratukum/binding/public/store_car_details.dart';
 import 'package:sayaaratukum/binding/public/store_tool_details.dart';
 import 'package:sayaaratukum/binding/public/tool_details.dart';
+import 'package:sayaaratukum/binding/public/vin_check.dart';
 import 'package:sayaaratukum/binding/user/add_car.dart';
 import 'package:sayaaratukum/binding/user/add_tool.dart';
 import 'package:sayaaratukum/binding/user/my_subscribe_store.dart';
@@ -42,6 +43,7 @@ import 'package:sayaaratukum/screens/search/car/search_car.dart';
 import 'package:sayaaratukum/screens/search/car_by_brand/search_car_by_brand.dart';
 import 'package:sayaaratukum/screens/search/tool/search_tool.dart';
 import 'package:sayaaratukum/screens/view_all/brand/view_all_brand.dart';
+import 'package:sayaaratukum/screens/vin_check/vin_ceck.dart';
 
 import '../binding/public/search/search_car_by_brand.dart';
 
@@ -157,5 +159,10 @@ List<GetPage> routes() => [
         name: RouteScreen.userCars,
         page: () => const UserCars(),
         binding: UserCarsBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.vinCheck,
+        page: () => const VinCheck(),
+        binding: VinCheckBinding(),
       )
     ];
