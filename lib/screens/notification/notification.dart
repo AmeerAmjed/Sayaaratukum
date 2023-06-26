@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/user/notification.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/screens/notification/component/button_see_all.dart';
 import 'package:sayaaratukum/screens/notification/component/item_notification.dart';
-import 'package:sayaaratukum/widgets/box.dart';
+import 'package:sayaaratukum/widgets/appbars.dart';
 import 'package:sayaaratukum/widgets/empty.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
+import 'package:sayaaratukum/widgets/space.dart';
 
 class Notification extends GetView<NotificationController> {
   const Notification({Key? key}) : super(key: key);
@@ -15,36 +16,23 @@ class Notification extends GetView<NotificationController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(L10n.notification.tr),
+      appBar: AppBars(
+        title: L10n.notification.tr,
         actions: [
-          FittedBox(
-            child: Box(
-                size: 32,
-                width: 120,
-                child: InkWell(
-                  onTap: controller.setAllNotificationSeen,
-                  child: Container(
-                    padding: const EdgeInsets.only(top: 4),
-                    margin: EdgeInsets.zero,
-                    child: Text(
-                      L10n.allNotificationIsRead.tr,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Get.theme.primaryColor,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                )),
-          )
+          GetBuilder<NotificationController>(builder: (c) {
+            if (c.notificationsNotShow.value == 0) return const Space();
+            return ButtonSeeAll(
+              onTap: controller.setAllNotificationSeen,
+            );
+          }),
         ],
       ),
       body: controller.obx(
           onLoading: const Loading(),
           onEmpty: Empty(
-            title: L10n.noResult.tr,
-            icon: Iconsax.clipboard_close,
+            title: L10n.emptyNotify.tr,
+            description: L10n.emptyNotifyDes.tr,
+            icon: CupertinoIcons.bell_slash,
           ), (state) {
         return RefreshIndicator(
           onRefresh: controller.init,

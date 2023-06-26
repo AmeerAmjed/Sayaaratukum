@@ -9,6 +9,7 @@ import 'package:sayaaratukum/screens/profile/components/contact_user.dart';
 import 'package:sayaaratukum/screens/profile/components/full_name_with_bio.dart';
 import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/widgets/appbars.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 
@@ -21,8 +22,8 @@ class Profile extends GetView<ProfileController> {
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(L10n.profile.tr),
+      appBar: AppBars(
+        title: L10n.profile.tr,
         actions: <Widget>[
           PopupMenuButton<String>(
             onSelected: controller.handleClick,

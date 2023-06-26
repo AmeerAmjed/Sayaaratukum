@@ -210,6 +210,9 @@ class EnTranslations {
         L10n.vinNumber: 'Vin number',
         L10n.creditCard: 'Prepaid credit card',
         L10n.creditType: 'Phone carriers type',
+        L10n.emptyNotify: 'Notification empty ',
+        L10n.emptyNotifyDes:
+            'can Subscribe in store to show when add new item \n or when update car/tool your added to favourite',
 
         //income to
         "USA": 'USA',

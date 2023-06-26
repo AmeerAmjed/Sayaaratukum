@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
 class AppBars extends StatelessWidget with PreferredSizeWidget {
@@ -33,8 +34,8 @@ class AppBars extends StatelessWidget with PreferredSizeWidget {
         leading: widget ?? (hiddenBackButton ? const Space() : null),
         title: title != null
             ? Text(
-                title!,
-                // style: ThemeApp.secondaryXTextStyle,
+          title!,
+                style: Get.textTheme.labelLarge,
               )
             : (widgetAction),
         actions: actions,

@@ -226,4 +226,6 @@ class L10n {
   static const vinNumber = 'vinNumber';
   static const creditCard = 'creditCard';
   static const creditType = 'creditType';
+  static const emptyNotify = 'emptyNotify';
+  static const emptyNotifyDes = 'emptyNotifyDes';
 }
