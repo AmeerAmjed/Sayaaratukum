@@ -33,6 +33,7 @@ class SearchToolController extends BaseController
   init() {
     tools.clear();
     filter = FilterToolController.instance.getValueField();
+    print("filter $filter");
     loadingData();
     getCars(filter);
   }

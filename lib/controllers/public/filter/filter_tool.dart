@@ -8,7 +8,7 @@ import 'package:sayaaratukum/models/category_tool.dart';
 import 'package:sayaaratukum/models/engine_power_type.dart';
 import 'package:sayaaratukum/models/tool.dart';
 
-class FilterToolController extends BaseController {
+class FilterToolController extends BaseController with StateMixin {
   static FilterToolController get instance => Get.find();
 
   var cars = <ToolModel>[].obs.toList(growable: true);
@@ -24,44 +24,59 @@ class FilterToolController extends BaseController {
 
   late GlobalKey<FormFieldState> brandFormKey;
   late GlobalKey<FormFieldState> modelBrandFormKey;
+  late GlobalKey<FormFieldState> categoryFormKey;
 
   late TextEditingController minPrice;
   late TextEditingController maxPrice;
+  late TextEditingController serialNumber;
 
   int idBrandSelected = 0;
   int idModelBrandSelected = 0;
   var statusSelected = "".obs;
 
-  int idCategorySelected = 0;
+  var idCategorySelected = 0.obs;
 
   late TextEditingController search;
   RxBool isTextEmpty = true.obs;
 
-  final int limitRepositories = 20;
-  int page = 1;
-  bool getFirstData = false;
-  bool lastPage = false;
-
   @override
   void onInit() {
-    brands = BrandController.instance.brands;
-    brandFormKey = GlobalKey<FormFieldState>();
-    modelBrandFormKey = GlobalKey<FormFieldState>();
-    getCategories();
-
     super.onInit();
     init();
-  }
-
-  getCategories() {
-    category.addAll(CategoryToolController.instance.category);
   }
 
   init() {
     minPrice = TextEditingController();
     maxPrice = TextEditingController();
+    serialNumber = TextEditingController();
 
     search = TextEditingController();
+    change(null, status: RxStatus.success());
+
+    brands = BrandController.instance.brands;
+    brandFormKey = GlobalKey<FormFieldState>();
+    modelBrandFormKey = GlobalKey<FormFieldState>();
+    categoryFormKey = GlobalKey<FormFieldState>();
+    getCategories();
+  }
+
+  getCategories() async {
+    change(null, status: RxStatus.loading());
+
+    var categoryTool = CategoryToolController.instance.category;
+    if (categoryTool.isEmpty) {
+      await CategoryToolController.instance.getCategoriesNow().then((result) {
+        change(null, status: RxStatus.success());
+
+        category.addAll(result);
+        update();
+      });
+    } else {
+      change(null, status: RxStatus.success());
+
+      category.addAll(categoryTool);
+      update();
+    }
   }
 
   Map<String, String> getValueField() {
@@ -71,10 +86,12 @@ class FilterToolController extends BaseController {
         .addAllIf(idBrandSelected != 0, {"brand": "$idBrandSelected"});
     filterCarField.addAllIf(
         idModelBrandSelected != 0, {"model": "$idModelBrandSelected"});
-    filterCarField.addAllIf(
-        statusSelected.value != "", {"status": statusSelected.value});
+    filterCarField
+        .addAllIf(statusSelected.value != "", {"status": statusSelected.value});
 
     filterCarField.addAllIf(search.text != "", {"search": search.text});
+    filterCarField.addAllIf(
+        serialNumber.text != "", {"serial_number": serialNumber.text});
 
     return filterCarField;
   }
@@ -121,9 +138,7 @@ class FilterToolController extends BaseController {
 
   tryGetCategoriesWhenFailed() {
     if (category == []) {
-      CategoryToolController.instance.getCategories().then((value) {
-        getCategories();
-      });
+      getCategories();
     }
   }
 
@@ -135,7 +150,7 @@ class FilterToolController extends BaseController {
     if (newCategory != null) {
       category.firstWhere((item) {
         if (item.name == newCategory) {
-          idCategorySelected = item.id;
+          idCategorySelected.value = item.id;
           return true;
         }
         return false;
@@ -158,8 +173,10 @@ class FilterToolController extends BaseController {
     print("clean all");
     brandFormKey.currentState?.reset();
     modelBrandFormKey.currentState?.reset();
+    categoryFormKey.currentState?.reset();
 
     minPrice.clear();
+    serialNumber.clear();
     maxPrice.clear();
 
     _cleanField();
@@ -169,6 +186,7 @@ class FilterToolController extends BaseController {
     idBrandSelected = 0;
     idModelBrandSelected = 0;
     statusSelected.value = "";
+    idCategorySelected.value = 0;
     update();
   }
 
@@ -195,6 +213,9 @@ class FilterToolController extends BaseController {
   @override
   void dispose() {
     search.dispose();
+    serialNumber.dispose();
+    minPrice.dispose();
+    maxPrice.dispose();
     super.dispose();
   }
 }

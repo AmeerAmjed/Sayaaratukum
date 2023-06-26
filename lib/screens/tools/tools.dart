@@ -29,9 +29,11 @@ class ToolsScreen extends GetView<ToolsController> {
                 delegate: SliverChildListDelegate([
                   SearchToolBar(
                     onSubmittedSearch: (value) {
+                      Get.back();
                       controller.navigateTo(RouteScreen.searchTool);
                     },
                     onPressedApplyFilter: () {
+                      Get.back();
                       controller.navigateTo(RouteScreen.searchTool);
                     },
                   )

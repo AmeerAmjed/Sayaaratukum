@@ -25,6 +25,7 @@ class AddToolController extends BaseController {
   late GlobalKey<FormState> formKey;
   late GlobalKey<FormFieldState> keyManagerModelBrand;
   late TextEditingController name;
+  late TextEditingController serialNumber;
   late TextEditingController color;
   late TextEditingController price;
   late TextEditingController description;
@@ -93,6 +94,7 @@ class AddToolController extends BaseController {
     formKey = GlobalKey<FormState>();
     keyManagerModelBrand = GlobalKey<FormFieldState>();
     name = TextEditingController();
+    serialNumber = TextEditingController();
     color = TextEditingController();
     price = TextEditingController();
     description = TextEditingController();
@@ -289,5 +291,15 @@ class AddToolController extends BaseController {
   loading(bool state) {
     disableSubmit.value = state;
     update();
+  }
+
+  @override
+  void dispose() {
+    name.dispose();
+    serialNumber.dispose();
+    color.dispose();
+    price.dispose();
+    description.dispose();
+    super.dispose();
   }
 }

@@ -14,6 +14,7 @@ class Loading extends StatelessWidget {
     return Center(
       child: CupertinoActivityIndicator(
         color: color ?? Theme.of(context).primaryColor,
+        radius: 15,
       ),
     );
   }

@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/public/filter/filter_car.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/add_car/components/row_two_widget.dart';
 import 'package:sayaaratukum/screens/add_car/components/year_brand.dart';
-import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/util/currency_input_formatter.dart';
 import 'package:sayaaratukum/util/hard_code.dart';
-import 'package:sayaaratukum/widgets/buttons.dart';
 import 'package:sayaaratukum/widgets/dropdown_list.dart';
-import 'package:sayaaratukum/widgets/horizontal_space.dart';
+import 'package:sayaaratukum/widgets/header_filter_cleaner.dart';
 import 'package:sayaaratukum/widgets/input.dart';
 import 'package:sayaaratukum/widgets/vertical_space.dart';
 import 'package:sayaaratukum/widgets/years.dart';
@@ -25,27 +22,8 @@ class FilterCar extends GetView<FilterCarController> {
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const HorizontalSpace16(),
-            Text(
-              L10n.filterBy.tr,
-              style: Get.textTheme.labelLarge,
-            ),
-            const Spacer(),
-            Buttons(
-              height: 40,
-              width: 150,
-              iconSize: 2,
-              colorOnButton: ColorSystem.colorOptional,
-              background: Colors.transparent,
-              label: L10n.cleanFilter.tr,
-              iconRow: Iconsax.filter_remove,
-              onPressed: controller.cleanFilter,
-            )
-          ],
+        HeaderFilterCleaner(
+          onPressedClean: controller.cleanFilter,
         ),
         const VerticalSpace8(),
         RowTwoWidget(

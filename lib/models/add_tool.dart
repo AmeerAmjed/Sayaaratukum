@@ -13,6 +13,7 @@ class FormAddToolModel extends BaseModel {
   int idBrand;
   int idModelBrand;
   int idCategory;
+  int? serialNumber;
   int idStore;
   String status;
   String image;
@@ -24,6 +25,7 @@ class FormAddToolModel extends BaseModel {
     required this.price,
     required this.color,
     required this.idBrand,
+    this.serialNumber,
     required this.idModelBrand,
     required this.idCategory,
     required this.idStore,
@@ -43,8 +45,8 @@ class FormAddToolModel extends BaseModel {
       'currency': currency,
       'description': description,
       'category_id': idCategory.toString(),
+      'serial_number': serialNumber,
     });
-
     var imageTool = MapEntry(
       "image",
       MultipartFile(

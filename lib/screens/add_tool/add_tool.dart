@@ -68,6 +68,12 @@ class AddTool extends GetView<AddToolController> {
             }),
             const VerticalSpace8(),
             InputAuth(
+              controller: controller.serialNumber,
+              label: L10n.serialNumber.tr,
+              keyboardType: TextInputType.number,
+            ),
+            const VerticalSpace8(),
+            InputAuth(
               controller: controller.price,
               label: L10n.price.tr,
               inputFormatters: [

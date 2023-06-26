@@ -5,7 +5,6 @@ import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/controllers/public/search/tool.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/tools/components/search_tool_bar.dart';
-import 'package:sayaaratukum/screens/search/car/components/search_car_bar.dart';
 import 'package:sayaaratukum/screens/tools/components/tool_item.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
@@ -23,7 +22,7 @@ class SearchTool extends GetView<SearchToolController> {
         actions: [
           const Spacer(),
           Expanded(
-            flex: 9,
+            flex: 6,
             child: Container(
               padding: const EdgeInsets.only(top: 6),
               child: SearchToolBar(

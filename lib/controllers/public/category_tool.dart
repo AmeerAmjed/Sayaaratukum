@@ -32,4 +32,15 @@ class CategoryToolController extends BaseController {
       print("CategoryToolController getCategories${response.statusCode}");
     }
   }
+
+  Future<List<CategoryToolModel>> getCategoriesNow() async {
+    return await ToolsServices.instance.getCategories().then((response) {
+      List<CategoryToolModel> resultCategory = CategoryToolModel.listFromJson(
+        response.body[Constants.bodyData],
+      );
+      category.addAll(resultCategory);
+      update();
+      return resultCategory;
+    });
+  }
 }
