@@ -23,4 +23,26 @@ class BrandServices extends BaseService {
       return Future.error(e);
     }
   }
+
+  Future<Response> getAllBrandPin({
+    required int page,
+    required int limit,
+  }) async {
+    try {
+      String urlBrand = "${pagination(
+        ApiEndpoint.brand,
+        page: page,
+        limit: limit,
+      )}&is_pinned=1";
+      Response response = await get(urlBrand);
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error BrandServices getAllBrand $e");
+      return Future.error(e);
+    }
+  }
 }
