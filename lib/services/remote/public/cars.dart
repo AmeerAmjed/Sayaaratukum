@@ -67,7 +67,7 @@ class CarsServices extends BaseService {
 
   Future<Response> getCarsById(String id) async {
     try {
-      Response response = await get("${ApiEndpoint.cars}/$id");
+      Response response = await get("${ApiEndpoint.cars}/$id?lang=$lang");
       if (response.status.hasError) {
         return Future.error(response);
       } else {
@@ -82,7 +82,7 @@ class CarsServices extends BaseService {
   Future<Response> updateCar(AddCarModel car) async {
     try {
       Response response = await post(
-        "${ApiEndpoint.addCar}?_method=put",
+        "${ApiEndpoint.addCar}?_method=put&lang=$lang",
         car.getBaseInfo(),
       );
       if (response.status.hasError) {
@@ -98,7 +98,8 @@ class CarsServices extends BaseService {
 
   Future<Response> deleteImageCar(String id) async {
     try {
-      Response response = await delete("${ApiEndpoint.adminImagesCar}/$id");
+      Response response =
+          await delete("${ApiEndpoint.adminImagesCar}/$id?lang=$lang");
       if (response.status.hasError) {
         return Future.error(response);
       } else {
@@ -112,8 +113,8 @@ class CarsServices extends BaseService {
 
   Future<Response> addImageCar(int id, String imagePath) async {
     try {
-      Response response = await post(
-          ApiEndpoint.adminImagesCar, getFormDataAddImage(id, imagePath));
+      Response response = await post("${ApiEndpoint.adminImagesCar}?lang=$lang",
+          getFormDataAddImage(id, imagePath));
       if (response.status.hasError) {
         return Future.error(response);
       } else {

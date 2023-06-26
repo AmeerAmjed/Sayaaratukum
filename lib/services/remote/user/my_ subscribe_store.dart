@@ -15,7 +15,7 @@ class MySubscribeStoreServices extends BaseService {
       // String urlStores =
       //     pagination(ApiEndpoint.storesSubscribed, page: page, limit: limit);
       // Response response = await get("$urlStores&type=$typeId");
-      Response response = await get(ApiEndpoint.mySubscribeStore);
+      Response response = await get("${ApiEndpoint.mySubscribeStore}?lang=$lang");
 
       if (response.status.hasError) {
         return Future.error(response);

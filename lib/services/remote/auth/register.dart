@@ -9,7 +9,7 @@ class RegisterServices extends BaseService {
 
   Future<Response> register(RegisterModel body) async {
     try {
-      Response response = await post(ApiEndpoint.register, body.toJson());
+      Response response = await post("${ApiEndpoint.register}?lang=$lang", body.toJson());
       if (response.status.hasError) {
         return Future.error(response);
       } else {

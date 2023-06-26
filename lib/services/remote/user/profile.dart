@@ -8,7 +8,7 @@ class ProfileService extends BaseService {
 
   Future<Response> getMyProfile() async {
     try {
-      Response response = await get(ApiEndpoint.myProfile);
+      Response response = await get("${ApiEndpoint.myProfile}?lang=$lang");
       if (response.status.hasError) {
         return Future.error(response);
       } else {
@@ -26,7 +26,7 @@ class ProfileService extends BaseService {
       "last_name": lastName,
     };
     try {
-      Response response = await post(ApiEndpoint.updateProfile, userInfo);
+      Response response = await post("${ApiEndpoint.updateProfile}?lang=$lang", userInfo);
       if (response.status.hasError) {
         return Future.error(response);
       } else {
@@ -47,7 +47,7 @@ class ProfileService extends BaseService {
       "password_confirmation": passwordConfirmation,
     };
     try {
-      Response response = await put(ApiEndpoint.updatePassword, passwords);
+      Response response = await put("${ApiEndpoint.updatePassword}?lang=$lang", passwords);
       if (response.status.hasError) {
         return Future.error(response);
       } else {
@@ -65,7 +65,7 @@ class ProfileService extends BaseService {
       "email": email,
     };
     try {
-      Response response = await put(ApiEndpoint.updateEmail, emailUser);
+      Response response = await put("${ApiEndpoint.updateEmail}?lang=$lang", emailUser);
       if (response.status.hasError) {
         return Future.error(response);
       } else {
@@ -85,7 +85,7 @@ class ProfileService extends BaseService {
     };
     try {
       Response response =
-          await put(ApiEndpoint.updatePhoneNumber, phoneNumberUser);
+          await put("${ApiEndpoint.updatePhoneNumber}?lang=$lang", phoneNumberUser);
       if (response.status.hasError) {
         return Future.error(response);
       } else {

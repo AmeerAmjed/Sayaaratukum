@@ -32,8 +32,6 @@ class SearchServices extends BaseService {
   }) async {
     String arg = Uri(queryParameters: body).query;
 
-    print("encodedString $body");
-    print("encodedString $arg");
     try {
       String url = pagination(ApiEndpoint.cars, page: page, limit: limit);
       Response response = await get("$url&$arg");

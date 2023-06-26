@@ -26,7 +26,7 @@ class ToolsServices extends BaseService {
 
   Future<Response> getToolById(String id) async {
     try {
-      Response response = await get("${ApiEndpoint.tool}/$id");
+      Response response = await get("${ApiEndpoint.tool}/$id?lang=$lang");
       if (response.status.hasError) {
         return Future.error(response);
       } else {
@@ -60,7 +60,7 @@ class ToolsServices extends BaseService {
 
   Future<Response> getCategories() async {
     try {
-      Response response = await get(ApiEndpoint.category);
+      Response response = await get("${ApiEndpoint.category}?lang=$lang");
       if (response.status.hasError) {
         return Future.error(response);
       } else {

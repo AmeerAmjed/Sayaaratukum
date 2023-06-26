@@ -8,7 +8,7 @@ class VinCheckServices extends BaseService {
 
   Future<Response> addCheck(Map<String, String> body) async {
     try {
-      Response response = await post(ApiEndpoint.vinCheck, body);
+      Response response = await post("${ApiEndpoint.vinCheck}?lang=$lang", body);
       if (response.status.hasError) {
         return Future.error(response);
       } else {

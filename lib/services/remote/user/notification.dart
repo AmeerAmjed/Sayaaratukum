@@ -8,7 +8,7 @@ class NotificationServices extends BaseService {
 
   Future<Response> getAllNotification() async {
     try {
-      Response response = await get(ApiEndpoint.notification);
+      Response response = await get("${ApiEndpoint.notification}?lang=$lang");
 
       if (response.status.hasError) {
         return Future.error(response);
@@ -23,7 +23,7 @@ class NotificationServices extends BaseService {
 
   Future<Response> setNotificationsSeen() async {
     try {
-      Response response = await post(ApiEndpoint.notificationsSeen, {});
+      Response response = await post("${ApiEndpoint.notificationsSeen}?lang=$lang", {});
       if (response.status.hasError) {
         return Future.error(response);
       } else {

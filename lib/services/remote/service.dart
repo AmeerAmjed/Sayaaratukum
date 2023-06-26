@@ -9,6 +9,7 @@ abstract class BaseService extends GetConnect with LocalStorage {
   String headerAccept = "application/json";
   String bearer = "Bearer";
 
+  String get lang => Application.instance.langCode.value;
   @override
   void onInit() {
     httpClient.baseUrl = ApiEndpoint.baseUrl;
@@ -33,6 +34,6 @@ abstract class BaseService extends GetConnect with LocalStorage {
     required int page,
     required int limit,
   }) {
-    return "$route?page=$page&limit=$limit";
+    return "$route?page=$page&limit=$limit&?lang=$lang";
   }
 }

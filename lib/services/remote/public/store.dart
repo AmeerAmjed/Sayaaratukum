@@ -14,7 +14,7 @@ class StoreServices extends BaseService {
     try {
       String urlStores =
       pagination(ApiEndpoint.stores, page: page, limit: limit);
-      Response response = await get("$urlStores&type=$typeId");
+      Response response = await get("$urlStores&type=$typeId&lang=$lang");
       if (response.status.hasError) {
         return Future.error(response);
       } else {
@@ -28,7 +28,7 @@ class StoreServices extends BaseService {
 
   Future<Response> getStoresById(String id) async {
     try {
-      Response response = await get("${ApiEndpoint.stores}/$id");
+      Response response = await get("${ApiEndpoint.stores}/$id?lang=$lang");
       if (response.status.hasError) {
         return Future.error(response);
       } else {
@@ -43,7 +43,7 @@ class StoreServices extends BaseService {
   Future<Response> subscription(String id) async {
     try {
       Response response =
-          await post("${ApiEndpoint.storeSubscription}/$id", {});
+          await post("${ApiEndpoint.storeSubscription}/$id?lang=$lang", {});
       if (response.status.hasError) {
         return Future.error(response);
       } else {
@@ -57,7 +57,7 @@ class StoreServices extends BaseService {
 
   Future<Response> updateProfile(String id, FormData body) async {
     try {
-      Response response = await post("/admin/stores/$id?_method=put", body);
+      Response response = await post("/admin/stores/$id?_method=put&lang=$lang", body);
       if (response.status.hasError) {
         return Future.error(response);
       } else {

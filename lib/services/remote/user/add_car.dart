@@ -9,7 +9,7 @@ class AddCarService extends BaseService {
   Future<Response> addCar(AddCarModel car) async {
     try {
       Response response = await post(
-        ApiEndpoint.addCar,
+        "${ApiEndpoint.addCar}?lang=$lang",
         await car.getFormData(),
       );
       if (response.status.hasError) {

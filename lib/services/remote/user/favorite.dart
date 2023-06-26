@@ -8,7 +8,7 @@ class FavoriteService extends BaseService {
 
   Future<Response> getAllFavorite() async {
     try {
-      Response response = await get(ApiEndpoint.favorite);
+      Response response = await get("${ApiEndpoint.favorite}?lang=$lang");
       if (response.status.hasError) {
         return Future.error(response);
       } else {
@@ -24,7 +24,7 @@ class FavoriteService extends BaseService {
     var body = {"type": "car", "id": id};
 
     try {
-      Response response = await post(ApiEndpoint.toggleFavorite, body);
+      Response response = await post("${ApiEndpoint.toggleFavorite}?lang=$lang", body);
       if (response.status.hasError) {
         return Future.error(response);
       } else {

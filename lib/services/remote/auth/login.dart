@@ -9,7 +9,7 @@ class LoginServices extends BaseService {
 
   Future<Response> login(Map<String, dynamic> body) async {
     try {
-      Response response = await post(ApiEndpoint.login, body);
+      Response response = await post("${ApiEndpoint.login}?lang=$lang", body);
       if (response.status.hasError) {
         return Future.error(response);
       } else {

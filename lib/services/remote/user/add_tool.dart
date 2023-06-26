@@ -9,7 +9,7 @@ class AddToolService extends BaseService {
   Future<Response> add(FormAddToolModel tool) async {
     try {
       Response response = await post(
-        ApiEndpoint.addTool,
+        "${ApiEndpoint.addTool}?lang=$lang",
         await tool.getFormData(),
       );
       if (response.status.hasError) {
