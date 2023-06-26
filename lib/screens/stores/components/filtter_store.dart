@@ -48,7 +48,7 @@ class FilterStores extends StatelessWidget {
               padding: EdgeInsets.zero,
               background: getBackgroundActiveButton(StoreType.tools),
               colorOnButton: getColorOnActiveButton(StoreType.tools),
-              label: L10n.stores.tr,
+              label: L10n.spareParts.tr,
               onPressed: onClickStores,
             ),
           )
