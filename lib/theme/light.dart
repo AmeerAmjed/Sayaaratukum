@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:sayaaratukum/util/constant.dart';
-import 'package:sayaaratukum/util/lang_code.dart';
 
 import 'color.dart';
 
 class LightThemeApp {
-  ThemeData light(String local) {
-    var fontFamily = local == LangCode.ar.name
-        ? GoogleFonts.tajawal().fontFamily
-        : GoogleFonts.poppins().fontFamily;
+  ThemeData light(String fontFamily) {
     return ThemeData(
       fontFamily: fontFamily,
       backgroundColor: _background,
