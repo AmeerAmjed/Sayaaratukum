@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/services/remote/public/vin_check.dart';
 import 'package:sayaaratukum/util/hard_code.dart';
+import 'package:sayaaratukum/widgets/CustomDialog.dart';
 
 class VinCheckController extends BaseController {
   late GlobalKey<FormState> formKey;
@@ -39,8 +42,9 @@ class VinCheckController extends BaseController {
       "name": fullName.text,
       "phone_number": phoneNumber.text,
       "vin_number": vinNumber.text,
-      "credit_number": "234234234",
-      "credit_type": "zain",
+      "credit_number": creditNumber.text,
+      "credit_type": creditType.value.toLowerCase(),
+      "incoming_type": inComing.value,
       "notes": notes.text,
     };
     try {
@@ -48,23 +52,26 @@ class VinCheckController extends BaseController {
         loading(false);
         var body = response.body;
         if (response.isOk) {
-          // if (body[statusResponse] == success) {
-          //   var user = UserModel.fromJson(body[data]);
-          //   var tokenUser = body[bodyToken];
-          //   Application.instance.login(user, tokenUser);
-          //
-          //   if (!user.isEmailVerified && user.email != null) {
-          //     showValidateEmail();
-          //   } else {
-          //     navToMainScreen();
-          //   }
-          // }
+          if (body[statusResponse] == success) {
+            showValidateEmail();
+          }
         }
       });
     } on Response catch (response) {
       loading(false);
       onError(response.body[message]);
     }
+  }
+
+  showValidateEmail() {
+    showCustomDialog(
+      L10n.vinCheck.tr,
+      message: L10n.vinMessage.tr,
+      labelButtonAction: L10n.ok.tr,
+      onPressedAction: () {
+        Get.back();
+      },
+    );
   }
 
   onChangeMadeTo(String? madeTo) {

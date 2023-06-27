@@ -71,11 +71,10 @@ class VinCheck extends GetView<VinCheckController> {
               label: L10n.vinNumber.tr,
               hintText: "",
               controller: controller.vinNumber,
-              keyboardType: TextInputType.number,
-              validator: (emailOrNumberPhone) =>
-                  ValidatorInput.checkValidateIsRequired(
+              keyboardType: TextInputType.text,
+              validator: (vinNumber) => ValidatorInput.checkValidateIsRequired(
                 L10n.isRequired.tr,
-                emailOrNumberPhone,
+                vinNumber,
               ),
             ),
             const VerticalSpace8(),
