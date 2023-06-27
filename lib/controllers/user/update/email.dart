@@ -6,6 +6,7 @@ import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/auth/auth.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/models/user.dart';
 import 'package:sayaaratukum/services/remote/user/profile.dart';
 
 class UpdateEmailController extends AuthController {
@@ -37,12 +38,27 @@ class UpdateEmailController extends AuthController {
         var body = response.body;
         if (response.isOk) {
           if (body[statusResponse] == success) {
-            showMessage(L10n.successfullyUpdateEmail.tr);
+            updateProfile();
           }
         }
       });
     } on Response catch (response) {
       loading(false);
+      onError(response.body[message]);
+    }
+  }
+
+  updateProfile() async {
+    try {
+      await ProfileService.instance.getMyProfile().then((response) async {
+        var body = await response.body;
+        if (response.isOk) {
+          showMessage(L10n.successfullyUpdateEmail.tr);
+          var user = UserModel.fromJson(body[data]);
+          Application.instance.updateUserInfo(user);
+        }
+      });
+    } on Response catch (response) {
       onError(response.body[message]);
     }
   }
