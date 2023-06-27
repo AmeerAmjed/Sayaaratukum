@@ -32,12 +32,13 @@ class HomeBinding extends Bindings {
 
     Get.put<EnginePowersController>(EnginePowersController(), permanent: true);
 
-    Get.lazyPut<FavoriteService>(() => FavoriteService());
     Get.put<FavoriteController>(FavoriteController(), permanent: true);
 
     Get.put<FilterCarController>(FilterCarController(), permanent: true);
 
-    Get.lazyPut<NotificationServices>(() => NotificationServices());
+
+    Get.put<NotificationServices>(NotificationServices(), permanent: true);
+    Get.put<FavoriteService>(FavoriteService(), permanent: true);
     Get.put<NotificationController>(NotificationController(), permanent: true);
   }
 }

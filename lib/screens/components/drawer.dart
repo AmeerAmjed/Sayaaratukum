@@ -37,21 +37,21 @@ class DrawerApp extends GetView<Application> {
             },
           ),
           const VerticalSpace16(),
-          ListTitleIcon(
-            icon: Iconsax.notification,
-            trailing: GetBuilder<Application>(
-              builder: (state) {
-                return CupertinoSwitch(
-                  activeColor: Get.theme.primaryColor,
-                  value: state.isNotificationActive.value,
-                  onChanged: (switchState) {
-                    state.setNotificationState = switchState;
-                  },
-                );
-              },
-            ),
-            title: L10n.notifications.tr,
-          ),
+          // ListTitleIcon(
+          //   icon: Iconsax.notification,
+          //   trailing: GetBuilder<Application>(
+          //     builder: (state) {
+          //       return CupertinoSwitch(
+          //         activeColor: Get.theme.primaryColor,
+          //         value: state.isNotificationActive.value,
+          //         onChanged: (switchState) {
+          //           state.setNotificationState = switchState;
+          //         },
+          //       );
+          //     },
+          //   ),
+          //   title: L10n.notifications.tr,
+          // ),
           ListTitleIcon(
             icon: Iconsax.global,
             title: L10n.language.tr,

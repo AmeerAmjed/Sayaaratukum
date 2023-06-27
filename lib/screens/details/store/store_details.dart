@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/public/store/store_car_details.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/screens/home/components/title_with_view_all.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
 import 'package:sayaaratukum/widgets/popup_menu.dart';
@@ -23,44 +22,49 @@ class StoreCarDetails extends GetView<StoreCarDetailsController> {
     return Scaffold(
       appBar: AppBars(
         actions: <Widget>[
-          // GetBuilder<StoreCarDetailsController>(builder: (state) {
-          //   var user = Application.instance.user?.value;
-          //   var idStore = state.idStore.value;
-          //   if (user != null) {
-          //     if (idStore != "0" && user.myStoreId.toString() == idStore) {
-          //       return PopupMenu(
-          //         titles: const [L10n.profile],
-          //         onSelected: (value) {
-          //           switch (value) {
-          //             case L10n.profile:
-          //               controller.navigateTo(RouteScreen.updateStoreProfile);
-          //               break;
-          //           }
-          //         },
-          //       );
-          //     }
-          //   }
-          //
-          //   return const Space();
-          // }),
+          GetBuilder<StoreCarDetailsController>(builder: (state) {
+            var user = Application.instance.user?.value;
+            var idStore = state.idStore.value;
+            if (user != null) {
+              if (idStore != "0" && user.myStoreId.toString() == idStore) {
+                return PopupMenu(
+                  titles: const [L10n.profile],
+                  onSelected: (value) {
+                    switch (value) {
+                      case L10n.profile:
+                        controller.navigateToUpdateStoreProfile(
+                          Application.instance.user?.value?.myStoreId ?? 0,
+                        );
+                        break;
+                    }
+                  },
+                );
+              }
+            }
+
+            return const Space();
+          }),
         ],
       ),
       body: SizedBox(
         height: double.maxFinite,
-        child: SingleChildScrollView(
-          controller: controller.scroll,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const HeaderInfoStore(),
-              const VerticalSpace24(),
-              TitleWithViewAll(
-                title: L10n.cars.tr,
-              ),
-              const VerticalSpace16(),
-              const ItemCarsStore()
-            ],
+        child: RefreshIndicator(
+          onRefresh: controller.onRefreshALl,
+          child: SingleChildScrollView(
+            controller: controller.scroll,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const HeaderInfoStore(),
+                const VerticalSpace24(),
+                TitleWithViewAll(
+                  title: L10n.cars.tr,
+                ),
+                const VerticalSpace16(),
+                const ItemCarsStore()
+              ],
+            ),
           ),
         ),
       ),

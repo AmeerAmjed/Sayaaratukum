@@ -5,6 +5,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
+import 'package:sayaaratukum/controllers/public/store/store_car_info_details.dart';
 import 'package:sayaaratukum/controllers/user/favorite.dart';
 import 'package:sayaaratukum/models/car.dart';
 import 'package:sayaaratukum/models/store.dart';
@@ -141,6 +142,11 @@ class StoreCarDetailsController extends BaseController
 
   Future<void> onRefresh() async {
     getCars();
+  }
+
+  Future<void> onRefreshALl() async {
+    getCars();
+    InfoStoreCarDetails.instance.init();
   }
 
   navigateToDetails(int id) {

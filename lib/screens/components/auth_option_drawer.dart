@@ -32,6 +32,8 @@ class AuthOptionDrawer extends GetView<Application> {
               if (user != null && user.myStoreId != -1) {
                 if (user.role?.id == 2 && user.roleType == "tools") {
                   controller.storeTools(user.myStoreId.toString());
+                } else {
+                  controller.storeCars(user.myStoreId.toString());
                 }
               }
             },
