@@ -241,3 +241,9 @@ class HardCode {
   ];
 
 }
+
+String? getValueHardCodeMadeToByKey(String key) {
+  final map = HardCode.madeTo
+      .firstWhere((item) => item.containsKey(key), orElse: () => {});
+  return map[key];
+}

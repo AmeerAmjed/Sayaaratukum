@@ -92,8 +92,9 @@ class InformationCarForm extends GetView<AddCarController> {
           label: L10n.madeTo.tr,
           onChanged: controller.onChangeMadeTo,
           items: HardCode.madeTo.map((map) => map.values.first).toList(),
-          value:
-              controller.madeTo.value.isEmpty ? null : controller.madeTo.value,
+          value: controller.madeTo.value.isEmpty
+              ? null
+              : getValueHardCodeMadeToByKey(controller.madeTo.value),
         ),
         const VerticalSpace8(),
         DropdownList(
