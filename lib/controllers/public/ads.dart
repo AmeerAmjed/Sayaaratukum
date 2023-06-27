@@ -86,8 +86,10 @@ class AdsController extends BaseController
   }
 
   onAdsClicked(AdsModel ads) {
-    if (ads.typeAds == TypeAds.car) {
-      carDetails(ads.idItem);
+    if (ads.idItem != null && ads.typeAds != null) {
+      if (ads.typeAds == TypeAds.car) {
+        carDetails(ads.idItem!);
+      }
     }
   }
 
