@@ -4,12 +4,15 @@ import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/main_tab.dart';
 import 'package:sayaaratukum/controllers/user/favorite.dart';
+import 'package:sayaaratukum/controllers/user/notification.dart';
 import 'package:sayaaratukum/models/tool.dart';
 import 'package:sayaaratukum/models/user.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/local/storage.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/lang_code.dart';
+
+import '../pusher.dart';
 
 class Application extends BaseController with LocalStorage {
   static Application get instance => Get.find();
@@ -136,6 +139,18 @@ class Application extends BaseController with LocalStorage {
       FavoriteController.instance.init();
     } catch (err) {
       print("error resetStateAuthController init FavoriteController $err");
+    }
+
+    try {
+      NotificationController.instance.init();
+    } catch (err) {
+      print("error resetStateAuthController init NotificationController $err");
+    }
+
+    try {
+      await pusherListener();
+    } catch (err) {
+      print("error resetStateAuthController init pusherListener $err");
     }
   }
 
