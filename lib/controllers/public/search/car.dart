@@ -49,9 +49,7 @@ class SearchCarsController extends BaseController
             response.body[data],
           );
 
-          // final bool emptyRepositories = response.body?.isEmpty ?? true;
-          var responseData = response.body[data];
-          final bool emptyRepositories = responseData.isEmpty;
+          final bool emptyRepositories = response.body?.isEmpty ?? true;
           if (!getFirstData && emptyRepositories) {
             change(null, status: RxStatus.empty());
           } else if (getFirstData && emptyRepositories) {
@@ -73,7 +71,8 @@ class SearchCarsController extends BaseController
 
   @override
   Future<void> onEndScroll() async {
-    print(" loadingggg more");
+    print(" loadingggg more $filter");
+
     if (!lastPage) {
       page += 1;
       loadingMore(true);
