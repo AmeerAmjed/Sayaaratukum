@@ -29,18 +29,21 @@ class NotificationModel extends BaseModel {
           ? json['product']['images'][0]['path']
           : json['product']['image'],
       nameStore: json['type'] == "car"
-          ? json['product']['carable']['name'] ?? json['product']['carable']['fullname']
+          ? json['product']['carable']['name'] ??
+              json['product']['carable']['fullname']
           : json['product']['store']['name'] ?? "",
       isRead: json['is_read'] == 0 ? false : true,
     );
   }
 
-  static List<NotificationModel> listFromJson(list) =>
-      List<NotificationModel>.from(
-        list.map(
-          (x) => NotificationModel.fromJson(x),
-        ),
-      ).toList();
+  static List<NotificationModel> listFromJson(List<dynamic> list) {
+    final favoriteList = list
+        .map((x) => NotificationModel.fromJson(x))
+        .where(
+            (favorite) => (favorite.product != null && favorite.type != null))
+        .toList();
+    return favoriteList;
+  }
 }
 
 class ItemNotificationModel extends BaseModel {
