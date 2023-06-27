@@ -22,46 +22,49 @@ class HomeScreen extends GetView<CarsController> {
     const duration = Duration(milliseconds: 300);
     return Scaffold(
       body: Container(
-        child: SingleChildScrollView(
-          controller: CarsController.instance.scroll,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const VerticalSpace16(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: SearchCarBar(
-                  onSubmittedSearch: (value) {
-                    controller.navigateTo(RouteScreen.searchCar);
-                  },
-                  onPressedApplyFilter: () {
-                    controller.navigateTo(RouteScreen.searchCar);
+        child: RefreshIndicator(
+          onRefresh: controller.onHomeRefresh,
+          child: SingleChildScrollView(
+            controller: CarsController.instance.scroll,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const VerticalSpace16(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: SearchCarBar(
+                    onSubmittedSearch: (value) {
+                      controller.navigateTo(RouteScreen.searchCar);
+                    },
+                    onPressedApplyFilter: () {
+                      controller.navigateTo(RouteScreen.searchCar);
+                    },
+                  ),
+                ),
+                const VerticalSpace8(),
+                TitleWithViewAll(
+                  title: L10n.brands.tr,
+                  onPressed: () {
+                    Get.toNamed(RouteScreen.viewAllBrand);
                   },
                 ),
-              ),
-              const VerticalSpace8(),
-              TitleWithViewAll(
-                title: L10n.brands.tr,
-                onPressed: () {
-                  Get.toNamed(RouteScreen.viewAllBrand);
-                },
-              ),
-              Brands(),
-              const VerticalSpace12(),
-              TitleWithViewAll(
-                title: L10n.adsDeals.tr,
-              ),
-              Ads(
-                width: width,
-              ),
-              const VerticalSpace16(),
-              TitleWithViewAll(
-                title: L10n.recommended.tr,
-                // onPressed: () {},
-              ),
-              const VerticalSpace4(),
-              const ItemsCar(),
-            ],
+                Brands(),
+                const VerticalSpace12(),
+                TitleWithViewAll(
+                  title: L10n.adsDeals.tr,
+                ),
+                Ads(
+                  width: width,
+                ),
+                const VerticalSpace16(),
+                TitleWithViewAll(
+                  title: L10n.recommended.tr,
+                  // onPressed: () {},
+                ),
+                const VerticalSpace4(),
+                const ItemsCar(),
+              ],
+            ),
           ),
         ),
       ),

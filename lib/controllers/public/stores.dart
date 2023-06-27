@@ -4,6 +4,7 @@ import 'package:sayaaratukum/controllers/pagination.dart';
 import 'package:sayaaratukum/models/store.dart';
 import 'package:sayaaratukum/services/remote/public/store.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/error_handler.dart';
 import 'package:sayaaratukum/util/store_type.dart';
 
 class StoresController extends BaseController
@@ -21,8 +22,13 @@ class StoresController extends BaseController
 
   @override
   void onInit() {
+    init();
     super.onInit();
+  }
+
+  init() {
     loadingData();
+    stores.clear();
     getAllStore(storeTypeId.value);
   }
 
@@ -70,7 +76,8 @@ class StoresController extends BaseController
         }
       });
     } on Response catch (response) {
-      change(null, status: RxStatus.error());
+      RequestResult result = errorHandler(response);
+      change(null, status: RxStatus.error(result.message));
       print("getAllBrand ${response.statusCode}");
     }
   }

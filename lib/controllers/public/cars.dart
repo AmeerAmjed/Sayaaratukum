@@ -4,15 +4,16 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/instance_manager.dart';
-import 'package:sayaaratukum/binding/public/car_details.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
+import 'package:sayaaratukum/controllers/public/ads.dart';
+import 'package:sayaaratukum/controllers/public/brand_pin.dart';
 import 'package:sayaaratukum/controllers/user/favorite.dart';
 import 'package:sayaaratukum/models/car.dart';
-import 'package:sayaaratukum/screens/details/car/car_details.dart';
 import 'package:sayaaratukum/services/remote/public/cars.dart';
 import 'package:sayaaratukum/services/remote/user/favorite.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/error_handler.dart';
 
 class CarsController extends BaseController
     with StateMixin<List<CarModel>>, PaginationController, ScrollMixin {
@@ -26,10 +27,16 @@ class CarsController extends BaseController
   bool getFirstData = false;
   bool lastPage = false;
   var showFab = true.obs;
+
   @override
   void onInit() {
-    String? id = Get.parameters[Constants.brandIdKey];
+    init();
     super.onInit();
+  }
+
+  init() {
+    String? id = Get.parameters[Constants.brandIdKey];
+    cars.clear();
     loadingData();
     getCars();
     scrollListener();
@@ -60,7 +67,8 @@ class CarsController extends BaseController
         }
       });
     } on Response catch (response) {
-      change(null, status: RxStatus.error());
+      RequestResult result = errorHandler(response);
+      change(null, status: RxStatus.error(result.message));
       print("getAllBrand ${response.statusCode}");
     }
   }
@@ -156,4 +164,9 @@ class CarsController extends BaseController
     getCars();
   }
 
+  Future<void> onHomeRefresh() async {
+    getCars();
+    AdsController.instance.init();
+    BrandPinController.instance.init();
+  }
 }

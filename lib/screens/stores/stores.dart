@@ -8,6 +8,7 @@ import 'package:sayaaratukum/screens/stores/components/filtter_store.dart';
 import 'package:sayaaratukum/screens/stores/components/item_stores.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/empty.dart';
+import 'package:sayaaratukum/widgets/error.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
 import '../../util/store_type.dart';
@@ -46,6 +47,12 @@ class StoresScreen extends GetView<StoresController> {
           },
           body: controller.obx(
               onLoading: const Loading(),
+              onError: (e) => ErrorScreen(
+                textError: e.toString(),
+                onPressed: () {
+                  controller.init();
+                },
+              ),
               onEmpty: Empty(
                 title: L10n.empty.tr,
                 icon: Iconsax.clipboard_close,

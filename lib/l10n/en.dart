@@ -215,6 +215,7 @@ class EnTranslations {
             'can Subscribe in store to show when add new item \n or when update car/tool your added to favourite',
 
         L10n.vinMessage : "The report will be sent as soon as it is prepared on WhatsApp",
+        L10n.internetIssue : "Internet issue reconnect",
 
         //income to
         "USA": 'USA',

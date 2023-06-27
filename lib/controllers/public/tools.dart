@@ -8,6 +8,7 @@ import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/models/tool.dart';
 import 'package:sayaaratukum/services/remote/public/tools.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/error_handler.dart';
 
 class ToolsController extends BaseController
     with StateMixin<List<ToolModel>>,  ScrollMixin {
@@ -56,7 +57,8 @@ class ToolsController extends BaseController
         }
       });
     } on Response catch (response) {
-      change(null, status: RxStatus.error());
+      RequestResult result = errorHandler(response);
+      change(null, status: RxStatus.error(result.message));
       print("getAllBrand ${response.statusCode}");
     }
   }

@@ -8,6 +8,7 @@ import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/route/page.dart';
 import 'package:sayaaratukum/services/remote/public/brand.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/error_handler.dart';
 
 class BrandController extends BaseController
     with StateMixin<List<BrandModel>>, PaginationController, ScrollMixin {
@@ -53,7 +54,8 @@ class BrandController extends BaseController
         }
       });
     } on Response catch (response) {
-      change(null, status: RxStatus.error());
+      RequestResult result = errorHandler(response);
+      change(null, status: RxStatus.error(result.message));
       print("getAllBrand ${response.statusCode}");
     }
   }

@@ -24,11 +24,12 @@ class AdsController extends BaseController
 
   @override
   void onInit() {
-    super.onInit();
     init();
+    super.onInit();
   }
 
   init() {
+    ads.clear();
     loadingData();
     getAds();
   }

@@ -8,6 +8,7 @@ import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/favorite.dart';
 import 'package:sayaaratukum/services/remote/user/favorite.dart';
+import 'package:sayaaratukum/util/error_handler.dart';
 
 class FavoriteController extends BaseController
     with StateMixin<List<FavoriteModel>> {
@@ -27,6 +28,7 @@ class FavoriteController extends BaseController
     if (Application.instance.isLogin) {
       loadingData();
       getFavorite();
+
     } else {
       change(null, status: RxStatus.error(L10n.notAuth));
     }
@@ -51,7 +53,8 @@ class FavoriteController extends BaseController
         }
       });
     } on Response catch (response) {
-      change(null, status: RxStatus.error());
+      RequestResult result = errorHandler(response);
+      change(null, status: RxStatus.error(result.message));
       print("getFavorite ${response.statusCode} ${response.body} ");
     }
   }

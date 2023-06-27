@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sayaaratukum/controllers/public/brand_pin.dart';
 import 'package:sayaaratukum/screens/home/components/brand_item.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/widgets/error.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
@@ -11,7 +12,14 @@ class Brands extends GetView<BrandPinController> {
 
   @override
   Widget build(BuildContext context) {
-    return controller.obx(onLoading: const Loading(), (state) {
+    return controller.obx(
+        onLoading: const Loading(),
+        onError: (e) => ErrorScreen(
+              textError: e.toString(),
+              onPressed: () {
+                controller.init();
+              },
+            ), (state) {
       return SizedBox(
         height: state!.isEmpty ? 0 : 100,
         width: Get.width,

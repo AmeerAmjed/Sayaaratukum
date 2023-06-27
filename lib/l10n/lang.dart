@@ -229,4 +229,5 @@ class L10n {
   static const emptyNotify = 'emptyNotify';
   static const emptyNotifyDes = 'emptyNotifyDes';
   static const vinMessage = 'vinMessage';
+  static const internetIssue = 'internetIssue';
 }

@@ -9,6 +9,7 @@ import 'package:sayaaratukum/screens/home/components/item_car.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/widgets/button_favourite_car.dart';
 import 'package:sayaaratukum/widgets/custom_snackbar_login.dart';
+import 'package:sayaaratukum/widgets/error.dart';
 import 'package:sayaaratukum/widgets/loading.dart';
 import 'package:sayaaratukum/widgets/space.dart';
 
@@ -17,7 +18,14 @@ class ItemsCar extends GetView<CarsController> {
 
   @override
   Widget build(BuildContext context) {
-    return controller.obx(onLoading: const Loading(), (state) {
+    return controller.obx(
+        onLoading: const Loading(),
+        onError: (e) => ErrorScreen(
+              textError: e.toString(),
+              onPressed: () {
+                controller.init();
+              },
+            ), (state) {
       return GetBuilder<CarsController>(builder: (controller) {
         return ListView.separated(
           controller: ScrollController(),

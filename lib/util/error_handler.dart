@@ -1,4 +1,6 @@
+import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
 
 enum RequestState {
   serverError,
@@ -6,6 +8,7 @@ enum RequestState {
   unauthorized,
   forbidden,
   invalidData,
+  internet,
   retry,
 }
 
@@ -18,6 +21,8 @@ class RequestResult {
 
 RequestResult errorHandler(Response response) {
   switch (response.statusCode) {
+    case null:
+      return RequestResult(RequestState.internet, L10n.internetIssue.tr);
     case 500:
       return RequestResult(RequestState.serverError, 'مشكلة في السيرفر');
     case 400:
