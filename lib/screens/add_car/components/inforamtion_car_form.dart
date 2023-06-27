@@ -66,7 +66,9 @@ class InformationCarForm extends GetView<AddCarController> {
             ),
             onChanged: controller.onChangeEngineCapacity,
             items: HardCode.engineSizes,
-            value: controller.engineCapacity.value.toString(),
+            value: controller.engineCapacity.value != 0
+                ? controller.engineCapacity.value.toString()
+                : null,
           ),
           rightWidget: GetBuilder<AddCarController>(builder: (con) {
             return DropdownList(
@@ -76,10 +78,12 @@ class InformationCarForm extends GetView<AddCarController> {
               ),
               onChanged: controller.onChangeEnginePower,
               items: con.enginePowers.map((e) => e.name).toList(),
-              value: con.enginePowers
-                  .where((e) => e.id == controller.idEnginePower)
-                  .first
-                  .name,
+              value: controller.idEnginePower != 0
+                  ? con.enginePowers
+                      .where((e) => e.id == controller.idEnginePower)
+                      .first
+                      .name
+                  : null,
             );
           }),
         ),
@@ -96,7 +100,7 @@ class InformationCarForm extends GetView<AddCarController> {
           label: L10n.color.tr,
           onChanged: controller.onChangeColorCar,
           items: HardCode.carColors,
-          value: controller.color.value,
+          value: controller.color.value.isEmpty ? null : controller.color.value,
         ),
         const VerticalSpace8(),
         InputAuth(

@@ -33,6 +33,7 @@ class MainTabController extends BaseController {
   }
 
   resetRoute() {
+    Get.back();
     changePage(0);
   }
 

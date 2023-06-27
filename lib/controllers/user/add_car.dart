@@ -147,23 +147,6 @@ class AddCarController extends BaseController with StateMixin {
     nearPoint.text = car.closerPoint ?? "";
     note.text = car.notes ?? "";
 
-    // price: price.text,
-    // color: color.value,
-    // engineCapacity: 12,
-    // yearModel: yearModel.text,
-    // idBrand: idBrandSelected,
-    // idModelBrand: idModelBrandSelected,
-    // idEnginePower: idEnginePower,
-    // userType: userInfo.role!.title,
-    // userId: userInfo.id,
-    // city: region.text,
-    // gov: provinces.value,
-    // nearPoint: nearPoint.text,
-    // gearbox: gearBox.value,
-    // mileage: drivingMiles.text,
-    // images: imagesCar,
-    // isDamage: isDamage.value == "yes" ? 1 : 0,
-    // numberRegisterCar: numberRegisterCar.text,
   }
 
   deleteImageCar(String idImage) async {
