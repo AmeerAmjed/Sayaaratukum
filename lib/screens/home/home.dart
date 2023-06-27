@@ -34,9 +34,11 @@ class HomeScreen extends GetView<CarsController> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: SearchCarBar(
                     onSubmittedSearch: (value) {
+                      Get.back();
                       controller.navigateTo(RouteScreen.searchCar);
                     },
                     onPressedApplyFilter: () {
+                      Get.back();
                       controller.navigateTo(RouteScreen.searchCar);
                     },
                   ),
