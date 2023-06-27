@@ -26,7 +26,7 @@ class ProfileService extends BaseService {
       "last_name": lastName,
     };
     try {
-      Response response = await post("${ApiEndpoint.updateProfile}?lang=$lang", userInfo);
+      Response response = await post("${ApiEndpoint.updateProfile}&lang=$lang", userInfo);
       if (response.status.hasError) {
         return Future.error(response);
       } else {
