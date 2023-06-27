@@ -38,11 +38,17 @@ class NotificationModel extends BaseModel {
 
   static List<NotificationModel> listFromJson(List<dynamic> list) {
     final favoriteList = list
-        .map((x) => NotificationModel.fromJson(x))
-        .where(
-            (favorite) => (favorite.product != null && favorite.type != null))
+        .map((x) {
+          try {
+            return NotificationModel.fromJson(x);
+          } catch (e) {
+            return null; // Return null if an error occurs during parsing
+          }
+        })
+        .where((favorite) => favorite != null && favorite.product != null)
         .toList();
-    return favoriteList;
+
+    return favoriteList.whereType<NotificationModel>().toList();
   }
 }
 
