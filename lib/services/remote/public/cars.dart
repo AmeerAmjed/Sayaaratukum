@@ -79,10 +79,24 @@ class CarsServices extends BaseService {
     }
   }
 
-  Future<Response> updateCar(AddCarModel car) async {
+  Future<Response> deleteCarById(int id) async {
+    try {
+      Response response = await delete("${ApiEndpoint.addCar}/$id?lang=$lang");
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error CarsServices deleteCarById $e");
+      return Future.error(e);
+    }
+  }
+
+  Future<Response> updateCar(int id,AddCarModel car) async {
     try {
       Response response = await post(
-        "${ApiEndpoint.addCar}?_method=put&lang=$lang",
+        "${ApiEndpoint.addCar}/$id?_method=put&lang=$lang",
         car.getBaseInfo(),
       );
       if (response.status.hasError) {

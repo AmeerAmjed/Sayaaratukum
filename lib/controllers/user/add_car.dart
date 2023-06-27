@@ -199,7 +199,9 @@ class AddCarController extends BaseController with StateMixin {
     if (getInfo() != null) {
       try {
         if (isUpdated.value) {
-          await CarsServices.instance.updateCar(getInfo()!).then((response) {
+          await CarsServices.instance
+              .updateCar(car.value!.id, getInfo()!)
+              .then((response) {
             print("response ${response.statusCode} ${response.body}");
             if (response.isOk) {}
             showMessage("Upppp  car");

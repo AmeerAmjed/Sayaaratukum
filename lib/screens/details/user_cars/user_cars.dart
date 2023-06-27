@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/user/user_cars.dart';
 import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/screens/components/add.dart';
 import 'package:sayaaratukum/screens/search/car_by_brand/components/item_search_car.dart';
+import 'package:sayaaratukum/theme/color.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/widgets/CustomDialog.dart';
 import 'package:sayaaratukum/widgets/appbars.dart';
 import 'package:sayaaratukum/widgets/bottom_sheet.dart';
 import 'package:sayaaratukum/widgets/button_action_bottom_sheet.dart';
@@ -72,7 +73,7 @@ class UserCars extends GetView<UserCarsController> {
   }
 }
 
-onClickUserCar(int id, BaseController controller) {
+onClickUserCar(int id, UserCarsController controller) {
   bottomSheet(
     height: 200,
     widget: Column(
@@ -82,6 +83,7 @@ onClickUserCar(int id, BaseController controller) {
           title: L10n.car.tr,
           icon: Iconsax.car,
           onPressed: () {
+            Get.back();
             controller.carDetails(id);
           },
           paddingVertical: 4,
@@ -90,7 +92,27 @@ onClickUserCar(int id, BaseController controller) {
           title: L10n.updateCar.tr,
           icon: Iconsax.edit,
           onPressed: () {
+            Get.back();
             controller.navToAddCar(id: id);
+            // Get.back();
+          },
+          paddingVertical: 4,
+        ),
+        ButtonActionBottomSheet(
+          color: ColorSystem.colorDanger,
+          title: L10n.deleteCar.tr,
+          icon: Iconsax.trash,
+          onPressed: () {
+            showCustomDialog(
+              L10n.deleteCar.tr,
+              isDanger: true,
+              message: L10n.messageDeleteCar.tr,
+              labelButtonAction: L10n.deleteCar.tr,
+              onPressedAction: () {
+                Get.back();
+                controller.deleteCar(id);
+              },
+            );
             // Get.back();
           },
           paddingVertical: 4,

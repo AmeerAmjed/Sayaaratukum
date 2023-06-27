@@ -10,6 +10,7 @@ class ButtonActionBottomSheet extends StatelessWidget {
     this.icon,
     this.localIcon,
     this.textIcon,
+    this.color,
     this.paddingVertical = Constants.spacingXMedium,
     required this.onPressed,
   }) : super(key: key);
@@ -20,6 +21,7 @@ class ButtonActionBottomSheet extends StatelessWidget {
   final String? textIcon;
   final double paddingVertical;
   final VoidCallback onPressed;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +38,20 @@ class ButtonActionBottomSheet extends StatelessWidget {
           if (textIcon != null)
             Text(
               textIcon!,
-              style: Get.textTheme.labelMedium,
+              style: Get.textTheme.labelMedium?.copyWith(color: color),
             ),
           if (localIcon != null)
             SizedBox(width: 30, child: Image.asset(localIcon!)),
           if (icon != null)
             Icon(
               icon,
-              color: Get.textTheme.labelMedium?.color?.withOpacity(0.3),
+              color:
+                  (color ?? Get.textTheme.labelMedium?.color)?.withOpacity(0.3),
             ),
           const HorizontalSpace8(),
           Text(
             title,
-            style: Get.textTheme.labelMedium,
+            style: Get.textTheme.labelMedium?.copyWith(color: color),
           )
         ],
       ),

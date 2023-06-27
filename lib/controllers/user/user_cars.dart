@@ -6,6 +6,7 @@ import 'package:get/instance_manager.dart';
 import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/pagination.dart';
+import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/car.dart';
 import 'package:sayaaratukum/services/remote/public/cars.dart';
 
@@ -56,6 +57,24 @@ class UserCarsController extends BaseController
             cars.addAll(result);
             loadingMore(false);
             change(cars, status: RxStatus.success());
+          }
+        }
+      });
+    } on Response catch (response) {
+      change(null, status: RxStatus.error());
+      print("getCars ${response.statusCode}");
+    }
+  }
+
+  Future<void> deleteCar(int id) async {
+    try {
+      await CarsServices.instance.deleteCarById(id).then((response) {
+        if (response.isOk) {
+          // final bool emptyRepositories = response.body?.isEmpty ?? true;
+          if (response.statusCode == 204) {
+            showMessage(L10n.carDeleted.tr);
+
+            print("responseData $response");
           }
         }
       });

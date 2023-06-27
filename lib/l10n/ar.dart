@@ -132,6 +132,7 @@ class ArTranslations {
         L10n.areYouSure: 'هل أنت متأكد؟',
         L10n.messageDeleteAccount: 'هل ترغب حقًا في حذف حسابك؟ لن تتمكن من التراجع عن هذا الإجراء.',
         L10n.messageLogout: 'هل أنت متأكد من رغبتك في تسجيل الخروج؟',
+        L10n.messageDeleteCar: 'هل أنت متأكد من رغبتك في بحذف السيارة؟',
 
         L10n.notAuth: 'يرجى تسجيل الدخول / التسجيل',
 
@@ -218,6 +219,7 @@ class ArTranslations {
         L10n.internetIssue : "لايوجد اتصال بالانترنيت",
 
 
+        L10n.carDeleted : 'تم حذف السيارة بنجاح',
 
 
 

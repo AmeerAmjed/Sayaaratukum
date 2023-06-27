@@ -133,6 +133,7 @@ class EnTranslations {
         L10n.areYouSure : 'Are you sure?',
         L10n.messageDeleteAccount : 'Do you really want to delete Your account? You will not be able to undo this action.',
         L10n.messageLogout : 'Are you sure want to log out?',
+        L10n.messageDeleteCar : 'Are you sure want to delete car?',
 
         L10n.notAuth : 'Please log in / Register',
 
@@ -216,6 +217,8 @@ class EnTranslations {
 
         L10n.vinMessage : "The report will be sent as soon as it is prepared on WhatsApp",
         L10n.internetIssue : "Internet issue reconnect",
+
+        L10n.carDeleted : 'Success car deleted',
 
         //income to
         "USA": 'USA',
