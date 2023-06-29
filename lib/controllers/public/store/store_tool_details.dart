@@ -29,6 +29,13 @@ class StoreToolDetailsController extends BaseController
   void onInit() {
     super.onInit();
     idStore.value = Get.arguments[Constants.idToolStoreKey] ?? "0";
+    init();
+  }
+
+  init() {
+    page = 1;
+    getFirstData = false;
+    lastPage = false;
 
     loadingData();
     getCars();
@@ -45,9 +52,8 @@ class StoreToolDetailsController extends BaseController
             response.body[data],
           );
 
-          var responseData = response.body[data];
-          final bool emptyRepositories =
-          (responseData == null || responseData.isEmpty);
+          final bool emptyRepositories = response.body[data]?.isEmpty ?? true;
+
           if (!getFirstData && emptyRepositories) {
             change(null, status: RxStatus.empty());
           } else if (getFirstData && emptyRepositories) {
@@ -101,7 +107,7 @@ class StoreToolDetailsController extends BaseController
     try {
       InfoStoreToolDetails.instance.init();
     } catch (er) {}
-    getCars();
+    init();
   }
 
   navigateToDetails(int id) {

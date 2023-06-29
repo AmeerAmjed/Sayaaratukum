@@ -6,7 +6,6 @@ import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:sayaaratukum/controllers/application.dart';
 import 'package:sayaaratukum/controllers/controller.dart';
 import 'package:sayaaratukum/controllers/public/brand.dart';
 import 'package:sayaaratukum/controllers/public/category_tool.dart';
@@ -14,10 +13,13 @@ import 'package:sayaaratukum/l10n/lang.dart';
 import 'package:sayaaratukum/models/add_tool.dart';
 import 'package:sayaaratukum/models/brand.dart';
 import 'package:sayaaratukum/models/category_tool.dart';
+import 'package:sayaaratukum/models/tool.dart';
+import 'package:sayaaratukum/services/remote/public/tools.dart';
 import 'package:sayaaratukum/services/remote/user/add_tool.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/error_handler.dart';
 
-class AddToolController extends BaseController {
+class AddToolController extends BaseController with StateMixin {
   var brands = <BrandModel>[].obs.toList(growable: true);
   var category = <CategoryToolModel>[].obs.toList(growable: true);
   final statusTool = <String>["new", "used"];
@@ -42,38 +44,72 @@ class AddToolController extends BaseController {
   String? modelBrandValue;
   String? imageTool;
   Rxn<String> categoryValue = Rxn<String>();
+  Rxn<ToolModel> tool = Rxn<ToolModel>();
   RxBool isUpdate = false.obs;
 
   @override
   void onInit() {
-    brands = BrandController.instance.brands;
-    idTool = Get.arguments[Constants.idUpdateTool] ?? 0;
-    try {
-      idTool = Get.arguments[Constants.idUpdateTool] ?? 0;
-    } catch ( er) {
-      idTool = null;
-    }
-
-    if (idTool != null && idTool != 0) {
-      editeTool();
-    } else {
-      initInput();
-    }
-
-    getCategories();
+    init();
     super.onInit();
   }
 
-  editeTool() {
+  init() {
+    brands = BrandController.instance.brands;
+    category = CategoryToolController.instance.category;
+    update();
+    idTool = Get.arguments[Constants.idUpdateTool] ?? 0;
+    try {
+      idTool = Get.arguments[Constants.idUpdateTool] ?? 0;
+    } catch (er) {
+      idTool = null;
+    }
+    print("dasdasdasd");
+    if (idTool != null && idTool != 0) {
+      getToolById(idTool!);
+    } else {
+      initInput();
+    }
+  }
+
+  //region update tool
+  getToolById(int idTool) async {
+    try {
+      await ToolsServices.instance
+          .getToolById(idTool.toString())
+          .then((response) {
+        if (response.isOk) {
+          ToolModel result = ToolModel.fromJson(
+            response.body[data],
+          );
+          tool.value = result;
+          editeTool(result);
+          if (category == []) {
+            getCategories();
+          } else {
+            change(result, status: RxStatus.success());
+          }
+          change(result, status: RxStatus.success());
+        } else {
+          change(null, status: RxStatus.error(L10n.notFound.tr));
+        }
+      });
+    } on Response catch (response) {
+      RequestResult result = errorHandler(response);
+      change(null, status: RxStatus.error(result.message));
+      print("AddToolController getToolById${response.statusCode}");
+    }
+  }
+
+  editeTool(ToolModel? tool) {
     formKey = GlobalKey<FormState>();
     isUpdate.value = true;
     keyManagerModelBrand = GlobalKey<FormFieldState>();
-    var tool = Application.instance.tool?.value;
     if (tool != null) {
       name = TextEditingController(text: tool.name);
       color = TextEditingController(text: tool.color);
       price = TextEditingController(text: tool.price.toString());
       description = TextEditingController(text: tool.description);
+      serialNumber = TextEditingController(text: tool.serialNumber);
       idTool = tool.id;
       idBrandSelected = tool.brand.id;
       brandsValue = tool.brand.title;
@@ -90,6 +126,29 @@ class AddToolController extends BaseController {
     }
   }
 
+  updateTool() async {
+    loading(true);
+    print("uppppppppppp ${tool.value!.idStore}");
+    try {
+      await AddToolService.instance
+          .update(idTool!, getFormData())
+          .then((response) {
+        loading(false);
+
+        print("response ${response.body}");
+        if (response.isOk) {
+          showMessage(L10n.successAddTool.tr);
+        }
+      });
+    } on Response catch (response) {
+      loading(false);
+
+      onError(response.body[message]);
+      print("response ${response.statusCode} ${response.body}");
+    }
+  }
+
+  //endregion
   initInput() {
     formKey = GlobalKey<FormState>();
     keyManagerModelBrand = GlobalKey<FormFieldState>();
@@ -98,6 +157,7 @@ class AddToolController extends BaseController {
     color = TextEditingController();
     price = TextEditingController();
     description = TextEditingController();
+    change(null, status: RxStatus.success());
   }
 
   addTool() async {
@@ -120,31 +180,11 @@ class AddToolController extends BaseController {
     }
   }
 
-  updateTool() async {
-    loading(true);
 
-    try {
-      await AddToolService.instance
-          .update(idTool!, getFormData())
-          .then((response) {
-        loading(false);
-
-        print("response ${response.body}");
-        if (response.isOk) {
-          showMessage(L10n.successAddTool.tr);
-        }
-      });
-    } on Response catch (response) {
-      loading(false);
-
-      onError(response.body[message]);
-      print("response ${response.statusCode} ${response.body}");
-    }
-  }
 
   FormAddToolModel getFormData() {
     return FormAddToolModel(
-      idStore: 1,
+      idStore: tool.value!.idStore,
       name: name.text,
       idBrand: idBrandSelected,
       idModelBrand: idModelBrandSelected,
@@ -157,15 +197,30 @@ class AddToolController extends BaseController {
     );
   }
 
-  getCategories() {
-    category.addAll(CategoryToolController.instance.category);
+  tryGetCategoriesWhenFailed() {
+    print("ameerrrr category ${category.length}");
+    update();
+    if (category == []) {
+      getCategories();
+    }
+    print("ameerrrr category ${category.length}");
   }
 
-  tryGetCategoriesWhenFailed() {
-    if (category == []) {
-      CategoryToolController.instance.getCategories().then((value) {
-        getCategories();
+  getCategories() async {
+    change(null, status: RxStatus.loading());
+    print("ameerrrr232");
+    var categoryTool = CategoryToolController.instance.category;
+    if (categoryTool.isEmpty) {
+      await CategoryToolController.instance.getCategoriesNow().then((result) {
+        change(null, status: RxStatus.success());
+
+        category.addAll(result);
+        update();
       });
+    } else {
+      change(null, status: RxStatus.success());
+      category.addAll(categoryTool);
+      update();
     }
   }
 
