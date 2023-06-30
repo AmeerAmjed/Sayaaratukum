@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:sayaaratukum/l10n/lang.dart';
-import 'package:sayaaratukum/theme/color.dart';
-import 'package:sayaaratukum/widgets/custom_snackbar.dart';
+import 'package:sayaaratukum/ui/l10n//lang.dart';
+import 'package:sayaaratukum/ui/theme//color.dart';
+import 'package:sayaaratukum/ui/widgets//custom_snackbar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 callNow(String? numberPhone) {

@@ -1,5 +1,5 @@
 import 'package:get/get_utils/src/extensions/export.dart';
-import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/ui/l10n//lang.dart';
 
 String convertMetersToKilometers(String metersString) {
   double meters = double.tryParse(metersString) ?? 0.0;

@@ -1,5 +1,5 @@
 import 'package:get/instance_manager.dart';
-import 'package:sayaaratukum/controllers/user/user_cars.dart';
+import 'package:sayaaratukum/domain/controllers/user/user_cars.dart';
 
 class UserCarsBinding extends Bindings {
   @override

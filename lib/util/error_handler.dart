@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
-import 'package:sayaaratukum/l10n/lang.dart';
+import 'package:sayaaratukum/ui/l10n//lang.dart';
 
 enum RequestState {
   serverError,

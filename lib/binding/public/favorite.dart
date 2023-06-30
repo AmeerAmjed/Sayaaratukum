@@ -1,6 +1,5 @@
 import 'package:get/instance_manager.dart';
-import 'package:sayaaratukum/controllers/user/favorite.dart';
-
+import 'package:sayaaratukum/domain/controllers/user/favorite.dart';
 
 class FavoriteBinding extends Bindings {
   @override

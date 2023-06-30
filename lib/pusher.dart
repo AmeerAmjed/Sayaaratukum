@@ -1,6 +1,6 @@
-import 'package:sayaaratukum/controllers/application.dart';
-import 'package:sayaaratukum/controllers/user/notification.dart';
-import 'package:sayaaratukum/services/remote/pusher.dart';
+import 'package:sayaaratukum/data/services/remote/pusher.dart';
+import 'package:sayaaratukum/domain/controllers/application.dart';
+import 'package:sayaaratukum/domain/controllers/user/notification.dart';
 
 pusherListener() async {
   if (Application.instance.isLogin) {

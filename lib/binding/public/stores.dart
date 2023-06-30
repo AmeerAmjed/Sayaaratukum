@@ -1,6 +1,6 @@
 import 'package:get/instance_manager.dart';
-import 'package:sayaaratukum/controllers/public/stores.dart';
-import 'package:sayaaratukum/services/remote/public/store.dart';
+import 'package:sayaaratukum/domain/controllers/public/stores.dart';
+import 'package:sayaaratukum/data/services/remote/public/store.dart';
 
 class StoresBinding extends Bindings {
   @override
