@@ -44,7 +44,9 @@ class FavoriteController extends BaseController
             response.body[data],
           );
 
-          if (result == [] || result.isEmpty) {
+          // final bool emptyRepositories = response.body?.isEmpty ?? true;
+
+          if (result.isEmpty) {
             change(null, status: RxStatus.empty());
           } else {
             favorites.addAll(result);

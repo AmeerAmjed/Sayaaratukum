@@ -8,6 +8,7 @@ pusherListener() async {
         ?.bind(PusherServices.instance.channel, (event) async {
       try {
         await NotificationController.instance.init();
+        print("Pusher update new update product_created $event");
       } catch (error) {
         print("error product_created $event");
       }

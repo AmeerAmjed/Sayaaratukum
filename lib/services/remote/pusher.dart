@@ -34,13 +34,15 @@ class PusherServices extends BaseService with PusherConfig {
       _pusher.connect();
       myChannel = _pusher.subscribe(channel);
       _pusher.onConnectionStateChange((state) {
-        print("PusherServices onConnection");
+        print("PusherServices onConnection ${state?.currentState}");
       });
 
       _pusher.onConnectionError((error) {
+        init();
         print(" PusherServices error: ${error?.message} onConnectionError");
       });
     } catch (error) {
+      init();
       print("error PusherServices no connection $error");
     }
   }
@@ -48,7 +50,7 @@ class PusherServices extends BaseService with PusherConfig {
   PusherOptions optionsPusher() {
     return PusherOptions(
       wsPort: port,
-      // encrypted: true,
+      encrypted: true,
       host: hostEndPoint,
       cluster: cluster,
       auth: PusherAuth(hostAuthEndPoint, headers: {
