@@ -3,19 +3,20 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/instance_manager.dart';
+import 'package:sayaaratukum/data/services/remote/public/cars.dart';
+import 'package:sayaaratukum/data/services/remote/user/favorite.dart';
 import 'package:sayaaratukum/domain/controllers/controller.dart';
 import 'package:sayaaratukum/domain/controllers/pagination.dart';
 import 'package:sayaaratukum/domain/controllers/public/store/store_car_info_details.dart';
 import 'package:sayaaratukum/domain/controllers/user/favorite.dart';
 import 'package:sayaaratukum/domain/models//car.dart';
 import 'package:sayaaratukum/domain/models//store.dart';
+import 'package:sayaaratukum/ui/l10n/lang.dart';
 import 'package:sayaaratukum/ui/route/page.dart';
-import 'package:sayaaratukum/data/services/remote/public/cars.dart';
-import 'package:sayaaratukum/data/services/remote/user/favorite.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
 class StoreCarDetailsController extends BaseController
-    with StateMixin, PaginationController, ScrollMixin {
+    with StateMixin<List<CarModel>>, PaginationController, ScrollMixin {
   static StoreCarDetailsController get instance => Get.find();
 
   RxStatus combinedStatus = RxStatus.loading();
@@ -34,7 +35,14 @@ class StoreCarDetailsController extends BaseController
   void onInit() {
     super.onInit();
     idStore.value = Get.arguments[Constants.idStoreKey] ?? "0";
+    init();
+  }
 
+  init() {
+    page = 1;
+    getFirstData = false;
+    lastPage = false;
+    cars.clear();
     loadingData();
     getCars();
   }
@@ -156,6 +164,22 @@ class StoreCarDetailsController extends BaseController
         Constants.idCarKey: id.toString(),
       },
     );
+  }
+
+  Future<void> deleteCar(int id) async {
+    try {
+      await CarsServices.instance.deleteCarById(id).then((response) {
+        if (response.isOk) {
+          if (response.statusCode == 204) {
+            showMessage(L10n.carDeleted.tr);
+            init();
+          }
+        }
+      });
+    } on Response catch (response) {
+      change(null, status: RxStatus.error());
+      print("getCars ${response.statusCode}");
+    }
   }
 
   @override

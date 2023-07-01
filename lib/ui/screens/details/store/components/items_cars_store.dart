@@ -7,12 +7,13 @@ import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/domain/controllers/public/cars.dart';
 import 'package:sayaaratukum/domain/controllers/public/store/store_car_details.dart';
 import 'package:sayaaratukum/ui/l10n//lang.dart';
+import 'package:sayaaratukum/ui/screens/details/user_cars/user_cars.dart';
 import 'package:sayaaratukum/ui/screens/home/components/item_car.dart';
-import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/ui/widgets//button_favourite_car.dart';
 import 'package:sayaaratukum/ui/widgets//custom_snackbar_login.dart';
 import 'package:sayaaratukum/ui/widgets//loading.dart';
 import 'package:sayaaratukum/ui/widgets//space.dart';
+import 'package:sayaaratukum/util/constant.dart';
 
 import '../../../../widgets/empty.dart';
 
@@ -54,12 +55,20 @@ class ItemCarsStore extends GetView<StoreCarDetailsController> {
                 car: state[index],
                 buttonFavouriteCar: GetBuilder<StoreCarDetailsController>(
                   builder: (controller) {
+                    var storeIdUser =
+                        Application.instance.user!.value!.myStoreId;
+                    var isOwnerCar = state[index].owner.id == storeIdUser;
                     return FavouriteCar(
                       isFavourite: state[index].isFavorite,
                       disableWithShowLoading: state[index].isLoadingFavorite,
+                      icon: isOwnerCar ? Iconsax.more : null,
                       onPressed: () {
                         if (Application.instance.isLogin) {
-                          controller.favoriteCar(state[index]);
+                          if (isOwnerCar) {
+                            onClickUserCar(state[index].id, controller);
+                          } else {
+                            controller.favoriteCar(state[index]);
+                          }
                         } else {
                           snackBarToLogin(L10n.loginToAddFavorites.tr);
                         }

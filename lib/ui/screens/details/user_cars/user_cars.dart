@@ -7,7 +7,6 @@ import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/ui/screens/components/add.dart';
 import 'package:sayaaratukum/ui/screens/search/car_by_brand/components/item_search_car.dart';
 import 'package:sayaaratukum/ui/theme//color.dart';
-import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/ui/widgets//CustomDialog.dart';
 import 'package:sayaaratukum/ui/widgets//appbars.dart';
 import 'package:sayaaratukum/ui/widgets//bottom_sheet.dart';
@@ -15,6 +14,7 @@ import 'package:sayaaratukum/ui/widgets//button_action_bottom_sheet.dart';
 import 'package:sayaaratukum/ui/widgets//empty.dart';
 import 'package:sayaaratukum/ui/widgets//loading.dart';
 import 'package:sayaaratukum/ui/widgets//space.dart';
+import 'package:sayaaratukum/util/constant.dart';
 
 class UserCars extends GetView<UserCarsController> {
   const UserCars({Key? key}) : super(key: key);
@@ -73,7 +73,7 @@ class UserCars extends GetView<UserCarsController> {
   }
 }
 
-onClickUserCar(int id, UserCarsController controller) {
+onClickUserCar(int id, controller) {
   bottomSheet(
     height: 200,
     widget: Column(

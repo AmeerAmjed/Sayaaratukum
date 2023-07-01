@@ -11,6 +11,7 @@ class FavouriteCar extends StatelessWidget {
     required this.onPressed,
     this.disable = false,
     this.isFavourite = false,
+    this.icon,
     this.disableWithShowLoading = false,
   }) : super(key: key);
 
@@ -18,6 +19,7 @@ class FavouriteCar extends StatelessWidget {
   final bool disable;
   final bool isFavourite;
   final Color? colorBackground;
+  final IconData? icon;
   final bool disableWithShowLoading;
 
   @override
@@ -38,7 +40,7 @@ class FavouriteCar extends StatelessWidget {
             disable: disable,
             padding: EdgeInsets.zero,
             onPressed: onPressed,
-            icon: isFavourite ? Iconsax.heart5 : Iconsax.heart,
+            icon: icon ?? (isFavourite ? Iconsax.heart5 : Iconsax.heart),
             colorLoading: Get.theme.primaryColor,
             sizeLoading: 15,
           ),
