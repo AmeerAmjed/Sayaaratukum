@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:sayaaratukum/data/services/remote/public/vin_check.dart';
 import 'package:sayaaratukum/domain/controllers/controller.dart';
 import 'package:sayaaratukum/ui/l10n//lang.dart';
-import 'package:sayaaratukum/data/services/remote/public/vin_check.dart';
-import 'package:sayaaratukum/util/hard_code.dart';
 import 'package:sayaaratukum/ui/widgets//CustomDialog.dart';
+import 'package:sayaaratukum/util/hard_code.dart';
 
 class VinCheckController extends BaseController {
   late GlobalKey<FormState> formKey;
@@ -75,6 +75,7 @@ class VinCheckController extends BaseController {
   }
 
   onChangeMadeTo(String? madeTo) {
+    _resetValidateForm();
     if (madeTo != null) {
       for (var map in HardCode.madeTo) {
         if (map.containsValue(madeTo)) {
@@ -86,6 +87,7 @@ class VinCheckController extends BaseController {
   }
 
   onChangeCreditType(String? creditType) {
+    _resetValidateForm();
     if (creditType != null) {
       HardCode.creditTypes.firstWhere((element) {
         if (element.containsValue(creditType)) {
@@ -97,6 +99,10 @@ class VinCheckController extends BaseController {
       });
       print(creditType);
     }
+  }
+
+  _resetValidateForm() {
+    formKey.currentState!.validate();
   }
 
   loading(bool state) {

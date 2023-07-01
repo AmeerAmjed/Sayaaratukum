@@ -4,12 +4,12 @@ import 'package:get/get.dart';
 import 'package:sayaaratukum/domain/controllers/controller.dart';
 import 'package:sayaaratukum/domain/controllers/public/vin_check.dart';
 import 'package:sayaaratukum/ui/l10n//lang.dart';
-import 'package:sayaaratukum/util/hard_code.dart';
 import 'package:sayaaratukum/ui/widgets//appbars.dart';
 import 'package:sayaaratukum/ui/widgets//buttons.dart';
 import 'package:sayaaratukum/ui/widgets//dropdown_list.dart';
 import 'package:sayaaratukum/ui/widgets//input.dart';
 import 'package:sayaaratukum/ui/widgets//vertical_space.dart';
+import 'package:sayaaratukum/util/hard_code.dart';
 
 class VinCheck extends GetView<VinCheckController> {
   const VinCheck({Key? key}) : super(key: key);
