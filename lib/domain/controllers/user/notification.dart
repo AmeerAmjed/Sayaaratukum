@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:get/instance_manager.dart';
@@ -25,10 +27,17 @@ class NotificationController extends BaseController
     if (Application.instance.isLogin) {
       resetValue();
       await getNotification();
+      listenerAutoUpdate();
     } else {
       resetValue();
       change(null, status: RxStatus.error());
     }
+  }
+
+  listenerAutoUpdate() {
+    Timer.periodic(const Duration(minutes: 1), (timer) {
+      getNotification();
+    });
   }
 
   resetValue() {
@@ -43,13 +52,14 @@ class NotificationController extends BaseController
         List<NotificationModel> notifications = NotificationModel.listFromJson(
           response.body[data],
         );
+        var lastNotifications = this.notifications.value;
         this.notifications.value = notifications.reversed.toList();
         notificationsNotShow.value = getCountNotificationsNotShow();
         update();
         if (notifications.isEmpty) {
           change(null, status: RxStatus.empty());
         } else {
-          if (this.notifications.isNotEmpty) {
+          if (lastNotifications.length != notifications.length) {
             this.notifications.firstWhereOrNull((element) {
               if (element.isRead == false) {
                 showNotificationService(element);
