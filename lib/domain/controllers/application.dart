@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:get/get.dart';
+import 'package:sayaaratukum/data/services/remote/pusher.dart';
 import 'package:sayaaratukum/domain/controllers/controller.dart';
 import 'package:sayaaratukum/domain/controllers/main_tab.dart';
 import 'package:sayaaratukum/domain/controllers/user/favorite.dart';
@@ -8,7 +9,6 @@ import 'package:sayaaratukum/domain/controllers/user/notification.dart';
 import 'package:sayaaratukum/data/services/local/storage.dart';
 import 'package:sayaaratukum/domain/models//tool.dart';
 import 'package:sayaaratukum/domain/models//user.dart';
-import 'package:sayaaratukum/pusher.dart';
 import 'package:sayaaratukum/ui/route/page.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/lang_code.dart';
@@ -148,9 +148,9 @@ class Application extends BaseController with LocalStorage {
     }
 
     try {
-      await pusherListener();
+      PusherServices.instance.init();
     } catch (err) {
-      print("error resetStateAuthController init pusherListener $err");
+      print("error resetStateAuthController init PusherServices $err");
     }
   }
 

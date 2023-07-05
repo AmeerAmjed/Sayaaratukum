@@ -9,4 +9,5 @@ class PusherConfig  {
   final hostAuthEndPoint = "https://api.saiaratcom.com/broadcasting/auth";
   final port = 6001;
   final channel = "private-product-notify";
+  final eventName = "product_created";
 }

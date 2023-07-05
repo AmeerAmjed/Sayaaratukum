@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sayaaratukum/binding/init.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
 import 'package:sayaaratukum/domain/controllers/application.dart';
-import 'package:sayaaratukum/pusher.dart';
 import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/ui/route/page.dart';
 import 'package:sayaaratukum/ui/route/routes.dart';
@@ -22,7 +21,6 @@ Future<void> main() async {
   initUniLinks();
 
   Binding.init();
-  await pusherListener();
 
   runApp(const Root());
 }

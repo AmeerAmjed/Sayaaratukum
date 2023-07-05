@@ -6,7 +6,7 @@ import 'package:sayaaratukum/data/services/remote/user/favorite.dart';
 class Binding {
   static init() {
     Get.put<Application>(Application(), permanent: true);
-    Get.put(PusherServices(), permanent: true);
+    Get.put<PusherServices>(PusherServices(), permanent: true);
     Get.put<FavoriteService>(FavoriteService(), permanent: true);
   }
 }
