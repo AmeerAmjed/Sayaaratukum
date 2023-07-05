@@ -38,6 +38,21 @@ class ToolsServices extends BaseService {
     }
   }
 
+  Future<Response> deleteTool(int id) async {
+    try {
+      Response response = await delete("${ApiEndpoint.addTool}/$id?lang=$lang");
+
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error ToolsServices deleteTool $e");
+      return Future.error(e);
+    }
+  }
+
   Future<Response> getToolsInStore(
     String id, {
     required int page,

@@ -4,9 +4,10 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/instance_manager.dart';
+import 'package:sayaaratukum/data/services/remote/public/tools.dart';
 import 'package:sayaaratukum/domain/controllers/controller.dart';
 import 'package:sayaaratukum/domain/models//tool.dart';
-import 'package:sayaaratukum/data/services/remote/public/tools.dart';
+import 'package:sayaaratukum/ui/l10n/lang.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/error_handler.dart';
 
@@ -14,7 +15,7 @@ class ToolsController extends BaseController
     with StateMixin<List<ToolModel>>,  ScrollMixin {
   static ToolsController get instance => Get.find();
 
-  var brands = <ToolModel>[].obs.toList(growable: true);
+  var tools = <ToolModel>[].obs.toList(growable: true);
   RxBool isLoadingMore = false.obs;
 
   final int limitRepositories = 20;
@@ -26,6 +27,15 @@ class ToolsController extends BaseController
   @override
   void onInit() {
     super.onInit();
+    init();
+  }
+
+  init() {
+    page = 1;
+    getFirstData = false;
+    lastPage = false;
+    showFab = true.obs;
+    tools.clear();
     scrollListener();
     loadingData();
     getTools();
@@ -50,9 +60,9 @@ class ToolsController extends BaseController
             loadingMore(false);
           } else {
             getFirstData = true;
-            brands.addAll(result);
+            tools.addAll(result);
             loadingMore(false);
-            change(brands, status: RxStatus.success());
+            change(tools, status: RxStatus.success());
           }
         }
       });
@@ -76,12 +86,27 @@ class ToolsController extends BaseController
     });
   }
 
+  Future<void> deleteTool(int id) async {
+    try {
+      await ToolsServices.instance.deleteTool(id).then((response) {
+        if (response.isOk) {
+          if (response.statusCode == 204) {
+            showMessage(L10n.toolDeleted.tr);
+            init();
+          }
+        }
+      });
+    } on Response catch (response) {
+      print("deleteTool ${response.statusCode}");
+    }
+  }
+
   @override
   Future<void> onEndScroll() async {
     if (!lastPage) {
       page += 1;
       loadingMore(true);
-      change(brands, status: RxStatus.loadingMore());
+      change(tools, status: RxStatus.loadingMore());
       await getTools();
       // Get.back();
     }

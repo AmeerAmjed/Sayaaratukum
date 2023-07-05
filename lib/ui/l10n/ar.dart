@@ -133,6 +133,7 @@ class ArTranslations {
         L10n.messageDeleteAccount: 'هل ترغب حقًا في حذف حسابك؟ لن تتمكن من التراجع عن هذا الإجراء.',
         L10n.messageLogout: 'هل أنت متأكد من رغبتك في تسجيل الخروج؟',
         L10n.messageDeleteCar: 'هل أنت متأكد من رغبتك في بحذف السيارة؟',
+        L10n.messageDeleteTool: 'هل أنت متأكد من رغبتك في بحذف قطعة الغيار؟',
 
         L10n.notAuth: 'يرجى تسجيل الدخول / التسجيل',
 
@@ -156,6 +157,8 @@ class ArTranslations {
         L10n.deleteCar : 'حذف السيارة',
         L10n.tool : 'قطعة الغيار',
         L10n.tools: 'قطع الغيار',
+        L10n.updateTool : 'تحديث معلومات قطعة الغيار',
+        L10n.deleteTool : 'حذف قطعة الغيار',
         L10n.now: 'الآن',
 
 
@@ -220,6 +223,7 @@ class ArTranslations {
 
 
         L10n.carDeleted : 'تم حذف السيارة بنجاح',
+        L10n.toolDeleted : 'تم حذف قطعة الغيار بنجاح',
 
 
 

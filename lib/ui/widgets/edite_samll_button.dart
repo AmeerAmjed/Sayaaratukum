@@ -31,7 +31,7 @@ class EditeSmallButton extends StatelessWidget {
             iconSize: 20,
             padding: EdgeInsets.zero,
             onPressed: onPressed,
-            icon: icon ?? Iconsax.edit,
+            icon: icon ?? Iconsax.more,
             sizeLoading: 15,
           ),
         ),

@@ -134,6 +134,7 @@ class EnTranslations {
         L10n.messageDeleteAccount : 'Do you really want to delete Your account? You will not be able to undo this action.',
         L10n.messageLogout : 'Are you sure want to log out?',
         L10n.messageDeleteCar : 'Are you sure want to delete car?',
+        L10n.messageDeleteTool : 'Are you sure want to delete spare part?',
 
         L10n.notAuth : 'Please log in / Register',
 
@@ -154,6 +155,9 @@ class EnTranslations {
         L10n.car : 'Car',
         L10n.updateCar : 'Update car',
         L10n.deleteCar : 'Delete car',
+        L10n.updateTool : 'Update spare part',
+        L10n.deleteTool : 'Delete spare part',
+
         L10n.tool : 'Spare part',
         L10n.tools : 'Spare parts',
         L10n.now : 'Now',
@@ -219,6 +223,7 @@ class EnTranslations {
         L10n.internetIssue : "Internet issue reconnect",
 
         L10n.carDeleted : 'Success car deleted',
+        L10n.toolDeleted : 'Success spare part deleted',
 
         //income to
         "USA": 'USA',

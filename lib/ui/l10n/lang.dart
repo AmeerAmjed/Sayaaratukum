@@ -149,6 +149,7 @@ class L10n {
   static const messageDeleteAccount = 'messageDeleteAccount';
   static const messageLogout = 'messageLogout';
   static const messageDeleteCar = 'messageDeleteCar';
+  static const messageDeleteTool = 'messageDeleteTool';
 
   static const notAuth = 'notAuth';
   static const successAddFavorite = 'successAddFavorite';
@@ -168,6 +169,8 @@ class L10n {
   static const car = 'car';
   static const deleteCar = 'deleteCar';
   static const updateCar = 'updateCar';
+  static const updateTool = 'updateTool';
+  static const deleteTool = 'deleteTool';
   static const tool = 'tool';
   static const tools = 'tools';
   static const now = 'now';
@@ -232,4 +235,5 @@ class L10n {
   static const vinMessage = 'vinMessage';
   static const internetIssue = 'internetIssue';
   static const carDeleted = 'carDeleted';
+  static const toolDeleted = 'toolDeleted';
 }
