@@ -8,20 +8,20 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:sayaaratukum/data/services/remote/public/cars.dart';
+import 'package:sayaaratukum/data/services/remote/user/add_car.dart';
+import 'package:sayaaratukum/data/services/remote/user/engine_power_type.dart';
 import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/domain/controllers/controller.dart';
 import 'package:sayaaratukum/domain/controllers/public/brand.dart';
-import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/domain/models//add_car.dart';
 import 'package:sayaaratukum/domain/models//brand.dart';
 import 'package:sayaaratukum/domain/models//car.dart';
 import 'package:sayaaratukum/domain/models//engine_power_type.dart';
+import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/ui/screens/add_car/components/image_price_form.dart';
 import 'package:sayaaratukum/ui/screens/add_car/components/inforamtion_car_form.dart';
 import 'package:sayaaratukum/ui/screens/add_car/components/location_car_form.dart';
-import 'package:sayaaratukum/data/services/remote/public/cars.dart';
-import 'package:sayaaratukum/data/services/remote/user/add_car.dart';
-import 'package:sayaaratukum/data/services/remote/user/engine_power_type.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/hard_code.dart';
 
@@ -204,14 +204,14 @@ class AddCarController extends BaseController with StateMixin {
               .then((response) {
             print("response ${response.statusCode} ${response.body}");
             if (response.isOk) {}
-            showMessage("Upppp  car");
+            showMessage(L10n.successUpdateCar.tr);
             loading(false);
           });
         } else {
           await AddCarService.instance.addCar(getInfo()!).then((response) {
             print("response ${response.statusCode} ${response.body}");
             if (response.isOk) {}
-            showMessage("Success add car");
+            showMessage(L10n.successAddCar.tr);
             loading(false);
           });
         }

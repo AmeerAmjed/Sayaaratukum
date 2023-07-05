@@ -236,4 +236,6 @@ class L10n {
   static const internetIssue = 'internetIssue';
   static const carDeleted = 'carDeleted';
   static const toolDeleted = 'toolDeleted';
+  static const successUpdateCar = 'successUpdateCar';
+  static const successAddCar = 'successAddCar';
 }

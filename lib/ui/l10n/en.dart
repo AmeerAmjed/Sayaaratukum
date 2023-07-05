@@ -224,6 +224,8 @@ class EnTranslations {
 
         L10n.carDeleted : 'Success car deleted',
         L10n.toolDeleted : 'Success spare part deleted',
+        L10n.successUpdateCar : 'Success update car',
+        L10n.successAddCar : 'Success add car',
 
         //income to
         "USA": 'USA',

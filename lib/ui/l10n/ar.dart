@@ -224,10 +224,15 @@ class ArTranslations {
 
         L10n.carDeleted : 'تم حذف السيارة بنجاح',
         L10n.toolDeleted : 'تم حذف قطعة الغيار بنجاح',
+        L10n.successUpdateCar : 'تم تحدث السيارة بنجاح',
+        L10n.successAddCar : 'تم اضافه السيارة بنجاح',
 
 
 
 
+        "update": "تحديث",
+        "add": "اضافه",
+        "create": "اضافه",
 
         "Asiacell": "اسياسيل",
         "Zain": "زين",
