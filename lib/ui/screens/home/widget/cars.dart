@@ -28,7 +28,9 @@ class ItemsCar extends GetView<CarsController> {
             ), (state) {
       return GetBuilder<CarsController>(builder: (controller) {
         return ListView.separated(
-          controller: ScrollController(),
+          // controller: ScrollController(),
+          physics: const ScrollPhysics(),
+
           padding: const EdgeInsets.symmetric(
             horizontal: Constants.spacing16,
           ),

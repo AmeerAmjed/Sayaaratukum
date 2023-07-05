@@ -24,7 +24,7 @@ class Brands extends GetView<BrandPinController> {
         height: state!.isEmpty ? 0 : 100,
         width: Get.width,
         child: ListView.separated(
-          controller: controller.scroll,
+          // controller: controller.scroll,
           scrollDirection: Axis.horizontal,
           padding: const EdgeInsets.symmetric(
             horizontal: Constants.spacing16,

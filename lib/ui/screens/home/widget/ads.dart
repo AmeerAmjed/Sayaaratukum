@@ -30,7 +30,7 @@ class Ads extends GetView<AdsController> {
           onLoading: const Loading(), (state) {
         return GetBuilder<AdsController>(builder: (controller) {
           return ListView.separated(
-            controller: controller.scroll,
+            // controller: controller.scroll,
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(
               horizontal: Constants.spacing16,

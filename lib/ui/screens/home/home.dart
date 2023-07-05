@@ -5,6 +5,7 @@ import 'package:sayaaratukum/domain/controllers/public/cars.dart';
 import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/ui/route/page.dart';
 import 'package:sayaaratukum/ui/screens/components/add.dart';
+import 'package:sayaaratukum/ui/screens/components/sliver_app_bar.dart';
 import 'package:sayaaratukum/ui/screens/home/components/title_with_view_all.dart';
 import 'package:sayaaratukum/ui/screens/home/widget/ads.dart';
 import 'package:sayaaratukum/ui/screens/home/widget/brands.dart';
@@ -21,13 +22,17 @@ class HomeScreen extends GetView<CarsController> {
     final height = MediaQuery.of(context).size.height;
     const duration = Duration(milliseconds: 300);
     return Scaffold(
-      body: Container(
-        child: RefreshIndicator(
-          onRefresh: controller.onHomeRefresh,
-          child: SingleChildScrollView(
-            controller: CarsController.instance.scroll,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            // const MySliverAppBar(),
+          ];
+        },
+        body: Container(
+          child: RefreshIndicator(
+            onRefresh: controller.onHomeRefresh,
+            child: ListView(
+              // mainAxisSize: MainAxisSize.min,
               children: [
                 const VerticalSpace16(),
                 Padding(
@@ -44,11 +49,11 @@ class HomeScreen extends GetView<CarsController> {
                   ),
                 ),
                 const VerticalSpace8(),
-                TitleWithViewAll(
-                  title: L10n.brands.tr,
-                  onPressed: () {
-                    Get.toNamed(RouteScreen.viewAllBrand);
-                  },
+              TitleWithViewAll(
+                title: L10n.brands.tr,
+                onPressed: () {
+                  Get.toNamed(RouteScreen.viewAllBrand);
+                },
                 ),
                 Brands(),
                 const VerticalSpace12(),
