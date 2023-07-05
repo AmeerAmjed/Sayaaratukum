@@ -5,6 +5,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sayaaratukum/binding/init.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
+import 'package:sayaaratukum/data/services/local/notifications.dart';
 import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/ui/route/page.dart';
@@ -21,6 +22,10 @@ Future<void> main() async {
   initUniLinks();
 
   Binding.init();
+
+  NotificationService notificationService = NotificationService();
+  await notificationService.init();
+  await notificationService.requestPermissions();
 
   runApp(const Root());
 }

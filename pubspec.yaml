@@ -52,6 +52,7 @@ dependencies:
   flutter_facebook_auth: ^5.0.11
   pusher_client: ^2.0.0
   google_fonts: ^4.0.4
+  flutter_local_notifications: ^13.0.0
 
 dev_dependencies:
   flutter_test:

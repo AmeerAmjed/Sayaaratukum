@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:get/instance_manager.dart';
+import 'package:sayaaratukum/data/services/local/notifications.dart';
+import 'package:sayaaratukum/data/services/remote/user/notification.dart';
 import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/domain/controllers/controller.dart';
 import 'package:sayaaratukum/domain/models//notification_model.dart';
-import 'package:sayaaratukum/data/services/remote/user/notification.dart';
+import 'package:sayaaratukum/ui/l10n/lang.dart';
 
 class NotificationController extends BaseController
     with StateMixin<List<NotificationModel>> {
@@ -47,6 +49,15 @@ class NotificationController extends BaseController
         if (notifications.isEmpty) {
           change(null, status: RxStatus.empty());
         } else {
+          if (this.notifications.isNotEmpty) {
+            this.notifications.firstWhereOrNull((element) {
+              if (element.isRead == false) {
+                showNotificationService(element);
+                return true;
+              }
+              return false;
+            });
+          }
           change(this.notifications, status: RxStatus.success());
         }
       });
@@ -54,6 +65,13 @@ class NotificationController extends BaseController
       print("err NotificationController $response");
       change(null, status: RxStatus.error());
     }
+  }
+
+  showNotificationService(NotificationModel item) {
+    var message =
+        "${item.type.toString().tr} ${item.product?.name} ${L10n.ist.tr} ${item.state.tr}";
+    NotificationService.show(
+        id: item.id, title: item.product?.name ?? "", body: message);
   }
 
   setAllNotificationSeen() async {

@@ -55,6 +55,7 @@ class MyNotification extends GetView<NotificationController> {
                     controller.notificationsNotShow.value.toString(),
                     style: Get.theme.textTheme.labelSmall?.copyWith(
                       fontSize: 6.6,
+                      color: Colors.white
                     ),
                   ),
                 ),
