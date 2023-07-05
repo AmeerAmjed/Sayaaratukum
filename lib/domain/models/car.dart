@@ -71,7 +71,7 @@ class CarModel extends BaseModel {
       price: json['price'],
       color: json['color'],
       isAvailable: (json['state'] == "2") ? true : false,
-      registerNumber: json['registerNumber'],
+      registerNumber: json['register_number'],
       inComingType: json['incoming_type'],
       isFavorite: json['is_favorite'],
       isDamage: json['is_harm'] != null
@@ -84,6 +84,7 @@ class CarModel extends BaseModel {
       ownerType: json['carable_type'],
       gov: json['gov'],
       city: json['city'],
+      notes: json['notes'],
       closerPoint: json['location'],
       isPublished: json['is_published'],
       brand: SubModel.fromJson(json['brand']),
