@@ -44,11 +44,11 @@ class CarDetailsSpecifications extends StatelessWidget {
                       ),
                       TitleWithDescription(
                         title: L10n.color.tr,
-                        description: car.color,
+                        description: car.color.tr,
                       ),
                       TitleWithDescription(
                         title: L10n.gearBox.tr,
-                        description: car.gearbox,
+                        description: car.gearbox.tr,
                       ),
                       if (car.isDamage != null)
                         TitleWithDescription(

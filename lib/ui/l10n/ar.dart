@@ -4,6 +4,7 @@ class ArTranslations {
   static Map<String, String> get map => {
         L10n.viewAll: 'عرض الكل',
         L10n.brands: 'ماركات مشهورة',
+        L10n.brand: 'ماركة',
 
 
         L10n.home: 'الرئيسيه',
@@ -228,7 +229,11 @@ class ArTranslations {
         L10n.successAddCar : 'تم اضافه السيارة بنجاح',
 
 
+        "auto":"أوتوماتيك",
+        "manual":"عادي",
 
+        "new":"جديد",
+        "used":"مستعمل",
 
         "update": "تحديث",
         "add": "اضافه",

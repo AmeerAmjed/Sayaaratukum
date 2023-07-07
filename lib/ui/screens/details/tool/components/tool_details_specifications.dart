@@ -38,7 +38,7 @@ class ToolDetailsSpecifications extends StatelessWidget {
                       ),
                       TitleWithDescription(
                         title: L10n.status.tr,
-                        description: tool.status,
+                        description: tool.status.tr,
                       ),
                       if (tool.serialNumber != null)
                         TitleWithDescription(
@@ -62,7 +62,7 @@ class ToolDetailsSpecifications extends StatelessWidget {
                     if (tool.color != null)
                       TitleWithDescription(
                         title: L10n.color.tr,
-                        description: tool.color!,
+                        description: tool.color!.tr,
                       )
                   ],
                 ),
