@@ -8,7 +8,7 @@ class AddCarModel extends BaseModel {
   int idBrand;
   int idModelBrand;
   int idEnginePower;
-  int engineCapacity;
+  double engineCapacity;
   String? inComingType;
   String? numberRegisterCar;
   String yearModel;

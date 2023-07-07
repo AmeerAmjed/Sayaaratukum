@@ -129,13 +129,16 @@ class AddCarController extends BaseController with StateMixin {
   setValueCar(CarModel car) {
     price.text = car.price.toString();
     color.value = car.color;
-    engineCapacity.value = 12;
-
+    engineCapacity.value = double.tryParse(car.engine)!;
+    try {
+      engineCapacity.value = double.tryParse(car.engine)!;
+    } catch (e) {
+      engineCapacity.value = 0.0;
+    }
     idBrandSelected = car.brand.id;
     idModelBrandSelected = car.modelBrand.id;
     modelCar = car.modelBrand.name;
     idEnginePower = car.enginePowerType.id;
-    engineCapacity.value = 1.5;
     yearModel.text = car.yearModel;
     drivingMiles.text = car.mileage;
     numberRegisterCar.text = car.registerNumber ?? "";
@@ -230,7 +233,7 @@ class AddCarController extends BaseController with StateMixin {
       return AddCarModel(
         price: price.text,
         color: color.value,
-        engineCapacity: 12,
+        engineCapacity: engineCapacity.value,
         yearModel: yearModel.text,
         idBrand: idBrandSelected,
         idModelBrand: idModelBrandSelected,
