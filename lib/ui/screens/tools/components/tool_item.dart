@@ -121,7 +121,7 @@ onClickToolIsOwner(int id, controller) {
           icon: Iconsax.edit,
           onPressed: () {
             Get.back();
-            controller.navToAddTool(id: id);
+            controller.navToAddTool(idUpdateTool: id);
             // Get.back();
           },
           paddingVertical: 4,
