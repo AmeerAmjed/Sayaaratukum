@@ -165,7 +165,7 @@ class CarsController extends BaseController
   }
 
   Future<void> onHomeRefresh() async {
-    getCars();
+    init();
     AdsController.instance.init();
     BrandPinController.instance.init();
   }
