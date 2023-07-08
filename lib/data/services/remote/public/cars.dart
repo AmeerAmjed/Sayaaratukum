@@ -95,6 +95,8 @@ class CarsServices extends BaseService {
 
   Future<Response> updateCar(int id,AddCarModel car) async {
     try {
+      print("cass ${car.userType}");
+      print("cass ${car.userId}");
       Response response = await post(
         "${ApiEndpoint.addCar}/$id?_method=put&lang=$lang",
         car.getBaseInfo(),

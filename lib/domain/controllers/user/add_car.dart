@@ -227,9 +227,13 @@ class AddCarController extends BaseController with StateMixin {
   }
 
   AddCarModel? getInfo() {
-
     var userInfo = Application.instance.user?.value;
+
     if (userInfo != null) {
+      var userId = userInfo.id;
+      if (userInfo.role!.title == "store") {
+        userId = userInfo.myStoreId;
+      }
       return AddCarModel(
         price: price.text,
         color: color.value,
@@ -239,7 +243,7 @@ class AddCarController extends BaseController with StateMixin {
         idModelBrand: idModelBrandSelected,
         idEnginePower: idEnginePower,
         userType: userInfo.role!.title,
-        userId: userInfo.id,
+        userId: userId,
         city: region.text,
         gov: provinces.value,
         nearPoint: nearPoint.text,
