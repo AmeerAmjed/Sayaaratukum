@@ -6,16 +6,17 @@ import 'package:get/get_connect/http/src/response/response.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sayaaratukum/data/services/remote/public/tools.dart';
+import 'package:sayaaratukum/data/services/remote/user/add_tool.dart';
+import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/domain/controllers/controller.dart';
 import 'package:sayaaratukum/domain/controllers/public/brand.dart';
 import 'package:sayaaratukum/domain/controllers/public/category_tool.dart';
-import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/domain/models//add_tool.dart';
 import 'package:sayaaratukum/domain/models//brand.dart';
 import 'package:sayaaratukum/domain/models//category_tool.dart';
 import 'package:sayaaratukum/domain/models//tool.dart';
-import 'package:sayaaratukum/data/services/remote/public/tools.dart';
-import 'package:sayaaratukum/data/services/remote/user/add_tool.dart';
+import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/error_handler.dart';
 
@@ -184,7 +185,7 @@ class AddToolController extends BaseController with StateMixin {
 
   FormAddToolModel getFormData() {
     return FormAddToolModel(
-      idStore: tool.value!.idStore,
+      idStore: Application.instance.user?.value?.myStoreId ?? 0,
       name: name.text,
       idBrand: idBrandSelected,
       idModelBrand: idModelBrandSelected,
