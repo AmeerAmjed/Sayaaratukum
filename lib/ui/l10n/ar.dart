@@ -228,6 +228,8 @@ class ArTranslations {
         L10n.successUpdateCar : 'تم تحدث السيارة بنجاح',
         L10n.successAddCar : 'تم اضافه السيارة بنجاح',
 
+        L10n.resetPassword : 'اعادة تعين كلمة السر',
+        L10n.emailSendedToRestPassword : 'تم ارسال بريد الالكتروني لتعين لكلمة السر راجع ايميلك',
 
         "auto":"أوتوماتيك",
         "manual":"عادي",

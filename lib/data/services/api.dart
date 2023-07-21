@@ -29,6 +29,7 @@ class ApiEndpoint {
   static const String notificationsSeen = '/me/notifies/make-read';
   static const String adminImagesCar = '/admin/images';
   static const String vinCheck = '/vin-check';
+  static const String resetPassword = '/reset-password';
 
 
 }

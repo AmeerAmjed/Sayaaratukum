@@ -4,6 +4,7 @@ import 'package:sayaaratukum/domain/controllers/auth/login.dart';
 import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/ui/route/page.dart';
 import 'package:sayaaratukum/ui/screens/auth/components/footer_auth.dart';
+import 'package:sayaaratukum/ui/screens/auth/login/components/RestPasswordDialog.dart';
 import 'package:sayaaratukum/ui/widgets//buttons.dart';
 import 'package:sayaaratukum/ui/widgets//input.dart';
 import 'package:sayaaratukum/ui/widgets//padding_start.dart';
@@ -78,7 +79,9 @@ class FormLogin extends GetView<LoginController> {
                         margin: spacingH16(),
                         alignment: Alignment.centerRight,
                         child: InkWell(
-                          // onTap: () => Get.toNamed('/forgotpassword'),
+                          onTap: () {
+                            restPasswordDialog(controller: controller);
+                          },
                           child: Text(
                             L10n.forgotPassword.tr,
                             style: Get.textTheme.labelMedium,

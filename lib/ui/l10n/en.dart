@@ -227,6 +227,9 @@ class EnTranslations {
         L10n.successUpdateCar : 'Success update car',
         L10n.successAddCar : 'Success add car',
 
+        L10n.resetPassword : 'Reset Password',
+        L10n.emailSendedToRestPassword : 'Send email to reset password check your email',
+
         //income to
         "USA": 'USA',
         "Europe": 'Europe',

@@ -20,4 +20,21 @@ class LoginServices extends BaseService {
       return Future.error(e);
     }
   }
+
+  Future<Response> resetPassword(Map<String, dynamic> body) async {
+    var url = "${ApiEndpoint.resetPassword}?lang=$lang";
+
+    try {
+      Response response = await post(url, body);
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error LoginService resetPassword $e");
+      return Future.error(e);
+    }
+  }
+
 }

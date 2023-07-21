@@ -6,23 +6,29 @@ import 'package:sayaaratukum/data/services/local/storage.dart';
 import 'package:sayaaratukum/data/services/remote/auth/login.dart';
 import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/domain/models//user.dart';
+import 'package:sayaaratukum/ui/l10n/lang.dart';
 
 import 'auth.dart';
 
 class LoginController extends AuthController with LocalStorage {
   late TextEditingController emailOrNumberPhone;
+  late TextEditingController email;
   late TextEditingController password;
   late GlobalKey<FormState> loginFormKey;
+  late GlobalKey<FormState> resetPasswordFormKey;
 
   RxBool visibilityPassword = true.obs;
   RxBool disableSubmit = false.obs;
+  RxBool disableSubmitResetPassword = false.obs;
 
   @override
   void onInit() {
     super.onInit();
     emailOrNumberPhone = TextEditingController();
+    email = TextEditingController();
     password = TextEditingController();
     loginFormKey = GlobalKey<FormState>();
+    resetPasswordFormKey = GlobalKey<FormState>();
   }
 
   Future<void> login() async {
@@ -55,6 +61,23 @@ class LoginController extends AuthController with LocalStorage {
     }
   }
 
+  Future<void> resetPassword() async {
+    loadingResetPassword(true);
+    var body = {"email": email.text.trim()};
+    try {
+      await LoginServices.instance.resetPassword(body).then((response) {
+        loadingResetPassword(false);
+        if (response.isOk) {
+          Get.back();
+          showMessage(L10n.emailSendedToRestPassword.tr);
+        }
+      });
+    } on Response catch (response) {
+      loadingResetPassword(false);
+      onError(response.body[message]);
+    }
+  }
+
   toggle() {
     visibilityPassword.value = !visibilityPassword.value;
   }
@@ -63,10 +86,17 @@ class LoginController extends AuthController with LocalStorage {
     disableSubmit.value = state;
     update();
   }
+
+  loadingResetPassword(bool state) {
+    disableSubmitResetPassword.value = state;
+    update();
+  }
+
   @override
   void dispose() {
     emailOrNumberPhone.dispose();
     password.dispose();
+    email.dispose();
     super.dispose();
   }
 }

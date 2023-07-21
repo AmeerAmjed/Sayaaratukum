@@ -238,4 +238,7 @@ class L10n {
   static const toolDeleted = 'toolDeleted';
   static const successUpdateCar = 'successUpdateCar';
   static const successAddCar = 'successAddCar';
+  static const resetPassword = 'resetPassword';
+  static const emailSendedToRestPassword = 'emailSendedToRestPassword';
+
 }
