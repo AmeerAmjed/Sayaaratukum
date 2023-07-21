@@ -7,6 +7,8 @@ import 'package:sayaaratukum/data/services/remote/auth/login.dart';
 import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/domain/models//user.dart';
 import 'package:sayaaratukum/ui/l10n/lang.dart';
+import 'package:sayaaratukum/ui/route/page.dart';
+import 'package:sayaaratukum/util/constant.dart';
 
 import 'auth.dart';
 
@@ -70,12 +72,20 @@ class LoginController extends AuthController with LocalStorage {
         if (response.isOk) {
           Get.back();
           showMessage(L10n.emailSendedToRestPassword.tr);
+          navToCheckOTP(email.text.trim());
         }
       });
     } on Response catch (response) {
       loadingResetPassword(false);
       onError(response.body[message]);
     }
+  }
+
+  navToCheckOTP(String email) {
+    Get.offAllNamed(
+      RouteScreen.checkOTPResetPassword,
+      arguments: {emailToCheckOTPKey: email},
+    );
   }
 
   toggle() {

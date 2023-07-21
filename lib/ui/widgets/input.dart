@@ -76,7 +76,12 @@ class InputAuth extends StatelessWidget {
           hintStyle: Get.textTheme.labelMedium,
           labelStyle: Get.textTheme.labelMedium,
           suffixIcon: suffixIcon,
-          prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+          prefixIcon: prefixIcon != null
+              ? Icon(
+                  prefixIcon,
+                  color: Get.textTheme.labelMedium?.color?.withOpacity(0.3),
+                )
+              : null,
           labelText: label,
           floatingLabelAlignment: FloatingLabelAlignment.start,
           contentPadding: EdgeInsets.all(

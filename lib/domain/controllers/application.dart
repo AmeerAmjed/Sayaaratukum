@@ -1,12 +1,12 @@
 import 'dart:ui';
 
 import 'package:get/get.dart';
+import 'package:sayaaratukum/data/services/local/storage.dart';
 import 'package:sayaaratukum/data/services/remote/pusher.dart';
 import 'package:sayaaratukum/domain/controllers/controller.dart';
 import 'package:sayaaratukum/domain/controllers/main_tab.dart';
 import 'package:sayaaratukum/domain/controllers/user/favorite.dart';
 import 'package:sayaaratukum/domain/controllers/user/notification.dart';
-import 'package:sayaaratukum/data/services/local/storage.dart';
 import 'package:sayaaratukum/domain/models//tool.dart';
 import 'package:sayaaratukum/domain/models//user.dart';
 import 'package:sayaaratukum/ui/route/page.dart';
@@ -82,6 +82,11 @@ class Application extends BaseController with LocalStorage {
     await save<String>(Constants.tokenKey, token);
     await save<UserModel>(Constants.userKey, user);
     await resetStateAuthController();
+    update();
+  }
+
+  void updateToken(String token) async {
+    this.token.value = token;
     update();
   }
 

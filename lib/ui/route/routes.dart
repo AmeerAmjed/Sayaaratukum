@@ -1,4 +1,5 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:sayaaratukum/binding/auth/check_code_reset_password.dart';
 import 'package:sayaaratukum/binding/auth/login.dart';
 import 'package:sayaaratukum/binding/auth/register.dart';
 import 'package:sayaaratukum/binding/public/car_details.dart';
@@ -23,6 +24,7 @@ import 'package:sayaaratukum/binding/user/user_cars.dart';
 import 'package:sayaaratukum/ui/route/page.dart';
 import 'package:sayaaratukum/ui/screens/add_car/AddCar.dart';
 import 'package:sayaaratukum/ui/screens/add_tool/add_tool.dart';
+import 'package:sayaaratukum/ui/screens/auth/check_code_reset_password/check_code_reset_password.dart';
 import 'package:sayaaratukum/ui/screens/auth/login/login.dart';
 import 'package:sayaaratukum/ui/screens/auth/register/register.dart';
 import 'package:sayaaratukum/ui/screens/auth/welcom/welcome.dart';
@@ -164,5 +166,10 @@ List<GetPage> routes() => [
         name: RouteScreen.vinCheck,
         page: () => const VinCheck(),
         binding: VinCheckBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.checkOTPResetPassword,
+        page: () => const CheckCodResetPassword(),
+        binding: CheckCodResetPasswordBinding(),
       )
     ];

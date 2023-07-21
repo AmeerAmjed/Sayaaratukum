@@ -229,6 +229,8 @@ class EnTranslations {
 
         L10n.resetPassword : 'Reset Password',
         L10n.emailSendedToRestPassword : 'Send email to reset password check your email',
+        L10n.codeOTP : 'Code OTP',
+        L10n.code : 'Code',
 
         //income to
         "USA": 'USA',

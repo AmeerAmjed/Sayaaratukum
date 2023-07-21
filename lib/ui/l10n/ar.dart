@@ -230,6 +230,8 @@ class ArTranslations {
 
         L10n.resetPassword : 'اعادة تعين كلمة السر',
         L10n.emailSendedToRestPassword : 'تم ارسال بريد الالكتروني لتعين لكلمة السر راجع ايميلك',
+        L10n.codeOTP : 'رمز التحقق',
+        L10n.code : 'الرمز',
 
         "auto":"أوتوماتيك",
         "manual":"عادي",

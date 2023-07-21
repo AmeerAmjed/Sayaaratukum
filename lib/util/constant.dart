@@ -1,5 +1,3 @@
-import 'package:sayaaratukum/util/lang_code.dart';
-
 class Constants {
   static const String websiteLink = "https://api.saiaratcom.com/";
   static const String baseUrl = "https://saiaratcom.com/";
@@ -75,8 +73,10 @@ class Constants {
   static const String allImage =
       "https://api.mooappx.com/storage/h7sNnp2119BSZe8URUe6sFlB92yNewoiqigJSfZL.png";
 
-  static  RegExp emailRegExp =  RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
-
+  static RegExp emailRegExp =
+      RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
 }
+
+const String emailToCheckOTPKey = 'emailToCheckOTPKey';
 
 enum OwnerType { user, store }

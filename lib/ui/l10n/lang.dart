@@ -240,5 +240,7 @@ class L10n {
   static const successAddCar = 'successAddCar';
   static const resetPassword = 'resetPassword';
   static const emailSendedToRestPassword = 'emailSendedToRestPassword';
+  static const codeOTP = 'codeOTP';
+  static const code = 'code';
 
 }

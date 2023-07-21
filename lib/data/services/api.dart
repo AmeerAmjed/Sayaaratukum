@@ -30,6 +30,7 @@ class ApiEndpoint {
   static const String adminImagesCar = '/admin/images';
   static const String vinCheck = '/vin-check';
   static const String resetPassword = '/reset-password';
+  static const String checkCode = '/check-code';
 
 
 }

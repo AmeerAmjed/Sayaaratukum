@@ -43,5 +43,6 @@ class RouteScreen {
   static const notification  = '/notification';
   static const userCars  = '/userCars';
   static const vinCheck  = '/vinCheck';
+  static const checkOTPResetPassword  = '/checkOTPResetPassword';
 
 }
