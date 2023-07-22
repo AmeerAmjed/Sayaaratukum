@@ -3,13 +3,11 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/instance_manager.dart';
-import 'package:sayaaratukum/binding/public/car_details.dart';
+import 'package:sayaaratukum/data/services/remote/public/search.dart';
 import 'package:sayaaratukum/domain/controllers/controller.dart';
 import 'package:sayaaratukum/domain/controllers/pagination.dart';
 import 'package:sayaaratukum/domain/controllers/public/filter/filter_car.dart';
 import 'package:sayaaratukum/domain/models//car.dart';
-import 'package:sayaaratukum/ui/screens/details/car/car_details.dart';
-import 'package:sayaaratukum/data/services/remote/public/search.dart';
 
 class SearchCarsController extends BaseController
     with StateMixin<List<CarModel>>, PaginationController, ScrollMixin {
@@ -107,5 +105,4 @@ class SearchCarsController extends BaseController
   searchByText(String text) {
     if (text.trim().isNotEmpty) init();
   }
-
 }

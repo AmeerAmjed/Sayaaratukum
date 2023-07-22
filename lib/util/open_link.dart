@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 callNow(String? numberPhone) {
   if (numberPhone != null) {
-    OpenLink.dial(phoneNumber: numberPhone!);
+    OpenLink.dial(phoneNumber: numberPhone);
   } else {
     customSnackBar(L10n.numberPhoneNotAdd.tr);
   }

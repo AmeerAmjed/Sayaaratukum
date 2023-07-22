@@ -55,6 +55,5 @@ class CheckCodResetPassword extends GetView<CheckCodResetPasswordController> {
         ),
       ),
     );
-    ;
   }
 }
