@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:sayaaratukum/ui/l10n//lang.dart';
+import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/domain/models//car.dart';
+import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/ui/screens/details/tool/components/title_with_description.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/converter.dart';
+import 'package:sayaaratukum/util/translate.dart';
 
 class CarDetailsSpecifications extends StatelessWidget {
   const CarDetailsSpecifications({
@@ -42,10 +44,14 @@ class CarDetailsSpecifications extends StatelessWidget {
                         title: L10n.enginePower.tr,
                         description: car.enginePowerType.name,
                       ),
-                      TitleWithDescription(
-                        title: L10n.color.tr,
-                        description: car.color.tr,
-                      ),
+                      if (car.color.defaultValue.isNotEmpty)
+                        TitleWithDescription(
+                          title: L10n.color.tr,
+                          description: translate(
+                            translate: car.color,
+                            langCode: Application.instance.getLangCode,
+                          ),
+                        ),
                       TitleWithDescription(
                         title: L10n.gearBox.tr,
                         description: car.gearbox.tr,

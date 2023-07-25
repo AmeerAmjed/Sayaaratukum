@@ -1,6 +1,7 @@
-import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/domain/models//owner_car.dart';
 import 'package:sayaaratukum/domain/models//store_type.dart';
+import 'package:sayaaratukum/domain/models/translate.dart';
+import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/util/constant.dart';
 
 import 'model.dart';
@@ -9,14 +10,14 @@ class CarModel extends BaseModel {
   final int id;
   final String name;
   final int price;
-  final String color;
+  final TranslateMode color;
   final bool isAvailable;
   final String? notes;
   final String? registerNumber;
   final String? isDamage;
   final String? inComingType;
   final int isPublished;
-   bool isFavorite;
+  bool isFavorite;
   bool isLoadingFavorite;
   final String engine;
   final String yearModel;
@@ -65,11 +66,19 @@ class CarModel extends BaseModel {
       return type == OwnerType.user.name;
     }
 
+    TranslateMode? colors;
+
+    try {
+      colors = TranslateMode.fromJson(json['color'], json['color']['name']);
+    } catch (e) {
+      colors = TranslateMode.nullable(null);
+    }
+
     return CarModel(
       id: json['id'],
       name: json['name'],
       price: json['price'],
-      color: json['color'],
+      color: colors,
       isAvailable: (json['state'] == "2") ? true : false,
       registerNumber: json['register_number'],
       inComingType: json['incoming_type'],
