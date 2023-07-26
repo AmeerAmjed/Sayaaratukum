@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sayaaratukum/domain/controllers/controller.dart';
 import 'package:sayaaratukum/domain/controllers/pagination.dart';
@@ -20,8 +21,12 @@ class StoresController extends BaseController
   bool getFirstData = false;
   bool lastPage = false;
 
+  late TextEditingController search;
+  RxBool isTextEmpty = true.obs;
+
   @override
   void onInit() {
+    search = TextEditingController();
     init();
     super.onInit();
   }
@@ -29,7 +34,7 @@ class StoresController extends BaseController
   init() {
     loadingData();
     stores.clear();
-    getAllStore(storeTypeId.value);
+    getStoreType(storeTypeId.value);
   }
 
   resetPagination() {
@@ -50,18 +55,14 @@ class StoresController extends BaseController
     try {
       await StoreServices.instance
           .getStoresByType(storeTypeId.value,
-              page: page, limit: limitRepositories)
+          page: page, limit: limitRepositories)
           .then((response) {
         if (response.isOk) {
           List<StoreModel> result = StoreModel.listFromJson(
             response.body[Constants.bodyData],
           );
 
-          var responseData = response.body[data];
-          final bool emptyRepositories =
-              (responseData == null || responseData.isEmpty);
-          // final bool emptyRepositories = response.body?.isEmpty ?? true;
-          print("emptyRepositories $emptyRepositories ${response.body}");
+          final bool emptyRepositories = response.body?.isEmpty ?? true;
           if (!getFirstData && emptyRepositories) {
             change(null, status: RxStatus.empty());
           } else if (getFirstData && emptyRepositories) {
@@ -142,5 +143,17 @@ class StoresController extends BaseController
   Future<void> onRefresh() async {
     stores.clear();
     getAllStore(storeTypeId.value);
+  }
+
+  void onTextChanged(String text) {
+    isTextEmpty.value = text.isEmpty;
+    update();
+  }
+
+  void clearSearch() {
+    search.clear();
+    search.text = "";
+    isTextEmpty.value = true;
+    update();
   }
 }

@@ -231,6 +231,8 @@ class EnTranslations {
         L10n.emailSendedToRestPassword : 'Send email to reset password check your email',
         L10n.codeOTP : 'Code OTP',
         L10n.code : 'Code',
+        L10n.searchStore : 'Find Store',
+
 
         //income to
         "USA": 'USA',

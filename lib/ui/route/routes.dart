@@ -6,6 +6,7 @@ import 'package:sayaaratukum/binding/public/car_details.dart';
 import 'package:sayaaratukum/binding/public/main_tab.dart';
 import 'package:sayaaratukum/binding/public/search/search_car.dart';
 import 'package:sayaaratukum/binding/public/search/search_car_by_brand.dart';
+import 'package:sayaaratukum/binding/public/search/search_stores.dart';
 import 'package:sayaaratukum/binding/public/search/search_tool.dart';
 import 'package:sayaaratukum/binding/public/store_car_details.dart';
 import 'package:sayaaratukum/binding/public/store_tool_details.dart';
@@ -44,6 +45,7 @@ import 'package:sayaaratukum/ui/screens/notification/notification.dart';
 import 'package:sayaaratukum/ui/screens/profile/profile.dart';
 import 'package:sayaaratukum/ui/screens/search/car/search_car.dart';
 import 'package:sayaaratukum/ui/screens/search/car_by_brand/search_car_by_brand.dart';
+import 'package:sayaaratukum/ui/screens/search/stores/search_store.dart';
 import 'package:sayaaratukum/ui/screens/search/tool/search_tool.dart';
 import 'package:sayaaratukum/ui/screens/view_all/brand/view_all_brand.dart';
 import 'package:sayaaratukum/ui/screens/vin_check/vin_ceck.dart';
@@ -171,5 +173,10 @@ List<GetPage> routes() => [
         name: RouteScreen.checkOTPResetPassword,
         page: () => const CheckCodResetPassword(),
         binding: CheckCodResetPasswordBinding(),
+      ),
+      GetPage(
+        name: RouteScreen.searchStore,
+        page: () => const SearchStores(),
+        binding: SearchStoresBinding(),
       )
     ];

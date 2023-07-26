@@ -26,6 +26,26 @@ class StoreServices extends BaseService {
     }
   }
 
+
+  Future<Response> searchStores(String nameStore, {
+    required int page,
+    required int limit,
+  }) async {
+    try {
+      String urlStores =
+      pagination(ApiEndpoint.stores, page: page, limit: limit);
+      Response response = await get("$urlStores&search=$nameStore&lang=$lang");
+      if (response.status.hasError) {
+        return Future.error(response);
+      } else {
+        return response;
+      }
+    } catch (e) {
+      print("error StoreServices searchStores $e");
+      return Future.error(e);
+    }
+  }
+
   Future<Response> getStoresById(String id) async {
     try {
       Response response = await get("${ApiEndpoint.stores}/$id?lang=$lang");

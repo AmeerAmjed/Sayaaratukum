@@ -242,5 +242,6 @@ class L10n {
   static const emailSendedToRestPassword = 'emailSendedToRestPassword';
   static const codeOTP = 'codeOTP';
   static const code = 'code';
+  static const searchStore = 'searchStore';
 
 }

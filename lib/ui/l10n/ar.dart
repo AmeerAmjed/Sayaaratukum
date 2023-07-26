@@ -232,6 +232,7 @@ class ArTranslations {
         L10n.emailSendedToRestPassword : 'تم ارسال بريد الالكتروني لتعين لكلمة السر راجع ايميلك',
         L10n.codeOTP : 'رمز التحقق',
         L10n.code : 'الرمز',
+        L10n.searchStore : 'ابحث عن معرض',
 
         "auto":"أوتوماتيك",
         "manual":"عادي",

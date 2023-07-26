@@ -44,5 +44,6 @@ class RouteScreen {
   static const userCars  = '/userCars';
   static const vinCheck  = '/vinCheck';
   static const checkOTPResetPassword  = '/checkOTPResetPassword';
+  static const String searchStore = '/searchStore';
 
 }

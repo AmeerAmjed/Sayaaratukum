@@ -10,6 +10,7 @@ class SearchBox extends StatelessWidget {
     this.controller,
     this.suffixIcon,
     this.onChanged,
+    this.iconButton = Iconsax.filter,
     required this.hintText,
     required this.onSubmitted,
     required this.onPressedFilter,
@@ -17,6 +18,7 @@ class SearchBox extends StatelessWidget {
 
   final String hintText;
   final Widget? suffixIcon;
+  final IconData iconButton;
   final VoidCallback onPressedFilter;
   final TextEditingController? controller;
   final Function(String)? onSubmitted;
@@ -77,7 +79,7 @@ class SearchBox extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 4),
             width: 80,
             height: 45,
-            icon: Iconsax.filter,
+            icon: iconButton,
             onPressed: onPressedFilter,
             background: Get.theme.primaryColor,
           )

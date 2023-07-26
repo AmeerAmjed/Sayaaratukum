@@ -4,12 +4,15 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sayaaratukum/domain/controllers/public/stores.dart';
 import 'package:sayaaratukum/ui/l10n//lang.dart';
+import 'package:sayaaratukum/ui/route/page.dart';
 import 'package:sayaaratukum/ui/screens/stores/components/filtter_store.dart';
 import 'package:sayaaratukum/ui/screens/stores/components/item_stores.dart';
-import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/ui/screens/stores/components/search_stores.dart';
 import 'package:sayaaratukum/ui/widgets//empty.dart';
 import 'package:sayaaratukum/ui/widgets//error.dart';
 import 'package:sayaaratukum/ui/widgets//space.dart';
+import 'package:sayaaratukum/ui/widgets/vertical_space.dart';
+import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/store_type.dart';
 
 import '../../widgets/loading.dart';
@@ -29,6 +32,12 @@ class StoresScreen extends GetView<StoresController> {
                 padding: const EdgeInsets.all(20),
                 sliver: SliverList(
                   delegate: SliverChildListDelegate([
+                    SearchBoxStores(
+                      onSubmittedSearch: (text) {
+                        Get.toNamed(RouteScreen.searchStore);
+                      },
+                    ),
+                    const VerticalSpace16(),
                     GetBuilder<StoresController>(builder: (controller) {
                       return FilterStores(
                         typeActive: controller.storeTypeId.value.toTypeStore(),
