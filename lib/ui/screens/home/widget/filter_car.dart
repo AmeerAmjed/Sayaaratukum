@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/domain/controllers/public/filter/filter_car.dart';
 import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/ui/screens/add_car/components/row_two_widget.dart';
 import 'package:sayaaratukum/ui/screens/add_car/components/year_brand.dart';
-import 'package:sayaaratukum/util/currency_input_formatter.dart';
-import 'package:sayaaratukum/util/hard_code.dart';
 import 'package:sayaaratukum/ui/widgets//dropdown_list.dart';
 import 'package:sayaaratukum/ui/widgets//header_filter_cleaner.dart';
 import 'package:sayaaratukum/ui/widgets//input.dart';
 import 'package:sayaaratukum/ui/widgets//vertical_space.dart';
 import 'package:sayaaratukum/ui/widgets//years.dart';
+import 'package:sayaaratukum/ui/widgets/translate_dropdown_list.dart';
+import 'package:sayaaratukum/util/currency_input_formatter.dart';
+import 'package:sayaaratukum/util/hard_code.dart';
+import 'package:sayaaratukum/util/translate.dart';
 
 class FilterCar extends GetView<FilterCarController> {
   const FilterCar({Key? key}) : super(key: key);
@@ -27,7 +30,7 @@ class FilterCar extends GetView<FilterCarController> {
         ),
         const VerticalSpace8(),
         RowTwoWidget(
-          leftWidget: DropdownList(
+          leftWidget: TranslateDropdownList(
             keyDropdownList: controller.brandFormKey,
             margin: const EdgeInsets.only(
               left: 2,
@@ -37,7 +40,7 @@ class FilterCar extends GetView<FilterCarController> {
             items: controller.brands.map((e) => e.title).toList(),
           ),
           rightWidget: GetBuilder<FilterCarController>(builder: (co) {
-            return DropdownList(
+            return TranslateDropdownList(
               keyDropdownList: controller.modelBrandFormKey,
               label: L10n.model.tr,
               onChanged: controller.onChangeModelBrand,
@@ -137,11 +140,11 @@ class FilterCar extends GetView<FilterCarController> {
           ),
         ),
         const VerticalSpace4(),
-        DropdownList(
-          label: L10n.governorate.tr,
-          onChanged: controller.onChangeBrand,
-          items: HardCode.provinces,
-        ),
+        // DropdownList(
+        //   label: L10n.governorate.tr,
+        //   onChanged: controller.onChangeBrand,
+        //   items: HardCode.provinces,
+        // ),
       ],
     );
   }

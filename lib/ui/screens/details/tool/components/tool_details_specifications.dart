@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:sayaaratukum/ui/l10n//lang.dart';
+import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/domain/models//tool.dart';
+import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/ui/screens/details/tool/components/title_with_description.dart';
 import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/translate.dart';
 
 class ToolDetailsSpecifications extends StatelessWidget {
   const ToolDetailsSpecifications({
@@ -34,7 +36,10 @@ class ToolDetailsSpecifications extends StatelessWidget {
                     children: [
                       TitleWithDescription(
                         title: L10n.brand.tr,
-                        description: tool.brand.title,
+                        description: translateWithId(
+                          translate: tool.brand.title,
+                          langCode: Application.instance.getLangCode,
+                        ),
                       ),
                       TitleWithDescription(
                         title: L10n.status.tr,
@@ -57,7 +62,10 @@ class ToolDetailsSpecifications extends StatelessWidget {
                   children: [
                     TitleWithDescription(
                       title: L10n.model.tr,
-                      description: tool.model.name,
+                      description: translateWithId(
+                        translate: tool.model.name,
+                        langCode: Application.instance.getLangCode,
+                      ),
                     ),
                     if (tool.color != null)
                       TitleWithDescription(

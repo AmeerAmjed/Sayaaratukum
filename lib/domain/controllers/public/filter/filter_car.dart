@@ -10,6 +10,7 @@ import 'package:sayaaratukum/domain/controllers/public/engine_powers.dart';
 import 'package:sayaaratukum/domain/models//brand.dart';
 import 'package:sayaaratukum/domain/models//car.dart';
 import 'package:sayaaratukum/domain/models//engine_power_type.dart';
+import 'package:sayaaratukum/domain/models/translate_with_id.dart';
 import 'package:sayaaratukum/util/error_handler.dart';
 
 class FilterCarController extends BaseController
@@ -156,42 +157,29 @@ class FilterCarController extends BaseController
   Future<void> onTopScroll() async {}
 
   //region Brand,Model Car
-  onChangeBrand(String? brand) {
+  onChangeBrand(TranslateWithIdMode? brand) {
     modelBrandFormKey.currentState?.reset();
     if (brand != null) {
-      brands.firstWhere((element) {
-        if (element.title == brand) {
-          idBrandSelected = element.id;
-          getModelByBrandId();
-          update();
-          return true;
-        }
-        return false;
-      });
+      print("brand ${brand.id}  ${brand.defaultValue}");
+      idBrandSelected = brand.id;
+      getModelByBrandId();
+      update();
     }
   }
 
-  List<String> getModelByBrandId() {
+  List<TranslateWithIdMode> getModelByBrandId() {
     return brands
         .map((brand) => brand.id == idBrandSelected
             ? brand.models.map((model) => model.name).toList()
             : [])
         .expand((list) => list)
-        .cast<String>()
+        .cast<TranslateWithIdMode>()
         .toList();
   }
 
-  onChangeModelBrand(String? modelName) {
-    if (modelName != null) {
-      BrandModel specificModel =
-          brands.firstWhere((itemBrand) => itemBrand.id == idBrandSelected);
-      specificModel.models.firstWhere((itemModelBrand) {
-        if (itemModelBrand.name == modelName) {
-          idModelBrandSelected = itemModelBrand.id;
-          return true;
-        }
-        return false;
-      });
+  onChangeModelBrand(TranslateWithIdMode? model) {
+    if (model != null) {
+      idModelBrandSelected = model.id;
     }
   }
 

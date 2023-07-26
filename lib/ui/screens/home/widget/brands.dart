@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/domain/controllers/public/brand_pin.dart';
 import 'package:sayaaratukum/ui/screens/home/components/brand_item.dart';
-import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/ui/widgets//error.dart';
 import 'package:sayaaratukum/ui/widgets//loading.dart';
 import 'package:sayaaratukum/ui/widgets//space.dart';
+import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/translate.dart';
 
 class Brands extends GetView<BrandPinController> {
   const Brands({Key? key}) : super(key: key);
@@ -45,7 +47,10 @@ class Brands extends GetView<BrandPinController> {
               onTap: () {
                 controller.onBrandClicked(
                   state[index].id.toString(),
-                  state[index].title,
+                  translateWithId(
+                    translate: state[index].title,
+                    langCode: Application.instance.getLangCode,
+                  ),
                 );
               },
               child: BrandItem(

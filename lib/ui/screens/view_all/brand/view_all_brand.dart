@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/domain/controllers/public/brand.dart';
 import 'package:sayaaratukum/ui/l10n//lang.dart';
-import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/ui/widgets//appbars.dart';
 import 'package:sayaaratukum/ui/widgets//empty.dart';
 import 'package:sayaaratukum/ui/widgets//image_loading.dart';
 import 'package:sayaaratukum/ui/widgets//loading.dart';
+import 'package:sayaaratukum/util/constant.dart';
+import 'package:sayaaratukum/util/translate.dart';
 
 class ViewAllBrand extends GetView<BrandController> {
   const ViewAllBrand({Key? key}) : super(key: key);
@@ -48,7 +50,10 @@ class ViewAllBrand extends GetView<BrandController> {
               onTap: () {
                 controller.onBrandClicked(
                   state[index].id.toString(),
-                  state[index].title,
+                  translateWithId(
+                    translate: state[index].title,
+                    langCode: Application.instance.getLangCode,
+                  ),
                 );
               },
               child: Card(

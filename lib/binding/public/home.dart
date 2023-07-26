@@ -21,7 +21,8 @@ class HomeBinding extends Bindings {
 
     //brand
     Get.lazyPut<BrandServices>(() => BrandServices());
-    Get.lazyPut<BrandController>(() => BrandController());
+    Get.put<BrandController>(BrandController());
+
     Get.lazyPut<BrandPinController>(() => BrandPinController());
     //ads
     Get.lazyPut<AdsServices>(() => AdsServices());

@@ -8,10 +8,11 @@ import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/ui/screens/add_car/components/radio_group.dart';
 import 'package:sayaaratukum/ui/screens/add_car/components/row_two_widget.dart';
 import 'package:sayaaratukum/ui/screens/add_car/components/year_brand.dart';
-import 'package:sayaaratukum/util/hard_code.dart';
 import 'package:sayaaratukum/ui/widgets//dropdown_list.dart';
 import 'package:sayaaratukum/ui/widgets//input.dart';
 import 'package:sayaaratukum/ui/widgets//vertical_space.dart';
+import 'package:sayaaratukum/ui/widgets/translate_dropdown_list.dart';
+import 'package:sayaaratukum/util/hard_code.dart';
 
 class InformationCarForm extends GetView<AddCarController> {
   const InformationCarForm({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class InformationCarForm extends GetView<AddCarController> {
       children: [
         const VerticalSpace8(),
         RowTwoWidget(
-          leftWidget: DropdownList(
+          leftWidget: TranslateDropdownList(
             margin: const EdgeInsets.only(
               left: 2,
             ),
@@ -39,19 +40,25 @@ class InformationCarForm extends GetView<AddCarController> {
             onChanged: controller.onChangeBrand,
             value: controller.isUpdated.value
                 ? controller.brands
-                    .where((e) => e.id == controller.idBrandSelected)
-                    .first
+                    .firstWhere((brandModel) =>
+                        brandModel.title.id == controller.idBrandSelected)
                     .title
                 : null,
             items: controller.brands.map((e) => e.title).toList(),
           ),
           rightWidget: GetBuilder<AddCarController>(builder: (co) {
-            return DropdownList(
+            return TranslateDropdownList(
               keyDropdownList: controller.keyManagerModelBrand,
               label: L10n.model.tr,
               onChanged: controller.onChangeModelBrand,
               items: co.getModelByBrandId(),
-              value: controller.modelCar,
+              value: controller.isUpdated.value
+                  ? co
+                      .getModelByBrandId()
+                      .where((element) =>
+                          element.id == controller.idModelBrandSelected)
+                      .first
+                  : null,
               margin: const EdgeInsets.only(
                 right: 2,
               ),
@@ -97,12 +104,12 @@ class InformationCarForm extends GetView<AddCarController> {
               : getValueHardCodeMadeToByKey(controller.madeTo.value),
         ),
         const VerticalSpace8(),
-        DropdownList(
-          label: L10n.color.tr,
-          onChanged: controller.onChangeColorCar,
-          items: HardCode.carColors,
-          value: controller.color.value.isEmpty ? null : controller.color.value,
-        ),
+        // DropdownList(
+        //   label: L10n.color.tr,
+        //   onChanged: controller.onChangeColorCar,
+        //   items: HardCode.carColors,
+        //   value: controller.color.value.isEmpty ? null : controller.color.value,
+        // ),
         const VerticalSpace8(),
         InputAuth(
           controller: controller.numberRegisterCar,

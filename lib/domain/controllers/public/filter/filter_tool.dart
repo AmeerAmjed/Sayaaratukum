@@ -7,6 +7,8 @@ import 'package:sayaaratukum/domain/models//brand.dart';
 import 'package:sayaaratukum/domain/models//category_tool.dart';
 import 'package:sayaaratukum/domain/models//engine_power_type.dart';
 import 'package:sayaaratukum/domain/models//tool.dart';
+import 'package:sayaaratukum/domain/models/translate.dart';
+import 'package:sayaaratukum/domain/models/translate_with_id.dart';
 
 class FilterToolController extends BaseController with StateMixin {
   static FilterToolController get instance => Get.find();
@@ -96,45 +98,34 @@ class FilterToolController extends BaseController with StateMixin {
     return filterCarField;
   }
 
+
   //region Brand,Model Car
-  onChangeBrand(String? brand) {
+  onChangeBrand(TranslateWithIdMode? brand) {
     modelBrandFormKey.currentState?.reset();
     if (brand != null) {
-      brands.firstWhere((element) {
-        if (element.title == brand) {
-          idBrandSelected = element.id;
-          getModelByBrandId();
-          update();
-          return true;
-        }
-        return false;
-      });
+      idBrandSelected = brand.id;
+      getModelByBrandId();
+      update();
     }
   }
 
-  List<String> getModelByBrandId() {
+  List<TranslateWithIdMode> getModelByBrandId() {
     return brands
         .map((brand) => brand.id == idBrandSelected
-            ? brand.models.map((model) => model.name).toList()
-            : [])
+        ? brand.models.map((model) => model.name).toList()
+        : [])
         .expand((list) => list)
-        .cast<String>()
+        .cast<TranslateWithIdMode>()
         .toList();
   }
 
-  onChangeModelBrand(String? modelName) {
-    if (modelName != null) {
-      BrandModel specificModel =
-          brands.firstWhere((itemBrand) => itemBrand.id == idBrandSelected);
-      specificModel.models.firstWhere((itemModelBrand) {
-        if (itemModelBrand.name == modelName) {
-          idModelBrandSelected = itemModelBrand.id;
-          return true;
-        }
-        return false;
-      });
+  onChangeModelBrand(TranslateWithIdMode? model) {
+    if (model != null) {
+      idModelBrandSelected = model.id;
     }
   }
+
+//endregion
 
   tryGetCategoriesWhenFailed() {
     if (category == []) {

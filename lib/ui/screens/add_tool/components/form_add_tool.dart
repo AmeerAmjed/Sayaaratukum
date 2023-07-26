@@ -10,6 +10,7 @@ import 'package:sayaaratukum/ui/screens/add_tool/components/image_tool.dart';
 import 'package:sayaaratukum/ui/widgets//dropdown_list.dart';
 import 'package:sayaaratukum/ui/widgets//input.dart';
 import 'package:sayaaratukum/ui/widgets//vertical_space.dart';
+import 'package:sayaaratukum/ui/widgets/translate_dropdown_list.dart';
 
 class FormAddTool extends GetView<AddToolController> {
   const FormAddTool({super.key});
@@ -28,21 +29,32 @@ class FormAddTool extends GetView<AddToolController> {
           ),
           const VerticalSpace4(),
           RowTwoWidget(
-            leftWidget: DropdownList(
+            leftWidget: TranslateDropdownList(
               margin: const EdgeInsets.only(
                 left: 2,
               ),
               label: L10n.brands.tr,
               onChanged: controller.onChangeBrand,
-              value: controller.brandsValue,
+              value: controller.idBrandSelected != 0
+                  ? controller.brands
+                      .firstWhere((brandModel) =>
+                          brandModel.title.id == controller.idBrandSelected)
+                      .title
+                  : null,
               items: controller.brands.map((e) => e.title).toList(),
             ),
             rightWidget: GetBuilder<AddToolController>(builder: (co) {
-              return DropdownList(
+              return TranslateDropdownList(
                 keyDropdownList: controller.keyManagerModelBrand,
                 label: L10n.model.tr,
                 onChanged: controller.onChangeModelBrand,
-                value: controller.modelBrandValue,
+                value: controller.isUpdate.value
+                    ? co
+                        .getModelByBrandId()
+                        .where((element) =>
+                            element.id == controller.idModelBrandSelected)
+                        .first
+                    : null,
                 items: co.getModelByBrandId(),
                 margin: const EdgeInsets.only(
                   right: 2,

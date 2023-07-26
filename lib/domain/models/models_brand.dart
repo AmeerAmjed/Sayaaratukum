@@ -1,4 +1,5 @@
 import 'package:sayaaratukum/domain/models//model.dart';
+import 'package:sayaaratukum/domain/models/translate_with_id.dart';
 
 class ModelsBrandModel extends BaseModel {
   ModelsBrandModel({
@@ -7,12 +8,12 @@ class ModelsBrandModel extends BaseModel {
   });
 
   final int id;
-  final String name;
+  final TranslateWithIdMode name;
 
   factory ModelsBrandModel.fromJson(Map<String, dynamic> data) {
     return ModelsBrandModel(
       id: data['id'],
-      name: data['name'],
+      name: TranslateWithIdMode.fromJson(data, data['name'], data['id']),
     );
   }
 

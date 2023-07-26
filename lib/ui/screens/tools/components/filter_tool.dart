@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sayaaratukum/domain/controllers/application.dart';
 import 'package:sayaaratukum/domain/controllers/public/filter/filter_car.dart';
 import 'package:sayaaratukum/domain/controllers/public/filter/filter_tool.dart';
 import 'package:sayaaratukum/ui/l10n//lang.dart';
@@ -11,6 +12,8 @@ import 'package:sayaaratukum/ui/widgets//header_filter_cleaner.dart';
 import 'package:sayaaratukum/ui/widgets//input.dart';
 import 'package:sayaaratukum/ui/widgets//loading.dart';
 import 'package:sayaaratukum/ui/widgets//vertical_space.dart';
+import 'package:sayaaratukum/ui/widgets/translate_dropdown_list.dart';
+import 'package:sayaaratukum/util/translate.dart';
 
 class FilterTool extends GetView<FilterToolController> {
   const FilterTool({Key? key}) : super(key: key);
@@ -41,39 +44,63 @@ class FilterTool extends GetView<FilterToolController> {
           ),
           const VerticalSpace4(),
           RowTwoWidget(
-            leftWidget: DropdownList(
+            leftWidget: TranslateDropdownList(
               keyDropdownList: controller.brandFormKey,
               margin: const EdgeInsets.only(
                 left: 2,
               ),
-              label: L10n.brand.tr,
+              label: L10n.brands.tr,
               onChanged: controller.onChangeBrand,
               items: controller.brands.map((e) => e.title).toList(),
-              value: controller.idBrandSelected != 0
-                  ? controller.brands
-                      .where((e) => e.id == controller.idBrandSelected)
-                      .first
-                      .title
-                  : null,
             ),
-            rightWidget: GetBuilder<FilterCarController>(builder: (co) {
-              return DropdownList(
+            rightWidget: GetBuilder<FilterToolController>(builder: (co) {
+              return TranslateDropdownList(
                 keyDropdownList: controller.modelBrandFormKey,
                 label: L10n.model.tr,
                 onChanged: controller.onChangeModelBrand,
-                items: controller.brands
-                    .map((brand) => brand.id == controller.idBrandSelected
-                        ? brand.models.map((model) => model.name).toList()
-                        : [])
-                    .expand((list) => list)
-                    .cast<String>()
-                    .toList(),
+                items: co.getModelByBrandId(),
                 margin: const EdgeInsets.only(
                   right: 2,
                 ),
               );
             }),
           ),
+          // RowTwoWidget(
+          //   leftWidget: TranslateDropdownList(
+          //     keyDropdownList: controller.brandFormKey,
+          //     margin: const EdgeInsets.only(
+          //       left: 2,
+          //     ),
+          //     label: L10n.brand.tr,
+          //     onChanged: controller.onChangeBrand,
+          //     items: controller.brands
+          //         .map((e) => e.title)
+          //         .toList(),
+          //     // value: controller.idBrandSelected != 0
+          //     //     ? controller.brands
+          //     //         .where((e) => e.id == controller.idBrandSelected)
+          //     //         .first
+          //     //         .title
+          //     //     : null,
+          //   ),
+          //   rightWidget: GetBuilder<FilterCarController>(builder: (co) {
+          //     return DropdownList(
+          //       keyDropdownList: controller.modelBrandFormKey,
+          //       label: L10n.model.tr,
+          //       onChanged: controller.onChangeModelBrand,
+          //       items: controller.brands
+          //           .map((brand) => brand.id == controller.idBrandSelected
+          //               ? brand.models.map((model) => model.name).toList()
+          //               : [])
+          //           .expand((list) => list)
+          //           .cast<String>()
+          //           .toList(),
+          //       margin: const EdgeInsets.only(
+          //         right: 2,
+          //       ),
+          //     );
+          //   }),
+          // ),
           const VerticalSpace4(),
           GetBuilder<FilterToolController>(builder: (co) {
             var idCategory = controller.idCategorySelected.value;

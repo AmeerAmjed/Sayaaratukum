@@ -16,6 +16,7 @@ import 'package:sayaaratukum/domain/models//add_tool.dart';
 import 'package:sayaaratukum/domain/models//brand.dart';
 import 'package:sayaaratukum/domain/models//category_tool.dart';
 import 'package:sayaaratukum/domain/models//tool.dart';
+import 'package:sayaaratukum/domain/models/translate_with_id.dart';
 import 'package:sayaaratukum/ui/l10n//lang.dart';
 import 'package:sayaaratukum/util/constant.dart';
 import 'package:sayaaratukum/util/error_handler.dart';
@@ -41,8 +42,6 @@ class AddToolController extends BaseController with StateMixin {
 
   // use when edite
   int? idTool;
-  String? brandsValue;
-  String? modelBrandValue;
   String? imageTool;
   Rxn<String> categoryValue = Rxn<String>();
   Rxn<ToolModel> tool = Rxn<ToolModel>();
@@ -113,9 +112,7 @@ class AddToolController extends BaseController with StateMixin {
       serialNumber = TextEditingController(text: tool.serialNumber);
       idTool = tool.id;
       idBrandSelected = tool.brand.id;
-      brandsValue = tool.brand.title;
       idModelBrandSelected = tool.model.id;
-      modelBrandValue = tool.model.name;
       idCategorySelected = tool.category.id;
       categoryValue.value = tool.category.name;
       statusSelected.value = tool.status;
@@ -240,42 +237,28 @@ class AddToolController extends BaseController with StateMixin {
   }
 
   //region Brand,Model Car
-  onChangeBrand(String? brand) {
+  onChangeBrand(TranslateWithIdMode? brand) {
     keyManagerModelBrand.currentState?.reset();
     if (brand != null) {
-      brands.firstWhere((element) {
-        if (element.title == brand) {
-          idBrandSelected = element.id;
-          getModelByBrandId();
-          update();
-          return true;
-        }
-        return false;
-      });
+      idBrandSelected = brand.id;
+      getModelByBrandId();
+      update();
     }
   }
 
-  List<String> getModelByBrandId() {
+  List<TranslateWithIdMode> getModelByBrandId() {
     return brands
         .map((brand) => brand.id == idBrandSelected
             ? brand.models.map((model) => model.name).toList()
             : [])
         .expand((list) => list)
-        .cast<String>()
+        .cast<TranslateWithIdMode>()
         .toList();
   }
 
-  onChangeModelBrand(String? modelName) {
-    if (modelName != null) {
-      BrandModel specificModel =
-          brands.firstWhere((itemBrand) => itemBrand.id == idBrandSelected);
-      specificModel.models.firstWhere((itemModelBrand) {
-        if (itemModelBrand.name == modelName) {
-          idModelBrandSelected = itemModelBrand.id;
-          return true;
-        }
-        return false;
-      });
+  onChangeModelBrand(TranslateWithIdMode? model) {
+    if (model != null) {
+      idModelBrandSelected = model.id;
     }
   }
 
